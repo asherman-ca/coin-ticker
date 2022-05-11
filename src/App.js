@@ -1,7 +1,8 @@
 import './styles/App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
 import Nav from './components/Nav';
+import Home from './pages/Home';
+import CoinView from './pages/CoinView';
 
 function App() {
 	return (
@@ -9,6 +10,7 @@ function App() {
 			<Nav />
 			<Routes>
 				<Route path='/' element={<Home />} />
+				<Route path='/:coinId' element={<CoinView />} />
 			</Routes>
 		</Router>
 	);
