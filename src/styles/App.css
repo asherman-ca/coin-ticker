@@ -34,7 +34,7 @@ body {
 
 .container {
 	min-height: 100vh;
-	padding-top: 5rem;
+	padding-top: 4rem;
 	display: flex;
 	justify-content: center;
 	overflow-y: overlay;
@@ -55,7 +55,28 @@ body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
+
 	width: 100%;
 	max-width: 1200px;
-	padding: 1rem;
+	padding: 0 1rem;
+
+	font-size: 2rem;
+	font-weight: 500;
+}
+
+.navbar div:nth-child(2) {
+	display: flex;
+	gap: 1rem;
+
+	font-size: 1rem;
+	font-weight: normal;
+}
+
+.navbar a {
+	color: var(--clr-grey);
+}
+
+.navbar a:hover {
+	color: black;
 }
