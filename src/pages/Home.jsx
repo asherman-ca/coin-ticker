@@ -1,5 +1,11 @@
+import '../styles/Home.css';
+
 const Home = () => {
-	return <div>Words</div>;
+	return (
+		<div className='container'>
+			<div className='home'>Home</div>
+		</div>
+	);
 };
 
 export default Home;
