@@ -1,8 +1,20 @@
 .coin-list-item {
 }
 
-.coin-list-item .link {
+.coin-list-item a {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+}
+
+.coin-list-item a:hover {
+	color: var(--clr-grey);
+}
+
+.neg-change {
+	color: red;
+}
+
+.pos-change {
+	color: green;
 }
