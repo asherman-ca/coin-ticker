@@ -18,16 +18,16 @@ const Home = () => {
 		apiFetch();
 	}, []);
 
-	// const apiReFetch = async () => {
-	// 	const ref = await fetch(
-	// 		`https://api.coingecko.com/api/v3/coins?per_page=20`
-	// 	);
-	// 	const response = await ref.json();
-	// 	console.log('res', response);
-	// 	setCoins(response);
-	// };
+	const apiReFetch = async () => {
+		const ref = await fetch(
+			`https://api.coingecko.com/api/v3/coins?per_page=20`
+		);
+		const response = await ref.json();
+		console.log('res', response);
+		setCoins(response);
+	};
 
-	// setInterval(apiReFetch, 10000);
+	// setInterval(apiReFetch, 30000);
 
 	// const tickr = () => {
 	// 	setTick((prev) => {
@@ -37,35 +37,39 @@ const Home = () => {
 
 	// setInterval(() => setTick(( + 1), 5000);
 
-	// console.log('hits');
+	// const today = new Date();
+	// const yest = new Date(today);
+	// yest.setDate(yest.getDate() - 1);
+	// console.log('today', today.getTime());
+	// console.log('yest', yest.getTime());
 
-	// const liveCoinFetchr = async () => {
-	// 	console.log('hits');
-	// 	const thing = await fetch(
-	// 		new Request('https://api.livecoinwatch.com/coins/list'),
-	// 		{
-	// 			method: 'POST',
-	// 			headers: new Headers({
-	// 				'content-type': 'application/json',
-	// 				'x-api-key': '17e3d2ac-c2cf-4fb7-a839-fdf9fc65e6a9',
-	// 			}),
-	// 			body: JSON.stringify({
-	// 				current: 'USD',
-	// 				sort: 'rank',
-	// 				order: 'ascending',
-	// 				offset: 0,
-	// 				limit: 20,
-	// 				meta: false,
-	// 			}),
-	// 		}
-	// 	);
-	// 	const res = await thing.json();
-	// 	console.log('livewatchres', res);
-	// };
+	const liveCoinFetchr = async () => {
+		console.log('hits');
+		const thing = await fetch(
+			new Request('https://api.livecoinwatch.com/coins/list'),
+			{
+				method: 'POST',
+				headers: new Headers({
+					'content-type': 'application/json',
+					'x-api-key': '17e3d2ac-c2cf-4fb7-a839-fdf9fc65e6a9',
+				}),
+				body: JSON.stringify({
+					current: 'USD',
+					sort: 'rank',
+					order: 'ascending',
+					offset: 0,
+					limit: 20,
+					meta: true,
+				}),
+			}
+		);
+		const res = await thing.json();
+		console.log('livewatchres', res);
+	};
 
 	// liveCoinFetchr();
 
-	// setInterval(liveCoinFetchr, 3000);
+	// setInterval(liveCoinFetchr, 1000);
 
 	if (loading) {
 		return <div>Loading</div>;
@@ -73,7 +77,7 @@ const Home = () => {
 
 	return (
 		<div className='container'>
-			{console.log(coins)}
+			{/* {console.log(coins)} */}
 			<div className='home'>
 				<div className='header'>
 					<span>Live Cryptocurrency Prices</span>

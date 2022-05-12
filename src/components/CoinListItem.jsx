@@ -23,7 +23,7 @@ const CoinListItem = ({ coin }) => {
 			<td>
 				{Math.round((coin.market_data.market_cap.usd / 1000000000) * 10) / 10}B
 			</td>
-			{console.log(coin)}
+			{/* {console.log(coin)} */}
 		</tr>
 	);
 };
