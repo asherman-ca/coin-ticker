@@ -45,42 +45,39 @@ const CoinView = () => {
 				</header>
 
 				<div className='detail-row'>
-					{/* <div className='header'>Price Action</div> */}
-					<div className='list'>
-						<div className='col'>
-							<div className='title'>Price</div>
-							<div className='meta'>{coin.market_data.current_price.usd}</div>
+					<div className='col'>
+						<div className='title'>Price</div>
+						<div className='meta'>${coin.market_data.current_price.usd}</div>
+					</div>
+					<div className='col'>
+						<div className='title'>/ 24hr</div>
+						<div
+							className={changeDirection(
+								coin.market_data.price_change_percentage_24h
+							)}
+						>
+							{decimalReducer(coin.market_data.price_change_percentage_24h)}%
 						</div>
-						<div className='col'>
-							<div className='title'>/ 24hr</div>
-							<div
-								className={changeDirection(
-									coin.market_data.price_change_percentage_24h
-								)}
-							>
-								{decimalReducer(coin.market_data.price_change_percentage_24h)} %
-							</div>
+					</div>
+					<div className='col'>
+						<div className='title'>/ 7d</div>
+						<div
+							className={changeDirection(
+								coin.market_data.price_change_percentage_7d
+							)}
+						>
+							{decimalReducer(coin.market_data.price_change_percentage_7d)}%
 						</div>
-						<div className='col'>
-							<div className='title'>/ 7d</div>
-							<div
-								className={changeDirection(
-									coin.market_data.price_change_percentage_7d
-								)}
-							>
-								{decimalReducer(coin.market_data.price_change_percentage_7d)} %
-							</div>
-						</div>
+					</div>
 
-						<div className='col'>
-							<div className='title'>/ ATH</div>
-							<div
-								className={changeDirection(
-									coin.market_data.ath_change_percentage.usd
-								)}
-							>
-								{decimalReducer(coin.market_data.ath_change_percentage.usd)} %
-							</div>
+					<div className='col'>
+						<div className='title'>/ ATH</div>
+						<div
+							className={changeDirection(
+								coin.market_data.ath_change_percentage.usd
+							)}
+						>
+							{decimalReducer(coin.market_data.ath_change_percentage.usd)}%
 						</div>
 					</div>
 				</div>
@@ -91,7 +88,7 @@ const CoinView = () => {
 						{coin.tickers.slice(0, 20).map((el) => (
 							<div className='col'>
 								<div className='title'>{el.market.name}</div>
-								<div className='meta'>{Math.trunc(el.last)}</div>
+								<div className='meta'>${Math.trunc(el.last)}</div>
 							</div>
 						))}
 					</div>

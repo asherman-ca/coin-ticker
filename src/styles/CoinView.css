@@ -9,12 +9,11 @@
 }
 
 .coin-view header {
-	margin-bottom: -1rem;
+	margin-bottom: -0.5rem;
 
 	display: flex;
 	align-items: center;
-	/* justify-content: center; */
-	gap: 1rem;
+	gap: 0.5rem;
 
 	font-size: 2rem;
 	font-weight: bold;
@@ -22,19 +21,13 @@
 
 .detail-row {
 	display: flex;
-	flex-direction: column;
-	/* align-items: center; */
-	gap: 1rem;
+	flex-direction: row;
+	/* gap: 2rem; */
 }
 
 .detail-row .header {
 	font-weight: bold;
 	font-size: 1.5rem;
-}
-
-.detail-row .list {
-	display: flex;
-	gap: 2rem;
 }
 
 @media (max-width: 600px) {
@@ -44,11 +37,17 @@
 }
 
 .detail-row .col {
-	width: 5rem;
+	width: 10%;
 
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+
+	-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: fadein 2s; /* Firefox < 16 */
+	-ms-animation: fadein 2s; /* Internet Explorer */
+	-o-animation: fadein 2s; /* Opera < 12.1 */
+	animation: fadein 2s;
 }
 
 .detail-row .title {
@@ -88,7 +87,7 @@
 .tickers .col {
 	/* width: 16.666%; */
 	width: 10%;
-	padding-bottom: 2rem;
+	padding-bottom: 1rem;
 
 	display: flex;
 	flex-direction: column;
@@ -109,11 +108,17 @@
 	.tickers .col {
 		width: 16.666%;
 	}
+	.detail-row .col {
+		min-width: 16.666%;
+	}
 }
 
 @media (max-width: 600px) {
 	.tickers .col {
-		width: 33%;
+		width: 33.333%;
+	}
+	.detail-row .col {
+		min-width: 25%;
 	}
 }
 
