@@ -17,25 +17,69 @@
 	font-weight: bold;
 }
 
-.coin-view .details {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: 3rem;
-	/* flex-direction: normal; */
-}
-
-.coin-view .details .row {
+.detail-row {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 }
 
-.coin-view .details .title {
+.detail-row .header {
+	font-weight: bold;
+}
+
+.detail-row .list {
+	display: flex;
+	gap: 2rem;
+}
+
+.detail-row .col {
+	width: 5rem;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.detail-row .title {
 	color: var(--clr-grey);
 }
 
-.description {
+.description-row {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.description-row span:nth-child(1) {
+	/* color: var(--clr-grey); */
+	font-weight: bold;
+}
+
+.ticker-row {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.ticker-row .header {
+	/* color: var(--clr-grey); */
+	font-weight: bold;
+}
+
+.ticker-row .title {
+	color: var(--clr-grey);
+}
+
+.tickers {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+}
+
+.tickers .col {
+	/* min-width: 7.5rem; */
+	width: 10%;
+
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
