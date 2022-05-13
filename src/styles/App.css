@@ -30,6 +30,7 @@ a {
 body {
 	margin: 0;
 	font-family: 'Ubuntu', sans-serif;
+	font-size: 1.25rem;
 }
 
 .container {
@@ -69,7 +70,7 @@ body {
 	display: flex;
 	gap: 1rem;
 
-	font-size: 1rem;
+	font-size: 1.25rem;
 	font-weight: normal;
 }
 
