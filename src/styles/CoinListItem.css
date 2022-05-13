@@ -1,4 +1,12 @@
 .coin-list-item {
+	display: flex;
+}
+
+.coin-list-item .col {
+	width: 25%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .coin-list-item a {

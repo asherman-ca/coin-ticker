@@ -40,22 +40,17 @@ const Home = () => {
 
 					<span>Top Coins by Market Cap</span>
 				</div>
-				<div className='coin-list-container'>
-					<table className='coin-list'>
-						{/* <thead>
-							<tr>
-								<th>Coin</th>
-								<th>Price</th>
-								<th>% / 24hr</th>
-								<th>Market Cap</th>
-							</tr>
-						</thead> */}
-						<tbody>
-							{coins.map((coin) => (
-								<CoinListItem coin={coin} key={coin.id} />
-							))}
-						</tbody>
-					</table>
+
+				<div className='coin-list'>
+					<div className='coin-list-header'>
+						<div className='col'></div>
+						<div className='col'>Price</div>
+						<div className='col'>/ 24hr</div>
+						<div className='col'>M Cap</div>
+					</div>
+					{coins.map((coin) => (
+						<CoinListItem coin={coin} key={coin.id} />
+					))}
 				</div>
 			</div>
 		</div>
