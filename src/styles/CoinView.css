@@ -52,6 +52,7 @@
 
 .detail-row .title {
 	color: var(--clr-grey);
+	font-weight: bold;
 }
 
 .ticker-row {
@@ -70,8 +71,12 @@
 
 .ticker-row .title {
 	color: var(--clr-grey);
-	max-width: 90%;
-	overflow-x: hidden;
+	max-width: 80%;
+	/* overflow-x: hidden; */
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: bold;
 }
 
 .tickers {
