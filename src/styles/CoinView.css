@@ -9,8 +9,11 @@
 }
 
 .coin-view header {
+	margin-bottom: -1rem;
+
 	display: flex;
 	align-items: center;
+	/* justify-content: center; */
 	gap: 1rem;
 
 	font-size: 2rem;
@@ -60,7 +63,7 @@
 
 .ticker-row .header {
 	display: flex;
-	justify-content: center;
+	/* justify-content: center; */
 
 	font-size: 2rem;
 	font-weight: bold;
@@ -68,6 +71,8 @@
 
 .ticker-row .title {
 	color: var(--clr-grey);
+	max-width: 90%;
+	overflow-x: hidden;
 }
 
 .tickers {
@@ -80,31 +85,34 @@
 	width: 10%;
 } */
 
-.tickers .col,
-.ticker-title {
+.tickers .col {
 	/* width: 16.666%; */
 	width: 10%;
 	padding-bottom: 2rem;
 
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	/* align-items: center; */
 	gap: 0.5rem;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+
+	-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: fadein 2s; /* Firefox < 16 */
+	-ms-animation: fadein 2s; /* Internet Explorer */
+	-o-animation: fadein 2s; /* Opera < 12.1 */
+	animation: fadein 2s;
 }
 
 @media (max-width: 1000px) {
-	.tickers .col,
-	.ticker-title {
+	.tickers .col {
 		width: 16.666%;
 	}
 }
 
 @media (max-width: 600px) {
-	.tickers .col,
-	.ticker-title {
+	.tickers .col {
 		width: 33%;
 	}
 }
@@ -120,4 +128,13 @@
 	/* color: var(--clr-grey); */
 	font-weight: bold;
 	font-size: 2rem;
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }

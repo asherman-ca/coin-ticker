@@ -22,7 +22,7 @@ const CoinView = () => {
 			setLoading(false);
 		};
 		apiFetch();
-		// setInterval(apiFetch, 15000);
+		setInterval(apiFetch, 10000);
 	}, [params.coinId]);
 
 	if (loading) {
@@ -86,7 +86,7 @@ const CoinView = () => {
 				</div>
 
 				<div className='ticker-row'>
-					<div className='header'>Tickers</div>
+					<div className='header'>Tickrs</div>
 					<div className='tickers'>
 						{coin.tickers.slice(0, 20).map((el) => (
 							<div className='col'>
