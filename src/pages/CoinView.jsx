@@ -45,7 +45,7 @@ const CoinView = () => {
 				</header>
 
 				<div className='detail-row'>
-					<div className='header'>Price Action</div>
+					{/* <div className='header'>Price Action</div> */}
 					<div className='list'>
 						<div className='col'>
 							<div className='title'>Price</div>
