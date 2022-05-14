@@ -45,6 +45,9 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+
+	display: flex;
+	justify-content: right;
 }
 
 @media (max-width: 600px) {

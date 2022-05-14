@@ -1,5 +1,7 @@
 .coin-list-item {
 	display: flex;
+	padding-top: 1rem;
+	border-top: 1px solid var(--clr-grey);
 }
 
 .coin-list-item .col {
@@ -9,6 +11,7 @@
 	text-overflow: ellipsis;
 
 	display: flex;
+	justify-content: end;
 }
 
 .coin-list-item span {
@@ -38,15 +41,9 @@
 
 .coin-list-item .link-col {
 	display: flex;
+	justify-content: left !important;
 	align-items: center;
 }
-
-/* .coin-list-item .price-span {
-	max-width: 80%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-} */
 
 @media (max-width: 600px) {
 	.coin-list-item .link span {
