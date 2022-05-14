@@ -43,10 +43,10 @@ const Home = () => {
 
 				<div className='coin-list'>
 					<div className='coin-list-header'>
-						<div className='col link-col'>Asset</div>
+						<div className='col link-col'></div>
 						<div className='col'>Price</div>
 						<div className='col'>/ 24hr</div>
-						<div className='col'>Volume</div>
+						<div className='col'>Vol</div>
 						<div className='col'>M Cap</div>
 					</div>
 					{coins.map((coin) => (

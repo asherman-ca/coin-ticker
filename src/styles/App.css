@@ -32,7 +32,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-family: 'Ubuntu', sans-serif;
-	font-size: 1.25rem;
+	/* font-size: 1rem; */
 	line-height: 2rem;
 }
 

@@ -81,7 +81,7 @@
 
 .ticker-row .title {
 	color: var(--clr-grey);
-	max-width: 80%;
+	/* max-width: 80%; */
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -89,18 +89,19 @@
 }
 
 .tickers {
-	display: inline-flex;
+	display: flex;
 	flex-wrap: wrap;
 }
 
 .tickers .col {
 	/* width: 16.666%; */
 	width: 10%;
-	padding-bottom: 1rem;
+	padding-bottom: 2rem;
 
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
+	text-align: center;
+
 	gap: 0.5rem;
 	white-space: nowrap;
 	overflow: hidden;
@@ -134,7 +135,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	margin-top: -1rem;
+	margin-top: -2rem;
 }
 
 .description-row span:nth-child(1) {
