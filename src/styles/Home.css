@@ -41,7 +41,20 @@
 }
 
 .coin-list-header .col {
-	width: 25%;
+	width: 20%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@media (max-width: 600px) {
+	.coin-list-header .col {
+		width: 22%;
+	}
+
+	.coin-list-header .link-col {
+		width: 12%;
+	}
 }
 
 /* .coin-list th {

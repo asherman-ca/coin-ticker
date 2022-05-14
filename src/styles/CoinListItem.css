@@ -3,7 +3,16 @@
 }
 
 .coin-list-item .col {
-	width: 25%;
+	width: 20%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	display: flex;
+}
+
+.coin-list-item span {
+	max-width: 95%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -16,8 +25,41 @@
 	font-weight: bold;
 }
 
+.coin-list-item-span,
+.link {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .coin-list-item a:hover {
 	color: var(--clr-grey);
+}
+
+.coin-list-item .link-col {
+	display: flex;
+	align-items: center;
+}
+
+/* .coin-list-item .price-span {
+	max-width: 80%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+} */
+
+@media (max-width: 600px) {
+	.coin-list-item .link span {
+		display: none;
+	}
+
+	.coin-list-item .link-col {
+		width: 12% !important;
+	}
+
+	.coin-list-item .col {
+		width: 22%;
+	}
 }
 
 .neg-change {

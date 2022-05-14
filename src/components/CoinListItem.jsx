@@ -12,17 +12,35 @@ const CoinListItem = ({ coin }) => {
 
 	return (
 		<div className='coin-list-item'>
-			<div className='col'>
+			<div className='col link-col'>
 				<Link to={`/${coin.id}`} className='link'>
-					<img src={coin.image.thumb} /> {capitalize(coin.id)}
+					<img src={coin.image.thumb} />{' '}
+					<span className='coin-list-item-span'>{capitalize(coin.id)}</span>
 				</Link>
 			</div>
-			<div className='col'>$ {coin.market_data.current_price.usd}</div>
 			<div className='col'>
-				{Math.round(coin.market_data.price_change_percentage_24h * 10) / 10}%
+				<span className='price-span'>
+					${coin.market_data.current_price.usd}
+				</span>
 			</div>
 			<div className='col'>
-				{Math.round((coin.market_data.market_cap.usd / 1000000000) * 10) / 10}B
+				<span>
+					{Math.round(coin.market_data.price_change_percentage_24h * 10) / 10}%
+				</span>
+			</div>
+			<div className='col'>
+				<span>
+					{Math.round(
+						((coin.market_data.total_volume.usd / 1000000) * 10) / 10
+					)}
+					M
+				</span>
+			</div>
+			<div className='col'>
+				<span>
+					{Math.round((coin.market_data.market_cap.usd / 1000000000) * 10) / 10}
+					B
+				</span>
 			</div>
 		</div>
 		// <tr className='coin-list-item'>
