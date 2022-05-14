@@ -109,6 +109,11 @@
 	animation: fadein 2s;
 }
 
+.tickers .col .meta {
+	padding-top: 0.5rem;
+	border-top: 0.5px solid var(--clr-grey);
+}
+
 @media (max-width: 1000px) {
 	.tickers .col {
 		width: 16.666%;

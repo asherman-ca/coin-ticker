@@ -50,6 +50,10 @@
 	justify-content: right;
 }
 
+.coin-list-header .link-col {
+	justify-content: left !important;
+}
+
 @media (max-width: 600px) {
 	.coin-list-header .col {
 		width: 22%;
