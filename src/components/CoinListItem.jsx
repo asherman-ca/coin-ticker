@@ -31,9 +31,9 @@ const CoinListItem = ({ coin }) => {
 			<div className='col'>
 				<span>
 					{Math.round(
-						((coin.market_data.total_volume.usd / 1000000) * 10) / 10
+						((coin.market_data.total_volume.usd / 1000000000) * 10) / 10
 					)}
-					M
+					B
 				</span>
 			</div>
 			<div className='col'>

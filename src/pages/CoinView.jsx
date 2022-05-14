@@ -52,9 +52,10 @@ const CoinView = () => {
 					<div className='col'>
 						<div className='title'>/ 24hr</div>
 						<div
-							className={changeDirection(
-								coin.market_data.price_change_percentage_24h
-							)}
+							className={
+								changeDirection(coin.market_data.price_change_percentage_24h) +
+								' meta'
+							}
 						>
 							{decimalReducer(coin.market_data.price_change_percentage_24h)}%
 						</div>
@@ -62,9 +63,10 @@ const CoinView = () => {
 					<div className='col'>
 						<div className='title'>/ 7d</div>
 						<div
-							className={changeDirection(
-								coin.market_data.price_change_percentage_7d
-							)}
+							className={
+								changeDirection(coin.market_data.price_change_percentage_7d) +
+								' meta'
+							}
 						>
 							{decimalReducer(coin.market_data.price_change_percentage_7d)}%
 						</div>
@@ -73,9 +75,10 @@ const CoinView = () => {
 					<div className='col'>
 						<div className='title'>/ ATH</div>
 						<div
-							className={changeDirection(
-								coin.market_data.ath_change_percentage.usd
-							)}
+							className={
+								changeDirection(coin.market_data.ath_change_percentage.usd) +
+								' meta'
+							}
 						>
 							{decimalReducer(coin.market_data.ath_change_percentage.usd)}%
 						</div>
