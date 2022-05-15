@@ -7,6 +7,9 @@ const Nav = () => {
 				<div className='nav-item'>
 					<Link to={`/`}>Tickr</Link>
 				</div>
+				<div className='nav-item search-div'>
+					<input type='text' placeholder='Search Coins' />
+				</div>
 				<div className='nav-item'>
 					<i className='fa-solid fa-wallet'></i>
 					{/* <a
