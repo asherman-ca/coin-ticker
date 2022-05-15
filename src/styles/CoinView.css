@@ -95,7 +95,7 @@
 
 .tickers .col {
 	/* width: 16.666%; */
-	width: 10%;
+	width: 12.5%;
 	padding-bottom: 2rem;
 
 	display: flex;
@@ -127,7 +127,8 @@
 
 @media (max-width: 600px) {
 	.tickers .col {
-		width: 33.333%;
+		/* width: 33.333%; */
+		width: 25%;
 	}
 }
 

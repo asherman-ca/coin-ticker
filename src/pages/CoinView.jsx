@@ -88,7 +88,7 @@ const CoinView = () => {
 				<div className='ticker-row'>
 					<div className='header'>Tickrs</div>
 					<div className='tickers'>
-						{coin.tickers.slice(0, 20).map((el) => (
+						{coin.tickers.slice(0, 24).map((el) => (
 							<div className='col'>
 								<div className='title'>{el.market.name}</div>
 								<div className='meta'>${Math.trunc(el.last)}</div>
