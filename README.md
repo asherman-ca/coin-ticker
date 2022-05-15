@@ -2,25 +2,27 @@
 
 Live coin tickers and PNL tracker
 
-### Setup
+## Setup
 
 1. npm install
 2. npm start
 
 ## Design Influence
 
--Opensea
--Livecoinwatch
+1. Opensea
+2. Livecoinwatch
 
-### Maths
+## Maths
 
 PNL:
 
 average purchase price = (total spent / total tokens gained)
 average sell price = (total $ collected / total tokens sold)
 
-PNL = total unit sold \* (average purchase price / average sell price)
+unrealizec PNL = total units held \* (current price / average purchase price)
 
-### Resources:
+realized PNL = total unit sold \* (average sell price / average purchase price)
+
+## Resources:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
