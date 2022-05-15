@@ -38,21 +38,23 @@ body {
 
 .container {
 	min-height: 100vh;
-	padding-top: 4rem;
 	display: flex;
 	justify-content: center;
 	overflow-y: overlay;
 }
 
 .nav-container {
-	position: absolute;
+	position: sticky;
 	top: 0;
-	left: 0;
-	height: 5rem;
+	/* height: 4.5rem; */
+	height: 72px;
 	width: 100%;
+
 	display: flex;
 	justify-content: center;
+
 	background-color: white;
+	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
 }
 
 .navbar {
@@ -77,10 +79,44 @@ body {
 	font-weight: normal;
 }
 
+.navbar i {
+	color: var(--clr-grey);
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+.navbar i:hover {
+	color: black;
+}
+
 .navbar a {
 	color: var(--clr-grey);
 }
 
 .navbar a:hover {
 	color: black;
+}
+
+/* Spinner */
+
+.spinner-box {
+	margin: auto;
+}
+
+.three-quarter-spinner {
+	width: 50px;
+	height: 50px;
+	border: 3px solid var(--clr-green);
+	border-top: 3px solid transparent;
+	border-radius: 50%;
+	animation: spin 0.5s linear 0s infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
 }

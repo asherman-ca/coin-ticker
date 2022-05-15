@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import CoinListItem from '../components/CoinListItem';
 import '../styles/Home.css';
+import Spinner from '../components/Spinner';
 
 const Home = () => {
 	const [coins, setCoins] = useState();
@@ -25,7 +26,9 @@ const Home = () => {
 	if (loading) {
 		return (
 			<div className='container'>
-				<div className='home'>Loading</div>
+				<div className='home'>
+					<Spinner />
+				</div>
 			</div>
 		);
 	}

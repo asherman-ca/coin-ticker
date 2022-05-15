@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Spinner from '../components/Spinner';
 import {
 	capitalize,
 	changeDirection,
 	decimalReducer,
 } from '../utils/stringUtils';
 import '../styles/CoinView.css';
+// import CoinListItem from '../components/coinListItem';
 
 const CoinView = () => {
 	const [coin, setCoin] = useState();
@@ -28,13 +30,20 @@ const CoinView = () => {
 	if (loading) {
 		return (
 			<div className='container'>
-				<div className='coint-view'>Spinner</div>
+				<div className='coin-view'>
+					<Spinner />
+				</div>
 			</div>
 		);
 	}
-	{
-		console.log('coin', coin);
-	}
+
+	const based = coin.tickers.filter(
+		(el) => el.target === 'USDT' || el.target === 'USD'
+	);
+
+	const basedAndSymbol = based
+		.filter((el) => coin.symbol.toUpperCase() === el.base)
+		.slice(0, 24);
 
 	return (
 		<div className='container'>
@@ -88,8 +97,8 @@ const CoinView = () => {
 				<div className='ticker-row'>
 					<div className='header'>Tickrs</div>
 					<div className='tickers'>
-						{coin.tickers.slice(0, 24).map((el) => (
-							<div className='col'>
+						{basedAndSymbol.map((el) => (
+							<div key={el.trade_url} className='col'>
 								<div className='title'>{el.market.name}</div>
 								<div className='meta'>${Math.trunc(el.last)}</div>
 							</div>

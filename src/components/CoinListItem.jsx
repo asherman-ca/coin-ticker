@@ -4,9 +4,9 @@ import '../styles/CoinListItem.css';
 
 const CoinListItem = ({ coin }) => {
 	let changeType = '';
-	if (coin.market_data.price_change_percentage_24h < -0.08) {
+	if (coin.market_data.price_change_percentage_24h < -0.05) {
 		changeType = 'neg-change';
-	} else if (coin.market_data.price_change_percentage_24h > 0.08) {
+	} else if (coin.market_data.price_change_percentage_24h >= 0.05) {
 		changeType = 'pos-change';
 	}
 
@@ -24,7 +24,7 @@ const CoinListItem = ({ coin }) => {
 				</span>
 			</div>
 			<div className='col'>
-				<span>
+				<span className={changeType}>
 					{Math.round(coin.market_data.price_change_percentage_24h * 10) / 10}%
 				</span>
 			</div>

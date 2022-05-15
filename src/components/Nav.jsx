@@ -8,13 +8,14 @@ const Nav = () => {
 					<Link to={`/`}>Tickr</Link>
 				</div>
 				<div className='nav-item'>
-					<a
+					<i className='fa-solid fa-wallet'></i>
+					{/* <a
 						href='https://asherman-ca.github.io/'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
 						<span>- Alex Sherman</span>
-					</a>
+					</a> */}
 				</div>
 			</div>
 		</div>
