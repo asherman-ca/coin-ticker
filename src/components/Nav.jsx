@@ -27,6 +27,7 @@ const Nav = () => {
 					</Link>
 				</div>
 				<form action='' onSubmit={onSubmit} className='nav-item search-div'>
+					<i className='fa-solid fa-magnifying-glass'></i>
 					<input type='text' placeholder='Search Coins' onChange={onChange} />
 				</form>
 				<div className='nav-item nav-links'>

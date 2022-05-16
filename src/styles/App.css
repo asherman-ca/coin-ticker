@@ -76,19 +76,30 @@ body {
 }
 
 .navbar form {
-	height: 100%;
 	padding: 0.75rem;
 
 	justify-content: center;
+	align-items: center;
+
+	border: 1px solid rgb(229, 232, 235);
+	border-radius: 0.5rem;
+}
+
+.navbar form i {
+	color: var(--clr-grey);
+	font-size: 1rem;
 }
 
 .navbar input {
-	width: 100%;
+	flex-basis: 100%;
 	padding: 0 1rem;
 
+	border: none;
 	font-size: 1rem;
-	border: 1px solid rgb(229, 232, 235);
-	border-radius: 0.5rem;
+}
+
+.navbar input:focus-visible {
+	outline: none;
 }
 
 .logo-div {
