@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import OAuth from '../components/OAuth';
+
 const Nav = () => {
 	const [param, setParam] = useState();
 	const navigate = useNavigate();
@@ -16,10 +18,6 @@ const Nav = () => {
 		navigate(`/${param.toLowerCase()}`);
 	};
 
-	const onError = () => {
-		console.log('hits');
-	};
-
 	return (
 		<div className='nav-container'>
 			<div className='navbar'>
@@ -32,8 +30,8 @@ const Nav = () => {
 					<input type='text' placeholder='Search Coins' onChange={onChange} />
 				</form>
 				<div className='nav-item nav-links'>
-					<i class='fa-solid fa-circle-user'></i>
-					<i className='fa-solid fa-wallet' onClick={onError}></i>
+					<i className='fa-solid fa-circle-user'></i>
+					{/* <i className='fa-solid fa-wallet'></i> */}
 					{/* <a
 						href='https://asherman-ca.github.io/'
 						target='_blank'
@@ -41,6 +39,7 @@ const Nav = () => {
 					>
 						<span>- Alex Sherman</span>
 					</a> */}
+					<OAuth />
 				</div>
 			</div>
 		</div>
