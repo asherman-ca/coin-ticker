@@ -25,6 +25,8 @@ a {
 	--clr-grey: #81899d;
 	--bg-grey: #fafbfc;
 	--alt-grey: #7c8499;
+
+	--light-grey: rgb(229, 232, 235);
 }
 
 body {
