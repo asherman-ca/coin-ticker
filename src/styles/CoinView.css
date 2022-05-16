@@ -95,7 +95,6 @@
 }
 
 .tickers .col {
-	/* width: 16.666%; */
 	width: 12.5%;
 	margin-bottom: 2rem;
 
@@ -114,12 +113,6 @@
 	-o-animation: fadein 2s; /* Opera < 12.1 */
 	animation: fadein 2s;
 }
-
-/* .tickers .col:hover {
-	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
-	background-color: rgb(251, 253, 255);
-	transition: all 0.2s ease 0s;
-} */
 
 .tickers .col .meta {
 	padding-top: 0.5rem;

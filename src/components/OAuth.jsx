@@ -15,18 +15,18 @@ function OAuth() {
 			const user = result.user;
 
 			// Check for user
-			// const docRef = doc(db, 'users', user.uid);
-			// const docSnap = await getDoc(docRef);
+			const docRef = doc(db, 'users', user.uid);
+			const docSnap = await getDoc(docRef);
 
 			// If user, doesn't exist, create user
 			console.log('user info', user);
-			// if (!docSnap.exists()) {
-			// 	await setDoc(doc(db, 'users', user.uid), {
-			// 		name: user.displayName,
-			// 		email: user.email,
-			// 		timestamp: serverTimestamp(),
-			// 	});
-			// }
+			if (!docSnap.exists()) {
+				await setDoc(doc(db, 'users', user.uid), {
+					name: user.displayName,
+					email: user.email,
+					timestamp: serverTimestamp(),
+				});
+			}
 			navigate('/');
 		} catch (error) {
 			toast.error('Could not authorize with Google');
