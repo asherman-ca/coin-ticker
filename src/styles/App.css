@@ -89,18 +89,25 @@ body {
 	border-radius: 0.5rem;
 }
 
+.logo-div {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
 .nav-links {
 	justify-content: flex-end;
+	gap: 2rem;
 }
 
 .navbar i {
 	font-size: 1.5rem;
-	cursor: pointer;
 }
 
-.navbar i:hover,
-.navbar a:hover {
+.navbar a:hover,
+.nav-links i:hover {
 	color: var(--clr-grey);
+	cursor: pointer;
 }
 
 /* Spinner */

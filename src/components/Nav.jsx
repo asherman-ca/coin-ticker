@@ -24,12 +24,15 @@ const Nav = () => {
 		<div className='nav-container'>
 			<div className='navbar'>
 				<div className='nav-item'>
-					<Link to={`/`}>Tickr</Link>
+					<Link className='logo-div' to={`/`}>
+						<i class='fa-solid fa-dice'></i>Tickr
+					</Link>
 				</div>
 				<form action='' onSubmit={onSubmit} className='nav-item search-div'>
 					<input type='text' placeholder='Search Coins' onChange={onChange} />
 				</form>
 				<div className='nav-item nav-links'>
+					<i class='fa-solid fa-circle-user'></i>
 					<i className='fa-solid fa-wallet' onClick={onError}></i>
 					{/* <a
 						href='https://asherman-ca.github.io/'
