@@ -72,10 +72,9 @@ body {
 }
 
 .navbar > div {
-	width: 33.333%;
+	flex-basis: 100%;
 
 	display: flex;
-	/* justify-content: flex-end; */
 }
 
 .navbar div:nth-child(2) {
