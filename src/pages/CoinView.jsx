@@ -58,6 +58,8 @@ const CoinView = () => {
 		.filter((el) => coin.symbol.toUpperCase() === el.base)
 		.slice(0, 24);
 
+	console.log(coin);
+
 	return (
 		<div className='container'>
 			<div className='coin-view'>
@@ -104,6 +106,16 @@ const CoinView = () => {
 						>
 							{decimalReducer(coin.market_data.ath_change_percentage.usd)}%
 						</div>
+					</div>
+
+					<div className='col'>
+						<div className='title'>Volume</div>
+						<div className='meta'>{coin.market_data.total_volume.usd}</div>
+					</div>
+
+					<div className='col'>
+						<div className='title'>Market Cap</div>
+						<div className='meta'>{coin.market_data.market_cap.usd}</div>
 					</div>
 				</div>
 
