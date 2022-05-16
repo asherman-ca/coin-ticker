@@ -23,6 +23,8 @@ const CoinView = () => {
 			);
 			if (!ref.ok) {
 				toast.error(`No results: "${params.coinId}"`);
+				clearInterval(interId);
+				// console.log('hits');
 				// navigate('/');
 				throw new Error('Thrown Error Thrown');
 			}
