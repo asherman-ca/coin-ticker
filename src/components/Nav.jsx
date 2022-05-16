@@ -12,7 +12,6 @@ const Nav = () => {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		console.log('hits');
 		navigate(`/${param.toLowerCase()}`);
 	};
 

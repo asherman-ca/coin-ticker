@@ -19,12 +19,20 @@ const CoinView = () => {
 			const ref = await fetch(
 				`https://api.coingecko.com/api/v3/coins/${params.coinId}`
 			);
+			if (!ref.ok) {
+				throw new Error('Thrown Error Thrown');
+			}
 			const response = await ref.json();
 			setCoin(response);
 			setLoading(false);
+			console.log('hits');
 		};
 		apiFetch();
-		setInterval(apiFetch, 10000);
+		let interId = setInterval(apiFetch, 10000);
+
+		return () => {
+			clearInterval(interId);
+		};
 	}, [params.coinId]);
 
 	if (loading) {
