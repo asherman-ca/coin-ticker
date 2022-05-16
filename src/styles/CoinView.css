@@ -22,11 +22,9 @@
 
 .detail-row {
 	margin: 0 auto;
-	padding: 1rem 2rem;
 
 	display: flex;
 	flex-direction: row;
-	gap: 3rem;
 
 	border: 1px solid var(--light-grey);
 	border-radius: 0.5rem;
@@ -36,7 +34,13 @@
 	font-weight: bold;
 }
 
+.detail-row .col:nth-child(n + 2) {
+	border-left: 1px solid var(--light-grey);
+}
+
 .detail-row .col {
+	padding: 1rem 2rem;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
