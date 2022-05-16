@@ -110,12 +110,16 @@ const CoinView = () => {
 
 					<div className='col'>
 						<div className='title'>Volume</div>
-						<div className='meta'>{coin.market_data.total_volume.usd}</div>
+						<div className='meta'>
+							{(coin.market_data.total_volume.usd / 1000000000).toFixed(2)}B
+						</div>
 					</div>
 
 					<div className='col'>
 						<div className='title'>Market Cap</div>
-						<div className='meta'>{coin.market_data.market_cap.usd}</div>
+						<div className='meta'>
+							{(coin.market_data.market_cap.usd / 1000000000).toFixed(2)}B
+						</div>
 					</div>
 				</div>
 
@@ -125,7 +129,9 @@ const CoinView = () => {
 						{basedAndSymbol.map((el) => (
 							<div key={el.trade_url} className='col'>
 								<div className='title'>{nameReducer(el.market.name)}</div>
-								<div className='meta'>${Math.trunc(el.last)}</div>
+								<div className='meta'>
+									${el.last < 1 ? el.last.toFixed(4) : el.last}
+								</div>
 							</div>
 						))}
 					</div>
