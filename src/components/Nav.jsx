@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Nav = () => {
 	const [param, setParam] = useState();
@@ -15,6 +16,10 @@ const Nav = () => {
 		navigate(`/${param.toLowerCase()}`);
 	};
 
+	const onError = () => {
+		console.log('hits');
+	};
+
 	return (
 		<div className='nav-container'>
 			<div className='navbar'>
@@ -25,7 +30,7 @@ const Nav = () => {
 					<input type='text' placeholder='Search Coins' onChange={onChange} />
 				</form>
 				<div className='nav-item nav-links'>
-					<i className='fa-solid fa-wallet'></i>
+					<i className='fa-solid fa-wallet' onClick={onError}></i>
 					{/* <a
 						href='https://asherman-ca.github.io/'
 						target='_blank'

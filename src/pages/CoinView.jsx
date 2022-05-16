@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Spinner from '../components/Spinner';
 import {
 	capitalize,
@@ -13,6 +14,7 @@ const CoinView = () => {
 	const [coin, setCoin] = useState();
 	const [loading, setLoading] = useState(true);
 	const params = useParams();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const apiFetch = async () => {
@@ -20,12 +22,13 @@ const CoinView = () => {
 				`https://api.coingecko.com/api/v3/coins/${params.coinId}`
 			);
 			if (!ref.ok) {
+				toast.error(`No results: "${params.coinId}"`);
+				// navigate('/');
 				throw new Error('Thrown Error Thrown');
 			}
 			const response = await ref.json();
 			setCoin(response);
 			setLoading(false);
-			console.log('hits');
 		};
 		apiFetch();
 		let interId = setInterval(apiFetch, 10000);
@@ -33,7 +36,7 @@ const CoinView = () => {
 		return () => {
 			clearInterval(interId);
 		};
-	}, [params.coinId]);
+	}, [params.coinId, navigate]);
 
 	if (loading) {
 		return (
