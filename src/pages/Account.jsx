@@ -4,7 +4,7 @@ import '../styles/Account.css';
 import Spinner from '../components/Spinner';
 
 const Account = () => {
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 
 	if (loading) {
 		return (
