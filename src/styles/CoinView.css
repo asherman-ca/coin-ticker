@@ -23,7 +23,9 @@
 .detail-row {
 	display: flex;
 	flex-direction: row;
+	/* justify-content: space-around; */
 	justify-content: center;
+	gap: 4rem;
 }
 
 .detail-row .title {
@@ -31,13 +33,13 @@
 }
 
 .detail-row .col {
-	flex-basis: 100%;
+	/* flex-basis: 100%; */
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: end;
-	gap: 0.5rem;
+	gap: 0.25rem;
 
 	-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
 	-moz-animation: fadein 2s; /* Firefox < 16 */
@@ -58,10 +60,9 @@
 
 .detail-row .meta {
 	width: 100%;
-	padding-top: 0.5rem;
 	text-align: center;
 
-	border-top: 0.5px solid var(--clr-grey);
+	/* border-top: 0.5px solid var(--clr-grey); */
 }
 
 .ticker-row {
