@@ -30,7 +30,10 @@ const Nav = () => {
 					<input type='text' placeholder='Search Coins' onChange={onChange} />
 				</form>
 				<div className='nav-item nav-links'>
-					<i className='fa-solid fa-circle-user'></i>
+					<i
+						onClick={() => navigate('/account')}
+						className='fa-solid fa-circle-user'
+					></i>
 					{/* <i className='fa-solid fa-wallet'></i> */}
 					{/* <a
 						href='https://asherman-ca.github.io/'
