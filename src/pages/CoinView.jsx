@@ -5,9 +5,9 @@ import {
 	capitalize,
 	changeDirection,
 	decimalReducer,
+	nameReducer,
 } from '../utils/stringUtils';
 import '../styles/CoinView.css';
-// import CoinListItem from '../components/coinListItem';
 
 const CoinView = () => {
 	const [coin, setCoin] = useState();
@@ -37,7 +37,7 @@ const CoinView = () => {
 		);
 	}
 
-	const based = coin.tickers.filter(
+	const based = coin.tickers?.filter(
 		(el) => el.target === 'USDT' || el.target === 'USD'
 	);
 
@@ -99,7 +99,7 @@ const CoinView = () => {
 					<div className='tickers'>
 						{basedAndSymbol.map((el) => (
 							<div key={el.trade_url} className='col'>
-								<div className='title'>{el.market.name}</div>
+								<div className='title'>{nameReducer(el.market.name)}</div>
 								<div className='meta'>${Math.trunc(el.last)}</div>
 							</div>
 						))}

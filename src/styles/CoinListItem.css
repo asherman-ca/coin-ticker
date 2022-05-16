@@ -14,16 +14,9 @@
 	color: var(--clr-grey);
 }
 
-/* .coin-list-item:hover {
-	box-shadow: rgb(125 132 153 / 4%) 0px 2px 4px 0px,
-		rgb(125 132 153 / 20%) 0px 4px 18px 0px;
-	transform: scale(1.03);
-	transition: transform 0.3s ease 0s, box-shadow 0.3s ease 0s;
-	z-index: 5;
-} */
-
 .coin-list-item .col {
 	width: 20%;
+	/* flex-basis: 100%; */
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -33,7 +26,6 @@
 }
 
 .coin-list-item span {
-	/* max-width: 95%; */
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;

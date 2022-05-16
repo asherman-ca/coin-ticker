@@ -1,18 +1,14 @@
 import { Link } from 'react-router-dom';
-import { capitalize } from '../utils/stringUtils';
+import { capitalize, changeDirection } from '../utils/stringUtils';
 import '../styles/CoinListItem.css';
 
 const CoinListItem = ({ coin }) => {
-	let changeType = '';
-	if (coin.market_data.price_change_percentage_24h < -0.05) {
-		changeType = 'neg-change';
-	} else if (coin.market_data.price_change_percentage_24h >= 0.05) {
-		changeType = 'pos-change';
-	}
+	const changeType = changeDirection(
+		coin.market_data.price_change_percentage_24h
+	);
 
 	return (
 		<Link to={`/${coin.id}`} className='link coin-list-item'>
-			{/* <div className='coin-list-item'> */}
 			<div className='col link-col'>
 				<img src={coin.image.thumb} />{' '}
 				<span className='coin-list-item-span'>{capitalize(coin.id)}</span>
@@ -41,7 +37,6 @@ const CoinListItem = ({ coin }) => {
 					B
 				</span>
 			</div>
-			{/* </div> */}
 		</Link>
 	);
 };

@@ -32,7 +32,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-family: 'Ubuntu', sans-serif;
-	/* font-size: 1rem; */
 	line-height: 2rem;
 }
 
@@ -46,7 +45,6 @@ body {
 .nav-container {
 	position: sticky;
 	top: 0;
-	/* height: 4.5rem; */
 	height: 72px;
 	width: 100%;
 
@@ -60,7 +58,6 @@ body {
 .navbar {
 	display: flex;
 	flex-direction: row;
-	/* justify-content: space-between; */
 	align-items: center;
 
 	width: 100%;
@@ -71,13 +68,12 @@ body {
 	font-weight: bold;
 }
 
-.navbar > div {
+.navbar > * {
 	flex-basis: 100%;
-
 	display: flex;
 }
 
-.navbar div:nth-child(2) {
+.navbar form {
 	height: 100%;
 	padding: 0.75rem;
 
@@ -93,34 +89,18 @@ body {
 	border-radius: 0.5rem;
 }
 
-.navbar div:nth-child(3) {
+.nav-links {
 	justify-content: flex-end;
 }
 
-/* .navbar div:nth-child(n + 2) {
-	display: flex;
-	gap: 1rem;
-
-	font-size: 1.25rem;
-	font-weight: normal;
-} */
-
 .navbar i {
-	color: var(--clr-grey);
 	font-size: 1.5rem;
 	cursor: pointer;
 }
 
-.navbar i:hover {
-	color: black;
-}
-
-.navbar a {
-	color: var(--clr-grey);
-}
-
+.navbar i:hover,
 .navbar a:hover {
-	color: black;
+	color: var(--clr-grey);
 }
 
 /* Spinner */
