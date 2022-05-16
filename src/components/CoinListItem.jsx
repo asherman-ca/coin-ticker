@@ -11,12 +11,11 @@ const CoinListItem = ({ coin }) => {
 	}
 
 	return (
-		<div className='coin-list-item'>
+		<Link to={`/${coin.id}`} className='link coin-list-item'>
+			{/* <div className='coin-list-item'> */}
 			<div className='col link-col'>
-				<Link to={`/${coin.id}`} className='link'>
-					<img src={coin.image.thumb} />{' '}
-					<span className='coin-list-item-span'>{capitalize(coin.id)}</span>
-				</Link>
+				<img src={coin.image.thumb} />{' '}
+				<span className='coin-list-item-span'>{capitalize(coin.id)}</span>
 			</div>
 			<div className='col'>
 				<span className='price-span'>
@@ -42,7 +41,8 @@ const CoinListItem = ({ coin }) => {
 					B
 				</span>
 			</div>
-		</div>
+			{/* </div> */}
+		</Link>
 	);
 };
 
