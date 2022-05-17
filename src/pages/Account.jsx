@@ -101,17 +101,22 @@ const Account = () => {
 		<div className='container'>
 			<div className='account'>
 				<div className='primary-col'>
-					<div className='header'>Order History</div>
-					<div className='transaction-list'>
-						{orders?.map((order) => (
-							<div className='order-item'>
-								<i className='fa-solid fa-trash-can'></i>
-								<div>{order.coin}</div>
-								<div>{order.price}</div>
-								<div>{order.quantity}</div>
-								<div>{order.type}</div>
-							</div>
-						))}
+					<div className='orders'>
+						<div className='header'>Order History</div>
+						<div className='transaction-list'>
+							{orders?.map((order) => (
+								<div className='order-item'>
+									<i className='fa-solid fa-trash-can'></i>
+									<div>{order.coin}</div>
+									<div>{order.price}</div>
+									<div>{order.quantity}</div>
+									<div>{order.type}</div>
+								</div>
+							))}
+						</div>
+					</div>
+					<div className='accounting'>
+						<div className='header'>Profit N/L</div>
 					</div>
 				</div>
 				<div className='secondary-col'>
@@ -147,9 +152,6 @@ const Account = () => {
 								{formType === 'buy' ? 'Buy' : 'Sell'}
 							</button>
 						</form>
-					</div>
-					<div className='accounting'>
-						<div className='header'>Profit N/L</div>
 					</div>
 				</div>
 			</div>
