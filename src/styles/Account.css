@@ -1,7 +1,7 @@
 .account {
 	width: 100%;
 	max-width: 1200px;
-	padding-top: 3rem;
+	padding: 3rem 1rem 1rem;
 
 	display: flex;
 	flex-direction: row;
@@ -27,6 +27,11 @@
 	flex-basis: 100%;
 }
 
+.account .header {
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
 .secondary-col .form-div {
 	display: flex;
 	flex-direction: column;
@@ -44,14 +49,16 @@
 	gap: 1rem;
 }
 
-.secondary-col .buy-sell-form input {
+.secondary-col .buy-sell-form :is(input, button) {
 	padding: 0.5rem;
+	border-radius: 0.5rem;
+	border: 1px solid rgb(229, 232, 235);
 }
 
 .secondary-col .buy-sell-form button {
-	padding: 0.5rem;
+	cursor: pointer;
 }
 
-.secondary-col form input {
+/* .secondary-col form input {
 	border: 1px solid rgb(229, 232, 235);
-}
+} */

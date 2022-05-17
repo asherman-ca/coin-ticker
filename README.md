@@ -12,6 +12,28 @@ Live coin tickers and PNL tracker
 1. Opensea
 2. Livecoinwatch
 
+## Schema
+
+Order
+
+{
+userRef: String
+coin: String
+price: Int
+quantity: Int
+}
+
+Holding
+
+{
+userRef: String
+coin: String
+totalHeld: Int
+totalSpent: Int
+averageBuy: Int
+averageSell: Int
+}
+
 ## Maths
 
 PNL:

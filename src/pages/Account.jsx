@@ -1,16 +1,60 @@
 import { useState, useEffect } from 'react';
+import { getAuth } from 'firebase/auth';
+import { db } from '../firebase.config';
+import {
+	getDoc,
+	doc,
+	updateDoc,
+	deleteDoc,
+	query,
+	where,
+	collection,
+	getDocs,
+	limit,
+	addDoc,
+	orderBy,
+	serverTimestamp,
+} from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 import '../styles/Account.css';
 import Spinner from '../components/Spinner';
 
 const Account = () => {
+	const auth = getAuth();
+
 	const [loading, setLoading] = useState(false);
+	const [orders, setOrders] = useState();
 	const [formType, setFormType] = useState('buy');
 	const [formData, setFormData] = useState({
 		coin: '',
-		spend: 0,
+		price: 0,
 		quantity: 0,
+		userRef: auth.currentUser.uid,
 	});
+
+	useEffect(() => {
+		const fetchUserOrders = async () => {
+			const ordersRef = collection(db, 'orders');
+
+			const q = query(
+				ordersRef,
+				where('userRef', '==', auth.currentUser.uid),
+				orderBy('timestamp', 'desc')
+			);
+
+			const snap = await getDocs(q);
+
+			let orders = [];
+
+			snap.forEach((doc) => {
+				return orders.push(doc.data());
+			});
+			setLoading(false);
+		};
+
+		fetchUserOrders();
+	}, [auth.currentUser.uid]);
 
 	if (loading) {
 		return (
@@ -21,6 +65,25 @@ const Account = () => {
 			</div>
 		);
 	}
+
+	const onChange = (e) => {
+		e.preventDefault();
+		setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+	};
+
+	const onOrder = async (e) => {
+		e.preventDefault();
+		console.log('buy', formData);
+		console.log('auth', auth);
+
+		let formDataCopy = {
+			...formData,
+			timestamp: serverTimestamp(),
+		};
+
+		await addDoc(collection(db, 'orders'), formDataCopy);
+		toast.success('Order created');
+	};
 
 	return (
 		<div className='container'>
@@ -34,23 +97,33 @@ const Account = () => {
 							<span onClick={() => setFormType('buy')}>Buy</span> /{' '}
 							<span onClick={() => setFormType('sell')}>Sell</span>
 						</div>
-						{formType === 'buy' ? (
-							<form action='' className='buy-sell-form'>
-								<input type='text' />
-								<input type='number' />
-								<input type='number' />
-								<button>Buy</button>
-							</form>
-						) : (
-							<form action='' className='buy-sell-form'>
-								<input type='text' />
-								<input type='number' />
-								<input type='number' />
-								<button>Sell</button>
-							</form>
-						)}
+						<form onSubmit={onOrder} className='buy-sell-form'>
+							<input
+								onChange={onChange}
+								id='coin'
+								placeholder='Coin'
+								type='text'
+							/>
+							<input
+								onChange={onChange}
+								id='price'
+								placeholder='Price'
+								type='number'
+							/>
+							<input
+								onChange={onChange}
+								id='quantity'
+								placeholder='Quantity'
+								type='number'
+							/>
+							<button type='submit' onClick={onOrder}>
+								{formType === 'buy' ? 'Buy' : 'Sell'}
+							</button>
+						</form>
 					</div>
-					<div className='accounting'>PNL</div>
+					<div className='accounting'>
+						<div className='header'>Profit Net Loss</div>
+					</div>
 				</div>
 			</div>
 		</div>

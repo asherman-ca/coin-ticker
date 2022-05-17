@@ -23,7 +23,7 @@ const Nav = () => {
 			<div className='navbar'>
 				<div className='nav-item'>
 					<Link className='logo-div' to={`/`}>
-						<i class='fa-solid fa-dice'></i>Tickr
+						<i className='fa-solid fa-dice'></i>Tickr
 					</Link>
 				</div>
 				<form action='' onSubmit={onSubmit} className='nav-item search-div'>
