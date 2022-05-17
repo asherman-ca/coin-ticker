@@ -75,6 +75,12 @@ body {
 	display: flex;
 }
 
+@media (max-width: 600px) {
+	.navbar form {
+		display: none;
+	}
+}
+
 .navbar form {
 	padding: 0.75rem;
 

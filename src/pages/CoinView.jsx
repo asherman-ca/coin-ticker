@@ -130,7 +130,7 @@ const CoinView = () => {
 							<div key={el.trade_url} className='col'>
 								<div className='title'>{nameReducer(el.market.name)}</div>
 								<div className='meta'>
-									${el.last < 1 ? el.last.toFixed(4) : el.last}
+									${el.last < 1.1 ? el.last.toFixed(4) : el.last.toFixed(2)}
 								</div>
 							</div>
 						))}
