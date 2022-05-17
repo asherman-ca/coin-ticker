@@ -27,7 +27,7 @@ const Account = () => {
 	const [orders, setOrders] = useState();
 	const [formType, setFormType] = useState('buy');
 	const [formData, setFormData] = useState({
-		coin: '',
+		coin: 'BTC',
 		price: 0,
 		quantity: 0,
 		userRef: auth.currentUser.uid,
@@ -68,16 +68,20 @@ const Account = () => {
 		console.log('buy', formData);
 		console.log('auth', auth);
 
-		let formDataCopy = {
-			...formData,
-			type: formType,
-			timestamp: serverTimestamp(),
-		};
+		if (formData.price === 0 || formData.quantity === 0) {
+			toast.error('Price and quantity required');
+		} else {
+			let formDataCopy = {
+				...formData,
+				type: formType,
+				timestamp: serverTimestamp(),
+			};
 
-		await addDoc(collection(db, 'orders'), formDataCopy);
-		toast.success('Order created');
+			await addDoc(collection(db, 'orders'), formDataCopy);
+			toast.success('Order created');
 
-		setOrders((prev) => [...prev, formData]);
+			setOrders((prev) => [...prev, formDataCopy]);
+		}
 	};
 
 	const onSelect = (e) => {
@@ -141,12 +145,14 @@ const Account = () => {
 								id='price'
 								placeholder='Price'
 								type='number'
+								required
 							/>
 							<input
 								onChange={onChange}
 								id='quantity'
 								placeholder='Quantity'
 								type='number'
+								required
 							/>
 							<button type='submit' onClick={onOrder}>
 								{formType === 'buy' ? 'Buy' : 'Sell'}
