@@ -57,16 +57,6 @@ const Account = () => {
 		fetchUserOrders();
 	}, [auth.currentUser.uid]);
 
-	if (loading) {
-		return (
-			<div className='container'>
-				<div className='account'>
-					<Spinner />
-				</div>
-			</div>
-		);
-	}
-
 	const onChange = (e) => {
 		e.preventDefault();
 		console.log(orders);
@@ -80,6 +70,7 @@ const Account = () => {
 
 		let formDataCopy = {
 			...formData,
+			type: formType,
 			timestamp: serverTimestamp(),
 		};
 
@@ -89,11 +80,30 @@ const Account = () => {
 		setOrders((prev) => [...prev, formData]);
 	};
 
+	if (loading) {
+		return (
+			<div className='container'>
+				<div className='account'>
+					<Spinner />
+				</div>
+			</div>
+		);
+	}
+
 	return (
 		<div className='container'>
 			<div className='account'>
 				<div className='primary-col'>
-					<div className='header'>Transactions</div>
+					<div className='header'>Order History</div>
+					<div className='transaction-list'>
+						{orders?.map((order) => (
+							<div className='order-item'>
+								<i class='fa-solid fa-trash-can'></i>
+								<div>{order.coin}</div>
+								<div>{order.price}</div>
+							</div>
+						))}
+					</div>
 				</div>
 				<div className='secondary-col'>
 					<div className='form-div'>
@@ -126,7 +136,7 @@ const Account = () => {
 						</form>
 					</div>
 					<div className='accounting'>
-						<div className='header'>Profit Net Loss</div>
+						<div className='header'>Profit N/L</div>
 					</div>
 				</div>
 			</div>

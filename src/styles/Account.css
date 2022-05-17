@@ -1,30 +1,53 @@
 .account {
 	width: 100%;
 	max-width: 1200px;
-	padding: 3rem 1rem 1rem;
+	padding: 2rem 1rem 1rem;
 
 	display: flex;
 	flex-direction: row;
 }
 
 .primary-col {
-	flex-grow: 2;
-	/* background-color: red; */
+	flex-grow: 6;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.transaction-list .order-item {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.transaction-list .order-item > *:nth-child(n + 2) {
+	width: 6rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.transaction-list .order-item i {
+	/* color: var(--clr-grey); */
+	cursor: pointer;
+}
+
+.transaction-list .order-item i:hover {
+	color: var(--clr-grey);
 }
 
 .secondary-col {
 	height: 100%;
-	flex-grow: 1;
+	flex-grow: 4;
 
 	display: flex;
 	flex-direction: column;
-	/* justify-content: space-between; */
-	/* gap: 1rem; */
-	/* background-color: blue; */
+	gap: 2rem;
 }
 
 .secondary-col > * {
-	flex-basis: 100%;
+	/* flex-basis: 100%; */
 }
 
 .account .header {
@@ -33,9 +56,14 @@
 }
 
 .secondary-col .form-div {
+	padding: 1rem;
+	/* padding-bottom: 2rem; */
+
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+
+	border: 1px solid rgb(229, 232, 235);
 }
 
 .secondary-col .form-div .header span:hover {
@@ -58,7 +86,3 @@
 .secondary-col .buy-sell-form button {
 	cursor: pointer;
 }
-
-/* .secondary-col form input {
-	border: 1px solid rgb(229, 232, 235);
-} */
