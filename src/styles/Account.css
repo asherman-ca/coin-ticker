@@ -5,6 +5,7 @@
 
 	display: flex;
 	flex-direction: row;
+	gap: 1rem;
 	/* flex-wrap: wrap-reverse; */
 }
 
@@ -20,8 +21,8 @@
 
 .primary-col > * {
 	flex-basis: 100%;
-	padding: 0.5rem;
-	margin-right: 1rem;
+	padding: 1rem;
+	/* margin-right: 1rem; */
 
 	border-radius: 0.5rem;
 	border: 1px solid rgb(229, 232, 235);
@@ -71,6 +72,7 @@
 	gap: 1rem;
 
 	border: 1px solid rgb(229, 232, 235);
+	border-radius: 0.5rem;
 }
 
 .secondary-col .form-div .header span:hover {
@@ -101,7 +103,7 @@
 	}
 	.primary-col {
 		width: 100%;
-		margin-top: 2rem;
+		/* margin-top: 2rem; */
 	}
 	.secondary-col {
 		width: 100%;
