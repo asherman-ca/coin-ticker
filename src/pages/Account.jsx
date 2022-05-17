@@ -50,6 +50,7 @@ const Account = () => {
 			snap.forEach((doc) => {
 				return orders.push(doc.data());
 			});
+			setOrders(orders);
 			setLoading(false);
 		};
 
@@ -68,6 +69,7 @@ const Account = () => {
 
 	const onChange = (e) => {
 		e.preventDefault();
+		console.log(orders);
 		setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 	};
 
@@ -83,6 +85,8 @@ const Account = () => {
 
 		await addDoc(collection(db, 'orders'), formDataCopy);
 		toast.success('Order created');
+
+		setOrders((prev) => [...prev, formData]);
 	};
 
 	return (
