@@ -58,7 +58,7 @@ const Account = () => {
 	}, [auth.currentUser.uid]);
 
 	const onChange = (e) => {
-		e.preventDefault();
+		// e.preventDefault();
 		console.log(orders);
 		setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 	};
@@ -80,6 +80,13 @@ const Account = () => {
 		setOrders((prev) => [...prev, formData]);
 	};
 
+	const onSelect = (e) => {
+		setFormData((prev) => ({
+			...prev,
+			coin: e.target.value,
+		}));
+	};
+
 	if (loading) {
 		return (
 			<div className='container'>
@@ -98,9 +105,11 @@ const Account = () => {
 					<div className='transaction-list'>
 						{orders?.map((order) => (
 							<div className='order-item'>
-								<i class='fa-solid fa-trash-can'></i>
+								<i className='fa-solid fa-trash-can'></i>
 								<div>{order.coin}</div>
 								<div>{order.price}</div>
+								<div>{order.quantity}</div>
+								<div>{order.type}</div>
 							</div>
 						))}
 					</div>
@@ -112,12 +121,16 @@ const Account = () => {
 							<span onClick={() => setFormType('sell')}>Sell</span>
 						</div>
 						<form onSubmit={onOrder} className='buy-sell-form'>
-							<input
+							{/* <input
 								onChange={onChange}
 								id='coin'
 								placeholder='Coin'
 								type='text'
-							/>
+							/> */}
+							<select name='coin' id='coin' onChange={onSelect}>
+								<option value='BTC'>BTC</option>
+								<option value='Eth'>Eth</option>
+							</select>
 							<input
 								onChange={onChange}
 								id='price'
