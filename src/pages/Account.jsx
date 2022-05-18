@@ -49,7 +49,7 @@ const Account = () => {
 			let orders = [];
 
 			snap.forEach((doc) => {
-				return orders.push(doc.data());
+				return orders.push({ data: doc.data(), id: doc.id });
 			});
 			setOrders(orders);
 			setLoading(false);
@@ -104,21 +104,27 @@ const Account = () => {
 	};
 
 	const onSelect = (e) => {
-		console.log('select coins', coins);
 		let price;
 		coins.forEach((el) => {
 			if (el.symbol === e.target.value) {
-				// console.log(el.name);
 				price = el.market_data.current_price.usd;
 			}
 		});
 
-		console.log('price', price);
 		setFormData((prev) => ({
 			...prev,
 			price,
 			coin: e.target.value,
 		}));
+	};
+
+	const onDelete = async (id) => {
+		console.log('id', id);
+		const ref = doc(db, 'orders', id);
+		await deleteDoc(ref);
+		const updatedOrders = orders.filter((order) => order.id !== id);
+		setOrders(updatedOrders);
+		toast.success('Order deleted');
 	};
 
 	if (loading) {
@@ -140,11 +146,20 @@ const Account = () => {
 						<div className='transaction-list'>
 							{orders?.map((order) => (
 								<div className='order-item'>
-									<i className='fa-solid fa-trash-can'></i>
-									<div>{order.coin}</div>
-									<div>{order.price}</div>
-									<div>{order.quantity}</div>
-									<div>{order.type}</div>
+									<i
+										className='fa-solid fa-trash-can'
+										onClick={() => onDelete(order.id)}
+									></i>
+									<div>{order.data.coin}</div>
+									<div>{order.data.type}</div>
+									<div
+										className={
+											order.data.type === 'buy' ? 'pos-change' : 'neg-change'
+										}
+									>
+										${order.data.quantity}
+									</div>
+									<div>@{order.data.price}</div>
 								</div>
 							))}
 						</div>

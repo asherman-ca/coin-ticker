@@ -21,14 +21,14 @@
 .primary-col > * {
 	flex-basis: 100%;
 	padding: 1rem;
+	overflow-y: overlay;
 
 	border-radius: 0.5rem;
 	border: 1px solid rgb(229, 232, 235);
-	overflow-y: overlay;
 }
 
-.orders {
-	overflow-y: overlay;
+.orders .header {
+	margin-bottom: 0.5rem;
 }
 
 .transaction-list .order-item {
@@ -38,14 +38,19 @@
 }
 
 .transaction-list .order-item > *:nth-child(n + 2) {
-	width: 6rem;
+	flex-basis: 100%;
+	/* width: 6rem; */
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
+.transaction-list .order-item > *:nth-child(n + 3) {
+	text-align: end;
+	padding-right: 1rem;
+}
+
 .transaction-list .order-item i {
-	/* color: var(--clr-grey); */
 	cursor: pointer;
 }
 
