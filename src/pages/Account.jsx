@@ -120,7 +120,7 @@ const Account = () => {
 						</div>
 					</div>
 					<div className='accounting'>
-						<div className='header'>Profit N/L</div>
+						<div className='header'>Unrealized PNL</div>
 					</div>
 				</div>
 				<div className='secondary-col'>
