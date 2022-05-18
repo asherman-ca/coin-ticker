@@ -69,7 +69,6 @@ const Account = () => {
 				coin: response[0].name,
 				price: response[0].market_data.current_price.usd,
 			}));
-			// setLoading(false);
 		};
 
 		fetchCoins();
@@ -102,7 +101,7 @@ const Account = () => {
 	const onSelect = (e) => {
 		let price;
 		coins.forEach((el) => {
-			if (el.symbol === e.target.value) {
+			if (el.name === e.target.value) {
 				price = el.market_data.current_price.usd;
 			}
 		});
@@ -120,6 +119,21 @@ const Account = () => {
 		const updatedOrders = orders.filter((order) => order.id !== id);
 		setOrders(updatedOrders);
 		toast.success('Order deleted');
+	};
+
+	const calcPNL = () => {
+		console.log('hits');
+
+		let accounts = {};
+
+		orders?.forEach((el) => {
+			accounts.el = {
+				total: 0,
+				avg: 0,
+			};
+		});
+
+		console.log('accounts', accounts);
 	};
 
 	if (loading) {
@@ -162,6 +176,7 @@ const Account = () => {
 					</div>
 					<div className='accounting'>
 						<div className='header'>Unrealized PNL</div>
+						{calcPNL()}
 					</div>
 				</div>
 				<div className='secondary-col'>
@@ -171,19 +186,10 @@ const Account = () => {
 							<span onClick={() => setFormType('sell')}>Sell</span>
 						</div>
 						<form onSubmit={onOrder} className='buy-sell-form'>
-							{/* <input
-								onChange={onChange}
-								id='coin'
-								placeholder='Coin'
-								type='text'
-							/> */}
-							{console.log(formData)}
 							<select name='coin' id='coin' onChange={onSelect}>
 								{coins?.map((doc) => (
-									<option value={doc.symbol}>{doc.name}</option>
+									<option value={doc.name}>{doc.name}</option>
 								))}
-								{/* <option value='BTC'>BTC</option>
-								<option value='Eth'>Eth</option> */}
 							</select>
 							<input
 								onChange={onChange}

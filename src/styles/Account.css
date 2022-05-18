@@ -1,7 +1,7 @@
 .account {
 	width: 100%;
 	max-width: 1200px;
-	padding: 2rem 1rem 1rem;
+	padding: 1rem;
 
 	display: flex;
 	flex-direction: row;
