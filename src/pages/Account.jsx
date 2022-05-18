@@ -77,15 +77,11 @@ const Account = () => {
 	}, [auth.currentUser.uid]);
 
 	const onChange = (e) => {
-		// e.preventDefault();
-		console.log(orders);
 		setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 	};
 
 	const onOrder = async (e) => {
 		e.preventDefault();
-		console.log('buy', formData);
-		console.log('auth', auth);
 
 		if (formData.price === 0 || formData.quantity === 0) {
 			toast.error('Price and quantity required');
@@ -96,10 +92,10 @@ const Account = () => {
 				timestamp: serverTimestamp(),
 			};
 
-			await addDoc(collection(db, 'orders'), formDataCopy);
+			const res = await addDoc(collection(db, 'orders'), formDataCopy);
 			toast.success('Order created');
 
-			setOrders((prev) => [formDataCopy, ...prev]);
+			setOrders((prev) => [{ data: formDataCopy, id: res.id }, ...prev]);
 		}
 	};
 
@@ -119,7 +115,6 @@ const Account = () => {
 	};
 
 	const onDelete = async (id) => {
-		console.log('id', id);
 		const ref = doc(db, 'orders', id);
 		await deleteDoc(ref);
 		const updatedOrders = orders.filter((order) => order.id !== id);
@@ -144,6 +139,7 @@ const Account = () => {
 					<div className='orders'>
 						<div className='header'>Order History</div>
 						<div className='transaction-list'>
+							{console.log('orders', orders)}
 							{orders?.map((order) => (
 								<div className='order-item'>
 									<i
