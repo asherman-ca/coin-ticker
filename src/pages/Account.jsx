@@ -24,10 +24,11 @@ const Account = () => {
 	const auth = getAuth();
 
 	const [loading, setLoading] = useState(false);
+	const [coins, setCoins] = useState();
 	const [orders, setOrders] = useState();
 	const [formType, setFormType] = useState('buy');
 	const [formData, setFormData] = useState({
-		coin: 'BTC',
+		coin: '',
 		price: 0,
 		quantity: 0,
 		userRef: auth.currentUser.uid,
@@ -54,6 +55,24 @@ const Account = () => {
 			setLoading(false);
 		};
 
+		const fetchCoins = async () => {
+			const ref = await fetch(
+				`https://api.coingecko.com/api/v3/coins?per_page=30`
+			);
+			if (!ref.ok) {
+				throw new Error('Thrown Error Thrown');
+			}
+			const response = await ref.json();
+			setCoins(response);
+			setFormData((prev) => ({
+				...prev,
+				coin: response[0].name,
+				price: response[0].market_data.current_price.usd,
+			}));
+			// setLoading(false);
+		};
+
+		fetchCoins();
 		fetchUserOrders();
 	}, [auth.currentUser.uid]);
 
@@ -80,13 +99,24 @@ const Account = () => {
 			await addDoc(collection(db, 'orders'), formDataCopy);
 			toast.success('Order created');
 
-			setOrders((prev) => [...prev, formDataCopy]);
+			setOrders((prev) => [formDataCopy, ...prev]);
 		}
 	};
 
 	const onSelect = (e) => {
+		console.log('select coins', coins);
+		let price;
+		coins.forEach((el) => {
+			if (el.symbol === e.target.value) {
+				// console.log(el.name);
+				price = el.market_data.current_price.usd;
+			}
+		});
+
+		console.log('price', price);
 		setFormData((prev) => ({
 			...prev,
+			price,
 			coin: e.target.value,
 		}));
 	};
@@ -136,21 +166,26 @@ const Account = () => {
 								placeholder='Coin'
 								type='text'
 							/> */}
+							{console.log(formData)}
 							<select name='coin' id='coin' onChange={onSelect}>
-								<option value='BTC'>BTC</option>
-								<option value='Eth'>Eth</option>
+								{coins?.map((doc) => (
+									<option value={doc.symbol}>{doc.name}</option>
+								))}
+								{/* <option value='BTC'>BTC</option>
+								<option value='Eth'>Eth</option> */}
 							</select>
 							<input
 								onChange={onChange}
 								id='price'
-								placeholder='Price'
+								placeholder='$ / Coin'
+								value={formData.price}
 								type='number'
 								required
 							/>
 							<input
 								onChange={onChange}
 								id='quantity'
-								placeholder='Quantity'
+								placeholder={formType === 'buy' ? '$ Spent' : '$ Received'}
 								type='number'
 								required
 							/>

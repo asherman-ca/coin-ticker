@@ -1,5 +1,4 @@
 .account {
-	/* height: 100%; */
 	width: 100%;
 	max-width: 1200px;
 	padding: 2rem 1rem 1rem;
@@ -11,7 +10,7 @@
 
 .primary-col {
 	width: 70%;
-	flex-grow: 2;
+	/* flex-grow: 2; */
 
 	display: flex;
 	flex-direction: column;
