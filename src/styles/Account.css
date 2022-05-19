@@ -100,6 +100,14 @@
 	gap: 1rem;
 }
 
+.secondary-col .buy-sell-form input:focus {
+	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
+}
+
+.secondary-col .buy-sell-form :is(input, select):focus-visible {
+	outline: none;
+}
+
 .secondary-col .buy-sell-form :is(input, button, select) {
 	padding: 0.5rem;
 	border-radius: 0.5rem;
@@ -114,7 +122,8 @@
 
 .secondary-col .buy-sell-form button:hover {
 	background-color: white;
-	color: black;
+	color: var(--clr-blue);
+	border-color: var(--clr-blue);
 }
 
 @media (max-width: 700px) {
