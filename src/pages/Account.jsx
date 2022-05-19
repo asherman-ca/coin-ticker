@@ -263,7 +263,7 @@ const Account = () => {
 									<div>{el.coin}</div>
 									<div>{el.pnl.toFixed(2)}</div>
 									<div>{el.totalCoins.toFixed(4)}</div>
-									<div>{el.averagePrice}</div>
+									<div>{el.averagePrice.toFixed(2)}</div>
 								</div>
 							);
 						})}
