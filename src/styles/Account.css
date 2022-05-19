@@ -31,7 +31,24 @@
 	margin-bottom: 0.5rem;
 }
 
-.transaction-list .order-item {
+.orders .order-item-header {
+	display: flex;
+	gap: 1rem;
+}
+
+.orders .order-item-header i {
+	color: white;
+}
+
+.orders .order-item-header div:nth-child(n + 2) {
+	flex-basis: 100%;
+}
+
+.orders .order-item-header div:nth-child(n + 3) {
+	text-align: end;
+}
+
+.orders .order-item {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
@@ -39,11 +56,11 @@
 	border-top: 1px solid rgb(229, 232, 235);
 }
 
-/* .transaction-list .order-item:nth-child(1) {
+/* .orders .order-item:nth-child(1) {
 	border-top: none;
 } */
 
-.transaction-list .order-item > *:nth-child(n + 2) {
+.orders .order-item > *:nth-child(n + 2) {
 	flex-basis: 100%;
 	/* width: 6rem; */
 	white-space: nowrap;
@@ -51,16 +68,16 @@
 	text-overflow: ellipsis;
 }
 
-.transaction-list .order-item > *:nth-child(n + 3) {
+.orders .order-item > *:nth-child(n + 3) {
 	text-align: end;
 	/* m-right: 1rem; */
 }
 
-.transaction-list .order-item i {
+.orders .order-item i {
 	cursor: pointer;
 }
 
-.transaction-list .order-item i:hover {
+.orders .order-item i:hover {
 	color: var(--clr-grey);
 }
 
@@ -70,7 +87,6 @@
 
 .pnl-item-header {
 	display: flex;
-	flex-grow: 2;
 
 	border-top: 1px solid rgb(229, 232, 235);
 }

@@ -140,26 +140,31 @@ const Account = () => {
 				<div className='primary-col'>
 					<div className='orders'>
 						<div className='header'>Order History</div>
-						<div className='transaction-list'>
-							{orders?.map((order) => (
-								<div className='order-item'>
-									<i
-										className='fa-solid fa-trash-can'
-										onClick={() => onDelete(order.id)}
-									></i>
-									<div>{order.data.coin}</div>
-									<div>{order.data.type}</div>
-									<div
-										className={
-											order.data.type === "buy" ? "pos-change" : "neg-change"
-										}
-									>
-										${order.data.spent}
-									</div>
-									<div>@{order.data.price}</div>
-								</div>
-							))}
+						<div className='order-item-header'>
+							<i className='fa-solid fa-trash-can'></i>
+							<div>Coin</div>
+							<div>Type</div>
+							<div>Amount</div>
+							<div>Coin Price</div>
 						</div>
+						{orders?.map((order) => (
+							<div className='order-item'>
+								<i
+									className='fa-solid fa-trash-can'
+									onClick={() => onDelete(order.id)}
+								></i>
+								<div>{order.data.coin}</div>
+								<div>{order.data.type}</div>
+								<div
+									className={
+										order.data.type === "buy" ? "pos-change" : "neg-change"
+									}
+								>
+									${order.data.spent}
+								</div>
+								<div>@{order.data.price}</div>
+							</div>
+						))}
 					</div>
 					<div className='accounting'>
 						<div className='header'>Unrealized PNL</div>
