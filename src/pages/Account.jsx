@@ -284,8 +284,9 @@ const Account = () => {
 							<input
 								onChange={onChange}
 								id='price'
-								placeholder='$ / Coin'
-								value={formData.price}
+								// placeholder='$ / Coin'
+								placeholder={formData.price}
+								// value={formData.price}
 								type='number'
 							/>
 							<input
