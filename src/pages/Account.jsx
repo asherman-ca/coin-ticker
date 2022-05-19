@@ -122,10 +122,16 @@ const Account = () => {
 	};
 
 	const calcPNL = () => {
-		console.log("calc orders", orders);
 		let accounts = {};
+		console.log(orders);
 
-		orders?.forEach((order) => {
+		let buys = orders?.filter((order) => order.data.type === "buy");
+
+		let sells = orders?.filter((order) => order.data.type === "sell");
+
+		console.log("buys", buys);
+
+		buys?.forEach((order) => {
 			if (!accounts[order.data.coin]) {
 				accounts[order.data.coin] = {
 					coin: order.data.coin,
@@ -138,39 +144,67 @@ const Account = () => {
 			}
 		});
 
-		console.log("accounts", accounts);
+		// let averages = {};
 
-		let averages = {};
+		// Object.values(accounts).forEach((account) => {
+		// 	averages[account.coin] = {
+		// 		coin: account.coin,
+		// 		total: account.total,
+		// 		averagePrice: account.spent / account.total,
+		// 	};
+		// });
 
 		Object.values(accounts).forEach((account) => {
-			averages[account.coin] = {
-				coin: account.coin,
-				total: account.total,
-				averagePrice: account.spent / account.total,
-			};
+			accounts[account.coin].averagePrice = account.spent / account.total;
 		});
 
-		console.log("averages", averages);
+		sells?.forEach((order) => {
+			accounts[order.data.coin].total -= order.data.spent / order.data.price;
+			accounts[order.data.coin].spent -= order.data.spent;
+		});
+
+		console.log("accounts", accounts);
 
 		let PNL = [];
 
-		console.log(coins);
+		Object.values(accounts).forEach((account) => {
+			const currentPrice = coins.filter((coin) => coin.name === account.coin)[0]
+				.market_data.current_price.usd;
 
-		Object.values(averages).forEach((av) => {
-			const currentPrice = coins.filter((coin) => coin.name === av.coin);
+			// PNL.push({
+			// 	coin: account.coin,
+			// 	pnl:
+			// 		account.spent * (currentPrice / account.averagePrice) - account.spent,
+			// });
 
-			console.log(currentPrice[0]);
+			console.log("spent", account.total * account.averagePrice);
+
+			console.log("profitability", currentPrice / account.averagePrice);
+
 			PNL.push({
-				coin: av.coin,
+				coin: account.coin,
 				pnl:
-					accounts[av.coin].spent *
-						(currentPrice[0].market_data.current_price.usd /
-							averages[av.coin].averagePrice) -
-					accounts[av.coin].spent,
+					account.total *
+						account.averagePrice *
+						(currentPrice / account.averagePrice) -
+					account.spent,
 			});
 		});
 
-		console.log("pnl", PNL);
+		// Object.values(averages).forEach((av) => {
+		// 	const coinData = coins.filter((coin) => coin.name === av.coin);
+
+		// 	PNL.push({
+		// 		coin: av.coin,
+		// 		pnl:
+		// 			accounts[av.coin].spent *
+		// 				(coinData[0].market_data.current_price.usd /
+		// 					averages[av.coin].averagePrice) -
+		// 			accounts[av.coin].spent,
+		// 	});
+		// });
+
+		return PNL;
 	};
 
 	if (loading) {
@@ -212,7 +246,11 @@ const Account = () => {
 					</div>
 					<div className='accounting'>
 						<div className='header'>Unrealized PNL</div>
-						{calcPNL()}
+						{calcPNL().map((el) => (
+							<div>
+								{el.coin} {el.pnl.toFixed(2)}
+							</div>
+						))}
 					</div>
 				</div>
 				<div className='secondary-col'>
