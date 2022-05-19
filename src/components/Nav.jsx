@@ -35,14 +35,6 @@ const Nav = () => {
 						onClick={() => navigate('/account')}
 						className='fa-solid fa-circle-user'
 					></i>
-					{/* <i className='fa-solid fa-wallet'></i> */}
-					{/* <a
-						href='https://asherman-ca.github.io/'
-						target='_blank'
-						rel='noopener noreferrer'
-					>
-						<span>- Alex Sherman</span>
-					</a> */}
 					<OAuth />
 				</div>
 			</div>

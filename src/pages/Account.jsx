@@ -167,9 +167,17 @@ const Account = () => {
 											order.data.type === 'buy' ? 'pos-change' : 'neg-change'
 										}
 									>
-										${order.data.quantity}
+										$
+										{order.data.quantity
+											.toString()
+											.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,')}
 									</div>
-									<div>@{order.data.price}</div>
+									<div>
+										@
+										{order.data.price
+											.toString()
+											.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,')}
+									</div>
 								</div>
 							))}
 						</div>

@@ -35,6 +35,12 @@
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+
+	border-top: 1px solid rgb(229, 232, 235);
+}
+
+.transaction-list .order-item:nth-child(1) {
+	border-top: none;
 }
 
 .transaction-list .order-item > *:nth-child(n + 2) {
@@ -47,7 +53,7 @@
 
 .transaction-list .order-item > *:nth-child(n + 3) {
 	text-align: end;
-	padding-right: 1rem;
+	/* m-right: 1rem; */
 }
 
 .transaction-list .order-item i {
@@ -102,6 +108,13 @@
 
 .secondary-col .buy-sell-form button {
 	cursor: pointer;
+	color: white;
+	background-color: var(--clr-blue);
+}
+
+.secondary-col .buy-sell-form button:hover {
+	background-color: white;
+	color: black;
 }
 
 @media (max-width: 700px) {

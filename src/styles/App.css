@@ -33,6 +33,10 @@ input::-webkit-inner-spin-button {
 	--alt-grey: #7c8499;
 
 	--light-grey: rgb(229, 232, 235);
+
+	--clr-blue: rgb(32, 129, 226);
+
+	--clr-blk-button: rgba(4, 17, 29, 0.75);
 }
 
 body {
@@ -59,8 +63,11 @@ body {
 	display: flex;
 	justify-content: center;
 
-	background-color: white;
 	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
+
+	/* position: fixed;
+	background: rgba(255, 255, 255, 0.4);
+	z-index: 1000; */
 }
 
 .navbar {
@@ -122,6 +129,7 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+	color: var(--clr-blk-button);
 }
 
 .nav-links {
@@ -133,10 +141,23 @@ body {
 	font-size: 1.5rem;
 }
 
-.navbar a:hover,
-.nav-links i:hover {
-	color: var(--clr-grey);
+.logo-div i {
+	color: var(--clr-blue);
+	font-size: 1.75rem;
+}
+
+.navbar a:hover {
+	color: black;
 	cursor: pointer;
+}
+
+.nav-links i:hover {
+	color: black;
+}
+
+.nav-links i {
+	cursor: pointer;
+	color: var(--clr-blk-button);
 }
 
 /* Spinner */
@@ -148,7 +169,7 @@ body {
 .three-quarter-spinner {
 	width: 50px;
 	height: 50px;
-	border: 3px solid var(--clr-green);
+	border: 3px solid var(--clr-blue);
 	border-top: 3px solid transparent;
 	border-radius: 50%;
 	animation: spin 0.5s linear 0s infinite;

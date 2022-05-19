@@ -15,7 +15,12 @@ const CoinListItem = ({ coin }) => {
 			</div>
 			<div className='col'>
 				<span className='price-span'>
-					${coin.market_data.current_price.usd}
+					$
+					{coin.market_data.current_price.usd > 1
+						? coin.market_data.current_price.usd
+								.toString()
+								.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,')
+						: coin.market_data.current_price.usd}
 				</span>
 			</div>
 			<div className='col'>
