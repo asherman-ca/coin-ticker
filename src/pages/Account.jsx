@@ -52,7 +52,7 @@ const Account = () => {
 				return orders.push({ data: doc.data(), id: doc.id });
 			});
 			setOrders(orders);
-			setLoading(false);
+			coins && setLoading(false);
 		};
 
 		const fetchCoins = async () => {
@@ -69,6 +69,8 @@ const Account = () => {
 				coin: response[0].name,
 				price: response[0].market_data.current_price.usd,
 			}));
+
+			orders && setLoading(false);
 		};
 
 		fetchCoins();
