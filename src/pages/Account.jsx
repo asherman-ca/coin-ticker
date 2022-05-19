@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { getAuth } from 'firebase/auth';
-import { db } from '../firebase.config';
+import { useState, useEffect } from "react";
+import { getAuth } from "firebase/auth";
+import { db } from "../firebase.config";
 import {
 	getDoc,
 	doc,
@@ -14,11 +14,11 @@ import {
 	addDoc,
 	orderBy,
 	serverTimestamp,
-} from 'firebase/firestore';
-import { toast } from 'react-toastify';
+} from "firebase/firestore";
+import { toast } from "react-toastify";
 
-import '../styles/Account.css';
-import Spinner from '../components/Spinner';
+import "../styles/Account.css";
+import Spinner from "../components/Spinner";
 
 const Account = () => {
 	const auth = getAuth();
@@ -26,22 +26,22 @@ const Account = () => {
 	const [loading, setLoading] = useState(false);
 	const [coins, setCoins] = useState();
 	const [orders, setOrders] = useState();
-	const [formType, setFormType] = useState('buy');
+	const [formType, setFormType] = useState("buy");
 	const [formData, setFormData] = useState({
-		coin: '',
+		coin: "",
 		price: 0,
-		quantity: 0,
+		spent: 0,
 		userRef: auth.currentUser.uid,
 	});
 
 	useEffect(() => {
 		const fetchUserOrders = async () => {
-			const ordersRef = collection(db, 'orders');
+			const ordersRef = collection(db, "orders");
 
 			const q = query(
 				ordersRef,
-				where('userRef', '==', auth.currentUser.uid),
-				orderBy('timestamp', 'desc')
+				where("userRef", "==", auth.currentUser.uid),
+				orderBy("timestamp", "desc")
 			);
 
 			const snap = await getDocs(q);
@@ -60,7 +60,7 @@ const Account = () => {
 				`https://api.coingecko.com/api/v3/coins?per_page=30`
 			);
 			if (!ref.ok) {
-				throw new Error('Thrown Error Thrown');
+				throw new Error("Thrown Error Thrown");
 			}
 			const response = await ref.json();
 			setCoins(response);
@@ -76,14 +76,14 @@ const Account = () => {
 	}, [auth.currentUser.uid]);
 
 	const onChange = (e) => {
-		setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+		setFormData((prev) => ({ ...prev, [e.target.id]: Number(e.target.value) }));
 	};
 
 	const onOrder = async (e) => {
 		e.preventDefault();
 
-		if (formData.price === 0 || formData.quantity === 0) {
-			toast.error('Price and quantity required');
+		if (formData.price === 0 || formData.spent === 0) {
+			toast.error("Price and spent required");
 		} else {
 			let formDataCopy = {
 				...formData,
@@ -91,8 +91,8 @@ const Account = () => {
 				timestamp: serverTimestamp(),
 			};
 
-			const res = await addDoc(collection(db, 'orders'), formDataCopy);
-			toast.success('Order created');
+			const res = await addDoc(collection(db, "orders"), formDataCopy);
+			toast.success("Order created");
 
 			setOrders((prev) => [{ data: formDataCopy, id: res.id }, ...prev]);
 		}
@@ -114,26 +114,63 @@ const Account = () => {
 	};
 
 	const onDelete = async (id) => {
-		const ref = doc(db, 'orders', id);
+		const ref = doc(db, "orders", id);
 		await deleteDoc(ref);
 		const updatedOrders = orders.filter((order) => order.id !== id);
 		setOrders(updatedOrders);
-		toast.success('Order deleted');
+		toast.success("Order deleted");
 	};
 
 	const calcPNL = () => {
-		console.log('hits');
-
+		console.log("calc orders", orders);
 		let accounts = {};
 
-		orders?.forEach((el) => {
-			accounts.el = {
-				total: 0,
-				avg: 0,
+		orders?.forEach((order) => {
+			if (!accounts[order.data.coin]) {
+				accounts[order.data.coin] = {
+					coin: order.data.coin,
+					spent: order.data.spent,
+					total: order.data.spent / order.data.price,
+				};
+			} else {
+				accounts[order.data.coin].spent += order.data.spent;
+				accounts[order.data.coin].total += order.data.spent / order.data.price;
+			}
+		});
+
+		console.log("accounts", accounts);
+
+		let averages = {};
+
+		Object.values(accounts).forEach((account) => {
+			averages[account.coin] = {
+				coin: account.coin,
+				total: account.total,
+				averagePrice: account.spent / account.total,
 			};
 		});
 
-		console.log('accounts', accounts);
+		console.log("averages", averages);
+
+		let PNL = [];
+
+		console.log(coins);
+
+		Object.values(averages).forEach((av) => {
+			const currentPrice = coins.filter((coin) => coin.name === av.coin);
+
+			console.log(currentPrice[0]);
+			PNL.push({
+				coin: av.coin,
+				pnl:
+					accounts[av.coin].spent *
+						(currentPrice[0].market_data.current_price.usd /
+							averages[av.coin].averagePrice) -
+					accounts[av.coin].spent,
+			});
+		});
+
+		console.log("pnl", PNL);
 	};
 
 	if (loading) {
@@ -153,7 +190,6 @@ const Account = () => {
 					<div className='orders'>
 						<div className='header'>Order History</div>
 						<div className='transaction-list'>
-							{console.log('orders', orders)}
 							{orders?.map((order) => (
 								<div className='order-item'>
 									<i
@@ -164,20 +200,12 @@ const Account = () => {
 									<div>{order.data.type}</div>
 									<div
 										className={
-											order.data.type === 'buy' ? 'pos-change' : 'neg-change'
+											order.data.type === "buy" ? "pos-change" : "neg-change"
 										}
 									>
-										$
-										{order.data.quantity
-											.toString()
-											.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,')}
+										${order.data.spent}
 									</div>
-									<div>
-										@
-										{order.data.price
-											.toString()
-											.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,')}
-									</div>
+									<div>@{order.data.price}</div>
 								</div>
 							))}
 						</div>
@@ -190,8 +218,8 @@ const Account = () => {
 				<div className='secondary-col'>
 					<div className='form-div'>
 						<div className='header'>
-							<span onClick={() => setFormType('buy')}>Buy</span> /{' '}
-							<span onClick={() => setFormType('sell')}>Sell</span>
+							<span onClick={() => setFormType("buy")}>Buy</span> /{" "}
+							<span onClick={() => setFormType("sell")}>Sell</span>
 						</div>
 						<form onSubmit={onOrder} className='buy-sell-form'>
 							<select name='coin' id='coin' onChange={onSelect}>
@@ -209,13 +237,13 @@ const Account = () => {
 							/>
 							<input
 								onChange={onChange}
-								id='quantity'
-								placeholder={formType === 'buy' ? '$ Spent' : '$ Received'}
+								id='spent'
+								placeholder={formType === "buy" ? "$ Spent" : "$ Received"}
 								type='number'
 								required
 							/>
 							<button type='submit' onClick={onOrder}>
-								{formType === 'buy' ? 'Buy' : 'Sell'}
+								{formType === "buy" ? "Buy" : "Sell"}
 							</button>
 						</form>
 					</div>
