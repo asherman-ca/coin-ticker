@@ -71,6 +71,14 @@
 	/* border-top: 0.5px solid var(--clr-grey); */
 }
 
+.embed-container {
+	padding: 0 1rem;
+}
+
+#tradingview_929ec {
+	width: 100%;
+}
+
 .ticker-row {
 	display: flex;
 	flex-direction: column;
@@ -140,6 +148,10 @@
 
 	.detail-row .col {
 		padding: 0.5rem 1rem;
+	}
+
+	#tradingview_929ec {
+		display: none;
 	}
 }
 

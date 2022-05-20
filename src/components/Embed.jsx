@@ -7,7 +7,7 @@ const Embed = React.memo((props) => {
 	return (
 		<AdvancedChart
 			widgetProps={{
-				width: 1200,
+				// width: 1150,
 				// height: 610,
 				symbol: `${symbolConverter(props.symbol)}`,
 				interval: "D",

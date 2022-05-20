@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../firebase.config';
-import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase.config";
+import { toast } from "react-toastify";
 
 function OAuth() {
 	const navigate = useNavigate();
@@ -15,21 +15,21 @@ function OAuth() {
 			const user = result.user;
 
 			// Check for user
-			const docRef = doc(db, 'users', user.uid);
+			const docRef = doc(db, "users", user.uid);
 			const docSnap = await getDoc(docRef);
 
 			// If user, doesn't exist, create user
-			console.log('user info', user);
+			console.log("user info", user);
 			if (!docSnap.exists()) {
-				await setDoc(doc(db, 'users', user.uid), {
+				await setDoc(doc(db, "users", user.uid), {
 					name: user.displayName,
 					email: user.email,
 					timestamp: serverTimestamp(),
 				});
 			}
-			navigate('/');
+			navigate("/account");
 		} catch (error) {
-			toast.error('Could not authorize with Google');
+			toast.error("Could not authorize with Google");
 		}
 	};
 
