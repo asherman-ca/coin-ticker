@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AdvancedChart } from "react-tradingview-embed";
+import Embed from "../components/Embed";
+
 import Spinner from "../components/Spinner";
 import {
 	capitalize,
@@ -122,6 +125,8 @@ const CoinView = () => {
 						</div>
 					</div>
 				</div>
+
+				<Embed />
 
 				<div className='ticker-row'>
 					<div className='header'>Tickrs</div>
