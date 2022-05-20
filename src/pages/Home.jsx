@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import CoinListItem from '../components/CoinListItem';
-import '../styles/Home.css';
-import Spinner from '../components/Spinner';
+import { useEffect, useState } from "react";
+import CoinListItem from "../components/CoinListItem";
+import "../styles/Home.css";
+import Spinner from "../components/Spinner";
 
 const Home = () => {
 	const [coins, setCoins] = useState();
@@ -13,7 +13,7 @@ const Home = () => {
 				`https://api.coingecko.com/api/v3/coins?per_page=20`
 			);
 			if (!ref.ok) {
-				throw new Error('Thrown Error Thrown');
+				throw new Error("Thrown Error Thrown");
 			}
 			const response = await ref.json();
 			setCoins(response);
@@ -33,7 +33,7 @@ const Home = () => {
 		);
 	}
 
-	console.log('coins', coins);
+	console.log("coins", coins);
 
 	return (
 		<div className='container'>
@@ -48,7 +48,8 @@ const Home = () => {
 					<div className='coin-list-header'>
 						<div className='col link-col'></div>
 						<div className='col'>Price</div>
-						<div className='col'>/ 24hr</div>
+						<div className='col'>/ 1hr</div>
+						<div className='col daily-col'>/ 24hr</div>
 						<div className='col'>Vol</div>
 						<div className='col'>M Cap</div>
 					</div>

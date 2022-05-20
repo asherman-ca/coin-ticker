@@ -15,8 +15,8 @@
 }
 
 .coin-list-item .col {
-	width: 20%;
-	/* flex-basis: 100%; */
+	/* width: 20%; */
+	flex-basis: 100%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -52,16 +52,20 @@
 }
 
 @media (max-width: 600px) {
-	.coin-list-item .link span {
+	.coin-list-item .link-col span {
 		display: none;
 	}
 
-	.coin-list-item .link-col {
-		width: 12% !important;
-	}
+	/* .coin-list-item .link-col {
+		width: 5% !important;
+	} */
 
-	.coin-list-item .col {
+	/* .coin-list-item .col {
 		width: 22%;
+	} */
+
+	.coin-list-item .daily-col {
+		display: none;
 	}
 }
 

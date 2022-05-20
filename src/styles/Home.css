@@ -42,7 +42,8 @@
 }
 
 .coin-list-header .col {
-	width: 20%;
+	flex-basis: 100%;
+	/* width: 20%; */
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -56,11 +57,15 @@
 }
 
 @media (max-width: 600px) {
-	.coin-list-header .col {
+	/* .coin-list-header .col {
 		width: 22%;
 	}
 
 	.coin-list-header .link-col {
 		width: 12%;
+	} */
+
+	.coin-list-header .daily-col {
+		display: none;
 	}
 }
