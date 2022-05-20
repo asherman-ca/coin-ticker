@@ -9,7 +9,7 @@ const Embed = React.memo((props) => {
 			widgetProps={{
 				width: 1200,
 				// height: 610,
-				symbol: "BINANCE:BTCUSDT",
+				symbol: `${symbolConverter(props.symbol)}`,
 				interval: "D",
 				timezone: "Europe/Rome",
 				theme: "light",

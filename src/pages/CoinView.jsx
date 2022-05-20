@@ -126,7 +126,7 @@ const CoinView = () => {
 					</div>
 				</div>
 
-				<Embed />
+				<Embed symbol={coin.symbol} />
 
 				<div className='ticker-row'>
 					<div className='header'>Tickrs</div>
