@@ -102,13 +102,18 @@
 }
 
 .tickers {
+	padding: 1rem 0 0;
+
 	display: flex;
 	flex-wrap: wrap;
+
+	border: 0.5px solid var(--clr-grey);
+	border-radius: 0.5rem;
 }
 
 .tickers .col {
 	width: 12.5%;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 
 	display: flex;
 	flex-direction: column;
