@@ -162,7 +162,7 @@ const Account = () => {
 								>
 									${order.data.spent}
 								</div>
-								<div>@{order.data.price}</div>
+								<div>{order.data.price}</div>
 							</div>
 						))}
 					</div>
@@ -174,17 +174,18 @@ const Account = () => {
 							<div>Coins Held</div>
 							<div>Avg Price</div>
 						</div>
-						{calcPNL(orders, coins).map((el) => {
-							console.log(el);
-							return (
-								<div className='pnl-item'>
-									<div>{el.coin}</div>
-									<div>{el.pnl.toFixed(2)}</div>
-									<div>{el.totalCoins.toFixed(4)}</div>
-									<div>{el.averagePrice.toFixed(2)}</div>
-								</div>
-							);
-						})}
+						{orders &&
+							calcPNL(orders, coins).map((el) => {
+								// console.log(el);
+								return (
+									<div className='pnl-item'>
+										<div>{el.coin}</div>
+										<div>{el.pnl.toFixed(2)}</div>
+										<div>{el.totalCoins.toFixed(4)}</div>
+										<div>{el.averagePrice.toFixed(2)}</div>
+									</div>
+								);
+							})}
 					</div>
 				</div>
 				<div className='secondary-col'>

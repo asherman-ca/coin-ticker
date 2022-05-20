@@ -34,6 +34,9 @@
 .orders .order-item-header {
 	display: flex;
 	gap: 1rem;
+
+	font-weight: bold;
+	border-top: 1px solid rgb(229, 232, 235);
 }
 
 .orders .order-item-header i {

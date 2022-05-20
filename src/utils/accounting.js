@@ -1,9 +1,9 @@
 const calcPNL = (orders, coins) => {
 	let accounts = {};
 
-	let buys = orders?.filter((order) => order.data.type === "buy");
+	let buys = orders.filter((order) => order.data.type === "buy");
 
-	let sells = orders?.filter((order) => order.data.type === "sell");
+	let sells = orders.filter((order) => order.data.type === "sell");
 
 	buys?.forEach((order) => {
 		if (!accounts[order.data.coin]) {
@@ -24,7 +24,7 @@ const calcPNL = (orders, coins) => {
 
 	sells?.forEach((order) => {
 		accounts[order.data.coin].total -= order.data.spent / order.data.price;
-		accounts[order.data.coin].spent -= order.data.spent;
+		// accounts[order.data.coin].spent -= order.data.spent;
 	});
 
 	console.log("accounts", accounts);
@@ -43,18 +43,22 @@ const calcPNL = (orders, coins) => {
 			coin: account.coin,
 			pnl:
 				account.total *
-					account.averagePrice *
-					(currentPrice / account.averagePrice) -
-				account.spent,
+				account.averagePrice *
+				(currentPrice / account.averagePrice - 1),
 			totalCoins: account.total,
 			averagePrice: account.averagePrice,
 		});
 	});
 
+	console.log("pnl", PNL);
+
 	return PNL;
 };
 
 export { calcPNL };
+
+// realized calc:
+// total money from sales * (average sell price / average buy price) - (total units sold * average buy price)
 
 // const calcPNL = () => {
 // 	let accounts = {};
