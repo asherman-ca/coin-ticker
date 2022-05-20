@@ -19,7 +19,7 @@ const CoinListItem = ({ coin }) => {
 		<Link to={`/${coin.id}`} className='link coin-list-item'>
 			<div className='col link-col'>
 				<img src={coin.image.thumb} />{" "}
-				<span className='coin-list-item-span'>{capitalize(coin.id)}</span>
+				<span className='coin-list-item-span'>{capitalize(coin.name)}</span>
 			</div>
 			<div className='col'>
 				<span className='price-span'>
