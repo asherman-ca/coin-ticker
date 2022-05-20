@@ -69,6 +69,12 @@
 	}
 }
 
+@media (max-width: 900px) {
+	.coin-list-item .weekly-col {
+		display: none;
+	}
+}
+
 .neg-change {
 	color: red;
 }

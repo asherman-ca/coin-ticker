@@ -69,3 +69,9 @@
 		display: none;
 	}
 }
+
+@media (max-width: 900px) {
+	.coin-list-header .weekly-col {
+		display: none;
+	}
+}

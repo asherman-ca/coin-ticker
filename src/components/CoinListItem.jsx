@@ -11,6 +11,10 @@ const CoinListItem = ({ coin }) => {
 		coin.market_data.price_change_percentage_1h_in_currency.usd
 	);
 
+	const changeTypeWeek = changeDirection(
+		coin.market_data.price_change_percentage_7d
+	);
+
 	return (
 		<Link to={`/${coin.id}`} className='link coin-list-item'>
 			<div className='col link-col'>
@@ -32,11 +36,17 @@ const CoinListItem = ({ coin }) => {
 					{Math.round(
 						coin.market_data.price_change_percentage_1h_in_currency.usd * 10
 					) / 10}
+					%
 				</span>
 			</div>
 			<div className='col daily-col'>
 				<span className={changeType}>
 					{Math.round(coin.market_data.price_change_percentage_24h * 10) / 10}%
+				</span>
+			</div>
+			<div className='col weekly-col'>
+				<span className={changeTypeWeek}>
+					{Math.round(coin.market_data.price_change_percentage_7d * 10) / 10}%
 				</span>
 			</div>
 			<div className='col'>
