@@ -61,6 +61,7 @@ const Account = () => {
 				`https://api.coingecko.com/api/v3/coins?per_page=30`
 			);
 			if (!ref.ok) {
+				setLoading(true);
 				throw new Error("Thrown Error Thrown");
 			}
 			const response = await ref.json();

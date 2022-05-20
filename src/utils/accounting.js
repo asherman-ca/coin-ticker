@@ -1,15 +1,9 @@
-const sellCheck = (orders, newOrder) => {
-	if (!orders.length) {
-		return true;
-	}
-	console.log("hits");
-	console.log("orders", orders);
-	console.log("neworder", newOrder);
+const deleteCheck = (orders, order) => {
 	let accounts = {};
 
 	let buys = orders.filter((order) => order.data.type === "buy");
 
-	// let sells = orders.filter((order) => order.data.type === "sell");
+	let sells = orders.filter((order) => order.data.type === "sell");
 
 	buys?.forEach((order) => {
 		if (!accounts[order.data.coin]) {
@@ -22,6 +16,44 @@ const sellCheck = (orders, newOrder) => {
 			accounts[order.data.coin].spent += order.data.spent;
 			accounts[order.data.coin].total += order.data.spent / order.data.price;
 		}
+	});
+
+	sells?.forEach((order) => {
+		accounts[order.data.coin].total -= order.data.spent / order.data.price;
+	});
+
+	if (accounts[order.coin].total - order.spent / order.price < 0) {
+		return true;
+	}
+	return false;
+};
+
+const sellCheck = (orders, newOrder) => {
+	if (!orders.length) {
+		return true;
+	}
+
+	let accounts = {};
+
+	let buys = orders.filter((order) => order.data.type === "buy");
+
+	let sells = orders.filter((order) => order.data.type === "sell");
+
+	buys?.forEach((order) => {
+		if (!accounts[order.data.coin]) {
+			accounts[order.data.coin] = {
+				coin: order.data.coin,
+				spent: order.data.spent,
+				total: order.data.spent / order.data.price,
+			};
+		} else {
+			accounts[order.data.coin].spent += order.data.spent;
+			accounts[order.data.coin].total += order.data.spent / order.data.price;
+		}
+	});
+
+	sells?.forEach((order) => {
+		accounts[order.data.coin].total -= order.data.spent / order.data.price;
 	});
 
 	if (accounts[newOrder.coin].total - newOrder.spent / newOrder.price < 0) {

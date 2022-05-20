@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import OAuth from '../components/OAuth';
+import OAuth from "../components/OAuth";
 
 const Nav = () => {
 	const [param, setParam] = useState();
@@ -23,7 +23,7 @@ const Nav = () => {
 			<div className='navbar'>
 				<div className='nav-item'>
 					<Link className='logo-div' to={`/`}>
-						<i className='fa-solid fa-dice'></i>Tickr
+						<i className='fa-solid fa-coins'></i>Tickr
 					</Link>
 				</div>
 				<form action='' onSubmit={onSubmit} className='nav-item search-div'>
@@ -32,7 +32,7 @@ const Nav = () => {
 				</form>
 				<div className='nav-item nav-links'>
 					<i
-						onClick={() => navigate('/account')}
+						onClick={() => navigate("/account")}
 						className='fa-solid fa-circle-user'
 					></i>
 					<OAuth />
