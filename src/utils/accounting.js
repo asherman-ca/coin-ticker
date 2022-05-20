@@ -1,3 +1,35 @@
+const sellCheck = (orders, newOrder) => {
+	if (!orders.length) {
+		return true;
+	}
+	console.log("hits");
+	console.log("orders", orders);
+	console.log("neworder", newOrder);
+	let accounts = {};
+
+	let buys = orders.filter((order) => order.data.type === "buy");
+
+	// let sells = orders.filter((order) => order.data.type === "sell");
+
+	buys?.forEach((order) => {
+		if (!accounts[order.data.coin]) {
+			accounts[order.data.coin] = {
+				coin: order.data.coin,
+				spent: order.data.spent,
+				total: order.data.spent / order.data.price,
+			};
+		} else {
+			accounts[order.data.coin].spent += order.data.spent;
+			accounts[order.data.coin].total += order.data.spent / order.data.price;
+		}
+	});
+
+	if (accounts[newOrder.coin].total - newOrder.spent / newOrder.price < 0) {
+		return true;
+	}
+	return false;
+};
+
 const calcPNL = (orders, coins) => {
 	let accounts = {};
 
@@ -55,7 +87,7 @@ const calcPNL = (orders, coins) => {
 	return PNL;
 };
 
-export { calcPNL };
+export { calcPNL, sellCheck };
 
 // realized calc:
 // total money from sales * (average sell price / average buy price) - (total units sold * average buy price)

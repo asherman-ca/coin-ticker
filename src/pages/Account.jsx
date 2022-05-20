@@ -16,7 +16,7 @@ import {
 	serverTimestamp,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
-import { calcPNL } from "../utils/accounting";
+import { calcPNL, sellCheck } from "../utils/accounting";
 
 import "../styles/Account.css";
 import Spinner from "../components/Spinner";
@@ -88,16 +88,20 @@ const Account = () => {
 		if (formData.price === 0 || formData.spent === 0) {
 			toast.error("Price and spent required");
 		} else {
-			let formDataCopy = {
-				...formData,
-				type: formType,
-				timestamp: serverTimestamp(),
-			};
+			if (formType === "sell" && sellCheck(orders, formData)) {
+				toast.error("Insufficient coins");
+			} else {
+				let formDataCopy = {
+					...formData,
+					type: formType,
+					timestamp: serverTimestamp(),
+				};
 
-			const res = await addDoc(collection(db, "orders"), formDataCopy);
-			toast.success("Order created");
+				const res = await addDoc(collection(db, "orders"), formDataCopy);
+				toast.success("Order created");
 
-			setOrders((prev) => [{ data: formDataCopy, id: res.id }, ...prev]);
+				setOrders((prev) => [{ data: formDataCopy, id: res.id }, ...prev]);
+			}
 		}
 	};
 
