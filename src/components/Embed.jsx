@@ -1,12 +1,14 @@
 import React from "react";
 import { AdvancedChart } from "react-tradingview-embed";
 
+import symbolConverter from "../utils/symbolhash";
+
 const Embed = React.memo((props) => {
 	return (
 		<AdvancedChart
 			widgetProps={{
-				width: 980,
-				height: 610,
+				width: 1200,
+				// height: 610,
 				symbol: "BINANCE:BTCUSDT",
 				interval: "D",
 				timezone: "Europe/Rome",

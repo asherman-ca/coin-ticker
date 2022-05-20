@@ -53,7 +53,7 @@ const Account = () => {
 				return orders.push({ data: doc.data(), id: doc.id });
 			});
 			setOrders(orders);
-			coins && setLoading(false);
+			// coins && setLoading(false);
 		};
 
 		const fetchCoins = async () => {
@@ -72,11 +72,16 @@ const Account = () => {
 				price: response[0].market_data.current_price.usd,
 			}));
 
-			orders && setLoading(false);
+			// orders && setLoading(false);
 		};
 
-		fetchCoins();
-		fetchUserOrders();
+		const fetchAll = async () => {
+			await fetchCoins();
+			await fetchUserOrders();
+			setLoading(false);
+		};
+
+		fetchAll();
 	}, [auth.currentUser.uid]);
 
 	const onChange = (e) => {

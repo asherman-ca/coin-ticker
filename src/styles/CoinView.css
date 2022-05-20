@@ -144,10 +144,13 @@
 }
 
 .description-row {
+	margin-top: -2rem;
+	padding-bottom: 1rem;
+	/* padding-top: -2rem; */
+
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	margin-top: -2rem;
 }
 
 .description-row span:nth-child(1) {

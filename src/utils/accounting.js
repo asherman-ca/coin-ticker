@@ -97,7 +97,7 @@ const calcPNL = (orders, coins) => {
 	let PNL = [];
 
 	Object.values(accounts).forEach((account) => {
-		const currentPrice = coins.filter((coin) => coin.name === account.coin)[0]
+		const currentPrice = coins?.filter((coin) => coin.name === account.coin)[0]
 			.market_data.current_price.usd;
 
 		PNL.push({
