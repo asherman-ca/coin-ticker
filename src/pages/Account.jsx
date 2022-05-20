@@ -24,7 +24,10 @@ import Spinner from "../components/Spinner";
 const Account = () => {
 	const auth = getAuth();
 
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
+
+	// const [orderLoading, setOrderLoading] = useState(true)
+
 	const [coins, setCoins] = useState();
 	const [orders, setOrders] = useState();
 	const [formType, setFormType] = useState("buy");
@@ -53,7 +56,6 @@ const Account = () => {
 				return orders.push({ data: doc.data(), id: doc.id });
 			});
 			setOrders(orders);
-			// coins && setLoading(false);
 		};
 
 		const fetchCoins = async () => {
@@ -71,8 +73,6 @@ const Account = () => {
 				coin: response[0].name,
 				price: response[0].market_data.current_price.usd,
 			}));
-
-			// orders && setLoading(false);
 		};
 
 		const fetchAll = async () => {
