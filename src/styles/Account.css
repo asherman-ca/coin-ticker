@@ -135,7 +135,6 @@
 
 .secondary-col .form-div {
 	padding: 1rem;
-	/* padding-bottom: 2rem; */
 
 	display: flex;
 	flex-direction: column;
@@ -147,6 +146,10 @@
 
 .secondary-col .form-div .header span {
 	color: var(--clr-blk-button);
+}
+
+.active {
+	color: var(--clr-blue) !important;
 }
 
 .secondary-col .form-div .header span:hover {

@@ -16,7 +16,7 @@ import {
 	serverTimestamp,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
-import { calcPNL, sellCheck } from "../utils/accounting";
+import { calcPNL, invalidSell, invalidDelete } from "../utils/accounting";
 
 import "../styles/Account.css";
 import Spinner from "../components/Spinner";
@@ -89,7 +89,7 @@ const Account = () => {
 		if (formData.price === 0 || formData.spent === 0) {
 			toast.error("Price and spent required");
 		} else {
-			if (formType === "sell" && sellCheck(orders, formData)) {
+			if (formType === "sell" && invalidSell(orders, formData)) {
 				toast.error("Insufficient coins");
 			} else {
 				let formDataCopy = {
@@ -122,11 +122,16 @@ const Account = () => {
 	};
 
 	const onDelete = async (id) => {
-		const ref = doc(db, "orders", id);
-		await deleteDoc(ref);
-		const updatedOrders = orders.filter((order) => order.id !== id);
-		setOrders(updatedOrders);
-		toast.success("Order deleted");
+		const order = orders.filter((order) => order.id === id)[0];
+		if (invalidDelete(orders, order)) {
+			toast.error("Insufficient Funds");
+		} else {
+			const ref = doc(db, "orders", id);
+			await deleteDoc(ref);
+			const updatedOrders = orders.filter((order) => order.id !== id);
+			setOrders(updatedOrders);
+			toast.success("Order deleted");
+		}
 	};
 
 	if (loading) {
@@ -196,8 +201,19 @@ const Account = () => {
 				<div className='secondary-col'>
 					<div className='form-div'>
 						<div className='header'>
-							<span onClick={() => setFormType("buy")}>Buy</span> /{" "}
-							<span onClick={() => setFormType("sell")}>Sell</span>
+							<span
+								onClick={() => setFormType("buy")}
+								className={formType === "buy" ? "active" : ""}
+							>
+								Buy
+							</span>{" "}
+							/{" "}
+							<span
+								onClick={() => setFormType("sell")}
+								className={formType === "sell" ? "active" : ""}
+							>
+								Sell
+							</span>
 						</div>
 						<form onSubmit={onOrder} className='buy-sell-form'>
 							<select name='coin' id='coin' onChange={onSelect}>

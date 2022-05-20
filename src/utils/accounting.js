@@ -1,4 +1,4 @@
-const deleteCheck = (orders, order) => {
+const invalidDelete = (orders, order) => {
 	let accounts = {};
 
 	let buys = orders.filter((order) => order.data.type === "buy");
@@ -22,13 +22,16 @@ const deleteCheck = (orders, order) => {
 		accounts[order.data.coin].total -= order.data.spent / order.data.price;
 	});
 
-	if (accounts[order.coin].total - order.spent / order.price < 0) {
+	if (
+		order.data.type === "buy" &&
+		accounts[order.data.coin].total - order.data.spent / order.data.price < 0
+	) {
 		return true;
 	}
 	return false;
 };
 
-const sellCheck = (orders, newOrder) => {
+const invalidSell = (orders, newOrder) => {
 	if (!orders.length) {
 		return true;
 	}
@@ -91,17 +94,11 @@ const calcPNL = (orders, coins) => {
 		// accounts[order.data.coin].spent -= order.data.spent;
 	});
 
-	console.log("accounts", accounts);
-
 	let PNL = [];
 
 	Object.values(accounts).forEach((account) => {
 		const currentPrice = coins.filter((coin) => coin.name === account.coin)[0]
 			.market_data.current_price.usd;
-
-		console.log("spent", account.total * account.averagePrice);
-
-		console.log("profitability", currentPrice / account.averagePrice);
 
 		PNL.push({
 			coin: account.coin,
@@ -114,12 +111,10 @@ const calcPNL = (orders, coins) => {
 		});
 	});
 
-	console.log("pnl", PNL);
-
 	return PNL;
 };
 
-export { calcPNL, sellCheck };
+export { calcPNL, invalidSell, invalidDelete };
 
 // realized calc:
 // total money from sales * (average sell price / average buy price) - (total units sold * average buy price)
