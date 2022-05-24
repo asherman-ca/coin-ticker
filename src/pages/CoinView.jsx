@@ -64,7 +64,7 @@ const CoinView = () => {
 	console.log(coin);
 
 	return (
-		<div className='container'>
+		<div className='home-container'>
 			<div className='coin-view'>
 				<header>
 					<img src={coin.image.small} alt='logo' />
