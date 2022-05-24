@@ -160,8 +160,8 @@ body {
 }
 
 .sign-out-button {
-	color: var(--clr-grey);
-	font-size: 1rem;
+	/* color: var(--clr-grey); */
+	/* font-size: 1rem; */
 }
 
 .sign-out-button:hover {

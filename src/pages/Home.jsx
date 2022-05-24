@@ -33,10 +33,8 @@ const Home = () => {
 		);
 	}
 
-	console.log("coins", coins);
-
 	return (
-		<div className='container'>
+		<div className='home-container'>
 			<div className='home'>
 				<div className='header'>
 					<span>Live Cryptocurrency Prices</span>

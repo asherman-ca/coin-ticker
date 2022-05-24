@@ -44,36 +44,26 @@ const Nav = () => {
 
 	const onLogout = () => {
 		auth.signOut();
-		// setCurrentUser(null);
 		setLoggedIn(false);
 		navigate("/");
 		toast.info("Logged Out");
 	};
-
-	// console.log("current user", auth.currentUser);
-	// onAuthStateChanged(auth, (user) => {
-	// 	if (user) {
-	// 		// User is signed in, see docs for a list of available properties
-	// 		// https://firebase.google.com/docs/reference/js/firebase.User
-	// 		const uid = user.uid;
-	// 		console.log(uid);
-	// 		console.log("current user", currentUser);
-	// 		setCurrentUser(user);
-	// 		// ...
-	// 	} else {
-	// 		// User is signed out
-	// 		// ...
-	// 	}
-	// });
 
 	let authButton;
 	if (!loggedIn) {
 		authButton = <OAuth />;
 	} else {
 		authButton = (
-			<div className='sign-out-button' onClick={onLogout}>
-				Sign Out
-			</div>
+			<>
+				<i
+					onClick={() => navigate("/account")}
+					className='fa-solid fa-circle-user'
+				></i>
+				<i
+					onClick={onLogout}
+					className='fa-solid fa-arrow-right-from-bracket'
+				></i>
+			</>
 		);
 	}
 
@@ -89,14 +79,7 @@ const Nav = () => {
 					<i className='fa-solid fa-magnifying-glass'></i>
 					<input type='text' placeholder='Search Coins' onChange={onChange} />
 				</form>
-				<div className='nav-item nav-links'>
-					<i
-						onClick={() => navigate("/account")}
-						className='fa-solid fa-circle-user'
-					></i>
-					{authButton}
-					{/* <OAuth /> */}
-				</div>
+				<div className='nav-item nav-links'>{authButton}</div>
 			</div>
 		</div>
 	);

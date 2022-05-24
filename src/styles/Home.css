@@ -1,3 +1,8 @@
+.home-container {
+	display: flex;
+	justify-content: center;
+}
+
 .home {
 	display: flex;
 	flex-direction: column;
