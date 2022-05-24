@@ -17,6 +17,7 @@ import {
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { calcPNL, invalidSell, invalidDelete } from "../utils/accounting";
+import { cleanInt } from "../utils/stringUtils";
 
 import "../styles/Account.css";
 import Spinner from "../components/Spinner";
@@ -169,15 +170,21 @@ const Account = () => {
 									onClick={() => onDelete(order.id)}
 								></i>
 								<div>{order.data.coin}</div>
-								<div>{order.data.type}</div>
 								<div
 									className={
 										order.data.type === "buy" ? "pos-change" : "neg-change"
 									}
 								>
-									${order.data.spent}
+									{order.data.type}
 								</div>
-								<div>{order.data.price}</div>
+								<div
+									className={
+										order.data.type === "buy" ? "pos-change" : "neg-change"
+									}
+								>
+									${cleanInt(order.data.spent)}
+								</div>
+								<div>{cleanInt(order.data.price)}</div>
 							</div>
 						))}
 					</div>
@@ -195,7 +202,7 @@ const Account = () => {
 								return (
 									<div className='pnl-item'>
 										<div>{el.coin}</div>
-										<div>{el.pnl.toFixed(2)}</div>
+										<div>{cleanInt(el.pnl)}</div>
 										<div>{el.totalCoins.toFixed(4)}</div>
 										<div>{el.averagePrice.toFixed(2)}</div>
 									</div>
@@ -229,9 +236,7 @@ const Account = () => {
 							<input
 								onChange={onChange}
 								id='price'
-								// placeholder='$ / Coin'
 								placeholder={formData.price}
-								// value={formData.price}
 								type='number'
 							/>
 							<input
