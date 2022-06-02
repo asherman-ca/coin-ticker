@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { getAuth } from "firebase/auth";
-import { db } from "../firebase.config";
+import { useState, useEffect } from 'react';
+import { getAuth } from 'firebase/auth';
+import { db } from '../firebase.config';
 import {
 	getDoc,
 	doc,
@@ -14,14 +14,14 @@ import {
 	addDoc,
 	orderBy,
 	serverTimestamp,
-} from "firebase/firestore";
-import { toast } from "react-toastify";
+} from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
-import "../styles/Account.css";
-import { calcPNL, invalidSell, invalidDelete } from "../utils/accounting";
-import { cleanInt } from "../utils/stringUtils";
-import Spinner from "../components/Spinner";
-import OrderItem from "../components/OrderItem";
+import '../styles/Account.css';
+import { calcPNL, invalidSell, invalidDelete } from '../utils/accounting';
+import { cleanInt } from '../utils/stringUtils';
+import Spinner from '../components/Spinner';
+import OrderItem from '../components/OrderItem';
 
 const Account = () => {
 	const auth = getAuth();
@@ -29,9 +29,9 @@ const Account = () => {
 	const [loading, setLoading] = useState(true);
 	const [coins, setCoins] = useState();
 	const [orders, setOrders] = useState();
-	const [formType, setFormType] = useState("buy");
+	const [formType, setFormType] = useState('buy');
 	const [formData, setFormData] = useState({
-		coin: "",
+		coin: '',
 		price: 0,
 		spent: 0,
 		userRef: auth.currentUser.uid,
@@ -39,12 +39,12 @@ const Account = () => {
 
 	useEffect(() => {
 		const fetchUserOrders = async () => {
-			const ordersRef = collection(db, "orders");
+			const ordersRef = collection(db, 'orders');
 
 			const q = query(
 				ordersRef,
-				where("userRef", "==", auth.currentUser.uid),
-				orderBy("timestamp", "desc")
+				where('userRef', '==', auth.currentUser.uid),
+				orderBy('timestamp', 'desc')
 			);
 
 			const snap = await getDocs(q);
@@ -63,7 +63,7 @@ const Account = () => {
 			);
 			if (!ref.ok) {
 				setLoading(true);
-				throw new Error("Thrown Error Thrown");
+				throw new Error('Thrown Error Thrown');
 			}
 			const response = await ref.json();
 			setCoins(response);
@@ -91,10 +91,10 @@ const Account = () => {
 		e.preventDefault();
 
 		if (formData.price === 0 || formData.spent === 0) {
-			toast.error("Price and spent required");
+			toast.error('Price and spent required');
 		} else {
-			if (formType === "sell" && invalidSell(orders, formData)) {
-				toast.error("Insufficient coins");
+			if (formType === 'sell' && invalidSell(orders, formData)) {
+				toast.error('Insufficient coins');
 			} else {
 				let formDataCopy = {
 					...formData,
@@ -102,8 +102,8 @@ const Account = () => {
 					timestamp: serverTimestamp(),
 				};
 
-				const res = await addDoc(collection(db, "orders"), formDataCopy);
-				toast.success("Order created");
+				const res = await addDoc(collection(db, 'orders'), formDataCopy);
+				toast.success('Order created');
 
 				setOrders((prev) => [{ data: formDataCopy, id: res.id }, ...prev]);
 			}
@@ -128,13 +128,13 @@ const Account = () => {
 	const onDelete = async (id) => {
 		const order = orders.filter((order) => order.id === id)[0];
 		if (invalidDelete(orders, order)) {
-			toast.error("Insufficient Funds");
+			toast.error('Insufficient Funds');
 		} else {
-			const ref = doc(db, "orders", id);
+			const ref = doc(db, 'orders', id);
 			await deleteDoc(ref);
 			const updatedOrders = orders.filter((order) => order.id !== id);
 			setOrders(updatedOrders);
-			toast.success("Order deleted");
+			toast.success('Order deleted');
 		}
 	};
 
@@ -178,9 +178,15 @@ const Account = () => {
 								return (
 									<div className='pnl-item'>
 										<div>{el.coin}</div>
-										<div>{cleanInt(el.pnl)}</div>
-										<div>{el.totalCoins.toFixed(4)}</div>
-										<div>{el.averagePrice.toFixed(2)}</div>
+										<div>
+											${el.pnl > 0 ? cleanInt(el.pnl) : el.pnl.toFixed(4)}
+										</div>
+										<div>
+											{el.totalCoins > 1
+												? cleanInt(el.totalCoins)
+												: el.totalCoins.toFixed(4)}
+										</div>
+										<div>${cleanInt(el.averagePrice)}</div>
 									</div>
 								);
 							})}
@@ -190,15 +196,15 @@ const Account = () => {
 					<div className='form-div'>
 						<div className='header'>
 							<span
-								onClick={() => setFormType("buy")}
-								className={formType === "buy" ? "active" : ""}
+								onClick={() => setFormType('buy')}
+								className={formType === 'buy' ? 'active' : ''}
 							>
 								Buy
-							</span>{" "}
-							/{" "}
+							</span>{' '}
+							/{' '}
 							<span
-								onClick={() => setFormType("sell")}
-								className={formType === "sell" ? "active" : ""}
+								onClick={() => setFormType('sell')}
+								className={formType === 'sell' ? 'active' : ''}
 							>
 								Sell
 							</span>
@@ -220,11 +226,11 @@ const Account = () => {
 							<input
 								onChange={onChange}
 								id='spent'
-								placeholder={formType === "buy" ? "$ Spent" : "$ Received"}
+								placeholder={formType === 'buy' ? '$ Spent' : '$ Received'}
 								type='number'
 							/>
 							<button type='submit' onClick={onOrder}>
-								{formType === "buy" ? "Buy" : "Sell"}
+								{formType === 'buy' ? 'Buy' : 'Sell'}
 							</button>
 						</form>
 					</div>

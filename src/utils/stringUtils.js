@@ -4,11 +4,11 @@ const capitalize = (string) => {
 
 const changeDirection = (changePercent) => {
 	if (changePercent < -0.05) {
-		return "neg-change";
+		return 'neg-change';
 	} else if (changePercent > 0.05) {
-		return "pos-change";
+		return 'pos-change';
 	} else {
-		return "";
+		return '';
 	}
 };
 
@@ -17,19 +17,19 @@ const decimalReducer = (number) => {
 };
 
 const nameReducer = (string) => {
-	if (string.split(" ")[1] === "Exchange") {
-		return string.split(" ")[0];
+	if (string.split(' ')[1] === 'Exchange') {
+		return string.split(' ')[0];
 	} else {
 		return string;
 	}
 };
 
 const cleanInt = (num) => {
-	if (num > 1) {
+	if (num >= 1) {
 		return num
 			.toFixed(2)
 			.toString()
-			.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,");
+			.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,');
 	} else {
 		return num.toFixed(6);
 	}

@@ -1,4 +1,4 @@
-import { cleanInt } from "../utils/stringUtils";
+import { cleanInt } from '../utils/stringUtils';
 
 const OrderItem = ({ order, onDelete }) => {
 	return (
@@ -8,13 +8,13 @@ const OrderItem = ({ order, onDelete }) => {
 				onClick={() => onDelete(order.id)}
 			></i>
 			<div>{order.data.coin}</div>
-			<div className={order.data.type === "buy" ? "pos-change" : "neg-change"}>
+			<div className={order.data.type === 'buy' ? 'pos-change' : 'neg-change'}>
 				{order.data.type}
 			</div>
-			<div className={order.data.type === "buy" ? "pos-change" : "neg-change"}>
+			<div className={order.data.type === 'buy' ? 'pos-change' : 'neg-change'}>
 				${cleanInt(order.data.spent)}
 			</div>
-			<div>{cleanInt(order.data.price)}</div>
+			<div>${cleanInt(order.data.price)}</div>
 		</div>
 	);
 };
