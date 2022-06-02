@@ -50,6 +50,7 @@
 
 	font-weight: bold;
 	border-top: 1px solid rgb(229, 232, 235);
+	border-bottom: 1px solid rgb(229, 232, 235);
 }
 
 .orders .order-item-header i {
@@ -105,10 +106,15 @@
 	margin-bottom: 0.5rem;
 }
 
+.accounting .pnl-item:nth-child(1) {
+	color: red;
+}
+
 .pnl-item-header {
 	display: flex;
 
 	border-top: 1px solid rgb(229, 232, 235);
+	border-bottom: 1px solid rgb(229, 232, 235);
 }
 
 .pnl-item-header > * {
