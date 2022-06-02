@@ -31,7 +31,7 @@ const cleanInt = (num) => {
 			.toString()
 			.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,');
 	} else {
-		return num.toFixed(6);
+		return num.toFixed(2);
 	}
 };
 

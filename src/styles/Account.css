@@ -34,6 +34,12 @@
 	flex-basis: 40% !important;
 } */
 
+.orders,
+.accounting {
+	display: flex;
+	flex-direction: column;
+}
+
 .orders .header {
 	margin-bottom: 0.5rem;
 }
@@ -89,6 +95,10 @@
 
 .orders .order-item i:hover {
 	color: var(--clr-grey);
+}
+
+.default-order-message {
+	margin: auto;
 }
 
 .accounting .header {

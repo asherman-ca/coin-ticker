@@ -160,39 +160,48 @@ const Account = () => {
 							<div>Amount</div>
 							<div>Coin Price</div>
 						</div>
-						{orders?.map((order) => (
-							<OrderItem order={order} onDelete={onDelete} />
-						))}
+						{orders.length >= 1 ? (
+							orders?.map((order) => (
+								<OrderItem key={order.id} order={order} onDelete={onDelete} />
+							))
+						) : (
+							<div className='default-order-message'>
+								Place a buy order to begin
+							</div>
+						)}
 					</div>
 					<div className='accounting'>
 						<div className='header'>Profit Net Loss</div>
 						<div className='pnl-item-header'>
 							<div>Coin</div>
-							<div>R/PNL</div>
 							<div>U/PNL</div>
+							<div>R/PNL</div>
 							<div>Coins Held</div>
 							<div>Avg Price</div>
 						</div>
-						{orders &&
+						{orders.length >= 1 ? (
 							calcPNL(orders, coins).map((el) => {
 								return (
-									<div className='pnl-item'>
+									<div className='pnl-item' key={el.coin}>
 										<div>{el.coin}</div>
-										<div className={el.rpnl >= 0 ? 'pos-change' : 'neg-change'}>
-											${el.rpnl > 0 ? cleanInt(el.rpnl) : el.rpnl.toFixed(4)}
-										</div>
 										<div className={el.pnl >= 0 ? 'pos-change' : 'neg-change'}>
 											${cleanInt(el.pnl)}
 										</div>
+										<div className={el.rpnl >= 0 ? 'pos-change' : 'neg-change'}>
+											${cleanInt(el.rpnl)}
+										</div>
 										<div>
-											{el.totalCoins > 1
+											{el.totalCoins >= 0.01
 												? cleanInt(el.totalCoins)
 												: el.totalCoins.toFixed(4)}
 										</div>
 										<div>${cleanInt(el.averagePrice)}</div>
 									</div>
 								);
-							})}
+							})
+						) : (
+							<div className='default-order-message'>No order history</div>
+						)}
 					</div>
 				</div>
 				<div className='secondary-col'>

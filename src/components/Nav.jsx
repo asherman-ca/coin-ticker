@@ -2,12 +2,12 @@ import {
 	getAuth,
 	onAuthStateChanged,
 	signInWithEmailAndPassword,
-} from "firebase/auth";
-import { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+} from 'firebase/auth';
+import { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import OAuth from "../components/OAuth";
+import OAuth from '../components/OAuth';
 
 const Nav = () => {
 	const auth = getAuth();
@@ -45,8 +45,8 @@ const Nav = () => {
 	const onLogout = () => {
 		auth.signOut();
 		setLoggedIn(false);
-		navigate("/");
-		toast.info("Logged Out");
+		navigate('/');
+		toast.info('Logged Out');
 	};
 
 	let authButton;
@@ -56,8 +56,8 @@ const Nav = () => {
 		authButton = (
 			<>
 				<i
-					onClick={() => navigate("/account")}
-					className='fa-solid fa-circle-user'
+					onClick={() => navigate('/account')}
+					className='fa-solid fa-wallet'
 				></i>
 				<i
 					onClick={onLogout}
