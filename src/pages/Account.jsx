@@ -17,7 +17,6 @@ import {
 } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
-import '../styles/Account.css';
 import { calcPNL, invalidSell, invalidDelete } from '../utils/accounting';
 import { cleanInt } from '../utils/stringUtils';
 import Spinner from '../components/Spinner';

@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { AdvancedChart } from "react-tradingview-embed";
-import Embed from "../components/Embed";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AdvancedChart } from 'react-tradingview-embed';
+import Embed from '../components/Embed';
 
-import Spinner from "../components/Spinner";
+import Spinner from '../components/Spinner';
 import {
 	capitalize,
 	changeDirection,
 	decimalReducer,
 	nameReducer,
-} from "../utils/stringUtils";
-import "../styles/CoinView.css";
+} from '../utils/stringUtils';
 
 const CoinView = () => {
 	const [coin, setCoin] = useState();
@@ -29,7 +28,7 @@ const CoinView = () => {
 				clearInterval(interId);
 				// console.log('hits');
 				// navigate('/');
-				throw new Error("Thrown Error Thrown");
+				throw new Error('Thrown Error Thrown');
 			}
 			const response = await ref.json();
 			setCoin(response);
@@ -54,7 +53,7 @@ const CoinView = () => {
 	}
 
 	const based = coin.tickers?.filter(
-		(el) => el.target === "USDT" || el.target === "USD"
+		(el) => el.target === 'USDT' || el.target === 'USD'
 	);
 
 	const basedAndSymbol = based
@@ -81,7 +80,7 @@ const CoinView = () => {
 						<div
 							className={
 								changeDirection(coin.market_data.price_change_percentage_24h) +
-								" meta"
+								' meta'
 							}
 						>
 							{decimalReducer(coin.market_data.price_change_percentage_24h)}%
@@ -92,7 +91,7 @@ const CoinView = () => {
 						<div
 							className={
 								changeDirection(coin.market_data.price_change_percentage_7d) +
-								" meta"
+								' meta'
 							}
 						>
 							{decimalReducer(coin.market_data.price_change_percentage_7d)}%
@@ -104,7 +103,7 @@ const CoinView = () => {
 						<div
 							className={
 								changeDirection(coin.market_data.ath_change_percentage.usd) +
-								" meta"
+								' meta'
 							}
 						>
 							{decimalReducer(coin.market_data.ath_change_percentage.usd)}%
@@ -145,7 +144,7 @@ const CoinView = () => {
 				{coin.description.en && (
 					<div className='description-row'>
 						<span>About</span>
-						{coin.description.en.replace(/<\/?a[^>]*>/g, "")}
+						{coin.description.en.replace(/<\/?a[^>]*>/g, '')}
 					</div>
 				)}
 			</div>

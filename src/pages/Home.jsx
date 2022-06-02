@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import CoinListItem from "../components/CoinListItem";
-import "../styles/Home.css";
-import Spinner from "../components/Spinner";
+import { useEffect, useState } from 'react';
+import CoinListItem from '../components/CoinListItem';
+import Spinner from '../components/Spinner';
 
 const Home = () => {
 	const [coins, setCoins] = useState();
@@ -13,7 +12,7 @@ const Home = () => {
 				`https://api.coingecko.com/api/v3/coins?per_page=20`
 			);
 			if (!ref.ok) {
-				throw new Error("Thrown Error Thrown");
+				throw new Error('Thrown Error Thrown');
 			}
 			const response = await ref.json();
 			setCoins(response);

@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import { capitalize, changeDirection, cleanInt } from "../utils/stringUtils";
-import "../styles/CoinListItem.css";
+import { Link } from 'react-router-dom';
+import { capitalize, changeDirection, cleanInt } from '../utils/stringUtils';
 
 const CoinListItem = ({ coin }) => {
 	const changeType = changeDirection(
@@ -18,7 +17,7 @@ const CoinListItem = ({ coin }) => {
 	return (
 		<Link to={`/${coin.id}`} className='link coin-list-item'>
 			<div className='col link-col'>
-				<img src={coin.image.thumb} />{" "}
+				<img src={coin.image.thumb} />{' '}
 				<span className='coin-list-item-span'>{capitalize(coin.name)}</span>
 			</div>
 			<div className='col'>
