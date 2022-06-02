@@ -35,9 +35,52 @@ const Account = () => {
 		spent: 0,
 		userRef: auth.currentUser.uid,
 	});
+	const [pnl, setPnl] = useState();
 
 	useEffect(() => {
-		const fetchUserOrders = async () => {
+		// const fetchUserOrders = async () => {
+		// 	const ordersRef = collection(db, 'orders');
+
+		// 	const q = query(
+		// 		ordersRef,
+		// 		where('userRef', '==', auth.currentUser.uid),
+		// 		orderBy('timestamp', 'desc')
+		// 	);
+
+		// 	const snap = await getDocs(q);
+
+		// 	let orders = [];
+
+		// 	snap.forEach((doc) => {
+		// 		return orders.push({ data: doc.data(), id: doc.id });
+		// 	});
+		// 	setOrders(orders);
+		// };
+
+		// const fetchCoins = async () => {
+		// 	const ref = await fetch(
+		// 		`https://api.coingecko.com/api/v3/coins?per_page=30`
+		// 	);
+		// 	if (!ref.ok) {
+		// 		setLoading(true);
+		// 		throw new Error('Thrown Error Thrown');
+		// 	}
+		// 	const response = await ref.json();
+		// 	setCoins(response);
+		// 	setFormData((prev) => ({
+		// 		...prev,
+		// 		coin: response[0].name,
+		// 		price: response[0].market_data.current_price.usd,
+		// 	}));
+		// };
+
+		// const fetchAll = async () => {
+		// 	await fetchCoins();
+		// 	await fetchUserOrders();
+		// 	setLoading(false);
+		// };
+
+		const fetchTask = async () => {
 			const ordersRef = collection(db, 'orders');
 
 			const q = query(
@@ -54,9 +97,9 @@ const Account = () => {
 				return orders.push({ data: doc.data(), id: doc.id });
 			});
 			setOrders(orders);
-		};
 
-		const fetchCoins = async () => {
+			// task 2
+
 			const ref = await fetch(
 				`https://api.coingecko.com/api/v3/coins?per_page=30`
 			);
@@ -71,15 +114,19 @@ const Account = () => {
 				coin: response[0].name,
 				price: response[0].market_data.current_price.usd,
 			}));
+
+			// task 3
+
+			setPnl(calcPNL(orders, response));
 		};
 
-		const fetchAll = async () => {
-			await fetchCoins();
-			await fetchUserOrders();
+		const fetchAllTask = async () => {
+			await fetchTask();
 			setLoading(false);
 		};
 
-		fetchAll();
+		fetchAllTask();
+		// fetchAll();
 	}, [auth.currentUser.uid]);
 
 	const onChange = (e) => {
@@ -104,7 +151,13 @@ const Account = () => {
 				const res = await addDoc(collection(db, 'orders'), formDataCopy);
 				toast.success('Order created');
 
-				setOrders((prev) => [{ data: formDataCopy, id: res.id }, ...prev]);
+				await setOrders((prev) => [
+					{ data: formDataCopy, id: res.id },
+					...prev,
+				]);
+				// setPnl(calcPNL(orders, coins));
+				const ordersCopy = [...orders, { data: formDataCopy, id: res.id }];
+				setPnl(calcPNL(ordersCopy, coins));
 			}
 		}
 	};
@@ -133,6 +186,7 @@ const Account = () => {
 			await deleteDoc(ref);
 			const updatedOrders = orders.filter((order) => order.id !== id);
 			setOrders(updatedOrders);
+			setPnl(calcPNL(updatedOrders, coins));
 			toast.success('Order deleted');
 		}
 	};
@@ -179,8 +233,9 @@ const Account = () => {
 							<div>Coins Held</div>
 							<div>Avg Price</div>
 						</div>
+						{console.log('pnl', pnl)}
 						{orders.length >= 1 ? (
-							calcPNL(orders, coins).map((el) => {
+							pnl.map((el) => {
 								return (
 									<div className='pnl-item' key={el.coin}>
 										<div>{el.coin}</div>
@@ -200,6 +255,25 @@ const Account = () => {
 								);
 							})
 						) : (
+							// calcPNL(orders, coins).map((el) => {
+							// return (
+							// 	<div className='pnl-item' key={el.coin}>
+							// 		<div>{el.coin}</div>
+							// 		<div className={el.pnl >= 0 ? 'pos-change' : 'neg-change'}>
+							// 			${cleanInt(el.pnl)}
+							// 		</div>
+							// 		<div className={el.rpnl >= 0 ? 'pos-change' : 'neg-change'}>
+							// 			${cleanInt(el.rpnl)}
+							// 		</div>
+							// 		<div>
+							// 			{el.totalCoins >= 0.01
+							// 				? cleanInt(el.totalCoins)
+							// 				: el.totalCoins.toFixed(4)}
+							// 		</div>
+							// 		<div>${cleanInt(el.averagePrice)}</div>
+							// 	</div>
+							// );
+							// })
 							<div className='default-order-message'>No order history</div>
 						)}
 					</div>
