@@ -27,6 +27,7 @@
 
 	border: 1px solid var(--light-grey);
 	border-radius: 0.5rem;
+	background-color: white;
 }
 
 .detail-row .title {
@@ -109,7 +110,7 @@
 	flex-wrap: wrap;
 
 	border: 1px solid #d9dadb;
-	/* border-radius: 0.5rem; */
+	background-color: white;
 }
 
 .tickers .col {

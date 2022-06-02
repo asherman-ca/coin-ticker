@@ -168,6 +168,7 @@ const Account = () => {
 						<div className='header'>Profit Net Loss</div>
 						<div className='pnl-item-header'>
 							<div>Coin</div>
+							<div>R/PNL</div>
 							<div>U/PNL</div>
 							<div>Coins Held</div>
 							<div>Avg Price</div>
@@ -177,7 +178,10 @@ const Account = () => {
 								return (
 									<div className='pnl-item'>
 										<div>{el.coin}</div>
-										<div>
+										<div className={el.rpnl >= 0 ? 'pos-change' : 'neg-change'}>
+											${el.rpnl > 0 ? cleanInt(el.rpnl) : el.rpnl.toFixed(4)}
+										</div>
+										<div className={el.pnl >= 0 ? 'pos-change' : 'neg-change'}>
 											${el.pnl > 0 ? cleanInt(el.pnl) : el.pnl.toFixed(4)}
 										</div>
 										<div>
