@@ -38,6 +38,7 @@
 
 	border: 0.5px solid var(--clr-grey);
 	border-radius: 0.5rem;
+	background-color: white;
 }
 
 .coin-list-header {

@@ -182,7 +182,7 @@ const Account = () => {
 											${el.rpnl > 0 ? cleanInt(el.rpnl) : el.rpnl.toFixed(4)}
 										</div>
 										<div className={el.pnl >= 0 ? 'pos-change' : 'neg-change'}>
-											${el.pnl > 0 ? cleanInt(el.pnl) : el.pnl.toFixed(4)}
+											${cleanInt(el.pnl)}
 										</div>
 										<div>
 											{el.totalCoins > 1
