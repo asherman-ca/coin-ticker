@@ -2,15 +2,12 @@ import { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
 import {
-	getDoc,
 	doc,
-	updateDoc,
 	deleteDoc,
 	query,
 	where,
 	collection,
 	getDocs,
-	limit,
 	addDoc,
 	orderBy,
 	serverTimestamp,
@@ -215,9 +212,11 @@ const Account = () => {
 							<div>Coin Price</div>
 						</div>
 						{orders.length >= 1 ? (
-							orders?.map((order) => (
-								<OrderItem key={order.id} order={order} onDelete={onDelete} />
-							))
+							<div className='list'>
+								{orders?.map((order) => (
+									<OrderItem key={order.id} order={order} onDelete={onDelete} />
+								))}
+							</div>
 						) : (
 							<div className='default-order-message'>
 								Place a buy order to begin
@@ -237,20 +236,26 @@ const Account = () => {
 						{orders.length >= 1 ? (
 							pnl.map((el) => {
 								return (
-									<div className='pnl-item' key={el.coin}>
-										<div>{el.coin}</div>
-										<div className={el.pnl >= 0 ? 'pos-change' : 'neg-change'}>
-											${cleanInt(el.pnl)}
+									<div className='list'>
+										<div className='pnl-item' key={el.coin}>
+											<div>{el.coin}</div>
+											<div
+												className={el.pnl >= 0 ? 'pos-change' : 'neg-change'}
+											>
+												${cleanInt(el.pnl)}
+											</div>
+											<div
+												className={el.rpnl >= 0 ? 'pos-change' : 'neg-change'}
+											>
+												${cleanInt(el.rpnl)}
+											</div>
+											<div>
+												{el.totalCoins >= 0.01
+													? cleanInt(el.totalCoins)
+													: el.totalCoins.toFixed(4)}
+											</div>
+											<div>${cleanInt(el.averagePrice)}</div>
 										</div>
-										<div className={el.rpnl >= 0 ? 'pos-change' : 'neg-change'}>
-											${cleanInt(el.rpnl)}
-										</div>
-										<div>
-											{el.totalCoins >= 0.01
-												? cleanInt(el.totalCoins)
-												: el.totalCoins.toFixed(4)}
-										</div>
-										<div>${cleanInt(el.averagePrice)}</div>
 									</div>
 								);
 							})

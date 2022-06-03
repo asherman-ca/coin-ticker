@@ -73,10 +73,6 @@
 	border-top: 1px solid rgb(229, 232, 235);
 }
 
-/* .orders .order-item:nth-child(1) {
-	border-top: none;
-} */
-
 .orders .order-item > *:nth-child(n + 2) {
 	flex-basis: 100%;
 	/* width: 6rem; */
@@ -98,6 +94,10 @@
 	color: var(--clr-grey);
 }
 
+.fa-trash-can:hover {
+	color: red !important;
+}
+
 .default-order-message {
 	margin: auto;
 }
@@ -106,8 +106,9 @@
 	margin-bottom: 0.5rem;
 }
 
-.accounting .pnl-item:nth-child(1) {
-	color: red;
+.accounting .pnl-item:nth-child(1),
+.orders .order-item:nth-child(1) {
+	border-top: none;
 }
 
 .pnl-item-header {
