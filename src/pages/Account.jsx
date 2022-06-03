@@ -130,18 +130,20 @@ const Account = () => {
 		setFormData((prev) => ({ ...prev, [e.target.id]: Number(e.target.value) }));
 	};
 
-	const onOrder = async (e) => {
+	const onOrder = async (e, type) => {
 		e.preventDefault();
+
+		console.log('type', type);
 
 		if (formData.price === 0 || formData.spent === 0) {
 			toast.error('Price and spent required');
 		} else {
-			if (formType === 'sell' && invalidSell(orders, formData)) {
+			if (type === 'sell' && invalidSell(orders, formData)) {
 				toast.error('Insufficient coins');
 			} else {
 				let formDataCopy = {
 					...formData,
-					type: formType,
+					type: type,
 					timestamp: serverTimestamp(),
 				};
 
@@ -213,7 +215,7 @@ const Account = () => {
 						</div>
 						{orders.length >= 1 ? (
 							<div className='list'>
-								{orders?.map((order) => (
+								{orders.map((order) => (
 									<OrderItem key={order.id} order={order} onDelete={onDelete} />
 								))}
 							</div>
@@ -234,9 +236,10 @@ const Account = () => {
 						</div>
 						{console.log('pnl', pnl)}
 						{orders.length >= 1 ? (
-							pnl.map((el) => {
-								return (
-									<div className='list'>
+							<div>
+								{console.log(pnl)}
+								{pnl.map((el) => {
+									return (
 										<div className='pnl-item' key={el.coin}>
 											<div>{el.coin}</div>
 											<div
@@ -256,9 +259,9 @@ const Account = () => {
 											</div>
 											<div>${cleanInt(el.averagePrice)}</div>
 										</div>
-									</div>
-								);
-							})
+									);
+								})}
+							</div>
 						) : (
 							// calcPNL(orders, coins).map((el) => {
 							// return (
@@ -285,7 +288,7 @@ const Account = () => {
 				</div>
 				<div className='secondary-col'>
 					<div className='form-div'>
-						<div className='header'>
+						{/* <div className='header'>
 							<span
 								onClick={() => setFormType('buy')}
 								className={formType === 'buy' ? 'active' : ''}
@@ -299,10 +302,10 @@ const Account = () => {
 							>
 								Sell
 							</span>
-						</div>
+						</div> */}
 						<form onSubmit={onOrder} className='buy-sell-form'>
 							<select name='coin' id='coin' onChange={onSelect}>
-								{coins?.map((doc) => (
+								{coins.map((doc) => (
 									<option key={doc.id} value={doc.name}>
 										{doc.name}
 									</option>
@@ -317,12 +320,27 @@ const Account = () => {
 							<input
 								onChange={onChange}
 								id='spent'
-								placeholder={formType === 'buy' ? '$ Spent' : '$ Received'}
+								placeholder={formType === 'buy' ? '$ Purchased' : '$ Sold'}
 								type='number'
 							/>
-							<button type='submit' onClick={onOrder}>
-								{formType === 'buy' ? 'Buy' : 'Sell'}
-							</button>
+							<div className='button-row'>
+								<button
+									className='buy-button'
+									type='submit'
+									onClick={(e) => onOrder(e, 'buy')}
+								>
+									<i className='fa-solid fa-plus'></i>
+									Buy
+								</button>
+								<button
+									className='buy-button'
+									type='submit'
+									onClick={(e) => onOrder(e, 'sell')}
+								>
+									<i className='fa-solid fa-minus'></i>
+									Sell
+								</button>
+							</div>
 						</form>
 					</div>
 				</div>
