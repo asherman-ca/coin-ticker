@@ -18,6 +18,7 @@ import { calcPNL, invalidSell, invalidDelete } from '../utils/accounting';
 import { cleanInt } from '../utils/stringUtils';
 import Spinner from '../components/Spinner';
 import OrderItem from '../components/OrderItem';
+import SlideButton from '../components/SlideButton';
 
 const Account = () => {
 	const auth = getAuth();
@@ -35,48 +36,6 @@ const Account = () => {
 	const [pnl, setPnl] = useState();
 
 	useEffect(() => {
-		// const fetchUserOrders = async () => {
-		// 	const ordersRef = collection(db, 'orders');
-
-		// 	const q = query(
-		// 		ordersRef,
-		// 		where('userRef', '==', auth.currentUser.uid),
-		// 		orderBy('timestamp', 'desc')
-		// 	);
-
-		// 	const snap = await getDocs(q);
-
-		// 	let orders = [];
-
-		// 	snap.forEach((doc) => {
-		// 		return orders.push({ data: doc.data(), id: doc.id });
-		// 	});
-		// 	setOrders(orders);
-		// };
-
-		// const fetchCoins = async () => {
-		// 	const ref = await fetch(
-		// 		`https://api.coingecko.com/api/v3/coins?per_page=30`
-		// 	);
-		// 	if (!ref.ok) {
-		// 		setLoading(true);
-		// 		throw new Error('Thrown Error Thrown');
-		// 	}
-		// 	const response = await ref.json();
-		// 	setCoins(response);
-		// 	setFormData((prev) => ({
-		// 		...prev,
-		// 		coin: response[0].name,
-		// 		price: response[0].market_data.current_price.usd,
-		// 	}));
-		// };
-
-		// const fetchAll = async () => {
-		// 	await fetchCoins();
-		// 	await fetchUserOrders();
-		// 	setLoading(false);
-		// };
-
 		const fetchTask = async () => {
 			const ordersRef = collection(db, 'orders');
 
@@ -123,7 +82,6 @@ const Account = () => {
 		};
 
 		fetchAllTask();
-		// fetchAll();
 	}, [auth.currentUser.uid]);
 
 	const onChange = (e) => {
@@ -154,7 +112,6 @@ const Account = () => {
 					{ data: formDataCopy, id: res.id },
 					...prev,
 				]);
-				// setPnl(calcPNL(orders, coins));
 				const ordersCopy = [...orders, { data: formDataCopy, id: res.id }];
 				setPnl(calcPNL(ordersCopy, coins));
 			}
@@ -263,46 +220,12 @@ const Account = () => {
 								})}
 							</div>
 						) : (
-							// calcPNL(orders, coins).map((el) => {
-							// return (
-							// 	<div className='pnl-item' key={el.coin}>
-							// 		<div>{el.coin}</div>
-							// 		<div className={el.pnl >= 0 ? 'pos-change' : 'neg-change'}>
-							// 			${cleanInt(el.pnl)}
-							// 		</div>
-							// 		<div className={el.rpnl >= 0 ? 'pos-change' : 'neg-change'}>
-							// 			${cleanInt(el.rpnl)}
-							// 		</div>
-							// 		<div>
-							// 			{el.totalCoins >= 0.01
-							// 				? cleanInt(el.totalCoins)
-							// 				: el.totalCoins.toFixed(4)}
-							// 		</div>
-							// 		<div>${cleanInt(el.averagePrice)}</div>
-							// 	</div>
-							// );
-							// })
 							<div className='default-order-message'>No order history</div>
 						)}
 					</div>
 				</div>
 				<div className='secondary-col'>
 					<div className='form-div'>
-						{/* <div className='header'>
-							<span
-								onClick={() => setFormType('buy')}
-								className={formType === 'buy' ? 'active' : ''}
-							>
-								Buy
-							</span>{' '}
-							/{' '}
-							<span
-								onClick={() => setFormType('sell')}
-								className={formType === 'sell' ? 'active' : ''}
-							>
-								Sell
-							</span>
-						</div> */}
 						<form onSubmit={onOrder} className='buy-sell-form'>
 							<select name='coin' id='coin' onChange={onSelect}>
 								{coins.map((doc) => (
@@ -343,6 +266,7 @@ const Account = () => {
 							</div>
 						</form>
 					</div>
+					{/* <SlideButton>Slide</SlideButton> */}
 				</div>
 			</div>
 		</div>

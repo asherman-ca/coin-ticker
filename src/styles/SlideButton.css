@@ -1,0 +1,56 @@
+.slide-button {
+	display: flex;
+	width: fit-content;
+	position: relative;
+	padding: 0.75rem;
+	border: 1px solid black;
+
+	background-color: white;
+	color: black;
+}
+
+.button-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+
+	background-color: black;
+	color: white;
+}
+
+.button-bg > div {
+	padding: 0.75rem;
+}
+
+.slide-button:hover .button-bg {
+	visibility: visible;
+	animation: slideIn 0.2s ease;
+}
+
+.slide-button:not(:hover) .button-bg {
+	animation: slideOut 0.2s ease;
+
+	opacity: 0;
+	transition: opacity 1s ease-in;
+}
+
+@keyframes slideIn {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 100%;
+	}
+}
+
+@keyframes slideOut {
+	0% {
+		visibility: initial;
+		width: 100%;
+	}
+	100% {
+		visibility: hidden;
+		width: 0%;
+	}
+}
