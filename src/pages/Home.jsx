@@ -43,7 +43,10 @@ const Home = () => {
 
 				<div className='coin-list'>
 					<div className='coin-list-header'>
-						<div className='col link-col'></div>
+						<div className='col link-col'>
+							<div className='icon-holder' />
+							Coin
+						</div>
 						<div className='col'>Price</div>
 						<div className='col'>/ 1hr</div>
 						<div className='col daily-col'>/ 24hr</div>

@@ -48,12 +48,11 @@
 	flex-direction: row;
 
 	font-weight: bold;
-	color: var(--clr-grey);
+	/* color: var(--clr-grey); */
 }
 
 .coin-list-header .col {
 	flex-basis: 100%;
-	/* width: 20%; */
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -64,6 +63,12 @@
 
 .coin-list-header .link-col {
 	justify-content: left !important;
+	gap: 1rem;
+	/* padding-left: calc(1rem + 25px); */
+}
+
+.coin-list-header .icon-holder {
+	width: 25px;
 }
 
 @media (max-width: 600px) {
@@ -76,6 +81,10 @@
 	} */
 
 	.coin-list-header .daily-col {
+		display: none;
+	}
+
+	.coin-list-header .link-col .icon-holder {
 		display: none;
 	}
 }
