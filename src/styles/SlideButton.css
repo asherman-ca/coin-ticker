@@ -1,26 +1,34 @@
-.slide-button {
+/* .slide-button {
 	display: flex;
-	width: fit-content;
+	align-items: center;
 	position: relative;
-	padding: 0.75rem;
+	padding: 0.25rem 2rem;
 	border: 1px solid black;
+	border-radius: 0.25rem;
 
 	background-color: white;
 	color: black;
+	cursor: pointer;
 }
 
-.button-bg {
+.slide-button .button-bg {
+	display: flex;
+	align-items: center;
+
 	position: absolute;
 	top: 0;
 	left: 0;
+	width: 100%;
 	visibility: hidden;
 
+	overflow-x: clip;
+	white-space: nowrap;
 	background-color: black;
 	color: white;
 }
 
 .button-bg > div {
-	padding: 0.75rem;
+	padding: 0.25rem 2rem;
 }
 
 .slide-button:hover .button-bg {
@@ -52,5 +60,69 @@
 	100% {
 		visibility: hidden;
 		width: 0%;
+	}
+} */
+
+.gate-button {
+	position: relative;
+	padding: 0.25rem 1rem;
+	border: 1px solid black;
+	border-radius: 0.25rem;
+
+	background-color: white;
+	color: black;
+	cursor: pointer;
+	text-align: center;
+}
+
+.gate-button .button-bg {
+	position: absolute;
+	/* bottom: 0; */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+
+	overflow-x: clip;
+	overflow-y: clip;
+	white-space: nowrap;
+	background-color: black;
+	color: white;
+}
+
+.gate-button .button-bg > div {
+	padding: 0.25rem 1rem;
+}
+
+.gate-button:hover .button-bg {
+	visibility: visible;
+	animation: gateIn 0.2s ease;
+}
+
+.button-bg:not(:hover) {
+	animation: gateOut 0.2s ease;
+
+	opacity: 0;
+	transition: opacity 1s ease-in;
+}
+
+@keyframes gateIn {
+	0% {
+		height: 0%;
+	}
+	100% {
+		height: 100%;
+	}
+}
+
+@keyframes gateOut {
+	0% {
+		visibility: initial;
+		height: 100%;
+	}
+	100% {
+		visibility: hidden;
+		height: 0%;
 	}
 }

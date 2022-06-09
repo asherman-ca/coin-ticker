@@ -206,6 +206,7 @@
 
 .secondary-col .button-row {
 	display: flex;
+	/* justify-content: space-between; */
 	gap: 0.25rem;
 }
 
@@ -221,6 +222,11 @@
 	cursor: pointer;
 	color: white;
 	background-color: var(--clr-blue);
+}
+
+.button-row .gate-button {
+	/* margin: 0 auto; */
+	flex-basis: 100%;
 }
 
 .secondary-col .buy-sell-form button:nth-child(1) {

@@ -26,21 +26,19 @@ const CoinView = () => {
 			if (!ref.ok) {
 				toast.error(`No results: "${params.coinId}"`);
 				clearInterval(interId);
-				// console.log('hits');
-				// navigate('/');
 				throw new Error('Thrown Error Thrown');
 			}
 			const response = await ref.json();
 			setCoin(response);
 			setLoading(false);
 		};
-		apiFetch();
 		let interId = setInterval(apiFetch, 10000);
+		apiFetch();
 
 		return () => {
 			clearInterval(interId);
 		};
-	}, [params.coinId, navigate]);
+	}, [params.coinId]);
 
 	if (loading) {
 		return (

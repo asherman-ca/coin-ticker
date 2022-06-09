@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SlideButton = ({ children, onClick }) => {
+const GateButton = ({ children, onClick }) => {
 	return (
-		<div className='slide-button' onClick={onClick}>
+		<div className='gate-button' onClick={onClick}>
 			{children}
 			<div className='button-bg'>
 				<div>{children}</div>
@@ -11,4 +11,4 @@ const SlideButton = ({ children, onClick }) => {
 	);
 };
 
-export default SlideButton;
+export default GateButton;

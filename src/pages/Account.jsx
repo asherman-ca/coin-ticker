@@ -19,6 +19,7 @@ import { cleanInt } from '../utils/stringUtils';
 import Spinner from '../components/Spinner';
 import OrderItem from '../components/OrderItem';
 import SlideButton from '../components/SlideButton';
+import GateButton from '../components/GateButton';
 
 const Account = () => {
 	const auth = getAuth();
@@ -247,7 +248,7 @@ const Account = () => {
 								type='number'
 							/>
 							<div className='button-row'>
-								<button
+								{/* <button
 									className='buy-button'
 									type='submit'
 									onClick={(e) => onOrder(e, 'buy')}
@@ -262,11 +263,24 @@ const Account = () => {
 								>
 									<i className='fa-solid fa-minus'></i>
 									Sell
-								</button>
+								</button> */}
+
+								{/* <SlideButton onClick={(e) => onOrder(e, 'buy')}>
+									<i className='fa-solid fa-plus'></i>&nbsp; Buy
+								</SlideButton>
+
+								<SlideButton onClick={(e) => onOrder(e, 'sell')}>
+									<i className='fa-solid fa-minus'></i>&nbsp; Sell
+								</SlideButton> */}
+								<GateButton>
+									<i className='fa-solid fa-plus'></i>&nbsp; Buy
+								</GateButton>
+								<GateButton>
+									<i className='fa-solid fa-minus'></i>&nbsp; Sell
+								</GateButton>
 							</div>
 						</form>
 					</div>
-					{/* <SlideButton>Slide</SlideButton> */}
 				</div>
 			</div>
 		</div>
