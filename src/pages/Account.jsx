@@ -272,10 +272,10 @@ const Account = () => {
 								<SlideButton onClick={(e) => onOrder(e, 'sell')}>
 									<i className='fa-solid fa-minus'></i>&nbsp; Sell
 								</SlideButton> */}
-								<GateButton>
+								<GateButton onClick={(e) => onOrder(e, 'buy')} color='green'>
 									<i className='fa-solid fa-plus'></i>&nbsp; Buy
 								</GateButton>
-								<GateButton>
+								<GateButton onClick={(e) => onOrder(e, 'sell')} color='red'>
 									<i className='fa-solid fa-minus'></i>&nbsp; Sell
 								</GateButton>
 							</div>

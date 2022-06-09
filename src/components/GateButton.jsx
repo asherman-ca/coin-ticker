@@ -1,8 +1,19 @@
 import React from 'react';
 
-const GateButton = ({ children, onClick }) => {
+const GateButton = ({ children, onClick, color }) => {
+	const scheme = {
+		red: 'red-button',
+		green: 'green-button',
+	};
+
+	let buttonClass = 'gate-button';
+
+	if (color) {
+		buttonClass = `gate-button ${scheme[color]}`;
+	}
+
 	return (
-		<div className='gate-button' onClick={onClick}>
+		<div className={buttonClass} onClick={onClick}>
 			{children}
 			<div className='button-bg'>
 				<div>{children}</div>
