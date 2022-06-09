@@ -248,35 +248,13 @@ const Account = () => {
 								type='number'
 							/>
 							<div className='button-row'>
-								{/* <button
-									className='buy-button'
-									type='submit'
-									onClick={(e) => onOrder(e, 'buy')}
-								>
-									<i className='fa-solid fa-plus'></i>
-									Buy
-								</button>
-								<button
-									className='buy-button'
-									type='submit'
-									onClick={(e) => onOrder(e, 'sell')}
-								>
-									<i className='fa-solid fa-minus'></i>
-									Sell
-								</button> */}
-
-								{/* <SlideButton onClick={(e) => onOrder(e, 'buy')}>
-									<i className='fa-solid fa-plus'></i>&nbsp; Buy
-								</SlideButton>
-
-								<SlideButton onClick={(e) => onOrder(e, 'sell')}>
-									<i className='fa-solid fa-minus'></i>&nbsp; Sell
-								</SlideButton> */}
 								<GateButton onClick={(e) => onOrder(e, 'buy')} color='green'>
-									<i className='fa-solid fa-plus'></i>&nbsp; Buy
+									{/* <i className='fa-solid fa-plus'></i>&nbsp;  */}
+									Buy
 								</GateButton>
 								<GateButton onClick={(e) => onOrder(e, 'sell')} color='red'>
-									<i className='fa-solid fa-minus'></i>&nbsp; Sell
+									{/* <i className='fa-solid fa-minus'></i>&nbsp;  */}
+									Sell
 								</GateButton>
 							</div>
 						</form>

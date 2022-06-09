@@ -73,6 +73,8 @@
 	color: black;
 	cursor: pointer;
 	text-align: center;
+
+	font-weight: 500;
 }
 
 .gate-button .button-bg {
@@ -98,14 +100,14 @@
 
 .gate-button:hover .button-bg {
 	visibility: visible;
-	animation: gateIn 0.4s ease;
+	animation: gateIn 0.2s ease;
 
 	/* opacity: 0;
 	transition: opacity 1s ease-in; */
 }
 
 .button-bg:not(:hover) {
-	animation: gateOut 0.4s ease;
+	animation: gateOut 0.2s ease;
 
 	/* opacity: 0;
 	transition: opacity 1s ease-in; */
@@ -132,7 +134,6 @@
 }
 
 .red-button {
-	/* background-color: white; */
 	color: red;
 	border-color: red;
 }
@@ -143,7 +144,6 @@
 }
 
 .green-button {
-	/* background-color: white; */
 	color: green;
 	border-color: green;
 }
