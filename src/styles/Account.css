@@ -97,7 +97,7 @@
 	color: var(--clr-grey);
 }
 
-.fa-trash-can:hover {
+.list .fa-trash-can:nth-child(n + 1):hover {
 	color: red !important;
 }
 
