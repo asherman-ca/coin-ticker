@@ -245,7 +245,7 @@ const Account = () => {
 							<input
 								onChange={onChange}
 								id='spent'
-								placeholder={formType === 'buy' ? '$ Purchased' : '$ Sold'}
+								placeholder='$ Amount'
 								type='number'
 							/>
 							<div className='button-row'>

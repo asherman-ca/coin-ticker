@@ -76,9 +76,9 @@
 }
 
 .neg-change {
-	color: red;
+	color: var(--clr-sell);
 }
 
 .pos-change {
-	color: green;
+	color: var(--clr-buy);
 }
