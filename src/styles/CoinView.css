@@ -142,19 +142,26 @@
 	.tickers .col {
 		width: 16.666%;
 	}
-	.detail-row .col:nth-child(n + 4) {
+	/* .detail-row .col:nth-child(n + 4) {
 		display: none;
+	} */
+	.detail-row {
+		width: 100%;
+	}
+	.detail-row .col {
+		flex-grow: 1;
+		padding: 1rem 0;
 	}
 }
 
 @media (max-width: 600px) {
 	.tickers .col {
 		/* width: 33.333%; */
-		width: 25%;
+		width: 33.333%;
 	}
 
-	.detail-row .col {
-		padding: 0.5rem 1rem;
+	.detail-row .col:nth-child(n + 4) {
+		display: none;
 	}
 
 	#tradingview_929ec {
