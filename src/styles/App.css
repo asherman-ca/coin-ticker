@@ -43,6 +43,9 @@ input::-webkit-inner-spin-button {
 	--clr-blk-button: rgba(4, 17, 29, 0.75);
 
 	--shadow-smallest: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+	--clr-buy: #44af69;
+	--clr-sell: #f8333c;
 }
 
 body {

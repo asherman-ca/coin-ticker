@@ -134,21 +134,21 @@
 }
 
 .red-button {
-	color: red;
-	border-color: red;
+	color: var(--clr-sell);
+	border-color: var(--clr-sell);
 }
 
 .red-button .button-bg {
-	background-color: red;
+	background-color: var(--clr-sell);
 	color: white;
 }
 
 .green-button {
-	color: green;
-	border-color: green;
+	color: var(--clr-buy);
+	border-color: var(--clr-buy);
 }
 
 .green-button .button-bg {
-	background-color: green;
+	background-color: var(--clr-buy);
 	color: white;
 }
