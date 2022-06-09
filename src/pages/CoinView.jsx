@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { AdvancedChart } from 'react-tradingview-embed';
 import Embed from '../components/Embed';
 
 import Spinner from '../components/Spinner';
@@ -16,7 +15,6 @@ const CoinView = () => {
 	const [coin, setCoin] = useState();
 	const [loading, setLoading] = useState(true);
 	const params = useParams();
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		const apiFetch = async () => {

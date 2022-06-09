@@ -250,11 +250,9 @@ const Account = () => {
 							/>
 							<div className='button-row'>
 								<GateButton onClick={(e) => onOrder(e, 'buy')} color='green'>
-									{/* <i className='fa-solid fa-plus'></i>&nbsp;  */}
 									Buy
 								</GateButton>
 								<GateButton onClick={(e) => onOrder(e, 'sell')} color='red'>
-									{/* <i className='fa-solid fa-minus'></i>&nbsp;  */}
 									Sell
 								</GateButton>
 							</div>
