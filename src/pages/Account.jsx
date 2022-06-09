@@ -227,6 +227,7 @@ const Account = () => {
 				</div>
 				<div className='secondary-col'>
 					<div className='form-div'>
+						<div className='header'>Market Order</div>
 						<form onSubmit={onOrder} className='buy-sell-form'>
 							<select name='coin' id='coin' onChange={onSelect}>
 								{coins.map((doc) => (

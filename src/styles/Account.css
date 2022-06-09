@@ -49,8 +49,10 @@
 	gap: 1rem;
 
 	font-weight: bold;
-	border-top: 1px solid rgb(229, 232, 235);
-	border-bottom: 1px solid rgb(229, 232, 235);
+	/* border-top: 1px solid rgb(229, 232, 235); */
+	/* border-bottom: 1px solid rgb(229, 232, 235); */
+	border-top: 0.5px solid var(--clr-blk-button);
+	border-bottom: 0.5px solid var(--clr-blk-button);
 }
 
 .orders .order-item-header i {
@@ -70,7 +72,8 @@
 	align-items: center;
 	gap: 1rem;
 
-	border-top: 1px solid rgb(229, 232, 235);
+	/* border-top: 1px solid rgb(229, 232, 235); */
+	border-top: 0.5px solid var(--clr-blk-button);
 }
 
 .orders .order-item > *:nth-child(n + 2) {
@@ -114,8 +117,10 @@
 .pnl-item-header {
 	display: flex;
 
-	border-top: 1px solid rgb(229, 232, 235);
-	border-bottom: 1px solid rgb(229, 232, 235);
+	/* border-top: 1px solid rgb(229, 232, 235); */
+	/* border-bottom: 1px solid rgb(229, 232, 235); */
+	border-top: 0.5px solid var(--clr-blk-button);
+	border-bottom: 0.5px solid var(--clr-blk-button);
 }
 
 .pnl-item-header > * {
@@ -133,7 +138,8 @@
 	/* flex-basis: 100%; */
 	/* justify-content: space-between; */
 
-	border-top: 1px solid rgb(229, 232, 235);
+	/* border-top: 1px solid rgb(229, 232, 235); */
+	border-top: 0.5px solid var(--clr-blk-button);
 }
 
 .pnl-item > * {
@@ -170,20 +176,6 @@
 	border-radius: 0.5rem;
 }
 
-.secondary-col .form-div .header span {
-	color: var(--clr-blk-button);
-}
-
-.active {
-	color: var(--clr-blue) !important;
-}
-
-.secondary-col .form-div .header span:hover {
-	cursor: pointer;
-	/* color: var(--clr-grey); */
-	color: black;
-}
-
 .secondary-col .buy-sell-form {
 	display: flex;
 	flex-direction: column;
@@ -201,7 +193,8 @@
 .secondary-col .buy-sell-form :is(input, button, select) {
 	padding: 0.5rem;
 	border-radius: 0.5rem;
-	border: 1px solid rgb(229, 232, 235);
+	/* border: 1px solid rgb(229, 232, 235); */
+	border: 0.5px solid var(--clr-blk-button);
 }
 
 .secondary-col .button-row {
