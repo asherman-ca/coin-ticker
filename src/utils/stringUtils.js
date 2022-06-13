@@ -13,7 +13,8 @@ const changeDirection = (changePercent) => {
 };
 
 const decimalReducer = (number) => {
-	return Math.round(number * 10) / 10;
+	// return Math.round(number * 10) / 10;
+	return number.toFixed(2);
 };
 
 const nameReducer = (string) => {
