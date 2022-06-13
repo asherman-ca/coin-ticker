@@ -72,20 +72,15 @@ body {
 }
 
 .nav-container {
-	/* position: sticky;
-	top: 0; */
 	height: 72px;
 	width: 100%;
 
 	display: flex;
 	justify-content: center;
 
-	/* box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px; */
 	box-shadow: var(--shadow-smallest);
 	background-color: white;
 
-	/* position: fixed; */
-	/* background: rgba(255, 255, 255, 0.4); */
 	z-index: 1000;
 }
 
