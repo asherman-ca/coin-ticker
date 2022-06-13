@@ -4,6 +4,10 @@
 	border-top: 0.5px solid var(--clr-grey);
 }
 
+.coin-list a:nth-child(2) {
+	border-top: none;
+}
+
 .coin-list-item:hover {
 	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
 	background-color: rgb(251, 253, 255);

@@ -33,7 +33,7 @@
 .coin-list {
 	display: flex;
 	flex-direction: column;
-	padding: 1rem 1rem 0;
+	padding: 0 1rem;
 	/* gap: 1rem; */
 
 	border: 0.5px solid var(--clr-grey);
@@ -42,13 +42,17 @@
 }
 
 .coin-list-header {
-	padding: 0 1rem 1rem;
+	position: sticky;
+	top: 0;
+
+	padding: 1rem;
 
 	display: flex;
 	flex-direction: row;
 
 	font-weight: bold;
-	/* color: var(--clr-grey); */
+	background: white;
+	border-bottom: 0.5px solid var(--clr-grey);
 }
 
 .coin-list-header .col {
