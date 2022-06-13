@@ -64,7 +64,7 @@ const CoinView = () => {
 			<div className='coin-view'>
 				<header>
 					<img src={coin.image.small} alt='logo' />
-					{capitalize(coin.id)} (#{coin.market_cap_rank})
+					{capitalize(coin.id)} ({coin.symbol})
 				</header>
 
 				<div className='detail-row'>
