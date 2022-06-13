@@ -9,6 +9,7 @@ import {
 	changeDirection,
 	decimalReducer,
 	nameReducer,
+	cleanInt,
 } from '../utils/stringUtils';
 
 const CoinView = () => {
@@ -69,7 +70,9 @@ const CoinView = () => {
 				<div className='detail-row'>
 					<div className='col'>
 						<div className='title'>Price</div>
-						<div className='meta'>${coin.market_data.current_price.usd}</div>
+						<div className='meta'>
+							${cleanInt(coin.market_data.current_price.usd)}
+						</div>
 					</div>
 					<div className='col'>
 						<div className='title'>/ 24hr</div>
@@ -109,14 +112,14 @@ const CoinView = () => {
 					<div className='col'>
 						<div className='title'>Volume</div>
 						<div className='meta'>
-							{(coin.market_data.total_volume.usd / 1000000000).toFixed(2)}B
+							${(coin.market_data.total_volume.usd / 1000000000).toFixed(2)}B
 						</div>
 					</div>
 
 					<div className='col'>
 						<div className='title'>Market Cap</div>
 						<div className='meta'>
-							{(coin.market_data.market_cap.usd / 1000000000).toFixed(2)}B
+							${(coin.market_data.market_cap.usd / 1000000000).toFixed(2)}B
 						</div>
 					</div>
 				</div>

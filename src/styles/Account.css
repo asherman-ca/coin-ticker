@@ -23,7 +23,8 @@
 	overflow-y: overlay;
 
 	border-radius: 0.5rem;
-	box-shadow: var(--shadow-smallest);
+	/* box-shadow: var(--shadow-smallest); */
+	border: 1px solid var(--grey-border);
 	background-color: white;
 }
 
@@ -42,8 +43,8 @@
 	gap: 1rem;
 
 	font-weight: bold;
-	border-top: 0.5px solid var(--clr-blk-button);
-	border-bottom: 0.5px solid var(--clr-blk-button);
+	border-top: 1px solid var(--grey-border);
+	border-bottom: 1px solid var(--grey-border);
 }
 
 .orders .order-item-header i {
@@ -63,7 +64,7 @@
 	align-items: center;
 	gap: 1rem;
 
-	border-top: 0.5px solid var(--clr-blk-button);
+	border-top: 1px solid var(--grey-border);
 }
 
 .orders .order-item > *:nth-child(n + 2) {
@@ -105,8 +106,8 @@
 .pnl-item-header {
 	display: flex;
 
-	border-top: 0.5px solid var(--clr-blk-button);
-	border-bottom: 0.5px solid var(--clr-blk-button);
+	border-top: 1px solid var(--grey-border);
+	border-bottom: 1px solid var(--grey-border);
 }
 
 .pnl-item-header > * {
@@ -120,7 +121,7 @@
 
 .pnl-item {
 	display: flex;
-	border-top: 0.5px solid var(--clr-blk-button);
+	border-top: 1px solid var(--grey-border);
 }
 
 .pnl-item > * {
@@ -145,7 +146,6 @@
 }
 
 .secondary-col .form-div {
-	box-shadow: var(--shadow-smallest);
 	background-color: white;
 	padding: 1rem;
 
@@ -154,6 +154,7 @@
 	gap: 1rem;
 
 	border-radius: 0.5rem;
+	border: 1px solid var(--grey-border);
 }
 
 .secondary-col .buy-sell-form {

@@ -25,7 +25,7 @@
 	display: flex;
 	flex-direction: row;
 
-	border: 1px solid var(--light-grey);
+	border: 1px solid var(--grey-border);
 	border-radius: 0.5rem;
 	background-color: white;
 }
@@ -35,11 +35,10 @@
 }
 
 .detail-row .col:nth-child(n + 2) {
-	border-left: 1px solid var(--light-grey);
+	border-left: 1px solid var(--grey-border);
 }
 
 .detail-row .col {
-	/* flex-basis: 1 0 10rem; */
 	padding: 1rem 2rem;
 
 	display: flex;
@@ -47,29 +46,15 @@
 	align-items: center;
 	text-align: end;
 	gap: 0.25rem;
-
-	-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-	-moz-animation: fadein 2s; /* Firefox < 16 */
-	-ms-animation: fadein 2s; /* Internet Explorer */
-	-o-animation: fadein 2s; /* Opera < 12.1 */
-	animation: fadein 2s;
 }
 
-/* .detail-row .col:nth-child(n + 2) {
-	align-items: center;
-	text-align: center;
-} */
-
 .detail-row .title {
-	color: var(--clr-grey);
 	font-weight: bold;
 }
 
 .detail-row .meta {
 	width: 100%;
 	text-align: center;
-
-	/* border-top: 0.5px solid var(--clr-grey); */
 }
 
 .embed-container {
@@ -78,7 +63,6 @@
 
 #tradingview_929ec {
 	width: 100%;
-	color: green;
 }
 
 .ticker-row {
@@ -125,12 +109,6 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-
-	-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-	-moz-animation: fadein 2s; /* Firefox < 16 */
-	-ms-animation: fadein 2s; /* Internet Explorer */
-	-o-animation: fadein 2s; /* Opera < 12.1 */
-	animation: fadein 2s;
 }
 
 .tickers .col .meta {

@@ -39,6 +39,7 @@ select {
 	--clr-green: #82d318;
 	--alt-green: #cbff00;
 
+	--grey-border: #c7cdd6;
 	--clr-grey: #81899d;
 	--alt-grey: #7c8499;
 	--bg-grey: #fafbfc;
@@ -113,12 +114,11 @@ body {
 }
 
 .navbar form {
-	padding: 0.75rem;
-
 	justify-content: center;
 	align-items: center;
+	padding: 0.75rem;
 
-	border: 1px solid rgb(229, 232, 235);
+	border: 1px solid var(--grey-border);
 	border-radius: 0.5rem;
 }
 
@@ -176,11 +176,6 @@ body {
 .nav-links i {
 	cursor: pointer;
 	color: var(--clr-blk-button);
-}
-
-.sign-out-button {
-	/* color: var(--clr-grey); */
-	/* font-size: 1rem; */
 }
 
 .sign-out-button:hover {
