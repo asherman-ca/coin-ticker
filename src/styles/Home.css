@@ -42,8 +42,7 @@
 }
 
 .coin-list-header {
-	position: sticky;
-	top: 0;
+	position: relative;
 
 	padding: 1rem;
 
@@ -53,6 +52,17 @@
 	font-weight: bold;
 	background: white;
 	border-bottom: 0.5px solid var(--clr-grey);
+}
+
+@supports (position: sticky) {
+	.coin-list-header {
+		position: sticky;
+		position: -moz-sticky;
+		position: -webkit-sticky;
+		position: -ms-sticky;
+		position: -o-sticky;
+		top: 0;
+	}
 }
 
 .coin-list-header .col {

@@ -22,31 +22,25 @@ const CoinListItem = ({ coin }) => {
 			</div>
 			<div className='col'>
 				<span className='price-span'>
-					$
-					{/* {coin.market_data.current_price.usd > 1
-						? coin.market_data.current_price.usd
-								.toString()
-								.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")
-						: coin.market_data.current_price.usd} */}
-					{cleanInt(coin.market_data.current_price.usd)}
+					${cleanInt(coin.market_data.current_price.usd)}
 				</span>
 			</div>
 			<div className='col'>
 				<span className={changeType1h}>
-					{Math.round(
-						coin.market_data.price_change_percentage_1h_in_currency.usd * 10
-					) / 10}
+					{coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(
+						2
+					)}
 					%
 				</span>
 			</div>
 			<div className='col daily-col'>
 				<span className={changeType}>
-					{Math.round(coin.market_data.price_change_percentage_24h * 10) / 10}%
+					{coin.market_data.price_change_percentage_24h.toFixed(2)}%
 				</span>
 			</div>
 			<div className='col weekly-col'>
 				<span className={changeTypeWeek}>
-					{Math.round(coin.market_data.price_change_percentage_7d * 10) / 10}%
+					{coin.market_data.price_change_percentage_7d.toFixed(2)}%
 				</span>
 			</div>
 			<div className='col'>
