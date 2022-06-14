@@ -1,33 +1,25 @@
 import { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
-import {
-	doc,
-	deleteDoc,
-	query,
-	where,
-	collection,
-	getDocs,
-	addDoc,
-	orderBy,
-	serverTimestamp,
-} from 'firebase/firestore';
-import { toast } from 'react-toastify';
+import { query, where, collection, getDocs, orderBy } from 'firebase/firestore';
 
-import { calcPNL, invalidSell, invalidDelete } from '../utils/accounting';
+import { calcPNL } from '../utils/accounting';
 import { cleanInt } from '../utils/stringUtils';
 import Spinner from '../components/Spinner';
 import OrderItem from '../components/OrderItem';
-import SlideButton from '../components/SlideButton';
 import GateButton from '../components/GateButton';
+import {
+	onOrder,
+	onChange,
+	onSelect,
+	onDelete,
+} from '../actions/AccountActions';
 
 const Account = () => {
 	const auth = getAuth();
-
 	const [loading, setLoading] = useState(true);
 	const [coins, setCoins] = useState();
 	const [orders, setOrders] = useState();
-	const [formType, setFormType] = useState('buy');
 	const [formData, setFormData] = useState({
 		coin: '',
 		price: 0,
@@ -85,69 +77,6 @@ const Account = () => {
 		fetchAllTask();
 	}, [auth.currentUser.uid]);
 
-	const onChange = (e) => {
-		setFormData((prev) => ({ ...prev, [e.target.id]: Number(e.target.value) }));
-	};
-
-	const onOrder = async (e, type) => {
-		e.preventDefault();
-
-		console.log('type', type);
-
-		if (formData.price === 0 || formData.spent === 0) {
-			toast.error('Price and spent required');
-		} else {
-			if (type === 'sell' && invalidSell(orders, formData)) {
-				toast.error('Insufficient coins');
-			} else {
-				let formDataCopy = {
-					...formData,
-					type: type,
-					timestamp: serverTimestamp(),
-				};
-
-				const res = await addDoc(collection(db, 'orders'), formDataCopy);
-				toast.success('Order created');
-
-				await setOrders((prev) => [
-					{ data: formDataCopy, id: res.id },
-					...prev,
-				]);
-				const ordersCopy = [...orders, { data: formDataCopy, id: res.id }];
-				setPnl(calcPNL(ordersCopy, coins));
-			}
-		}
-	};
-
-	const onSelect = (e) => {
-		let price;
-		coins.forEach((el) => {
-			if (el.name === e.target.value) {
-				price = el.market_data.current_price.usd;
-			}
-		});
-
-		setFormData((prev) => ({
-			...prev,
-			price,
-			coin: e.target.value,
-		}));
-	};
-
-	const onDelete = async (id) => {
-		const order = orders.filter((order) => order.id === id)[0];
-		if (invalidDelete(orders, order)) {
-			toast.error('Insufficient Funds');
-		} else {
-			const ref = doc(db, 'orders', id);
-			await deleteDoc(ref);
-			const updatedOrders = orders.filter((order) => order.id !== id);
-			setOrders(updatedOrders);
-			setPnl(calcPNL(updatedOrders, coins));
-			toast.success('Order deleted');
-		}
-	};
-
 	if (loading) {
 		return (
 			<div className='container'>
@@ -174,7 +103,13 @@ const Account = () => {
 						{orders.length >= 1 ? (
 							<div className='list'>
 								{orders.map((order) => (
-									<OrderItem key={order.id} order={order} onDelete={onDelete} />
+									<OrderItem
+										key={order.id}
+										order={order}
+										onDelete={() =>
+											onDelete(order.id, orders, setOrders, setPnl, coins)
+										}
+									/>
 								))}
 							</div>
 						) : (
@@ -192,10 +127,8 @@ const Account = () => {
 							<div>Coins Held</div>
 							<div>Avg Price</div>
 						</div>
-						{console.log('pnl', pnl)}
 						{orders.length >= 1 ? (
 							<div>
-								{console.log(pnl)}
 								{pnl.map((el) => {
 									return (
 										<div className='pnl-item' key={el.coin}>
@@ -229,7 +162,11 @@ const Account = () => {
 					<div className='form-div'>
 						<div className='header'>Market Order</div>
 						<form onSubmit={onOrder} className='buy-sell-form'>
-							<select name='coin' id='coin' onChange={onSelect}>
+							<select
+								name='coin'
+								id='coin'
+								onChange={(e) => onSelect(e, setFormData, coins)}
+							>
 								{coins.map((doc) => (
 									<option key={doc.id} value={doc.name}>
 										{doc.name}
@@ -237,22 +174,48 @@ const Account = () => {
 								))}
 							</select>
 							<input
-								onChange={onChange}
+								onChange={(e) => onChange(e, setFormData)}
 								id='price'
 								placeholder={formData.price}
 								type='number'
 							/>
 							<input
-								onChange={onChange}
+								onChange={(e) => onChange(e, setFormData)}
 								id='spent'
 								placeholder='$ Amount'
 								type='number'
 							/>
 							<div className='button-row'>
-								<GateButton onClick={(e) => onOrder(e, 'buy')} color='green'>
+								<GateButton
+									onClick={(e) =>
+										onOrder(
+											e,
+											'buy',
+											formData,
+											orders,
+											setOrders,
+											setPnl,
+											coins
+										)
+									}
+									color='green'
+								>
 									Buy
 								</GateButton>
-								<GateButton onClick={(e) => onOrder(e, 'sell')} color='red'>
+								<GateButton
+									onClick={(e) =>
+										onOrder(
+											e,
+											'sell',
+											formData,
+											orders,
+											setOrders,
+											setPnl,
+											coins
+										)
+									}
+									color='red'
+								>
 									Sell
 								</GateButton>
 							</div>
