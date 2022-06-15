@@ -14,6 +14,7 @@ import {
 	onSelect,
 	onDelete,
 } from '../actions/AccountActions';
+import OrderForm from '../components/OrderForm';
 
 const Account = () => {
 	const auth = getAuth();
@@ -159,68 +160,17 @@ const Account = () => {
 					</div>
 				</div>
 				<div className='secondary-col'>
-					<div className='form-div'>
-						<div className='header'>Market Order</div>
-						<form onSubmit={onOrder} className='buy-sell-form'>
-							<select
-								name='coin'
-								id='coin'
-								onChange={(e) => onSelect(e, setFormData, coins)}
-							>
-								{coins.map((doc) => (
-									<option key={doc.id} value={doc.name}>
-										{doc.name}
-									</option>
-								))}
-							</select>
-							<input
-								onChange={(e) => onChange(e, setFormData)}
-								id='price'
-								placeholder={formData.price}
-								type='number'
-							/>
-							<input
-								onChange={(e) => onChange(e, setFormData)}
-								id='spent'
-								placeholder='$ Amount'
-								type='number'
-							/>
-							<div className='button-row'>
-								<GateButton
-									onClick={(e) =>
-										onOrder(
-											e,
-											'buy',
-											formData,
-											orders,
-											setOrders,
-											setPnl,
-											coins
-										)
-									}
-									color='green'
-								>
-									Buy
-								</GateButton>
-								<GateButton
-									onClick={(e) =>
-										onOrder(
-											e,
-											'sell',
-											formData,
-											orders,
-											setOrders,
-											setPnl,
-											coins
-										)
-									}
-									color='red'
-								>
-									Sell
-								</GateButton>
-							</div>
-						</form>
-					</div>
+					<OrderForm
+						onOrder={onOrder}
+						onSelect={onSelect}
+						onChange={onChange}
+						formData={formData}
+						setFormData={setFormData}
+						coins={coins}
+						orders={orders}
+						setOrders={setOrders}
+						setPnl={setPnl}
+					/>
 				</div>
 			</div>
 		</div>
