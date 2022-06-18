@@ -16,7 +16,7 @@ const OrderForm = ({
 	return (
 		<div className='form-div'>
 			<div className='header'>Market Order</div>
-			<form onSubmit={onOrder} className='buy-sell-form'>
+			<form className='buy-sell-form'>
 				<select
 					name='coin'
 					id='coin'
