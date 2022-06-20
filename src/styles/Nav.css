@@ -1,0 +1,26 @@
+.search-div {
+	position: relative;
+}
+
+.search-div:focus-within .search-prefill {
+	visibility: visible;
+}
+
+.search-prefill {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	z-index: 10;
+	visibility: hidden;
+
+	border: 1px solid var(--grey-border);
+	border-radius: 0.5rem;
+	padding: 0.75rem;
+	background: white;
+	font-size: 1rem;
+	font-weight: normal;
+}
+
+.prefill-item {
+}

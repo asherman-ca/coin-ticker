@@ -78,6 +78,10 @@ const Nav = () => {
 				<form action='' onSubmit={onSubmit} className='nav-item search-div'>
 					<i className='fa-solid fa-magnifying-glass'></i>
 					<input type='text' placeholder='Search Coins' onChange={onChange} />
+					<div className='search-prefill'>
+						<div className='prefill-item'>item</div>
+						<div className='prefill-item'>item</div>
+					</div>
 				</form>
 				<div className='nav-item nav-links'>{authButton}</div>
 			</div>
