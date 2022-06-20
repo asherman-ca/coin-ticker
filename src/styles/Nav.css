@@ -1,3 +1,110 @@
+.nav-container {
+	height: 72px;
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+
+	box-shadow: var(--shadow-smallest);
+	background-color: white;
+
+	z-index: 1000;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	width: 100%;
+	max-width: 1200px;
+	padding: 0 1rem;
+
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.navbar > * {
+	flex-basis: 100%;
+	display: flex;
+}
+
+@media (max-width: 600px) {
+	.navbar form {
+		display: none;
+	}
+}
+
+.navbar form {
+	justify-content: center;
+	align-items: center;
+	padding: 0.75rem;
+
+	border: 1px solid var(--grey-border);
+	border-radius: 0.5rem;
+}
+
+.navbar form i {
+	color: var(--clr-grey);
+	font-size: 1rem;
+}
+
+.navbar form:focus-within {
+	box-shadow: var(--shadow-smallest);
+}
+
+.navbar input {
+	flex-basis: 100%;
+	padding: 0 1rem;
+
+	border: none;
+	font-size: 1rem;
+}
+
+.navbar input:focus-visible {
+	outline: none;
+}
+
+.logo-div {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--clr-blk-button);
+}
+
+.nav-links {
+	justify-content: flex-end;
+	gap: 2rem;
+}
+
+.navbar i {
+	font-size: 1.5rem;
+}
+
+.logo-div i {
+	color: var(--clr-blue);
+	font-size: 1.75rem;
+}
+
+.navbar a:hover {
+	color: black;
+	cursor: pointer;
+}
+
+.nav-links i:hover {
+	color: black;
+}
+
+.nav-links i {
+	cursor: pointer;
+	color: var(--clr-blk-button);
+}
+
+.sign-out-button:hover {
+	color: black;
+	cursor: pointer;
+}
+
 .search-div {
 	position: relative;
 }
