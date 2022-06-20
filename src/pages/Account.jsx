@@ -4,10 +4,8 @@ import { db } from '../firebase.config';
 import { query, where, collection, getDocs, orderBy } from 'firebase/firestore';
 
 import { calcPNL } from '../utils/accounting';
-import { cleanInt } from '../utils/stringUtils';
 import Spinner from '../components/Spinner';
 import OrderItem from '../components/OrderItem';
-import GateButton from '../components/GateButton';
 import {
 	onOrder,
 	onChange,
@@ -15,6 +13,7 @@ import {
 	onDelete,
 } from '../actions/AccountActions';
 import OrderForm from '../components/OrderForm';
+import PnlItem from '../components/PnlItem';
 
 const Account = () => {
 	const auth = getAuth();
@@ -98,7 +97,7 @@ const Account = () => {
 							<i className='fa-solid fa-trash-can'></i>
 							<div>Coin</div>
 							<div>Type</div>
-							<div>Amount</div>
+							<div>$ Amount</div>
 							<div>Coin Price</div>
 						</div>
 						{orders.length >= 1 ? (
@@ -130,29 +129,9 @@ const Account = () => {
 						</div>
 						{orders.length >= 1 ? (
 							<div>
-								{pnl.map((el) => {
-									return (
-										<div className='pnl-item' key={el.coin}>
-											<div>{el.coin}</div>
-											<div
-												className={el.pnl >= 0 ? 'pos-change' : 'neg-change'}
-											>
-												${cleanInt(el.pnl)}
-											</div>
-											<div
-												className={el.rpnl >= 0 ? 'pos-change' : 'neg-change'}
-											>
-												${cleanInt(el.rpnl)}
-											</div>
-											<div>
-												{el.totalCoins >= 0.01
-													? cleanInt(el.totalCoins)
-													: el.totalCoins.toFixed(4)}
-											</div>
-											<div>${cleanInt(el.averagePrice)}</div>
-										</div>
-									);
-								})}
+								{pnl.map((account) => (
+									<PnlItem account={account} />
+								))}
 							</div>
 						) : (
 							<div className='default-order-message'>No order history</div>
