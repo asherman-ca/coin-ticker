@@ -7,17 +7,19 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import { filterSearchParam } from '../actions/NavActions';
 import OAuth from '../components/OAuth';
 
-const Nav = () => {
+const Nav = ({ coinsLoading, coins }) => {
 	const auth = getAuth();
-
 	const navigate = useNavigate();
 	const [param, setParam] = useState();
-	const [loading, setLoading] = useState(true);
-	// const [currentUser, setCurrentUser] = useState(auth.currentUser);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const isMounted = useRef(true);
+
+	const [searchFilter, setSearchFilter] = useState([]);
+	// const [loading, setLoading] = useState(true);
+	// const [currentUser, setCurrentUser] = useState(auth.currentUser);
 
 	useEffect(() => {
 		if (isMounted) {
@@ -35,6 +37,7 @@ const Nav = () => {
 	const onChange = (e) => {
 		e.preventDefault();
 		setParam(e.target.value);
+		setSearchFilter(filterSearchParam(coins, e.target.value));
 	};
 
 	const onSubmit = (e) => {
@@ -69,6 +72,9 @@ const Nav = () => {
 
 	return (
 		<div className='nav-container'>
+			{/* {console.log('navloading', coinsLoading)} */}
+			{/* {console.log('coins nav', coins)} */}
+			{console.log('search filter', searchFilter)}
 			<div className='navbar'>
 				<div className='nav-item'>
 					<Link className='logo-div' to={`/`}>
@@ -78,10 +84,12 @@ const Nav = () => {
 				<form action='' onSubmit={onSubmit} className='nav-item search-div'>
 					<i className='fa-solid fa-magnifying-glass'></i>
 					<input type='text' placeholder='Search Coins' onChange={onChange} />
-					<div className='search-prefill'>
-						<div className='prefill-item'>item</div>
-						<div className='prefill-item'>item</div>
-					</div>
+					{searchFilter.length > 0 && (
+						<div className='search-prefill'>
+							<div className='prefill-item'>item</div>
+							<div className='prefill-item'>item</div>
+						</div>
+					)}
 				</form>
 				<div className='nav-item nav-links'>{authButton}</div>
 			</div>
