@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
-import { capitalize, changeDirection, cleanInt } from '../utils/stringUtils';
+import {
+	capitalize,
+	changeDirection,
+	cleanInt,
+} from '../../../utils/stringUtils';
 
 const CoinListItem = ({ coin }) => {
 	const changeType = changeDirection(

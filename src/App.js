@@ -4,9 +4,9 @@ import './styles/App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Nav from './components/Nav';
-import Home from './pages/Home';
-import CoinView from './pages/CoinView';
-import Account from './pages/Account';
+import Home from './pages/Home/Home';
+import CoinView from './pages/CoinView/CoinView';
+import Account from './pages/Account/Account';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {

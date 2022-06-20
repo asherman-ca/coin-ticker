@@ -1,5 +1,5 @@
 import React from 'react';
-import GateButton from '../components/GateButton';
+import GateButton from '../../../components/GateButton';
 
 const OrderForm = ({
 	onOrder,

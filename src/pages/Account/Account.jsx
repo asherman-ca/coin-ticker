@@ -1,19 +1,14 @@
 import { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
-import { db } from '../firebase.config';
+import { db } from '../../firebase.config';
 import { query, where, collection, getDocs, orderBy } from 'firebase/firestore';
 
-import { calcPNL } from '../utils/accounting';
-import Spinner from '../components/Spinner';
-import OrderItem from '../components/OrderItem';
-import {
-	onOrder,
-	onChange,
-	onSelect,
-	onDelete,
-} from '../actions/AccountActions';
-import OrderForm from '../components/OrderForm';
-import PnlItem from '../components/PnlItem';
+import { calcPNL } from '../../utils/accounting';
+import Spinner from '../../components/Spinner';
+import OrderItem from './components/OrderItem';
+import { onOrder, onChange, onSelect, onDelete } from './AccountActions';
+import OrderForm from './components/OrderForm';
+import PnlItem from './components/PnlItem';
 
 const Account = () => {
 	const auth = getAuth();

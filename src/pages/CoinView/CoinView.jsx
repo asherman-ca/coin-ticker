@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Embed from '../components/Embed';
 
-import Spinner from '../components/Spinner';
+import Embed from './components/Embed';
+import Spinner from '../../components/Spinner';
 import {
 	capitalize,
 	changeDirection,
 	decimalReducer,
 	nameReducer,
 	cleanInt,
-} from '../utils/stringUtils';
+} from '../../utils/stringUtils';
 
 const CoinView = () => {
 	const [coin, setCoin] = useState();

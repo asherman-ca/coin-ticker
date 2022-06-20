@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import CoinListItem from '../components/CoinListItem';
-import Spinner from '../components/Spinner';
+import CoinListItem from './components/CoinListItem';
+import Spinner from '../../components/Spinner';
 
 const Home = () => {
 	const [coins, setCoins] = useState();

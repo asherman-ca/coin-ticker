@@ -1,4 +1,4 @@
-import { cleanInt } from '../utils/stringUtils';
+import { cleanInt } from '../../../utils/stringUtils';
 
 const PnlItem = ({ account }) => {
 	return (

@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { db } from '../firebase.config';
+import { db } from '../../firebase.config';
 import {
 	doc,
 	deleteDoc,
@@ -7,7 +7,7 @@ import {
 	addDoc,
 	serverTimestamp,
 } from 'firebase/firestore';
-import { calcPNL, invalidSell, invalidDelete } from '../utils/accounting';
+import { calcPNL, invalidSell, invalidDelete } from '../../utils/accounting';
 
 const onOrder = async (e, type, formData, orders, setOrders, setPnl, coins) => {
 	e.preventDefault();
