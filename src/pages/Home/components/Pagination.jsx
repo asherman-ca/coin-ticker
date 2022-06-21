@@ -1,3 +1,5 @@
+import { paginationRange } from '../../../components/PaginationRange';
+
 const Pagination = ({
 	totalCount,
 	setCurrentPage,
@@ -18,6 +20,8 @@ const Pagination = ({
 			? totalCount / rowsPerPage
 			: Math.floor(totalCount / rowsPerPage) + 1;
 
+	const paginationPages = paginationRange(currentPage, lastPage);
+
 	const onSelect = (selectedValue) => {
 		console.log('value', selectedValue);
 		setRowsPerPage(selectedValue);
@@ -25,6 +29,18 @@ const Pagination = ({
 
 	return (
 		<div className='pagination'>
+			<button disabled={currentPage == 1} onClick={() => prevPage()}>
+				<i className='fa-solid fa-circle-chevron-left'></i>
+			</button>
+
+			{paginationPages.map((pageNumber) => {
+				return <div>{pageNumber}</div>;
+			})}
+
+			<button disabled={currentPage == lastPage} onClick={() => nextPage()}>
+				<i className='fa-solid fa-circle-chevron-right' />
+			</button>
+
 			<select
 				name=''
 				id=''

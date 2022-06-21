@@ -10,6 +10,11 @@ const Home = ({ coins, loading }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
 
+	const updateRowsPerPage = (rowsNumber) => {
+		setRowsPerPage(rowsNumber);
+		setCurrentPage(1);
+	};
+
 	if (loading) {
 		return (
 			<div className='container'>
@@ -53,7 +58,7 @@ const Home = ({ coins, loading }) => {
 						totalCount={coins.length}
 						setCurrentPage={setCurrentPage}
 						currentPage={currentPage}
-						setRowsPerPage={setRowsPerPage}
+						setRowsPerPage={updateRowsPerPage}
 						rowsPerPage={rowsPerPage}
 						rowsPerPageOptions={rowsPerPageOptions}
 					/>

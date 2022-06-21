@@ -110,6 +110,10 @@
 }
 
 .pagination {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+
 	width: fit-content;
 	margin: 1rem auto 0;
 }
