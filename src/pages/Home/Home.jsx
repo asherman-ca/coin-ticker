@@ -4,25 +4,11 @@ import Pagination from './components/Pagination';
 import CoinListItem from './components/CoinListItem';
 import Spinner from '../../components/Spinner';
 
-const Home = ({ coins, loading }) => {
-	// const [coins, setCoins] = useState();
-	// const [loading, setLoading] = useState(true);
+const rowsPerPageOptions = [25, 50, 100];
 
-	// useEffect(() => {
-	// 	const apiFetch = async () => {
-	// 		const ref = await fetch(
-	// 			`https://api.coingecko.com/api/v3/coins?per_page=20`
-	// 		);
-	// 		if (!ref.ok) {
-	// 			throw new Error('Thrown Error Thrown');
-	// 		}
-	// 		const response = await ref.json();
-	// 		setCoins(response);
-	// 		setLoading(false);
-	// 	};
-	// 	apiFetch();
-	// 	setInterval(apiFetch, 15000);
-	// }, []);
+const Home = ({ coins, loading }) => {
+	const [currentPage, setCurrentPage] = useState(1);
+	const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
 
 	if (loading) {
 		return (
@@ -57,11 +43,20 @@ const Home = ({ coins, loading }) => {
 							<div className='col'>Vol</div>
 							<div className='col'>M Cap</div>
 						</div>
-						{coins.map((coin) => (
-							<CoinListItem coin={coin} key={coin.id} />
-						))}
+						{coins
+							.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)
+							.map((coin) => (
+								<CoinListItem coin={coin} key={coin.id} />
+							))}
 					</div>
-					<Pagination />
+					<Pagination
+						totalCount={coins.length}
+						setCurrentPage={setCurrentPage}
+						currentPage={currentPage}
+						setRowsPerPage={setRowsPerPage}
+						rowsPerPage={rowsPerPage}
+						rowsPerPageOptions={rowsPerPageOptions}
+					/>
 				</div>
 			</div>
 		</div>

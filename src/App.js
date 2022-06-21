@@ -17,7 +17,7 @@ function App() {
 	useEffect(() => {
 		const apiFetch = async () => {
 			const ref = await fetch(
-				`https://api.coingecko.com/api/v3/coins?per_page=20`
+				`https://api.coingecko.com/api/v3/coins?per_page=200`
 			);
 			if (!ref.ok) {
 				throw new Error('Thrown Error Thrown');
