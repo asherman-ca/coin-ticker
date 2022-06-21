@@ -108,3 +108,7 @@
 		display: none;
 	}
 }
+
+.pagination {
+	margin-top: 1rem;
+}
