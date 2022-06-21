@@ -23,9 +23,10 @@ const Pagination = ({
 	const paginationPages = paginationRange(currentPage, lastPage);
 
 	const onSelect = (selectedValue) => {
-		console.log('value', selectedValue);
 		setRowsPerPage(selectedValue);
 	};
+
+	console.log('lastpage', lastPage);
 
 	return (
 		<div className='pagination'>
@@ -34,7 +35,16 @@ const Pagination = ({
 			</button>
 
 			{paginationPages.map((pageNumber) => {
-				return <div>{pageNumber}</div>;
+				return (
+					<div
+						className={
+							currentPage == pageNumber ? 'page-button active' : 'page-button'
+						}
+						onClick={() => setCurrentPage(pageNumber)}
+					>
+						{pageNumber}
+					</div>
+				);
 			})}
 
 			<button disabled={currentPage == lastPage} onClick={() => nextPage()}>

@@ -111,9 +111,34 @@
 
 .pagination {
 	display: flex;
+	flex-direction: row;
 	align-items: center;
+	justify-content: center;
 	gap: 0.5rem;
 
-	width: fit-content;
-	margin: 1rem auto 0;
+	margin-top: 1rem;
+}
+
+.pagination button {
+	display: flex;
+	align-items: center;
+
+	background-color: inherit;
+	border: inherit;
+	cursor: pointer;
+}
+
+.pagination select {
+	padding: 0.25rem;
+	border: 1px solid var(--grey-border);
+	text-align: center;
+	cursor: pointer;
+}
+
+.pagination .active {
+	font-weight: bold;
+}
+
+.pagination .page-button {
+	cursor: pointer;
 }
