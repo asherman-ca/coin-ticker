@@ -109,7 +109,7 @@
 	position: relative;
 }
 
-.search-div:focus-within .search-prefill {
+:is(.search-div:focus-within .search-prefill, .search-prefill:hover) {
 	visibility: visible;
 }
 
@@ -136,6 +136,7 @@
 	padding: 0.25rem 0.75rem;
 	color: var(--clr-blk-button);
 	border-top: 1px solid var(--grey-border);
+	cursor: pointer;
 }
 
 .prefill-item img {

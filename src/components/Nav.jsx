@@ -44,6 +44,14 @@ const Nav = ({ coinsLoading, coins }) => {
 	const onSubmit = (e) => {
 		e.preventDefault();
 		navigate(`/${param.toLowerCase()}`);
+		setParam('');
+		setSearchFilter([]);
+	};
+
+	const onSuggestedClick = (suggestedId) => {
+		navigate(`/${suggestedId.toLowerCase()}`);
+		setParam('');
+		setSearchFilter([]);
 	};
 
 	const onLogout = () => {
@@ -81,14 +89,24 @@ const Nav = ({ coinsLoading, coins }) => {
 				</div>
 				<form action='' onSubmit={onSubmit} className='nav-item search-div'>
 					<i className='fa-solid fa-magnifying-glass'></i>
-					<input type='text' placeholder='Search Coins' onChange={onChange} />
+					<input
+						type='text'
+						placeholder='Search Coins'
+						value={param}
+						onChange={onChange}
+					/>
 					{searchFilter.length > 0 && (
 						<div className='search-prefill'>
 							{searchFilter.map((coin) => (
-								<Link className='prefill-item' to={`/${coin.id.toLowerCase()}`}>
+								<div
+									className='prefill-item'
+									onClick={() => onSuggestedClick(coin.id)}
+									key={coin.id}
+								>
+									{console.log('coinnnn', coin)}
 									<img src={coin.image.thumb} alt='' />
 									<div>{coin.name}</div>
-								</Link>
+								</div>
 							))}
 						</div>
 					)}
