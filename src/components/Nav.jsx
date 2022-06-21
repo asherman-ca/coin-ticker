@@ -73,9 +73,6 @@ const Nav = ({ coinsLoading, coins }) => {
 
 	return (
 		<div className='nav-container'>
-			{/* {console.log('navloading', coinsLoading)} */}
-			{/* {console.log('coins nav', coins)} */}
-			{console.log('search filter', searchFilter)}
 			<div className='navbar'>
 				<div className='nav-item'>
 					<Link className='logo-div' to={`/`}>
@@ -88,8 +85,9 @@ const Nav = ({ coinsLoading, coins }) => {
 					{searchFilter.length > 0 && (
 						<div className='search-prefill'>
 							{searchFilter.map((coin) => (
-								<Link to={`/${coin.id.toLowerCase()}`}>
-									<div className='prefill-item'>{coin.name}</div>
+								<Link className='prefill-item' to={`/${coin.id.toLowerCase()}`}>
+									<img src={coin.image.thumb} alt='' />
+									<div>{coin.name}</div>
 								</Link>
 							))}
 						</div>

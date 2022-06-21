@@ -123,11 +123,38 @@
 
 	border: 1px solid var(--grey-border);
 	border-radius: 0.5rem;
-	padding: 0.75rem;
 	background: white;
 	font-size: 1rem;
 	font-weight: normal;
 }
 
 .prefill-item {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+
+	padding: 0.25rem 0.75rem;
+	color: var(--clr-blk-button);
+	border-top: 1px solid var(--grey-border);
+}
+
+.prefill-item img {
+	width: 25px;
+	height: 25px;
+}
+
+.prefill-item:hover {
+	color: black;
+	background-color: var(--grey-hover);
+}
+
+.search-prefill .prefill-item:first-child {
+	border-top: none;
+	border-top-right-radius: 0.5rem;
+	border-top-left-radius: 0.5rem;
+}
+
+.search-prefill .prefill-item:last-child {
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
 }
