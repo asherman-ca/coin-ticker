@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 
 import { filterSearchParam } from '../actions/NavActions';
 import OAuth from '../components/OAuth';
+import PnlItem from '../pages/Account/components/PnlItem';
 
 const Nav = ({ coinsLoading, coins }) => {
 	const auth = getAuth();
@@ -86,8 +87,11 @@ const Nav = ({ coinsLoading, coins }) => {
 					<input type='text' placeholder='Search Coins' onChange={onChange} />
 					{searchFilter.length > 0 && (
 						<div className='search-prefill'>
-							<div className='prefill-item'>item</div>
-							<div className='prefill-item'>item</div>
+							{searchFilter.map((coin) => (
+								<Link to={`/${coin.id.toLowerCase()}`}>
+									<div className='prefill-item'>{coin.name}</div>
+								</Link>
+							))}
 						</div>
 					)}
 				</form>
