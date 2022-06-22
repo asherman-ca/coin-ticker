@@ -57,8 +57,6 @@ const CoinView = () => {
 		.filter((el) => coin.symbol.toUpperCase() === el.base)
 		.slice(0, 24);
 
-	console.log(coin);
-
 	return (
 		<div className='home-container'>
 			<div className='coin-view'>

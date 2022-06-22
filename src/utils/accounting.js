@@ -115,8 +115,6 @@ const calcPNL = (orders, coins) => {
 		});
 	});
 
-	// console.log('hits');
-
 	return PNL;
 };
 

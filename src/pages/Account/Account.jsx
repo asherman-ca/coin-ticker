@@ -125,7 +125,7 @@ const Account = () => {
 						{orders.length >= 1 ? (
 							<div>
 								{pnl.map((account) => (
-									<PnlItem account={account} />
+									<PnlItem key={account.coin} account={account} />
 								))}
 							</div>
 						) : (

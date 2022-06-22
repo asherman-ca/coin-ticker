@@ -12,7 +12,6 @@ const OrderForm = ({
 	setOrders,
 	setPnl,
 }) => {
-	console.log('coins', coins);
 	return (
 		<div className='form-div'>
 			<div className='header'>Market Order</div>

@@ -103,7 +103,6 @@ const Nav = ({ coinsLoading, coins }) => {
 									onClick={() => onSuggestedClick(coin.id)}
 									key={coin.id}
 								>
-									{console.log('coinnnn', coin)}
 									<img src={coin.image.thumb} alt='' />
 									<div>{coin.name}</div>
 								</div>

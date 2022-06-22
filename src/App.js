@@ -33,7 +33,6 @@ function App() {
 	return (
 		<>
 			<Router>
-				{console.log('top coins', coins)}
 				<Nav coinsLoading={loading} coins={coins} />
 				<Routes>
 					<Route path='/' element={<Home coins={coins} loading={loading} />} />
