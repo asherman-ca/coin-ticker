@@ -7,6 +7,8 @@ const Pagination = ({
 	setRowsPerPage,
 	rowsPerPage,
 	rowsPerPageOptions,
+	nextPage,
+	prevPage,
 }) => {
 	const lastPage =
 		totalCount % rowsPerPage == 0
@@ -14,22 +16,6 @@ const Pagination = ({
 			: Math.floor(totalCount / rowsPerPage) + 1;
 
 	const paginationPages = paginationRange(currentPage, lastPage);
-
-	const nextPage = () => {
-		setCurrentPage(currentPage + 1);
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		});
-	};
-	const prevPage = () => {
-		console.log('current page', currentPage);
-		setCurrentPage(currentPage - 1);
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		});
-	};
 
 	const onSelect = (selectedValue) => {
 		setRowsPerPage(selectedValue);
@@ -53,14 +39,15 @@ const Pagination = ({
 				<i className='fa-solid fa-chevron-up'></i>
 			</div>
 			<div className='page-buttons'>
-				<button
-					disabled={currentPage == 1}
-					onClick={() => {
-						prevPage();
-					}}
-				>
-					<i className='fa-solid fa-chevron-left'></i>
-				</button>
+				{currentPage != 1 && (
+					<button
+						onClick={() => {
+							prevPage();
+						}}
+					>
+						<i className='fa-solid fa-chevron-left'></i>
+					</button>
+				)}
 
 				{paginationPages.map((pageNumber, ind) => {
 					if (pageNumber == '...') {
@@ -88,9 +75,11 @@ const Pagination = ({
 					}
 				})}
 
-				<button disabled={currentPage == lastPage} onClick={() => nextPage()}>
-					<i className='fa-solid fa-chevron-right'></i>
-				</button>
+				{currentPage != lastPage && (
+					<button onClick={() => nextPage()}>
+						<i className='fa-solid fa-chevron-right'></i>
+					</button>
+				)}
 			</div>
 			<select
 				name=''

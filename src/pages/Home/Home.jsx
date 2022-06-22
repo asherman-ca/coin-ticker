@@ -15,6 +15,22 @@ const Home = ({ coins, loading }) => {
 		setCurrentPage(1);
 	};
 
+	const nextPage = () => {
+		setCurrentPage((prev) => prev + 1);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
+
+	const prevPage = () => {
+		setCurrentPage((prev) => prev - 1);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
+
 	if (loading) {
 		return (
 			<div className='container'>
@@ -61,6 +77,8 @@ const Home = ({ coins, loading }) => {
 						setRowsPerPage={updateRowsPerPage}
 						rowsPerPage={rowsPerPage}
 						rowsPerPageOptions={rowsPerPageOptions}
+						nextPage={nextPage}
+						prevPage={prevPage}
 					/>
 				</div>
 			</div>
