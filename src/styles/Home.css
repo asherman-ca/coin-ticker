@@ -169,6 +169,7 @@
 .pagination .active {
 	font-weight: bold;
 	border-color: black;
+	cursor: inherit;
 }
 
 .pagination select {

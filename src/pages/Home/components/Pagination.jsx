@@ -52,15 +52,17 @@ const Pagination = ({
 				{paginationPages.map((pageNumber, ind) => {
 					if (pageNumber == '...') {
 						return <div key={ind}>...</div>;
+					} else if (pageNumber == currentPage) {
+						return (
+							<div key={ind} className='page-button active'>
+								{pageNumber}
+							</div>
+						);
 					} else {
 						return (
 							<div
 								key={ind}
-								className={
-									currentPage == pageNumber
-										? 'page-button active'
-										: 'page-button'
-								}
+								className='page-button'
 								onClick={() => {
 									setCurrentPage(pageNumber);
 									window.scrollTo({
