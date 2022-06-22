@@ -10,9 +10,17 @@ const Pagination = ({
 }) => {
 	const nextPage = () => {
 		setCurrentPage(currentPage + 1);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 	};
 	const prevPage = () => {
 		setCurrentPage(currentPage - 1);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 	};
 
 	const lastPage =
@@ -24,6 +32,10 @@ const Pagination = ({
 
 	const onSelect = (selectedValue) => {
 		setRowsPerPage(selectedValue);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 	};
 
 	console.log('lastpage', lastPage);
@@ -40,7 +52,13 @@ const Pagination = ({
 						className={
 							currentPage == pageNumber ? 'page-button active' : 'page-button'
 						}
-						onClick={() => setCurrentPage(pageNumber)}
+						onClick={() => {
+							setCurrentPage(pageNumber);
+							window.scrollTo({
+								top: 0,
+								behavior: 'smooth',
+							});
+						}}
 					>
 						{pageNumber}
 					</div>

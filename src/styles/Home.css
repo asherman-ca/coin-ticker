@@ -112,25 +112,25 @@
 .pagination {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	/* align-items: center; */
 	justify-content: center;
 	gap: 0.5rem;
 
 	margin-top: 1rem;
+	font-size: 1rem;
 }
 
 .pagination button {
-	display: flex;
-	align-items: center;
-
 	background-color: inherit;
 	border: inherit;
 	cursor: pointer;
 }
 
 .pagination select {
-	padding: 0.25rem;
+	padding: 0 1rem;
+
 	border: 1px solid var(--grey-border);
+	border-radius: 0.5rem;
 	text-align: center;
 	cursor: pointer;
 }
@@ -140,5 +140,13 @@
 }
 
 .pagination .page-button {
+	padding: 0 1rem;
+	/* height: 30px; */
+	/* display: inline-block; */
+	/* padding: 1rem; */
+
+	background: white;
+	border: 1px solid var(--grey-border);
+	border-radius: 0.5rem;
 	cursor: pointer;
 }
