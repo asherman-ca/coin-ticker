@@ -1,15 +1,10 @@
-import {
-	getAuth,
-	onAuthStateChanged,
-	signInWithEmailAndPassword,
-} from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { filterSearchParam } from '../actions/NavActions';
 import OAuth from '../components/OAuth';
-import PnlItem from '../pages/Account/components/PnlItem';
 
 const Nav = ({ coinsLoading, coins }) => {
 	const auth = getAuth();

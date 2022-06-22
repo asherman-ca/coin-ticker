@@ -11,6 +11,7 @@ import {
 	nameReducer,
 	cleanInt,
 } from '../../utils/stringUtils';
+import TickerItem from './components/TickerItem';
 
 const CoinView = () => {
 	const [coin, setCoin] = useState();
@@ -124,7 +125,18 @@ const CoinView = () => {
 
 				<Embed symbol={coin.symbol} />
 
-				<div className='ticker-row'>
+				{console.log('tickets', coin)}
+
+				<div className='tickr-row'>
+					<div className='header'>Tickrs</div>
+					<div className='tickrs'>
+						{basedAndSymbol.map((tickr) => (
+							<TickerItem key={tickr.trade_url} tickr={tickr} />
+						))}
+					</div>
+				</div>
+
+				{/* <div className='ticker-row'>
 					<div className='header'>Tickrs</div>
 					<div className='tickers'>
 						{basedAndSymbol.map((el) => (
@@ -136,7 +148,7 @@ const CoinView = () => {
 							</div>
 						))}
 					</div>
-				</div>
+				</div> */}
 
 				{coin.description.en && (
 					<div className='description-row'>
