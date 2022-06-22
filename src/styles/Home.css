@@ -125,7 +125,7 @@
 }
 
 .pagination .top-button {
-	padding: 0 1rem;
+	padding: 0.25rem 1rem;
 	background: white;
 	border: 1px solid var(--grey-border);
 	border-radius: 0.5rem;
@@ -148,8 +148,12 @@
 	cursor: pointer;
 }
 
+.pagination button:hover {
+	color: var(--clr-grey);
+}
+
 .pagination .page-button {
-	padding: 0 1rem;
+	padding: 0.25rem 1rem;
 
 	background: white;
 	border: 1px solid var(--grey-border);
@@ -164,13 +168,11 @@
 
 .pagination .active {
 	font-weight: bold;
-	color: white;
-	background: var(--clr-blue);
-	border: none;
+	border-color: black;
 }
 
 .pagination select {
-	padding: 0 1rem;
+	padding: 0.25rem 1rem;
 
 	border: 1px solid var(--grey-border);
 	border-radius: 0.5rem;
