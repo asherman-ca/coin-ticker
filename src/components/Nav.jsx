@@ -19,10 +19,10 @@ const Nav = ({ coinsLoading, coins }) => {
 	const isMounted = useRef(true);
 
 	const [searchFilter, setSearchFilter] = useState([]);
-	// const [loading, setLoading] = useState(true);
-	// const [currentUser, setCurrentUser] = useState(auth.currentUser);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
+		setLoading(true);
 		if (isMounted) {
 			const auth = getAuth();
 			onAuthStateChanged(auth, (user) => {
@@ -31,6 +31,7 @@ const Nav = ({ coinsLoading, coins }) => {
 				} else {
 					setLoggedIn(false);
 				}
+				setLoading(false);
 			});
 		}
 	}, [isMounted]);
@@ -62,7 +63,9 @@ const Nav = ({ coinsLoading, coins }) => {
 	};
 
 	let authButton;
-	if (!loggedIn) {
+	if (loading) {
+		authButton = <div></div>;
+	} else if (!loggedIn) {
 		authButton = <OAuth />;
 	} else {
 		authButton = (
