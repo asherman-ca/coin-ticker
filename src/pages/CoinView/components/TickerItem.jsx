@@ -6,15 +6,14 @@ const TickerItem = ({ tickr }) => {
 		<div className='tickr-item'>
 			<img
 				src={`./exchangeLogos/${tickr.market.identifier}.png`}
-				// onError="this.src='./logo182.png'"
 				onError={({ currentTarget }) => {
 					currentTarget.onerror = null;
 					currentTarget.src = './logo192.png';
 				}}
 			/>
-			{tickr.market.name}
-			{tickr.last}
-			{tickr.converted_volume.usd}
+			<div>{tickr.market.name}</div>
+			<div>{tickr.last}</div>
+			<div>{tickr.converted_volume.usd}</div>
 		</div>
 	);
 };
