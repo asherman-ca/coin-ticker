@@ -123,9 +123,9 @@ const CoinView = () => {
 					</div>
 				</div>
 
-				<Embed symbol={coin.symbol} />
-
 				{console.log('tickets', coin)}
+
+				<Embed symbol={coin.symbol} />
 
 				<div className='tickr-row'>
 					<div className='header'>Tickrs</div>

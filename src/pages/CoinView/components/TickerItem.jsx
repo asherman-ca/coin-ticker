@@ -11,9 +11,13 @@ const TickerItem = ({ tickr }) => {
 					currentTarget.src = './logo192.png';
 				}}
 			/>
-			<div>{tickr.market.name}</div>
-			<div>{tickr.last}</div>
-			<div>{tickr.converted_volume.usd}</div>
+			<div>
+				<div>{tickr.market.name}</div>
+			</div>
+			<div>
+				<div>{tickr.last}</div>
+				<div>{tickr.converted_volume.usd}</div>
+			</div>
 		</div>
 	);
 };

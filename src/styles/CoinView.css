@@ -65,25 +65,55 @@
 	width: 100%;
 }
 
+.tickr-row {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.tickr-row > .header {
+	font-weight: bold;
+	font-size: 2rem;
+}
+
 .tickrs {
 	display: flex;
 	flex-wrap: wrap;
+
+	padding: 0 1rem;
+	border: 0.75px solid var(--grey-border);
+	background: white;
 }
 
 .tickr-item {
-	width: 30%;
-	margin-right: 5%;
+	width: 32%;
+	margin-right: 2%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	/* gap: 1rem; */
 
-	padding: 1rem 0;
-	border-bottom: 1px solid var(--grey-border);
+	padding: 1rem;
+	border-top: 1px solid var(--grey-border);
+	/* background: white; */
+}
+
+:is(.tickrs .tickr-item:nth-child(1), .tickrs .tickr-item:nth-child(2), .tickrs
+		.tickr-item:nth-child(3)) {
+	border-top: none;
 }
 
 .tickrs .tickr-item:nth-child(3n) {
 	margin-right: 0;
+}
+
+.tickr-item > *:nth-child(2) {
+	margin-right: auto;
+	margin-left: 1rem;
+}
+
+.tickr-item > *:nth-child(3) {
+	text-align: right;
 }
 
 .tickr-item img {
@@ -91,60 +121,7 @@
 	height: 50px;
 }
 
-/* .ticker-row {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-}
-
-.ticker-row .header {
-	display: flex;
-
-	font-size: 2rem;
-	font-weight: bold;
-}
-
-.ticker-row .title {
-	color: var(--clr-grey);
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-weight: bold;
-}
-
-.tickers {
-	padding: 1rem 1rem 0;
-
-	display: flex;
-	flex-wrap: wrap;
-
-	border: 1px solid #d9dadb;
-	background-color: white;
-}
-
-.tickers .col {
-	width: 12.5%;
-	margin-bottom: 1rem;
-
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-
-	gap: 0.5rem;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.tickers .col .meta {
-	padding-top: 0.5rem;
-	border-top: 1px solid #d9dadb;
-} */
-
 @media (max-width: 1000px) {
-	.tickers .col {
-		width: 16.666%;
-	}
 	/* .detail-row .col:nth-child(n + 4) {
 		display: none;
 	} */
@@ -158,11 +135,6 @@
 }
 
 @media (max-width: 600px) {
-	.tickers .col {
-		/* width: 33.333%; */
-		width: 33.333%;
-	}
-
 	.detail-row .col:nth-child(n + 4) {
 		display: none;
 	}
@@ -173,9 +145,7 @@
 }
 
 .description-row {
-	/* margin-top: -1rem; */
 	padding-bottom: 1rem;
-	/* padding-top: -2rem; */
 
 	display: flex;
 	flex-direction: column;
@@ -183,7 +153,6 @@
 }
 
 .description-row span:nth-child(1) {
-	/* color: var(--clr-grey); */
 	font-weight: bold;
 	font-size: 2rem;
 }
