@@ -171,19 +171,25 @@
 }
 
 @keyframes spinIn {
-	from {
+	0% {
 		transform: rotate(0deg);
 	}
-	to {
+	25% {
+		transform: rotate(-90deg);
+	}
+	100% {
 		transform: rotate(360deg);
 	}
 }
 
 @keyframes spinOut {
-	from {
+	0% {
 		transform: rotate(0deg);
 	}
-	to {
+	25% {
+		transform: rotate(90deg);
+	}
+	100% {
 		transform: rotate(-360deg);
 	}
 }

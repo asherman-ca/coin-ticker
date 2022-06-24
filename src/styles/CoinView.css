@@ -170,15 +170,17 @@
 }
 
 .description-row {
-	padding-bottom: 1rem;
-
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
+	gap: 1rem;
+
+	padding: 2rem;
+	border: 0.75px solid var(--grey-border);
+	background: white;
 }
 
 .description-row span:nth-child(1) {
-	font-weight: bold;
+	/* font-weight: bold; */
 	font-size: 2rem;
 }
 

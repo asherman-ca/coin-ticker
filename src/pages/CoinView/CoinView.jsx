@@ -140,23 +140,9 @@ const CoinView = () => {
 					</div>
 				</div>
 
-				{/* <div className='ticker-row'>
-					<div className='header'>Tickrs</div>
-					<div className='tickers'>
-						{basedAndSymbol.map((el) => (
-							<div key={el.trade_url} className='col'>
-								<div className='title'>{nameReducer(el.market.name)}</div>
-								<div className='meta'>
-									${el.last < 1.1 ? el.last.toFixed(4) : el.last.toFixed(2)}
-								</div>
-							</div>
-						))}
-					</div>
-				</div> */}
-
 				{coin.description.en && (
 					<div className='description-row'>
-						<span>About</span>
+						<span>About {coin.symbol}</span>
 						{coin.description.en.replace(/<\/?a[^>]*>/g, '')}
 					</div>
 				)}
