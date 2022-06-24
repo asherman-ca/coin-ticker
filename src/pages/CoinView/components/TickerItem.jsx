@@ -5,7 +5,12 @@ import { cleanInt } from '../../../utils/stringUtils';
 const TickerItem = ({ tickr }) => {
 	console.log('tickr item', tickr);
 	return (
-		<div className='tickr-item'>
+		<a
+			href={`${tickr.trade_url}`}
+			target='_blank'
+			rel='noopener noreferrer'
+			className='tickr-item'
+		>
 			<img
 				src={`./exchangeLogos/${tickr.market.identifier}.png`}
 				onError={({ currentTarget }) => {
@@ -23,7 +28,7 @@ const TickerItem = ({ tickr }) => {
 					${(tickr.converted_volume.usd / 1000000).toFixed(2)}M
 				</div>
 			</div>
-		</div>
+		</a>
 	);
 };
 
