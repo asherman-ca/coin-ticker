@@ -120,8 +120,9 @@
 
 	cursor: pointer;
 	color: var(--clr-blk-button);
+	font-size: 1rem;
 	font-weight: bold;
-	border: 1.5px solid transparent;
+	border: 2px solid transparent;
 }
 
 .nav-link:hover {

@@ -65,10 +65,9 @@ const Nav = ({ coinsLoading, coins }) => {
 	} else {
 		authButton = (
 			<>
-				<i
-					onClick={() => navigate('/account')}
-					className='fa-solid fa-wallet'
-				></i>
+				<div onClick={() => navigate('/account')} className='nav-link'>
+					Account
+				</div>
 				<div onClick={onLogout} className='nav-link'>
 					Logout
 				</div>
