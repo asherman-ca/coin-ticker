@@ -79,11 +79,10 @@
 
 .gate-button .button-bg {
 	position: absolute;
-	/* bottom: 0; */
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: 0%;
 	visibility: hidden;
 	z-index: 10;
 
@@ -92,6 +91,8 @@
 	white-space: nowrap;
 	background-color: black;
 	color: white;
+
+	transition: all 0.2s ease;
 }
 
 .gate-button .button-bg > div {
@@ -100,37 +101,7 @@
 
 .gate-button:hover .button-bg {
 	visibility: visible;
-	animation: gateIn 0.2s ease;
-
-	/* opacity: 0;
-	transition: opacity 1s ease-in; */
-}
-
-.button-bg:not(:hover) {
-	animation: gateOut 0.2s ease;
-
-	/* opacity: 0;
-	transition: opacity 1s ease-in; */
-}
-
-@keyframes gateIn {
-	0% {
-		height: 0%;
-	}
-	100% {
-		height: 100%;
-	}
-}
-
-@keyframes gateOut {
-	0% {
-		visibility: initial;
-		height: 100%;
-	}
-	100% {
-		visibility: hidden;
-		height: 0%;
-	}
+	height: 100%;
 }
 
 .red-button {
