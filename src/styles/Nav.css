@@ -152,10 +152,13 @@
 
 .nav-link-dropdown > div {
 	padding: 0.25rem 0.5rem;
+	font-weight: normal;
+	color: var(--clr-blk-button);
 }
 
 .nav-link-dropdown > div:hover {
 	background-color: var(--bg-grey);
+	color: black;
 	cursor: pointer;
 }
 
