@@ -63,7 +63,10 @@ const CoinView = () => {
 			<div className='coin-view'>
 				<header>
 					<img src={coin.image.small} alt='logo' />
-					{capitalize(coin.id)} ({coin.symbol})
+					<div>
+						<div className='title'>{capitalize(coin.id)}</div>
+						<div className='subtitle'>{coin.symbol}</div>
+					</div>
 				</header>
 
 				<div className='detail-row'>
@@ -74,7 +77,7 @@ const CoinView = () => {
 						</div>
 					</div>
 					<div className='col'>
-						<div className='title'>/ 24hr</div>
+						<div className='title'>24hr</div>
 						<div
 							className={
 								changeDirection(coin.market_data.price_change_percentage_24h) +
@@ -85,7 +88,7 @@ const CoinView = () => {
 						</div>
 					</div>
 					<div className='col'>
-						<div className='title'>/ 7d</div>
+						<div className='title'>7d</div>
 						<div
 							className={
 								changeDirection(coin.market_data.price_change_percentage_7d) +
@@ -97,7 +100,7 @@ const CoinView = () => {
 					</div>
 
 					<div className='col'>
-						<div className='title'>/ ATH</div>
+						<div className='title'>ATH</div>
 						<div
 							className={
 								changeDirection(coin.market_data.ath_change_percentage.usd) +
