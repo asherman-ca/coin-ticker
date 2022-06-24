@@ -9,6 +9,11 @@
 	gap: 2rem;
 }
 
+.coin-view > header > img {
+	width: 60px;
+	height: 60px;
+}
+
 .coin-view header {
 	margin-bottom: 1rem;
 
@@ -23,7 +28,7 @@
 	font-weight: bold;
 }
 
-.coin-view .subtitle {
+.coin-view header .subtitle {
 	font-size: 1.5rem;
 	color: var(--clr-grey);
 }
@@ -77,8 +82,11 @@
 	gap: 2rem;
 }
 
-.tickr-row > .header {
-	font-weight: bold;
+.tickrs > .header {
+	width: 100%;
+	padding: 1rem;
+
+	/* font-weight: 500; */
 	font-size: 2rem;
 }
 
@@ -97,7 +105,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	/* gap: 1rem; */
 
 	padding: 1rem;
 	border-top: 1px solid var(--grey-border);
@@ -109,7 +116,7 @@
 }
 
 :is(.tickrs .tickr-item:nth-child(1), .tickrs .tickr-item:nth-child(2), .tickrs
-		.tickr-item:nth-child(3)) {
+		.tickr-item:nth-child(3), .tickrs .tickr-item:nth-child(4)) {
 	border-top: none;
 }
 

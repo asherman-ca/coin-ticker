@@ -3,7 +3,6 @@ import React from 'react';
 import { cleanInt } from '../../../utils/stringUtils';
 
 const TickerItem = ({ tickr }) => {
-	console.log('tickr item', tickr);
 	return (
 		<a
 			href={`${tickr.trade_url}`}

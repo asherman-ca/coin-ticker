@@ -60,9 +60,10 @@ const CoinView = () => {
 
 	return (
 		<div className='home-container'>
+			{console.log('coin', coin)}
 			<div className='coin-view'>
 				<header>
-					<img src={coin.image.small} alt='logo' />
+					<img src={coin.image.large} alt='logo' />
 					<div>
 						<div className='title'>{capitalize(coin.id)}</div>
 						<div className='subtitle'>{coin.symbol}</div>
@@ -131,8 +132,8 @@ const CoinView = () => {
 				<Embed symbol={coin.symbol} />
 
 				<div className='tickr-row'>
-					<div className='header'>Tickrs</div>
 					<div className='tickrs'>
+						<div className='header'>{coin.symbol} markets</div>
 						{basedAndSymbol.map((tickr) => (
 							<TickerItem key={tickr.trade_url} tickr={tickr} />
 						))}
