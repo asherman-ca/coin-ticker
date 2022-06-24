@@ -114,6 +114,8 @@
 }
 
 .nav-link {
+	position: relative;
+
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -128,6 +130,33 @@
 .nav-link:hover {
 	color: black;
 	border-bottom-color: black;
+}
+
+.nav-link:hover .nav-link-dropdown,
+.nav-link-dropdown:hover {
+	visibility: visible;
+}
+
+.nav-link-dropdown {
+	position: absolute;
+
+	top: 100%;
+	transform: translateX(-25%);
+
+	visibility: hidden;
+	margin-top: 2px;
+	padding: 1rem;
+	background: white;
+	border: 1px solid var(--grey-border);
+}
+
+.nav-link-dropdown > div {
+	padding: 0.25rem 0.5rem;
+}
+
+.nav-link-dropdown > div:hover {
+	background-color: var(--bg-grey);
+	cursor: pointer;
 }
 
 .sign-out-button:hover {

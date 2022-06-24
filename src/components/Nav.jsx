@@ -65,8 +65,13 @@ const Nav = ({ coinsLoading, coins }) => {
 	} else {
 		authButton = (
 			<>
-				<div onClick={() => navigate('/account')} className='nav-link'>
+				<div className='nav-link'>
 					Account
+					<div className='nav-link-dropdown'>
+						<div onClick={() => navigate('/account')}>Spot</div>
+						<div onClick={() => navigate('/account')}>Derivative</div>
+						<div onClick={() => navigate('/account')}>TestNet</div>
+					</div>
 				</div>
 				<div onClick={onLogout} className='nav-link'>
 					Logout
