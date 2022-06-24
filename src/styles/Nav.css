@@ -121,6 +121,7 @@
 
 :is(.search-div:focus-within .search-prefill, .search-prefill:hover) {
 	visibility: visible;
+	box-shadow: var(--shadow-smallest);
 }
 
 .search-prefill {

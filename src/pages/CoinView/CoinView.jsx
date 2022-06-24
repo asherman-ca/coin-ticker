@@ -66,7 +66,7 @@ const CoinView = () => {
 					<img src={coin.image.large} alt='logo' />
 					<div>
 						<div className='title'>{capitalize(coin.id)}</div>
-						<div className='subtitle'>{coin.symbol}</div>
+						<div className='subtitle'>{coin.symbol.toUpperCase()}</div>
 					</div>
 				</header>
 
@@ -133,7 +133,7 @@ const CoinView = () => {
 
 				<div className='tickr-row'>
 					<div className='tickrs'>
-						<div className='header'>{coin.symbol} markets</div>
+						<div className='header'>{coin.symbol.toUpperCase()} markets</div>
 						{basedAndSymbol.map((tickr) => (
 							<TickerItem key={tickr.trade_url} tickr={tickr} />
 						))}
@@ -142,7 +142,7 @@ const CoinView = () => {
 
 				{coin.description.en && (
 					<div className='description-row'>
-						<span>About {coin.symbol}</span>
+						<span>About {coin.symbol.toUpperCase()}</span>
 						{coin.description.en.replace(/<\/?a[^>]*>/g, '')}
 					</div>
 				)}
