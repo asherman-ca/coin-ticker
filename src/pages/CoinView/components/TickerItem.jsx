@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { cleanInt } from '../../../utils/stringUtils';
+
 const TickerItem = ({ tickr }) => {
 	console.log('tickr item', tickr);
 	return (
@@ -12,11 +14,14 @@ const TickerItem = ({ tickr }) => {
 				}}
 			/>
 			<div>
-				<div>{tickr.market.name}</div>
+				<div className='title'>{tickr.market.name}</div>
+				<div className='subtitle'>{tickr.target}</div>
 			</div>
 			<div>
-				<div>{tickr.last}</div>
-				<div>{tickr.converted_volume.usd}</div>
+				<div>${cleanInt(tickr.last)}</div>
+				<div className='subtitle'>
+					${(tickr.converted_volume.usd / 1000000).toFixed(2)}M
+				</div>
 			</div>
 		</div>
 	);

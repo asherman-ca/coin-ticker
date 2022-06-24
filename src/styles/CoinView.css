@@ -68,7 +68,7 @@
 .tickr-row {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 2rem;
 }
 
 .tickr-row > .header {
@@ -80,7 +80,7 @@
 	display: flex;
 	flex-wrap: wrap;
 
-	padding: 0 1rem;
+	padding: 1rem;
 	border: 0.75px solid var(--grey-border);
 	background: white;
 }
@@ -95,7 +95,11 @@
 
 	padding: 1rem;
 	border-top: 1px solid var(--grey-border);
-	/* background: white; */
+	cursor: pointer;
+}
+
+.tickr-item:hover {
+	background: var(--bg-grey);
 }
 
 :is(.tickrs .tickr-item:nth-child(1), .tickrs .tickr-item:nth-child(2), .tickrs
@@ -114,6 +118,14 @@
 
 .tickr-item > *:nth-child(3) {
 	text-align: right;
+}
+
+.tickr-item .title {
+	font-weight: bold;
+}
+
+.tickr-item .subtitle {
+	color: var(--clr-grey);
 }
 
 .tickr-item img {
