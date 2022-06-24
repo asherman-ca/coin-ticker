@@ -69,10 +69,9 @@ const Nav = ({ coinsLoading, coins }) => {
 					onClick={() => navigate('/account')}
 					className='fa-solid fa-wallet'
 				></i>
-				<i
-					onClick={onLogout}
-					className='fa-solid fa-arrow-right-from-bracket'
-				></i>
+				<div onClick={onLogout} className='nav-link'>
+					Logout
+				</div>
 			</>
 		);
 	}
