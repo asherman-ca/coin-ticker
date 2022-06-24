@@ -74,13 +74,11 @@
 }
 
 .logo-div i {
-	animation-name: spinOut;
-	animation-duration: 0.75s;
+	transition: transform 0.65s cubic-bezier(0.8, -0.8, 0.2, 1.8) 0s;
 }
 
 .logo-div:hover i {
-	animation-name: spinIn;
-	animation-duration: 0.75s;
+	transform: rotate(360deg);
 }
 
 .nav-links {
