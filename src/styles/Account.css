@@ -141,7 +141,6 @@
 }
 
 .account .header {
-	font-weight: bold;
 	font-size: 1.5rem;
 }
 
@@ -163,8 +162,8 @@
 	gap: 1rem;
 }
 
-.secondary-col .buy-sell-form select {
-	padding: 0.5rem;
+.secondary-col .buy-sell-form :is(select, input) {
+	padding: 0.75rem;
 	border-radius: 0.5rem;
 	border: 0.5px solid var(--clr-blk-button);
 
@@ -178,14 +177,7 @@
 
 .secondary-col .buy-sell-form :is(input, select):focus-visible {
 	outline: none;
-}
-
-.secondary-col .buy-sell-form :is(input) {
-	padding: 0.5rem;
-	border-radius: 0.5rem;
-	border: 0.5px solid var(--clr-blk-button);
-
-	font-size: 1rem;
+	color: black;
 }
 
 .secondary-col .button-row {
