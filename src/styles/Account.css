@@ -210,28 +210,6 @@
 	flex-basis: 100%;
 }
 
-/* .secondary-col .buy-sell-form button:nth-child(1) {
-	color: white;
-	background-color: var(--clr-blue);
-}
-
-.secondary-col .buy-sell-form button:nth-child(2) {
-	color: white;
-	background-color: red;
-}
-
-.secondary-col .buy-sell-form button:nth-child(1):hover {
-	background-color: white;
-	color: var(--clr-blue);
-	border-color: var(--clr-blue);
-}
-
-.secondary-col .buy-sell-form button:nth-child(2):hover {
-	color: red;
-	background-color: white;
-	border: 1px solid red;
-} */
-
 @media (max-width: 700px) {
 	.account {
 		flex-direction: column-reverse;
