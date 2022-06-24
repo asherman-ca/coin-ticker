@@ -138,21 +138,23 @@
 }
 
 .nav-link-dropdown {
+	visibility: hidden;
 	position: absolute;
-
 	top: 100%;
+	margin-top: 2px;
+	padding: 0.5rem 0;
+
 	transform: translateX(-25%);
 
-	visibility: hidden;
-	margin-top: 2px;
-	padding: 1rem;
+	font-weight: 500;
 	background: white;
 	border: 1px solid var(--grey-border);
+	box-shadow: var(--shadow-smallest);
 }
 
 .nav-link-dropdown > div {
-	padding: 0.25rem 0.5rem;
-	font-weight: normal;
+	padding: 0.25rem 1rem;
+	/* font-weight: normal; */
 	color: var(--clr-blk-button);
 }
 
