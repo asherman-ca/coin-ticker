@@ -162,8 +162,9 @@
 	gap: 1rem;
 }
 
-.secondary-col .buy-sell-form :is(select, input) {
-	padding: 0.75rem;
+.secondary-col :is(.input-container, select) {
+	display: flex;
+	padding: 0.5rem;
 	border-radius: 0.5rem;
 	border: 0.5px solid var(--clr-blk-button);
 
@@ -171,11 +172,23 @@
 	color: var(--clr-grey);
 }
 
-.secondary-col .buy-sell-form input:focus {
-	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
+.buy-sell-form input {
+	width: 100%;
+	padding: 0.5rem;
+	border: none;
+	color: var(--clr-grey);
 }
 
-.secondary-col .buy-sell-form :is(input, select):focus-visible {
+.buy-sell-form select {
+	padding: 1rem !important;
+}
+
+.buy-sell-form .input-container:focus-within {
+	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
+	/* color: black; */
+}
+
+.buy-sell-form :is(input, select):focus-within {
 	outline: none;
 	color: black;
 }

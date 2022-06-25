@@ -27,18 +27,24 @@ const OrderForm = ({
 						</option>
 					))}
 				</select>
-				<input
-					onChange={(e) => onChange(e, setFormData)}
-					id='price'
-					placeholder={formData.price}
-					type='number'
-				/>
-				<input
-					onChange={(e) => onChange(e, setFormData)}
-					id='spent'
-					placeholder='$ Amount'
-					type='number'
-				/>
+				<div className='input-container'>
+					$
+					<input
+						onChange={(e) => onChange(e, setFormData)}
+						id='price'
+						placeholder={formData.price}
+						type='number'
+					/>
+				</div>
+				<div className='input-container'>
+					$
+					<input
+						onChange={(e) => onChange(e, setFormData)}
+						id='spent'
+						placeholder='Amount'
+						type='number'
+					/>
+				</div>
 				<div className='button-row'>
 					<GateButton
 						onClick={(e) =>
