@@ -164,9 +164,11 @@
 
 .secondary-col :is(.input-container, select) {
 	display: flex;
-	padding: 0.5rem;
+	align-items: center;
+	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;
 	border: 0.5px solid var(--clr-blk-button);
+	gap: 0.1rem;
 
 	font-size: 1rem;
 	color: var(--clr-grey);
@@ -174,9 +176,10 @@
 
 .buy-sell-form input {
 	width: 100%;
-	padding: 0.5rem;
+	height: 100%;
 	border: none;
 	color: var(--clr-grey);
+	font-size: 1rem;
 }
 
 .buy-sell-form select {

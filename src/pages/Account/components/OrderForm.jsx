@@ -28,7 +28,7 @@ const OrderForm = ({
 					))}
 				</select>
 				<div className='input-container'>
-					$
+					<div>$</div>
 					<input
 						onChange={(e) => onChange(e, setFormData)}
 						id='price'
@@ -37,7 +37,7 @@ const OrderForm = ({
 					/>
 				</div>
 				<div className='input-container'>
-					$
+					<div>$</div>
 					<input
 						onChange={(e) => onChange(e, setFormData)}
 						id='spent'
