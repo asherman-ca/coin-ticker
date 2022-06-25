@@ -1,7 +1,7 @@
 .coin-view {
 	width: 100%;
 	max-width: 1200px;
-	padding: 2rem 1rem 1rem;
+	padding: 3rem 1rem 1rem;
 
 	display: flex;
 	flex-direction: column;
@@ -11,6 +11,7 @@
 
 .detail-row {
 	width: 100%;
+	margin-bottom: 2rem;
 
 	display: flex;
 	flex-direction: row;
