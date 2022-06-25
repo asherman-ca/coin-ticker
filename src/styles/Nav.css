@@ -167,10 +167,6 @@
 	transition: padding 0.2s ease;
 }
 
-.nav-link-dropdown > div:hover {
-	padding: 0.5rem;
-}
-
 .nav-link-dropdown i {
 	font-size: 1rem;
 }
@@ -181,9 +177,10 @@
 }
 
 .nav-link-dropdown > div:hover {
-	background-color: var(--bg-grey);
+	background: var(--bg-blue);
 	color: black;
 	cursor: pointer;
+	padding: 0.5rem;
 }
 
 /* search prefill dropdown */
@@ -234,7 +231,7 @@
 
 .prefill-item:hover {
 	color: black;
-	background-color: var(--grey-hover);
+	background: var(--bg-blue);
 	padding: 0.75rem;
 }
 

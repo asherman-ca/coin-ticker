@@ -9,13 +9,8 @@
 }
 
 .coin-list-item:hover {
-	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
-	background-color: rgb(251, 253, 255);
+	background: var(--bg-blue);
 	transition: all 0.2s ease 0s;
-}
-
-.coin-list-item:hover .link-col {
-	color: var(--clr-grey);
 }
 
 .coin-list-item .col {

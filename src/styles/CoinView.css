@@ -112,7 +112,7 @@
 }
 
 .tickr-item:hover {
-	background: var(--bg-grey);
+	background: var(--bg-blue);
 }
 
 :is(.tickrs .tickr-item:nth-child(1), .tickrs .tickr-item:nth-child(2), .tickrs
