@@ -70,7 +70,7 @@ const Nav = ({ coinsLoading, coins }) => {
 					<div className='nav-link-dropdown'>
 						<div onClick={() => navigate('/account')}>Spot</div>
 						<div onClick={() => navigate('/account')}>Derivatives</div>
-						<div onClick={() => navigate('/account')}>TestNet</div>
+						<div onClick={() => navigate('/account')}>Profile</div>
 					</div>
 				</div>
 				<div onClick={onLogout} className='nav-link'>

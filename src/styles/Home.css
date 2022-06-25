@@ -33,8 +33,7 @@
 .coin-list {
 	display: flex;
 	flex-direction: column;
-	padding: 0 1rem;
-	/* gap: 1rem; */
+	padding: 1rem;
 
 	border: 0.5px solid var(--clr-grey);
 	border-radius: 0.5rem;
@@ -78,7 +77,6 @@
 .coin-list-header .link-col {
 	justify-content: left !important;
 	gap: 1rem;
-	/* padding-left: calc(1rem + 25px); */
 }
 
 .coin-list-header .icon-holder {
@@ -86,14 +84,6 @@
 }
 
 @media (max-width: 600px) {
-	/* .coin-list-header .col {
-		width: 22%;
-	}
-
-	.coin-list-header .link-col {
-		width: 12%;
-	} */
-
 	.coin-list-header .daily-col {
 		display: none;
 	}
@@ -107,6 +97,11 @@
 	.coin-list-header .weekly-col {
 		display: none;
 	}
+}
+
+.coin-list .coin-list-item:last-child {
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
 }
 
 .pagination-container {
