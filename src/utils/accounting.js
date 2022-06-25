@@ -80,6 +80,7 @@ const calcPNL = (orders, coins) => {
 				total: order.data.spent / order.data.price,
 				totalSold: 0,
 				earn: 0,
+				coinId: order.data.coinId,
 			};
 		} else {
 			accounts[order.data.coin].spent += order.data.spent;
@@ -112,6 +113,7 @@ const calcPNL = (orders, coins) => {
 			totalCoins: account.total,
 			averagePrice: account.averagePrice,
 			rpnl: account.earn - account.totalSold * account.averagePrice,
+			coinId: account.coinId,
 		});
 	});
 

@@ -40,15 +40,17 @@ const onChange = (e, setFormData) => {
 
 const onSelect = (e, setFormData, coins) => {
 	let price;
+	let coinId;
 	coins.forEach((el) => {
 		if (el.name === e.target.value) {
 			price = el.market_data.current_price.usd;
+			coinId = el.id;
 		}
 	});
-
 	setFormData((prev) => ({
 		...prev,
 		price,
+		coinId,
 		coin: e.target.value,
 	}));
 };
