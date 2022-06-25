@@ -140,10 +140,11 @@
 	visibility: hidden;
 	position: absolute;
 	top: 100%;
+	left: 50%;
 	margin-top: 2px;
 	padding: 0.5rem;
 
-	transform: translateX(-25%);
+	transform: translateX(-50%);
 
 	font-weight: 500;
 	background: white;
@@ -220,7 +221,7 @@
 	align-items: center;
 	gap: 0.75rem;
 
-	padding: 0.25rem 0.75rem;
+	padding: 0.5rem 0.75rem;
 	color: var(--clr-blk-button);
 	border-top: 1px solid var(--grey-border);
 	cursor: pointer;

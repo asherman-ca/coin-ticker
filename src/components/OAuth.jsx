@@ -32,7 +32,12 @@ function OAuth() {
 		}
 	};
 
-	return <i className='fa-solid fa-circle-user' onClick={onGoogleClick}></i>;
+	// return <i className='fa-solid fa-circle-user' onClick={onGoogleClick}></i>;
+	return (
+		<div onClick={onGoogleClick}>
+			<i className='fa-brands fa-google'></i>Google
+		</div>
+	);
 }
 
 export default OAuth;

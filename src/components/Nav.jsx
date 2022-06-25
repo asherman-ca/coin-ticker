@@ -61,7 +61,20 @@ const Nav = ({ coinsLoading, coins }) => {
 	if (loading) {
 		authButton = <div></div>;
 	} else if (!loggedIn) {
-		authButton = <OAuth />;
+		authButton = (
+			<div className='nav-link'>
+				Account
+				<div className='nav-link-dropdown'>
+					<OAuth />
+					<div>
+						<i className='fa-solid fa-arrow-right-to-bracket'></i>Login
+					</div>
+					<div>
+						<i className='fa-solid fa-address-card'></i>Register
+					</div>
+				</div>
+			</div>
+		);
 	} else {
 		authButton = (
 			<>
