@@ -8,7 +8,6 @@ import {
 	capitalize,
 	changeDirection,
 	decimalReducer,
-	nameReducer,
 	cleanInt,
 } from '../../utils/stringUtils';
 import TickerItem from './components/TickerItem';
@@ -62,15 +61,14 @@ const CoinView = () => {
 		<div className='home-container'>
 			{console.log('coin', coin)}
 			<div className='coin-view'>
-				<header>
-					<img src={coin.image.large} alt='logo' />
-					<div>
-						<div className='title'>{capitalize(coin.id)}</div>
-						<div className='subtitle'>{coin.symbol.toUpperCase()}</div>
-					</div>
-				</header>
-
 				<div className='detail-row'>
+					<div className='header-col'>
+						<img src={coin.image.large} alt='' />
+						<div>
+							<div className='title'>{capitalize(coin.id)}</div>
+							<div className='subtitle'>{coin.symbol.toUpperCase()}</div>
+						</div>
+					</div>
 					<div className='col'>
 						<div className='title'>Price</div>
 						<div className='meta'>
@@ -129,8 +127,6 @@ const CoinView = () => {
 
 				{console.log('tickets', coin)}
 
-				<Embed symbol={coin.symbol} />
-
 				<div className='tickr-row'>
 					<div className='tickrs'>
 						<div className='header'>{coin.symbol.toUpperCase()} markets</div>
@@ -139,6 +135,8 @@ const CoinView = () => {
 						))}
 					</div>
 				</div>
+
+				<Embed symbol={coin.symbol} />
 
 				{coin.description.en && (
 					<div className='description-row'>

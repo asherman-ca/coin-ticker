@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cleanInt } from '../../../utils/stringUtils';
+import { cleanInt, nameReducer } from '../../../utils/stringUtils';
 
 const TickerItem = ({ tickr }) => {
 	return (
@@ -18,7 +18,7 @@ const TickerItem = ({ tickr }) => {
 				}}
 			/>
 			<div>
-				<div className='title'>{tickr.market.name}</div>
+				<div className='title'>{nameReducer(tickr.market.name)}</div>
 				<div className='subtitle'>{tickr.target}</div>
 			</div>
 			<div>
