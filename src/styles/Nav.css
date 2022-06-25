@@ -157,6 +157,14 @@
 	padding: 0.25rem 0.5rem;
 	/* font-weight: normal; */
 	color: var(--clr-blk-button);
+
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.nav-link-dropdown i {
+	font-size: 1rem;
 }
 
 .nav-link-dropdown > div:last-child {

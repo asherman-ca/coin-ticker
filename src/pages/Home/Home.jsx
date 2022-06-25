@@ -4,7 +4,7 @@ import Pagination from './components/Pagination';
 import CoinListItem from './components/CoinListItem';
 import Spinner from '../../components/Spinner';
 
-const rowsPerPageOptions = [25, 50, 100];
+const rowsPerPageOptions = [10, 25, 50, 100];
 
 const Home = ({ coins, loading }) => {
 	const [currentPage, setCurrentPage] = useState(1);

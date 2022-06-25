@@ -68,9 +68,15 @@ const Nav = ({ coinsLoading, coins }) => {
 				<div className='nav-link'>
 					Account
 					<div className='nav-link-dropdown'>
-						<div onClick={() => navigate('/account')}>Spot</div>
-						<div onClick={() => navigate('/account')}>Derivatives</div>
-						<div onClick={() => navigate('/account')}>Profile</div>
+						<div onClick={() => navigate('/account')}>
+							<i class='fa-solid fa-coins'></i>Spot
+						</div>
+						<div onClick={() => navigate('/account')}>
+							<i className='fa-solid fa-dice'></i>Derivatives
+						</div>
+						<div onClick={() => navigate('/account')}>
+							<i className='fa-solid fa-circle-user'></i>Profile
+						</div>
 					</div>
 				</div>
 				<div onClick={onLogout} className='nav-link'>
