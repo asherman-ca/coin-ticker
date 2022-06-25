@@ -161,6 +161,12 @@
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+
+	transition: padding 0.2s ease;
+}
+
+.nav-link-dropdown > div:hover {
+	padding: 0.5rem;
 }
 
 .nav-link-dropdown i {
@@ -218,6 +224,8 @@
 	color: var(--clr-blk-button);
 	border-top: 1px solid var(--grey-border);
 	cursor: pointer;
+
+	transition: padding 0.2s ease;
 }
 
 .prefill-item img {
@@ -228,6 +236,7 @@
 .prefill-item:hover {
 	color: black;
 	background-color: var(--grey-hover);
+	padding: 0.75rem;
 }
 
 .search-prefill .prefill-item:first-child {
