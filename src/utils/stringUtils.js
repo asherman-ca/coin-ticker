@@ -26,13 +26,13 @@ const nameReducer = (string) => {
 };
 
 const cleanInt = (num) => {
-	if (num >= 1) {
+	if (num < 1 && num > 0) {
+		return num.toFixed(6);
+	} else {
 		return num
 			.toFixed(2)
 			.toString()
 			.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,');
-	} else {
-		return num.toFixed(2);
 	}
 };
 
