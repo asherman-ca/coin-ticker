@@ -201,14 +201,16 @@
 }
 
 .search-prefill {
+	visibility: hidden;
 	position: absolute;
 	left: 50%;
 	top: 100%;
 	width: 50%;
 	transform: translateX(-50%);
 	z-index: 10;
-	visibility: hidden;
 	padding: 0.5rem;
+	max-height: 50vh;
+	overflow-y: scroll;
 
 	border: 1px solid var(--grey-border);
 	border-bottom-left-radius: 0.5rem;
