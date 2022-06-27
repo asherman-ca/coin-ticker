@@ -49,17 +49,25 @@ const CoinView = () => {
 		);
 	}
 
+	const compare = (a, b) => {
+		if (a.last < b.last) {
+			return -1;
+		} else {
+			return 1;
+		}
+	};
+
 	const based = coin.tickers?.filter(
 		(el) => el.target === 'USDT' || el.target === 'USD'
 	);
 
 	const basedAndSymbol = based
 		.filter((el) => coin.symbol.toUpperCase() === el.base)
-		.slice(0, 24);
+		.slice(0, 24)
+		.sort((a, b) => compare(a, b));
 
 	return (
 		<div className='home-container'>
-			{console.log('coin', coin)}
 			<div className='coin-view'>
 				<div className='detail-row'>
 					<div className='header-col'>
@@ -124,8 +132,6 @@ const CoinView = () => {
 						</div>
 					</div>
 				</div>
-
-				{console.log('tickets', coin)}
 
 				<div className='tickr-row'>
 					<div className='tickrs'>
