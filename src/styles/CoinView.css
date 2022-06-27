@@ -189,7 +189,7 @@
 
 	.tickrs .tickr-item {
 		width: 100%;
-		margin-right: 0;
+		margin-right: 0 !important;
 	}
 
 	.tickrs :is(.tickr-item:nth-child(3)) {
