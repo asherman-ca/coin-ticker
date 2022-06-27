@@ -16,6 +16,7 @@ const TickerItem = ({ tickr }) => {
 					currentTarget.onerror = null;
 					currentTarget.src = './logo192.png';
 				}}
+				alt=''
 			/>
 			<div>
 				<div className='title'>{nameReducer(tickr.market.name)}</div>
