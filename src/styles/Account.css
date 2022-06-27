@@ -86,6 +86,11 @@
 	color: var(--clr-grey);
 }
 
+.order-item .order-item-link:hover {
+	cursor: pointer;
+	color: var(--clr-blue);
+}
+
 .list .fa-circle-minus:nth-child(n + 1):hover {
 	color: var(--clr-sell) !important;
 }
@@ -130,6 +135,10 @@
 
 .pnl-item > *:nth-child(n + 2) {
 	text-align: end;
+}
+
+.pnl-item .pnl-link:hover {
+	color: var(--clr-blue);
 }
 
 .secondary-col {

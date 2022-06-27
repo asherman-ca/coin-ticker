@@ -4,7 +4,9 @@ import { cleanInt } from '../../../utils/stringUtils';
 const PnlItem = ({ account }) => {
 	return (
 		<div className='pnl-item' key={account.coin}>
-			<Link to={`/${account.coinId}`}>{account.coin}</Link>
+			<Link to={`/${account.coinId}`} className='pnl-link'>
+				{account.coin}
+			</Link>
 			<div className={account.pnl >= 0 ? 'pos-change' : 'neg-change'}>
 				${cleanInt(account.pnl)}
 			</div>

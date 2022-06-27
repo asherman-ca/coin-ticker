@@ -1,10 +1,15 @@
+import { Link } from 'react-router-dom';
+
 import { cleanInt } from '../../../utils/stringUtils';
 
 const OrderItem = ({ order, onDelete }) => {
 	return (
 		<div className='order-item'>
+			{console.log('order', order)}
 			<i className='fa-solid fa-circle-minus' onClick={onDelete}></i>
-			<div>{order.data.coin}</div>
+			<Link to={`/${order.data.coinId}`} className='pnl-link'>
+				<div className='order-item-link'>{order.data.coin}</div>
+			</Link>
 			<div className={order.data.type === 'buy' ? 'pos-change' : 'neg-change'}>
 				{order.data.type}
 			</div>
