@@ -190,23 +190,27 @@
 	position: relative;
 } */
 
+.outer {
+	overflow-y: hidden;
+}
+
 .search-prefill {
 	visibility: hidden;
 	position: absolute;
 	left: 50%;
 	top: 100%;
 	width: 50%;
-	transform: translateX(-50%);
 	z-index: 10;
 	padding: 0 0.5rem;
 	max-height: 0px;
-	overflow-y: scroll;
-	transition: all 0.5s ease;
-	animation: grow 0.5s ease;
+	overflow-y: auto;
+	transition: all 0.4s ease;
+	animation: grow 0.4s ease;
 
+	transform: translateX(-50%);
 	border: 1px solid var(--grey-border);
 	border-bottom-left-radius: 0.5rem;
-	border-bottom-right-radius: 0.5rem;
+	/* border-bottom-right-radius: 0.5rem; */
 	background: white;
 	font-size: 1rem;
 	font-weight: 500;
@@ -256,7 +260,7 @@
 
 .search-prefill .prefill-item:last-child {
 	border-bottom-left-radius: 0.5rem;
-	border-bottom-right-radius: 0.5rem;
+	/* border-bottom-right-radius: 0.5rem; */
 }
 
 @keyframes grow {
