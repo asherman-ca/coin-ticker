@@ -24,6 +24,8 @@ const onOrder = async (e, type, formData, orders, setOrders, setPnl, coins) => {
 				timestamp: serverTimestamp(),
 			};
 
+			console.log(formDataCopy);
+
 			const res = await addDoc(collection(db, 'orders'), formDataCopy);
 			toast.success('Order created');
 

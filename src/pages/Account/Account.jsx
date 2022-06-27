@@ -57,6 +57,7 @@ const Account = () => {
 				...prev,
 				coin: response[0].name,
 				price: response[0].market_data.current_price.usd,
+				coinId: response[0].id,
 			}));
 
 			// task 3
