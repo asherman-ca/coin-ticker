@@ -146,19 +146,41 @@
 	height: 50px;
 }
 
-@media (max-width: 1000px) {
-	.detail-row {
-		width: 100%;
-	}
+@media (max-width: 1200px) {
 	.detail-row .col {
-		flex-grow: 1;
+		/* flex-grow: 1; */
 		padding: 1rem 0;
+	}
+}
+
+@media (max-width: 900px) {
+	.detail-row .col:nth-child(n + 5) {
+		display: none;
+	}
+
+	.tickrs .tickr-item {
+		width: 48%;
+		margin: 0 1%;
 	}
 }
 
 @media (max-width: 600px) {
 	.detail-row .col:nth-child(n + 4) {
 		display: none;
+	}
+
+	.detail-row > div {
+		padding: 1rem !important;
+		flex-basis: 100% !important;
+		/* width: 33.33%; */
+	}
+
+	.header-col {
+		gap: 0 !important;
+	}
+
+	.tickrs .tickr-item {
+		width: 100%;
 	}
 
 	#tradingview_929ec {
