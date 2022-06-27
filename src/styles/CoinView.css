@@ -121,7 +121,7 @@
 	border-top: none;
 }
 
-.tickrs .tickr-item:nth-child(3n) {
+.tickrs .tickr-item:nth-child(3n + 1) {
 	margin-right: 0;
 }
 
