@@ -10,6 +10,7 @@
 	background-color: white;
 
 	z-index: 1000;
+	position: relative;
 }
 
 .navbar {
@@ -186,7 +187,7 @@
 /* search prefill dropdown */
 
 .search-div {
-	position: relative;
+	/* position: relative; */
 }
 
 .search-div:focus-within .search-prefill,
@@ -201,15 +202,17 @@
 
 .search-prefill {
 	position: absolute;
-	left: 0;
+	left: 50%;
 	top: 100%;
-	width: 100%;
+	width: 50%;
+	transform: translateX(-50%);
 	z-index: 10;
 	visibility: hidden;
 	padding: 0.5rem;
 
 	border: 1px solid var(--grey-border);
-	border-radius: 0.5rem;
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
 	background: white;
 	font-size: 1rem;
 	font-weight: 500;
@@ -241,8 +244,8 @@
 
 .search-prefill .prefill-item:first-child {
 	border-top: none;
-	border-top-right-radius: 0.5rem;
-	border-top-left-radius: 0.5rem;
+	/* border-top-right-radius: 0.5rem;
+	border-top-left-radius: 0.5rem; */
 }
 
 .search-prefill .prefill-item:last-child {
