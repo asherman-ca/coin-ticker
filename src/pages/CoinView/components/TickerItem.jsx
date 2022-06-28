@@ -11,10 +11,10 @@ const TickerItem = ({ tickr }) => {
 			className='tickr-item'
 		>
 			<img
-				src={`./exchangeLogos/${tickr.market.identifier}.png`}
+				src={`../exchangeLogos/${tickr.market.identifier}.png`}
 				onError={({ currentTarget }) => {
 					currentTarget.onerror = null;
-					currentTarget.src = './logo192.png';
+					currentTarget.src = '../logo192.png';
 				}}
 				alt=''
 			/>

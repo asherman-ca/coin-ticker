@@ -24,19 +24,19 @@ const CoinView = () => {
 			);
 			if (!ref.ok) {
 				toast.error(`No results: "${params.coinId}"`);
-				clearInterval(interId);
+				// clearInterval(interId);
 				throw new Error('Thrown Error Thrown');
 			}
 			const response = await ref.json();
 			setCoin(response);
 			setLoading(false);
 		};
-		let interId = setInterval(apiFetch, 10000);
+		// let interId = setInterval(apiFetch, 10000);
 		apiFetch();
 
-		return () => {
-			clearInterval(interId);
-		};
+		// return () => {
+		// 	clearInterval(interId);
+		// };
 	}, [params.coinId]);
 
 	if (loading) {
@@ -136,6 +136,7 @@ const CoinView = () => {
 				<div className='tickr-row'>
 					<div className='tickrs'>
 						<div className='header'>{coin.symbol.toUpperCase()} markets</div>
+						{console.log('based', basedAndSymbol)}
 						{basedAndSymbol.map((tickr) => (
 							<TickerItem key={tickr.trade_url} tickr={tickr} />
 						))}

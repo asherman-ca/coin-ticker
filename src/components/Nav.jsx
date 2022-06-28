@@ -66,12 +66,12 @@ const Nav = ({ coinsLoading, coins }) => {
 				Account
 				<div className='nav-link-dropdown'>
 					<OAuth />
-					<div>
+					<Link to={'/signin'}>
 						<i className='fa-solid fa-arrow-right-to-bracket'></i>Login
-					</div>
-					<div>
+					</Link>
+					<Link to={'/signup'}>
 						<i className='fa-solid fa-address-card'></i>Register
-					</div>
+					</Link>
 				</div>
 			</div>
 		);

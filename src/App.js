@@ -38,7 +38,7 @@ function App() {
 				<Nav coinsLoading={loading} coins={coins} />
 				<Routes>
 					<Route path='/' element={<Home coins={coins} loading={loading} />} />
-					<Route path='/:coinId' element={<CoinView />} />
+					<Route path='/coins/:coinId' element={<CoinView />} />
 					<Route path='/signup' element={<SignUp />} />
 					<Route path='/signin' element={<SignIn />} />
 					<Route path='/account' element={<PrivateRoute />}>
