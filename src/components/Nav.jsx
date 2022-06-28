@@ -45,7 +45,7 @@ const Nav = ({ coinsLoading, coins }) => {
 	};
 
 	const onSuggestedClick = (suggestedId) => {
-		navigate(`/${suggestedId.toLowerCase()}`);
+		navigate(`/coins/${suggestedId.toLowerCase()}`);
 		setParam('');
 		setSearchFilter([]);
 	};
