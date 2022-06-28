@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import GateButton from '../../components/GateButton';
+import { Link } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
@@ -48,7 +49,10 @@ const SignIn = () => {
 							onChange={onChange}
 						/>
 
-						<GateButton onClick={onSubmit}>Submit</GateButton>
+						<div className='button-row'>
+							<Link to={'/signup'}>Need an account?</Link>
+							<GateButton onClick={onSubmit}>Submit</GateButton>
+						</div>
 					</form>
 				</div>
 			</div>

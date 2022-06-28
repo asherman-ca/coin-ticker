@@ -71,10 +71,7 @@ const Nav = ({ coinsLoading, coins }) => {
 				<div className='nav-link-dropdown'>
 					<OAuth />
 					<Link to={'/signin'}>
-						<i className='fa-solid fa-arrow-right-to-bracket'></i>Login
-					</Link>
-					<Link to={'/signup'}>
-						<i className='fa-solid fa-address-card'></i>Register
+						<i className='fa-solid fa-address-card'></i>Login
 					</Link>
 					<div onClick={onDemo}>
 						<i className='fa-solid fa-flask'></i>Demo

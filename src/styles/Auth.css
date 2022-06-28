@@ -41,6 +41,18 @@
 	outline: none;
 }
 
-.auth-form .gate-button {
+.auth-form .button-row {
 	margin-top: 0.5rem;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.auth-form .button-row > * {
+	flex-basis: 100%;
+}
+
+.auth-form a {
+	color: var(--clr-blue);
 }
