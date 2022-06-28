@@ -25,6 +25,8 @@ const SignUp = () => {
 		name: '',
 		password: '',
 		confirmPassword: '',
+		balance: 0,
+		testBalance: 0,
 	});
 
 	const navigate = useNavigate();
@@ -58,6 +60,7 @@ const SignUp = () => {
 
 			const formDataCopy = { ...formData };
 			delete formDataCopy.password;
+			delete formDataCopy.confirmPassword;
 			formDataCopy.timestamp = serverTimestamp();
 
 			await setDoc(doc(db, 'users', user.uid), formDataCopy);
