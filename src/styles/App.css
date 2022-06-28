@@ -75,6 +75,14 @@ body {
 	overflow-y: overlay;
 }
 
+.header {
+	font-size: 2rem;
+}
+
+.subheader {
+	color: var(--clr-grey);
+}
+
 /* Spinner */
 
 .spinner-box {

@@ -9,10 +9,15 @@ const SignUp = () => {
 	return (
 		<div className='container'>
 			<div className='auth'>
-				Sign Up
-				<form action='' className='auth-form' onSubmit={(e) => onSubmit(e)}>
-					<input type='text' />
-				</form>
+				<div className='auth-form-container'>
+					<div className='header'>Sign Up</div>
+					<div>to continue to Tickr</div>
+					<form className='auth-form' onSubmit={(e) => onSubmit(e)}>
+						<input type='text' />
+						<input type='text' />
+						<input type='text' />
+					</form>
+				</div>
 			</div>
 		</div>
 	);
