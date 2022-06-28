@@ -1,22 +1,38 @@
 import React, { useState } from 'react';
 import GateButton from '../../components/GateButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 import { toast } from 'react-toastify';
 
 const SignIn = () => {
 	const [formData, setFormData] = useState({
 		email: '',
-
 		password: '',
 	});
 
-	const onSubmit = () => {
+	const navigate = useNavigate();
+
+	const onSubmit = async () => {
 		if (Object.values(formData).some((el) => el == '')) {
 			toast.error('Complete all fields');
 		}
-		console.log('formData', formData);
-		console.log('hits');
+
+		try {
+			const auth = getAuth();
+
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				formData.email,
+				formData.password
+			);
+
+			if (userCredential.user) {
+				navigate('/account');
+			}
+		} catch (error) {
+			toast.error('Invalid credentials');
+		}
 	};
 
 	const onChange = (e) => {
