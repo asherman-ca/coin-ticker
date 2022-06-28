@@ -29,3 +29,14 @@
 	/* align-items: center; */
 	gap: 1rem;
 }
+
+.auth-form input {
+	padding: 1rem;
+
+	border: 0.5px solid var(--clr-grey);
+	border-radius: 0.5rem;
+}
+
+.auth-form input:focus-visible {
+	outline: none;
+}
