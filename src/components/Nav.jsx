@@ -57,6 +57,10 @@ const Nav = ({ coinsLoading, coins }) => {
 		toast.info('Logged Out');
 	};
 
+	const onDemo = () => {
+		console.log('demo');
+	};
+
 	let authButton;
 	if (loading) {
 		authButton = <div></div>;
@@ -72,6 +76,9 @@ const Nav = ({ coinsLoading, coins }) => {
 					<Link to={'/signup'}>
 						<i className='fa-solid fa-address-card'></i>Register
 					</Link>
+					<div onClick={onDemo}>
+						<i className='fa-solid fa-flask'></i>Demo
+					</div>
 				</div>
 			</div>
 		);

@@ -40,3 +40,7 @@
 .auth-form input:focus-visible {
 	outline: none;
 }
+
+.auth-form .gate-button {
+	margin-top: 0.5rem;
+}
