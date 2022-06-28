@@ -9,9 +9,28 @@
 	gap: 1rem;
 }
 
+.coin-view .header-row {
+	margin-bottom: 2rem;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.coin-view .header-row > div:first-child {
+	font-size: 2rem;
+	font-weight: 500;
+}
+
+.coin-view .header-row > div:last-child {
+	font-size: 1.25rem;
+	color: var(--clr-grey);
+}
+
 .detail-row {
 	width: 100%;
-	margin-bottom: 2rem;
+	/* margin-bottom: 2rem; */
 
 	display: flex;
 	flex-direction: row;

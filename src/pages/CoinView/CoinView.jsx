@@ -24,19 +24,19 @@ const CoinView = () => {
 			);
 			if (!ref.ok) {
 				toast.error(`No results: "${params.coinId}"`);
-				// clearInterval(interId);
+				clearInterval(interId);
 				throw new Error('Thrown Error Thrown');
 			}
 			const response = await ref.json();
 			setCoin(response);
 			setLoading(false);
 		};
-		// let interId = setInterval(apiFetch, 10000);
+		let interId = setInterval(apiFetch, 10000);
 		apiFetch();
 
-		// return () => {
-		// 	clearInterval(interId);
-		// };
+		return () => {
+			clearInterval(interId);
+		};
 	}, [params.coinId]);
 
 	if (loading) {
@@ -69,6 +69,10 @@ const CoinView = () => {
 	return (
 		<div className='home-container'>
 			<div className='coin-view'>
+				<div className='header-row'>
+					<div>{capitalize(coin.id)} Price</div>
+					<div>All About {capitalize(coin.id)}</div>
+				</div>
 				<div className='detail-row'>
 					<div className='header-col'>
 						<img src={coin.image.large} alt='' />
