@@ -32,42 +32,43 @@ const SignUp = () => {
 	const navigate = useNavigate();
 
 	const onSubmit = async () => {
-		if (Object.values(formData).some((el) => el == '')) {
+		console.log('form', formData);
+		if (Object.values(formData).some((el) => el === '')) {
 			toast.error('Complete all fields');
 		} else if (formData.password != formData.confirmPassword) {
 			toast.error('Passwords must match');
-		}
-
-		const existingUserRef = collection(db, 'users');
-		const q = query(
-			existingUserRef,
-			where('email', '==', formData.email),
-			limit(10)
-		);
-		const existingUserSnap = await getDocs(q);
-		if (existingUserSnap.empty) {
-			const auth = getAuth();
-			const userCredential = await createUserWithEmailAndPassword(
-				auth,
-				formData.email,
-				formData.password
-			);
-			const user = userCredential.user;
-
-			updateProfile(auth.currentUser, {
-				displayName: formData.name,
-			});
-
-			const formDataCopy = { ...formData };
-			delete formDataCopy.password;
-			delete formDataCopy.confirmPassword;
-			formDataCopy.timestamp = serverTimestamp();
-
-			await setDoc(doc(db, 'users', user.uid), formDataCopy);
-			toast.success('User created');
-			navigate('/account');
 		} else {
-			toast.error('Email address already in use');
+			const existingUserRef = collection(db, 'users');
+			const q = query(
+				existingUserRef,
+				where('email', '==', formData.email),
+				limit(10)
+			);
+			const existingUserSnap = await getDocs(q);
+			if (existingUserSnap.empty) {
+				const auth = getAuth();
+				const userCredential = await createUserWithEmailAndPassword(
+					auth,
+					formData.email,
+					formData.password
+				);
+				const user = userCredential.user;
+
+				updateProfile(auth.currentUser, {
+					displayName: formData.name,
+				});
+
+				const formDataCopy = { ...formData };
+				delete formDataCopy.password;
+				delete formDataCopy.confirmPassword;
+				formDataCopy.timestamp = serverTimestamp();
+
+				await setDoc(doc(db, 'users', user.uid), formDataCopy);
+				toast.success('User created');
+				navigate('/account');
+			} else {
+				toast.error('Email address already in use');
+			}
 		}
 	};
 

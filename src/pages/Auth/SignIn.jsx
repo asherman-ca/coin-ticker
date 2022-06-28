@@ -16,22 +16,22 @@ const SignIn = () => {
 	const onSubmit = async () => {
 		if (Object.values(formData).some((el) => el == '')) {
 			toast.error('Complete all fields');
-		}
+		} else {
+			try {
+				const auth = getAuth();
 
-		try {
-			const auth = getAuth();
+				const userCredential = await signInWithEmailAndPassword(
+					auth,
+					formData.email,
+					formData.password
+				);
 
-			const userCredential = await signInWithEmailAndPassword(
-				auth,
-				formData.email,
-				formData.password
-			);
-
-			if (userCredential.user) {
-				navigate('/account');
+				if (userCredential.user) {
+					navigate('/account');
+				}
+			} catch (error) {
+				toast.error('Invalid credentials');
 			}
-		} catch (error) {
-			toast.error('Invalid credentials');
 		}
 	};
 
