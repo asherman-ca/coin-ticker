@@ -31,6 +31,10 @@
 	gap: 1rem;
 }
 
+.auth-form .pw-reset-link {
+	font-weight: 500;
+}
+
 .auth-form input {
 	padding: 1rem;
 

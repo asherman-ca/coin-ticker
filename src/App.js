@@ -11,6 +11,7 @@ import Account from './pages/Account/Account';
 import PrivateRoute from './components/PrivateRoute';
 import SignUp from './pages/Auth/SignUp';
 import SignIn from './pages/Auth/SignIn';
+import PasswordReset from './pages/Auth/PasswordReset';
 
 function App() {
 	const [coins, setCoins] = useState();
@@ -41,6 +42,7 @@ function App() {
 					<Route path='/coins/:coinId' element={<CoinView />} />
 					<Route path='/signup' element={<SignUp />} />
 					<Route path='/signin' element={<SignIn />} />
+					<Route path='/password-reset' element={<PasswordReset />} />
 					<Route path='/account' element={<PrivateRoute />}>
 						<Route path='/account' element={<Account />} />
 					</Route>

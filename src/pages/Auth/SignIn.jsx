@@ -65,8 +65,12 @@ const SignIn = () => {
 							onChange={onChange}
 						/>
 
+						<Link to={'/password-reset'} className='pw-reset-link'>
+							Forgot password?
+						</Link>
+
 						<div className='button-row'>
-							<Link to={'/signup'}>Need an account?</Link>
+							<Link to={'/signup'}>Create account</Link>
 							<GateButton onClick={onSubmit}>Submit</GateButton>
 						</div>
 					</form>
