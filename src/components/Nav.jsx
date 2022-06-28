@@ -69,10 +69,10 @@ const Nav = ({ coinsLoading, coins }) => {
 			<div className='nav-link'>
 				Account
 				<div className='nav-link-dropdown'>
-					<OAuth />
 					<Link to={'/signin'}>
 						<i className='fa-solid fa-address-card'></i>Login
 					</Link>
+					<OAuth />
 					<div onClick={onDemo}>
 						<i className='fa-solid fa-flask'></i>Demo
 					</div>
