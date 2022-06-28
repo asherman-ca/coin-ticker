@@ -9,6 +9,8 @@ import Home from './pages/Home/Home';
 import CoinView from './pages/CoinView/CoinView';
 import Account from './pages/Account/Account';
 import PrivateRoute from './components/PrivateRoute';
+import SignUp from './pages/Auth/SignUp';
+import SignIn from './pages/Auth/SignIn';
 
 function App() {
 	const [coins, setCoins] = useState();
@@ -37,6 +39,8 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Home coins={coins} loading={loading} />} />
 					<Route path='/:coinId' element={<CoinView />} />
+					<Route path='/signup' element={<SignUp />} />
+					<Route path='/signin' element={<SignIn />} />
 					<Route path='/account' element={<PrivateRoute />}>
 						<Route path='/account' element={<Account />} />
 					</Route>

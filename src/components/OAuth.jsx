@@ -24,6 +24,8 @@ function OAuth() {
 					name: user.displayName,
 					email: user.email,
 					timestamp: serverTimestamp(),
+					balance: 0,
+					testBalance: 0,
 				});
 			}
 			navigate('/account');
