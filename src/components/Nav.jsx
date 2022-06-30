@@ -43,7 +43,7 @@ const Nav = ({ coinsLoading, coins }) => {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		navigate(`/${param.toLowerCase()}`);
+		navigate(`/coins/${param.toLowerCase()}`);
 		setParam('');
 		setSearchFilter([]);
 	};
@@ -104,7 +104,7 @@ const Nav = ({ coinsLoading, coins }) => {
 					Account
 					<div className='nav-link-dropdown'>
 						<div onClick={() => navigate('/account')}>
-							<i class='fa-solid fa-coins'></i>Spot
+							<i className='fa-solid fa-coins'></i>Spot
 						</div>
 						<div onClick={() => navigate('/account')}>
 							<i className='fa-solid fa-dice'></i>Margin

@@ -75,6 +75,18 @@ body {
 	overflow-y: overlay;
 }
 
+.default-col {
+	width: 100%;
+	max-width: 1200px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
 .header {
 	font-size: 2rem;
 }

@@ -140,7 +140,6 @@ const CoinView = () => {
 				<div className='tickr-row'>
 					<div className='tickrs'>
 						<div className='header'>{coin.symbol.toUpperCase()} markets</div>
-						{console.log('based', basedAndSymbol)}
 						{basedAndSymbol.map((tickr) => (
 							<TickerItem key={tickr.trade_url} tickr={tickr} />
 						))}

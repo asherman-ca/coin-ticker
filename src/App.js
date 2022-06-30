@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute';
 import SignUp from './pages/Auth/SignUp';
 import SignIn from './pages/Auth/SignIn';
 import PasswordReset from './pages/Auth/PasswordReset';
+import NotFound from './components/NotFound';
 
 function App() {
 	const [coins, setCoins] = useState();
@@ -46,6 +47,7 @@ function App() {
 					<Route path='/account' element={<PrivateRoute />}>
 						<Route path='/account' element={<Account />} />
 					</Route>
+					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</Router>
 			<ToastContainer />
