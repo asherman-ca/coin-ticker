@@ -114,8 +114,9 @@ const Account = () => {
 							{/* <i className='fa-solid fa-trash-can'></i> */}
 							<div>Coin</div>
 							<div>Type</div>
-							<div>$ Amount</div>
-							<div>Coin Price</div>
+							<div>Quantity</div>
+							<div>Value</div>
+							<div>Price</div>
 						</div>
 						{orders.length >= 1 ? (
 							<div className='list'>
