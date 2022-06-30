@@ -10,15 +10,29 @@ import {
 } from 'firebase/firestore';
 import { calcPNL, invalidSell, invalidDelete } from '../../utils/accounting';
 
-const onOrder = async (e, type, formData, orders, setOrders, setPnl, coins) => {
+const onOrder = async (
+	e,
+	type,
+	formData,
+	orders,
+	setOrders,
+	setPnl,
+	coins,
+	userId,
+	user,
+	setUser
+) => {
 	e.preventDefault();
 
 	if (formData.price === 0 || formData.spent === 0) {
-		toast.error('Price and spent required');
+		toast.error('Price and amount required');
 	} else {
 		if (type === 'sell' && invalidSell(orders, formData)) {
 			toast.error('Insufficient coins');
+		} else if (type === 'buy' && user.balance < formData.spent) {
+			toast.error('Insufficient funds');
 		} else {
+			// order tasks
 			let formDataCopy = {
 				...formData,
 				type: type,
@@ -31,6 +45,31 @@ const onOrder = async (e, type, formData, orders, setOrders, setPnl, coins) => {
 			await setOrders((prev) => [{ data: formDataCopy, id: res.id }, ...prev]);
 			const ordersCopy = [...orders, { data: formDataCopy, id: res.id }];
 			setPnl(calcPNL(ordersCopy, coins));
+
+			// balance tasks
+			if (type === 'buy') {
+				const userRef = doc(db, 'users', userId);
+				await updateDoc(userRef, {
+					balance: user.balance - formData.spent,
+				});
+				setUser((prev) => {
+					return {
+						...prev,
+						balance: prev.balance - formData.spent,
+					};
+				});
+			} else {
+				const userRef = doc(db, 'users', userId);
+				await updateDoc(userRef, {
+					balance: user.balance + formData.spent,
+				});
+				setUser((prev) => {
+					return {
+						...prev,
+						balance: prev.balance + formData.spent,
+					};
+				});
+			}
 		}
 	}
 };

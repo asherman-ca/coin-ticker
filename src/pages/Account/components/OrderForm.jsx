@@ -1,5 +1,6 @@
 import React from 'react';
 import GateButton from '../../../components/GateButton';
+import { cleanInt } from '../../../utils/stringUtils';
 
 const OrderForm = ({
 	onOrder,
@@ -36,7 +37,7 @@ const OrderForm = ({
 					<input
 						onChange={(e) => onChange(e, setFormData)}
 						id='price'
-						placeholder={formData.price}
+						placeholder={cleanInt(formData.price)}
 						type='number'
 					/>
 				</div>
@@ -52,7 +53,18 @@ const OrderForm = ({
 				<div className='button-row'>
 					<GateButton
 						onClick={(e) =>
-							onOrder(e, 'buy', formData, orders, setOrders, setPnl, coins)
+							onOrder(
+								e,
+								'buy',
+								formData,
+								orders,
+								setOrders,
+								setPnl,
+								coins,
+								userId,
+								user,
+								setUser
+							)
 						}
 						color='green'
 					>
@@ -60,7 +72,18 @@ const OrderForm = ({
 					</GateButton>
 					<GateButton
 						onClick={(e) =>
-							onOrder(e, 'sell', formData, orders, setOrders, setPnl, coins)
+							onOrder(
+								e,
+								'sell',
+								formData,
+								orders,
+								setOrders,
+								setPnl,
+								coins,
+								userId,
+								user,
+								setUser
+							)
 						}
 						color='red'
 					>
