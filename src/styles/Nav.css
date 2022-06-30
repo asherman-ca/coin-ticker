@@ -10,7 +10,7 @@
 	background-color: white;
 
 	z-index: 1000;
-	position: relative;
+	/* position: relative; */
 }
 
 .navbar {
@@ -23,6 +23,7 @@
 	padding: 0 1rem;
 
 	font-weight: bold;
+	position: relative;
 }
 
 .navbar > * {
@@ -114,7 +115,7 @@
 }
 
 .nav-link {
-	position: relative;
+	/* position: relative; */
 
 	height: 100%;
 	display: flex;
@@ -143,11 +144,12 @@
 	visibility: hidden;
 	position: absolute;
 	top: 100%;
-	left: 50%;
-	margin-top: 2px;
+	/* left: 50%; */
+	right: 0;
+	/* margin-top: 2px; */
 	padding: 0.5rem;
 
-	transform: translateX(-50%);
+	/* transform: translateX(-50%); */
 
 	font-weight: 500;
 	background: white;
@@ -267,6 +269,9 @@
 .search-prefill .prefill-item:last-child {
 	border-bottom-left-radius: 0.5rem;
 	/* border-bottom-right-radius: 0.5rem; */
+}
+
+@media (max-width: 600px) {
 }
 
 @keyframes grow {
