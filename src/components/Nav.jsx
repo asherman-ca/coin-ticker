@@ -109,9 +109,9 @@ const Nav = ({ coinsLoading, coins }) => {
 						<div onClick={() => navigate('/account')}>
 							<i className='fa-solid fa-dice'></i>Margin
 						</div>
-						<div onClick={() => navigate('/account')}>
+						{/* <div onClick={() => navigate('/account')}>
 							<i className='fa-solid fa-circle-user'></i>Profile
-						</div>
+						</div> */}
 						<div onClick={onLogout}>
 							<i className='fa-solid fa-arrow-right-from-bracket'></i>Logout
 						</div>
