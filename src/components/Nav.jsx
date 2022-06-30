@@ -101,17 +101,14 @@ const Nav = ({ coinsLoading, coins }) => {
 		authButton = (
 			<>
 				<div className='nav-link'>
-					Account
+					{auth.currentUser.displayName}
 					<div className='nav-link-dropdown'>
 						<div onClick={() => navigate('/account')}>
 							<i className='fa-solid fa-coins'></i>Spot
 						</div>
 						<div onClick={() => navigate('/account')}>
-							<i className='fa-solid fa-dice'></i>Margin
+							<i className='fa-solid fa-dice'></i>Testnet
 						</div>
-						{/* <div onClick={() => navigate('/account')}>
-							<i className='fa-solid fa-circle-user'></i>Profile
-						</div> */}
 						<div onClick={onLogout}>
 							<i className='fa-solid fa-arrow-right-from-bracket'></i>Logout
 						</div>

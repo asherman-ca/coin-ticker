@@ -111,7 +111,6 @@ const Account = () => {
 					<div className='orders'>
 						<div className='header'>Order History</div>
 						<div className='order-item-header'>
-							{/* <i className='fa-solid fa-trash-can'></i> */}
 							<div>Coin</div>
 							<div>Type</div>
 							<div>Quantity</div>

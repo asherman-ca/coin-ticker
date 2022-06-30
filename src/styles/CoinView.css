@@ -41,6 +41,7 @@
 
 .detail-row > div {
 	flex: 1;
+	white-space: nowrap;
 }
 
 .detail-row .header-col {
