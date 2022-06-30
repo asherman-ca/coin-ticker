@@ -41,6 +41,7 @@ const Pagination = ({
 			<div className='page-buttons'>
 				{currentPage != 1 && (
 					<button
+						className='page-scroll-button'
 						onClick={() => {
 							prevPage();
 						}}
@@ -78,7 +79,7 @@ const Pagination = ({
 				})}
 
 				{currentPage != lastPage && (
-					<button onClick={() => nextPage()}>
+					<button className='page-scroll-button' onClick={() => nextPage()}>
 						<i className='fa-solid fa-chevron-right'></i>
 					</button>
 				)}

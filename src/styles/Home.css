@@ -179,3 +179,12 @@
 .pagination select:hover {
 	border-color: black;
 }
+
+@media (max-width: 600px) {
+	.pagination {
+		padding: 0 0.5rem;
+	}
+	.pagination .page-scroll-button {
+		display: none;
+	}
+}
