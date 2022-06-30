@@ -31,10 +31,10 @@ const SignUp = () => {
 
 	const navigate = useNavigate();
 
-	const onSubmit = async () => {
-		console.log('form', formData);
+	const onSubmit = async (e) => {
+		e.preventDefault();
 		if (Object.values(formData).some((el) => el === '')) {
-			toast.error('Complete all fields');
+			toast.error('Missing fields');
 		} else if (formData.password != formData.confirmPassword) {
 			toast.error('Passwords must match');
 		} else {
@@ -114,7 +114,9 @@ const SignUp = () => {
 						/>
 						<div className='button-row'>
 							<Link to={'/signin'}>Already registered?</Link>
-							<GateButton onClick={onSubmit}>Submit</GateButton>
+							<GateButton onClick={onSubmit} type={true}>
+								Submit
+							</GateButton>
 						</div>
 					</form>
 				</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GateButton = ({ children, onClick, color }) => {
+const GateButton = ({ children, onClick, color, type }) => {
 	const scheme = {
 		red: 'red-button',
 		green: 'green-button',
@@ -13,12 +13,16 @@ const GateButton = ({ children, onClick, color }) => {
 	}
 
 	return (
-		<div className={buttonClass} onClick={onClick}>
+		<button
+			type={type ? 'submit' : 'button'}
+			className={buttonClass}
+			onClick={onClick}
+		>
 			{children}
 			<div className='button-bg'>
 				<div>{children}</div>
 			</div>
-		</div>
+		</button>
 	);
 };
 

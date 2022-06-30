@@ -72,7 +72,9 @@ const SignIn = () => {
 
 						<div className='button-row'>
 							<Link to={'/signup'}>Create account</Link>
-							<GateButton onClick={onSubmit}>Submit</GateButton>
+							<GateButton onClick={onSubmit} type={true}>
+								Submit
+							</GateButton>
 						</div>
 					</form>
 				</div>

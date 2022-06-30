@@ -31,7 +31,9 @@ const PasswordReset = () => {
 					<form onSubmit={onSubmit} className='auth-form'>
 						<input onChange={onChange} type='email' placeholder='Email' />
 						<div className='button-row'>
-							<GateButton onClick={onSubmit}>Submit</GateButton>
+							<GateButton onClick={onSubmit} type={true}>
+								Submit
+							</GateButton>
 						</div>
 					</form>
 				</div>

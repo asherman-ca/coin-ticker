@@ -65,7 +65,7 @@
 
 .gate-button {
 	position: relative;
-	padding: 0.25rem 1rem;
+	padding: 0.5rem 1rem;
 	border: 1px solid black;
 	border-radius: 0.25rem;
 
@@ -74,7 +74,7 @@
 	cursor: pointer;
 	text-align: center;
 
-	font-weight: 500;
+	font-size: 1rem;
 }
 
 .gate-button .button-bg {
@@ -96,7 +96,7 @@
 }
 
 .gate-button .button-bg > div {
-	padding: 0.25rem 1rem;
+	padding: 0.5rem 1rem;
 }
 
 .gate-button:hover .button-bg {
