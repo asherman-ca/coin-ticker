@@ -1,0 +1,27 @@
+.form-div .assets-header {
+	margin-top: 1rem;
+	padding-top: 0.25rem;
+
+	display: flex;
+	justify-content: space-between;
+
+	border-top: 1px solid var(--clr-grey);
+}
+
+.assets-header > div {
+	display: flex;
+	flex-direction: column;
+}
+
+.assets-header > div:last-child {
+	text-align: right;
+}
+
+.assets-header > div:first-child > div:last-child {
+	color: var(--clr-grey);
+}
+
+.assets-header-title {
+	font-weight: 500;
+	/* font-size: 1.25rem; */
+}

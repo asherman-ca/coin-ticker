@@ -26,6 +26,7 @@ function OAuth() {
 					timestamp: serverTimestamp(),
 					balance: 0,
 					testBalance: 0,
+					lastFaucet: '',
 				});
 			}
 			navigate('/account');

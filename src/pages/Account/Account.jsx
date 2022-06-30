@@ -1,12 +1,26 @@
 import { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase.config';
-import { query, where, collection, getDocs, orderBy } from 'firebase/firestore';
+import {
+	query,
+	where,
+	collection,
+	getDocs,
+	orderBy,
+	doc,
+	getDoc,
+} from 'firebase/firestore';
 
 import { calcPNL } from '../../utils/accounting';
 import Spinner from '../../components/Spinner';
 import OrderItem from './components/OrderItem';
-import { onOrder, onChange, onSelect, onDelete } from './AccountActions';
+import {
+	onOrder,
+	onChange,
+	onSelect,
+	onDelete,
+	onFaucet,
+} from './AccountActions';
 import OrderForm from './components/OrderForm';
 import PnlItem from './components/PnlItem';
 
@@ -22,6 +36,7 @@ const Account = () => {
 		userRef: auth.currentUser.uid,
 	});
 	const [pnl, setPnl] = useState();
+	const [user, setUser] = useState();
 
 	useEffect(() => {
 		const fetchTask = async () => {
@@ -63,6 +78,12 @@ const Account = () => {
 			// task 3
 
 			setPnl(calcPNL(orders, response));
+
+			// task 4
+
+			const usersRef = doc(db, 'users', auth.currentUser.uid);
+			const docSnap = await getDoc(usersRef);
+			setUser(docSnap.data());
 		};
 
 		const fetchAllTask = async () => {
@@ -145,6 +166,10 @@ const Account = () => {
 						orders={orders}
 						setOrders={setOrders}
 						setPnl={setPnl}
+						user={user}
+						userId={auth.currentUser.uid}
+						setUser={setUser}
+						onFaucet={onFaucet}
 					/>
 				</div>
 			</div>

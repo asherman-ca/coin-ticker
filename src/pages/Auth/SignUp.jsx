@@ -27,6 +27,7 @@ const SignUp = () => {
 		confirmPassword: '',
 		balance: 0,
 		testBalance: 0,
+		lastFaucet: {},
 	});
 
 	const navigate = useNavigate();

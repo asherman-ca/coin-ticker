@@ -6,6 +6,7 @@ import {
 	collection,
 	addDoc,
 	serverTimestamp,
+	updateDoc,
 } from 'firebase/firestore';
 import { calcPNL, invalidSell, invalidDelete } from '../../utils/accounting';
 
@@ -23,8 +24,6 @@ const onOrder = async (e, type, formData, orders, setOrders, setPnl, coins) => {
 				type: type,
 				timestamp: serverTimestamp(),
 			};
-
-			console.log(formDataCopy);
 
 			const res = await addDoc(collection(db, 'orders'), formDataCopy);
 			toast.success('Order created');
@@ -71,4 +70,24 @@ const onDelete = async (id, orders, setOrders, setPnl, coins) => {
 	}
 };
 
-export { onOrder, onChange, onSelect, onDelete };
+const onFaucet = async (uid, user, setUser) => {
+	const currentSeconds = new Date().getTime() / 1000;
+	if (new Date().getTime() / 1000 < user.lastFaucet?.seconds + 86400) {
+		toast.error('Only 1 faucet per day');
+	} else {
+		const userRef = doc(db, 'users', uid);
+		await updateDoc(userRef, {
+			balance: user.balance + 10000,
+			lastFaucet: serverTimestamp(),
+		});
+		setUser((prev) => {
+			return {
+				...prev,
+				balance: (prev.balance += 10000),
+				lastFaucet: { seconds: currentSeconds },
+			};
+		});
+	}
+};
+
+export { onOrder, onChange, onSelect, onDelete, onFaucet };

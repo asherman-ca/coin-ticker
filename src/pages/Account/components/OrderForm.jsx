@@ -11,6 +11,10 @@ const OrderForm = ({
 	orders,
 	setOrders,
 	setPnl,
+	user,
+	userId,
+	setUser,
+	onFaucet,
 }) => {
 	return (
 		<div className='form-div'>
@@ -64,6 +68,19 @@ const OrderForm = ({
 					</GateButton>
 				</div>
 			</form>
+			<div className='assets-header'>
+				<div>
+					<div className='assets-header-title'>Assets</div>
+					<div>Balance</div>
+				</div>
+				<div>
+					<div>USD</div>
+					<div>${user.balance}</div>
+				</div>
+			</div>
+			<GateButton onClick={() => onFaucet(userId, user, setUser)}>
+				Faucet
+			</GateButton>
 		</div>
 	);
 };
