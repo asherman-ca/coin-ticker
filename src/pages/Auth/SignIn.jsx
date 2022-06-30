@@ -13,8 +13,9 @@ const SignIn = () => {
 
 	const navigate = useNavigate();
 
-	const onSubmit = async () => {
-		if (Object.values(formData).some((el) => el == '')) {
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		if (Object.values(formData).some((el) => el === '')) {
 			toast.error('Complete all fields');
 		} else {
 			try {
@@ -50,7 +51,7 @@ const SignIn = () => {
 				<div className='auth-form-container'>
 					<div className='header'>Sign In</div>
 					<div>to continue to Tickr</div>
-					<form className='auth-form'>
+					<form onSubmit={onSubmit} className='auth-form'>
 						<input
 							onChange={onChange}
 							id='email'

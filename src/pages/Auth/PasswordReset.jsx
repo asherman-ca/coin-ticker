@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
+import { toast } from 'react-toastify';
+
 import GateButton from '../../components/GateButton';
 
 const PasswordReset = () => {
-	// const [email, setEmail] = useState();
+	const [email, setEmail] = useState();
 
-	const onSubmit = () => {
-		console.log('hits');
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const auth = getAuth();
+			await sendPasswordResetEmail(auth, email);
+			toast.success('Email was sent');
+		} catch (error) {
+			toast.error('could not send reset email');
+		}
+	};
+
+	const onChange = (e) => {
+		setEmail(e.target.value);
 	};
 
 	return (
@@ -14,10 +28,10 @@ const PasswordReset = () => {
 				<div className='auth-form-container'>
 					<div className='header'>Password Reset</div>
 					<div>Enter your email to recovery password</div>
-					<form action='' className='auth-form'>
-						<input type='email' placeholder='email' />
+					<form onSubmit={onSubmit} className='auth-form'>
+						<input onChange={onChange} type='email' placeholder='Email' />
 						<div className='button-row'>
-							<GateButton onClick='onSubmit'>Submit</GateButton>
+							<GateButton onClick={onSubmit}>Submit</GateButton>
 						</div>
 					</form>
 				</div>
