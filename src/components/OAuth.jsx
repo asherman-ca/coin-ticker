@@ -36,7 +36,7 @@ function OAuth() {
 
 	return (
 		<div onClick={onGoogleClick} className='oauth'>
-			<i className='fa-brands fa-google'></i>Gmail Auth
+			<i className='fa-brands fa-google'></i>Google Auth
 		</div>
 	);
 }

@@ -1,4 +1,8 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import {
+	getAuth,
+	onAuthStateChanged,
+	signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -57,8 +61,22 @@ const Nav = ({ coinsLoading, coins }) => {
 		toast.info('Logged Out');
 	};
 
-	const onDemo = () => {
-		console.log('demo');
+	const onDemo = async () => {
+		try {
+			const auth = getAuth();
+
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				'asd@asd.com',
+				'asdasd'
+			);
+
+			if (userCredential.user) {
+				navigate('/account');
+			}
+		} catch (error) {
+			toast.error('Invalid credentials');
+		}
 	};
 
 	let authButton;
@@ -69,13 +87,13 @@ const Nav = ({ coinsLoading, coins }) => {
 			<div className='nav-link'>
 				Account
 				<div className='nav-link-dropdown'>
-					<Link to={'/signin'}>
-						<i className='fa-solid fa-address-card'></i>Login
-					</Link>
-					<OAuth />
 					<div onClick={onDemo}>
 						<i className='fa-solid fa-flask'></i>Demo
 					</div>
+					<Link to={'/signin'}>
+						<i className='fa-solid fa-address-card'></i>Email Login
+					</Link>
+					<OAuth />
 				</div>
 			</div>
 		);

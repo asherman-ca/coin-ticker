@@ -162,7 +162,7 @@
 
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 1rem;
 
 	transition: padding 0.2s ease;
 	white-space: nowrap;
@@ -171,6 +171,11 @@
 
 .nav-link-dropdown i {
 	font-size: 1rem;
+
+	width: 25px;
+
+	display: flex;
+	justify-content: center;
 }
 
 .nav-link-dropdown > *:last-child {
