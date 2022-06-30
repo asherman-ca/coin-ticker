@@ -5,7 +5,7 @@ import { cleanInt } from '../../../utils/stringUtils';
 const OrderItem = ({ order, onDelete }) => {
 	return (
 		<div className='order-item'>
-			<i className='fa-solid fa-circle-minus' onClick={onDelete}></i>
+			{/* <i className='fa-solid fa-circle-minus' onClick={onDelete}></i> */}
 			<Link to={`/coins/${order.data.coinId}`} className='pnl-link'>
 				<div className='order-item-link'>{order.data.coin}</div>
 			</Link>

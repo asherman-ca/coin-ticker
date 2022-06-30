@@ -47,15 +47,15 @@
 	border-bottom: 1px solid var(--grey-border);
 }
 
-.orders .order-item-header i {
+/* .orders .order-item-header i {
 	color: white;
-}
+} */
 
-.orders .order-item-header div:nth-child(n + 2) {
+.orders .order-item-header > div {
 	flex-basis: 100%;
 }
 
-.orders .order-item-header div:nth-child(n + 3) {
+.orders .order-item-header div:nth-child(n + 2) {
 	text-align: end;
 }
 
@@ -67,14 +67,14 @@
 	border-top: 1px solid var(--grey-border);
 }
 
-.orders .order-item > *:nth-child(n + 2) {
+.orders .order-item > * {
 	flex-basis: 100%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-.orders .order-item > *:nth-child(n + 3) {
+.orders .order-item > *:nth-child(n + 2) {
 	text-align: end;
 }
 
