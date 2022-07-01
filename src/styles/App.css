@@ -66,7 +66,8 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	font-family: 'Ubuntu', sans-serif;
 	line-height: 2rem;
-	background-color: rgb(250, 250, 250);
+	/* background-color: rgb(250, 250, 250); */
+	background: white;
 }
 
 .container {
