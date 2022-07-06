@@ -39,6 +39,7 @@ const OrderForm = ({
 						id='price'
 						placeholder={cleanInt(formData.price)}
 						type='number'
+						disabled={true}
 					/>
 				</div>
 				<div className='input-container'>
