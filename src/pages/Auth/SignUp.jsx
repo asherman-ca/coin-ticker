@@ -29,16 +29,42 @@ const SignUp = () => {
 		testBalance: 0,
 		lastFaucet: {},
 	});
+	const [errors, setErrors] = useState({
+		email: '',
+		name: '',
+		password: '',
+		confirmPassword: '',
+	});
+	const validators = {
+		email: (string) => string?.includes('@'),
+		name: (string) => string?.length > 3,
+		password: (string) => string?.length > 5,
+		confirmPassword: (string) => string == formData.password,
+	};
 
 	const navigate = useNavigate();
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		if (Object.values(formData).some((el) => el === '')) {
-			toast.error('Missing fields');
-		} else if (formData.password != formData.confirmPassword) {
-			toast.error('Passwords must match');
-		} else {
+		const errorsCopy = {};
+		Object.keys(validators).forEach((key) => {
+			if (!validators[key](formData[key])) {
+				setErrors((prev) => {
+					return { ...prev, [key]: `Invalid ${key}` };
+				});
+			} else {
+				setErrors((prev) => {
+					return { ...prev, [key]: '' };
+				});
+			}
+		});
+		// if (Object.values(formData).some((el) => el === '')) {
+		// 	toast.error('Missing fields');
+		// } else if (formData.password != formData.confirmPassword) {
+		// 	toast.error('Passwords must match');
+		// }
+
+		if (!Object.values(errors).some((errorMessage) => errorMessage !== '')) {
 			const existingUserRef = collection(db, 'users');
 			const q = query(
 				existingUserRef,
@@ -89,30 +115,46 @@ const SignUp = () => {
 					<div className='header'>Sign Up</div>
 					<div>to continue to Tickr</div>
 					<form className='auth-form'>
-						<input
-							onChange={onChange}
-							id='email'
-							type='email'
-							placeholder='Email'
-						/>
-						<input
-							id='name'
-							type='text'
-							placeholder='Name'
-							onChange={onChange}
-						/>
-						<input
-							id='password'
-							type='password'
-							placeholder='Password'
-							onChange={onChange}
-						/>
-						<input
-							id='confirmPassword'
-							type='password'
-							placeholder='Confirm Password'
-							onChange={onChange}
-						/>
+						<div className='input-container'>
+							<input
+								onChange={onChange}
+								id='email'
+								type='email'
+								placeholder='Email'
+							/>
+							{errors.email && <div className='form-error'>{errors.email}</div>}
+						</div>
+						<div className='input-container'>
+							<input
+								id='name'
+								type='text'
+								placeholder='Name'
+								onChange={onChange}
+							/>
+							{errors.name && <div className='form-error'>{errors.name}</div>}
+						</div>
+						<div className='input-container'>
+							<input
+								id='password'
+								type='password'
+								placeholder='Password'
+								onChange={onChange}
+							/>
+							{errors.password && (
+								<div className='form-error'>{errors.password}</div>
+							)}
+						</div>
+						<div className='input-container'>
+							<input
+								id='confirmPassword'
+								type='password'
+								placeholder='Confirm Password'
+								onChange={onChange}
+							/>
+							{errors.confirmPassword && (
+								<div className='form-error'>{errors.confirmPassword}</div>
+							)}
+						</div>
 						<div className='button-row'>
 							<Link to={'/signin'}>Already registered?</Link>
 							<GateButton onClick={onSubmit} type={true}>
