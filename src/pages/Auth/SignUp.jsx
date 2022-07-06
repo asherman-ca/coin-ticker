@@ -36,10 +36,22 @@ const SignUp = () => {
 		confirmPassword: '',
 	});
 	const validators = {
-		email: (string) => string?.includes('@'),
-		name: (string) => string?.length > 3,
-		password: (string) => string?.length > 5,
-		confirmPassword: (string) => string == formData.password,
+		email: {
+			action: (string) => string?.includes('@'),
+			message: 'Email format required',
+		},
+		name: {
+			action: (string) => string?.length > 2,
+			message: 'Minimum 3 characters',
+		},
+		password: {
+			action: (string) => string?.length > 5,
+			message: 'Minimum 6 characters',
+		},
+		confirmPassword: {
+			action: (string) => string == formData.password,
+			message: 'Must match password',
+		},
 	};
 
 	const navigate = useNavigate();
@@ -49,8 +61,8 @@ const SignUp = () => {
 		e.preventDefault();
 		const errorsCopy = {};
 		Object.keys(validators).forEach((key) => {
-			if (!validators[key](formData[key])) {
-				errorsCopy[key] = `Invalid ${key}`;
+			if (!validators[key].action(formData[key])) {
+				errorsCopy[key] = validators[key].message;
 				errorFound = true;
 			} else {
 				errorsCopy[key] = '';
@@ -68,26 +80,31 @@ const SignUp = () => {
 			);
 			const existingUserSnap = await getDocs(q);
 			if (existingUserSnap.empty) {
-				const auth = getAuth();
-				const userCredential = await createUserWithEmailAndPassword(
-					auth,
-					formData.email,
-					formData.password
-				);
-				const user = userCredential.user;
+				try {
+					const auth = getAuth();
+					const userCredential = await createUserWithEmailAndPassword(
+						auth,
+						formData.email,
+						formData.password
+					);
+					const user = userCredential.user;
 
-				updateProfile(auth.currentUser, {
-					displayName: formData.name,
-				});
+					updateProfile(auth.currentUser, {
+						displayName: formData.name,
+					});
 
-				const formDataCopy = { ...formData };
-				delete formDataCopy.password;
-				delete formDataCopy.confirmPassword;
-				formDataCopy.timestamp = serverTimestamp();
+					const formDataCopy = { ...formData };
+					delete formDataCopy.password;
+					delete formDataCopy.confirmPassword;
+					formDataCopy.timestamp = serverTimestamp();
 
-				await setDoc(doc(db, 'users', user.uid), formDataCopy);
-				toast.success('User created');
-				navigate('/account');
+					await setDoc(doc(db, 'users', user.uid), formDataCopy);
+					toast.success('User created');
+					navigate('/account');
+				} catch (error) {
+					console.log(error);
+					toast.error('Server error');
+				}
 			} else {
 				toast.error('Email address already in use');
 			}
