@@ -71,7 +71,9 @@ const SignUp = () => {
 		setErrors((prev) => {
 			return { ...prev, ...errorsCopy };
 		});
-		if (!errorFound) {
+		if (errorFound) {
+			toast.error('Invalid form');
+		} else {
 			const existingUserRef = collection(db, 'users');
 			const q = query(
 				existingUserRef,

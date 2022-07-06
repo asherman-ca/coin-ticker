@@ -16,8 +16,9 @@ const PasswordReset = () => {
 		e.preventDefault();
 		if (validators['email'](email)) {
 			setErrors((prev) => {
-				return { ...prev, email: 'Invalid Email Address' };
+				return { ...prev, email: 'Email format required' };
 			});
+			toast.error('Invalid form');
 		} else {
 			try {
 				const auth = getAuth();
