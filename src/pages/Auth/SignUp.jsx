@@ -45,11 +45,13 @@ const SignUp = () => {
 	const navigate = useNavigate();
 
 	const onSubmit = async (e) => {
+		let errorFound = false;
 		e.preventDefault();
 		const errorsCopy = {};
 		Object.keys(validators).forEach((key) => {
 			if (!validators[key](formData[key])) {
 				errorsCopy[key] = `Invalid ${key}`;
+				errorFound = true;
 			} else {
 				errorsCopy[key] = '';
 			}
@@ -57,9 +59,7 @@ const SignUp = () => {
 		setErrors((prev) => {
 			return { ...prev, ...errorsCopy };
 		});
-		if (
-			!Object.values(errorsCopy).some((errorMessage) => errorMessage !== '')
-		) {
+		if (!errorFound) {
 			const existingUserRef = collection(db, 'users');
 			const q = query(
 				existingUserRef,
