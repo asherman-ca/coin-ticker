@@ -61,3 +61,21 @@
 .auth-form a {
 	color: var(--clr-blue);
 }
+
+.input-container {
+	position: relative;
+}
+
+.input-container input {
+	width: 100%;
+}
+
+.form-error {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	padding: 0.25rem 0;
+
+	line-height: 1rem;
+	font-size: 0.75rem;
+}
