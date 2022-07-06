@@ -49,22 +49,17 @@ const SignUp = () => {
 		const errorsCopy = {};
 		Object.keys(validators).forEach((key) => {
 			if (!validators[key](formData[key])) {
-				setErrors((prev) => {
-					return { ...prev, [key]: `Invalid ${key}` };
-				});
+				errorsCopy[key] = `Invalid ${key}`;
 			} else {
-				setErrors((prev) => {
-					return { ...prev, [key]: '' };
-				});
+				errorsCopy[key] = '';
 			}
 		});
-		// if (Object.values(formData).some((el) => el === '')) {
-		// 	toast.error('Missing fields');
-		// } else if (formData.password != formData.confirmPassword) {
-		// 	toast.error('Passwords must match');
-		// }
-
-		if (!Object.values(errors).some((errorMessage) => errorMessage !== '')) {
+		setErrors((prev) => {
+			return { ...prev, ...errorsCopy };
+		});
+		if (
+			!Object.values(errorsCopy).some((errorMessage) => errorMessage !== '')
+		) {
 			const existingUserRef = collection(db, 'users');
 			const q = query(
 				existingUserRef,
