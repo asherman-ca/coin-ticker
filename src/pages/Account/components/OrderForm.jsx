@@ -100,7 +100,7 @@ const OrderForm = ({
 				</div>
 				<div>
 					<div>USD</div>
-					<div>${cleanInt(user.balance)}</div>
+					<div>${cleanInt(user.testBalance)}</div>
 				</div>
 			</div>
 			<GateButton onClick={() => onFaucet(userId, user, setUser)}>

@@ -26,7 +26,7 @@ const SignUp = () => {
 		password: '',
 		confirmPassword: '',
 		balance: 0,
-		testBalance: 0,
+		testBalance: 100000,
 		lastFaucet: {},
 	});
 	const [errors, setErrors] = useState({

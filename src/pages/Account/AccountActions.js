@@ -29,7 +29,7 @@ const onOrder = async (
 	} else {
 		if (type === 'sell' && invalidSell(orders, formData)) {
 			toast.error('Insufficient coins');
-		} else if (type === 'buy' && user.balance < formData.spent) {
+		} else if (type === 'buy' && user.testBalance < formData.spent) {
 			toast.error('Insufficient funds');
 		} else {
 			// order tasks
@@ -50,23 +50,23 @@ const onOrder = async (
 			if (type === 'buy') {
 				const userRef = doc(db, 'users', userId);
 				await updateDoc(userRef, {
-					balance: user.balance - formData.spent,
+					testBalance: user.testBalance - formData.spent,
 				});
 				setUser((prev) => {
 					return {
 						...prev,
-						balance: prev.balance - formData.spent,
+						testBalance: prev.testBalance - formData.spent,
 					};
 				});
 			} else {
 				const userRef = doc(db, 'users', userId);
 				await updateDoc(userRef, {
-					balance: user.balance + formData.spent,
+					testBalance: user.testBalance + formData.spent,
 				});
 				setUser((prev) => {
 					return {
 						...prev,
-						balance: prev.balance + formData.spent,
+						testBalance: prev.testBalance + formData.spent,
 					};
 				});
 			}
@@ -116,13 +116,13 @@ const onFaucet = async (uid, user, setUser) => {
 	} else {
 		const userRef = doc(db, 'users', uid);
 		await updateDoc(userRef, {
-			balance: user.balance + 10000,
+			testBalance: user.testBalance + 1000,
 			lastFaucet: serverTimestamp(),
 		});
 		setUser((prev) => {
 			return {
 				...prev,
-				balance: (prev.balance += 10000),
+				testBalance: (prev.testBalance += 1000),
 				lastFaucet: { seconds: currentSeconds },
 			};
 		});

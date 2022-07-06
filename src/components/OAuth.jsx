@@ -25,7 +25,7 @@ function OAuth() {
 					email: user.email,
 					timestamp: serverTimestamp(),
 					balance: 0,
-					testBalance: 0,
+					testBalance: 100000,
 					lastFaucet: '',
 				});
 			}
