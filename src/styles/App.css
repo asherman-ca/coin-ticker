@@ -97,6 +97,10 @@ body {
 	color: var(--clr-grey);
 }
 
+.disabled-input {
+	background: white;
+}
+
 /* Spinner */
 
 .spinner-box {

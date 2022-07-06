@@ -40,6 +40,7 @@ const OrderForm = ({
 						placeholder={cleanInt(formData.price)}
 						type='number'
 						disabled={true}
+						className='disabled-input'
 					/>
 				</div>
 				<div className='input-container'>
