@@ -109,6 +109,9 @@ const Nav = ({ coinsLoading, coins }) => {
 						<div onClick={() => navigate('/portfolio')}>
 							<i className='fa-solid fa-dice'></i>Portfolio
 						</div>
+						<div onClick={() => navigate('/profile')}>
+							<i className='fa-solid fa-user-astronaut'></i>Profile
+						</div>
 						<div
 							style={{
 								height: '0px',
