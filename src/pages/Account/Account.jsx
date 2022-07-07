@@ -53,6 +53,7 @@ const Account = () => {
 			let orders = [];
 
 			snap.forEach((doc) => {
+				console.log('order doc', doc);
 				return orders.push({ data: doc.data(), id: doc.id });
 			});
 			setOrders(orders);
