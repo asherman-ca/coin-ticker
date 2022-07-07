@@ -85,15 +85,15 @@ const Nav = ({ coinsLoading, coins }) => {
 	} else if (!loggedIn) {
 		authButton = (
 			<div className='nav-link'>
-				Account
+				Login
 				<div className='nav-link-dropdown'>
+					<Link to={'/signin'}>
+						<i className='fa-solid fa-address-card'></i>Tickr Login
+					</Link>
+					<OAuth />
 					<div onClick={onDemo}>
 						<i className='fa-solid fa-flask'></i>Demo
 					</div>
-					<Link to={'/signin'}>
-						<i className='fa-solid fa-address-card'></i>Email Login
-					</Link>
-					<OAuth />
 				</div>
 			</div>
 		);
@@ -104,10 +104,16 @@ const Nav = ({ coinsLoading, coins }) => {
 					{auth.currentUser.displayName}
 					<div className='nav-link-dropdown'>
 						<div onClick={() => navigate('/account')}>
-							<i className='fa-solid fa-coins'></i>Spot
+							<i className='fa-solid fa-flask'></i>Testnet
 						</div>
 						<div onClick={() => navigate('/account')}>
-							<i className='fa-solid fa-dice'></i>Margin
+							<i className='fa-solid fa-dice'></i>Portfolio
+						</div>
+						<div onClick={() => navigate('/')}>
+							<i className='fa-solid fa-coins'></i>Tickrs
+						</div>
+						<div onClick={() => navigate('/exchanges')}>
+							<i className='fa-solid fa-store'></i>Exchanges
 						</div>
 						<div onClick={onLogout}>
 							<i className='fa-solid fa-arrow-right-from-bracket'></i>Logout

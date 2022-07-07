@@ -144,12 +144,9 @@
 	visibility: hidden;
 	position: absolute;
 	top: 100%;
-	/* left: 50%; */
 	right: 0;
-	/* margin-top: 2px; */
 	padding: 0.5rem;
-
-	/* transform: translateX(-50%); */
+	z-index: 10;
 
 	font-weight: 500;
 	background: white;
@@ -157,6 +154,9 @@
 	box-shadow: var(--shadow-smallest);
 	border-bottom-left-radius: 0.5rem;
 	border-bottom-right-radius: 0.5rem;
+
+	/* left: 50%; */
+	/* transform: translateX(-50%); */
 }
 
 .nav-link-dropdown > * {
