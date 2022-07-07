@@ -92,7 +92,21 @@ const Nav = ({ coinsLoading, coins }) => {
 					</Link>
 					<OAuth />
 					<div onClick={onDemo}>
-						<i className='fa-solid fa-flask'></i>Demo
+						<i className='fa-solid fa-flask'></i>Guest
+					</div>
+					<div
+						style={{
+							height: '0px',
+							padding: '0',
+							margin: '.5rem 0',
+							borderBottom: '.5px solid grey',
+						}}
+					></div>
+					<div onClick={() => navigate('/')}>
+						<i className='fa-solid fa-coins'></i>Tickrs
+					</div>
+					<div onClick={() => navigate('/exchanges')}>
+						<i className='fa-solid fa-store'></i>Exchanges
 					</div>
 				</div>
 			</div>
@@ -101,7 +115,8 @@ const Nav = ({ coinsLoading, coins }) => {
 		authButton = (
 			<>
 				<div className='nav-link'>
-					{auth.currentUser.displayName}
+					{/* {auth.currentUser.displayName} */}
+					Account
 					<div className='nav-link-dropdown'>
 						<div onClick={() => navigate('/account')}>
 							<i className='fa-solid fa-flask'></i>Testnet
