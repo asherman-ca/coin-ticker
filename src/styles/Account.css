@@ -18,14 +18,18 @@
 }
 
 .primary-col > * {
+	position: relative;
 	flex-basis: 100%;
-	padding: 1rem;
-	overflow-y: overlay;
+	padding: 0 1rem 0.5rem;
+	overflow-y: auto;
 
 	border-radius: 0.5rem;
-	/* box-shadow: var(--shadow-smallest); */
 	border: 1px solid var(--grey-border);
 	background-color: white;
+}
+
+.primary-col > *::-webkit-scrollbar {
+	display: none;
 }
 
 .orders,
@@ -36,6 +40,12 @@
 
 .orders .header {
 	margin-bottom: 0.5rem;
+	position: sticky;
+	top: 0;
+	background: white;
+	width: 100%;
+	/* padding-top: 1rem; */
+	padding: 1rem 0 0.5rem;
 }
 
 .orders .order-item-header {
