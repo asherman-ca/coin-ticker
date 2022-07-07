@@ -109,12 +109,28 @@ const Nav = ({ coinsLoading, coins }) => {
 						<div onClick={() => navigate('/portfolio')}>
 							<i className='fa-solid fa-dice'></i>Portfolio
 						</div>
+						<div
+							style={{
+								height: '0px',
+								padding: '0',
+								margin: '.5rem',
+								borderBottom: '.5px solid grey',
+							}}
+						></div>
 						<div onClick={() => navigate('/')}>
 							<i className='fa-solid fa-coins'></i>Tickrs
 						</div>
 						<div onClick={() => navigate('/exchanges')}>
 							<i className='fa-solid fa-store'></i>Exchanges
 						</div>
+						<div
+							style={{
+								height: '0px',
+								padding: '0',
+								margin: '.5rem',
+								borderBottom: '.5px solid grey',
+							}}
+						></div>
 						<div onClick={onLogout}>
 							<i className='fa-solid fa-arrow-right-from-bracket'></i>Logout
 						</div>

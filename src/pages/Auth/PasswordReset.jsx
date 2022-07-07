@@ -39,7 +39,7 @@ const PasswordReset = () => {
 			<div className='auth'>
 				<div className='auth-form-container'>
 					<div className='header'>Password Reset</div>
-					<div>Enter your email to recovery password</div>
+					<div>Enter your email to recover password</div>
 					<form onSubmit={onSubmit} className='auth-form'>
 						<div className='input-container'>
 							<input onChange={onChange} type='email' placeholder='Email' />
