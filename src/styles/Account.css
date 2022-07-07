@@ -57,7 +57,7 @@
 .orders .header .order-item-header,
 .accounting .header .pnl-item-header {
 	display: flex;
-	gap: 1rem;
+	/* gap: 1rem; */
 
 	border-top: 1px solid var(--grey-border);
 	border-bottom: 1px solid var(--grey-border);
@@ -80,7 +80,7 @@
 .orders .order-item {
 	display: flex;
 	align-items: center;
-	gap: 1rem;
+	/* gap: 1rem; */
 
 	border-top: 1px solid var(--grey-border);
 }
