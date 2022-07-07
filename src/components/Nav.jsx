@@ -113,7 +113,7 @@ const Nav = ({ coinsLoading, coins }) => {
 							style={{
 								height: '0px',
 								padding: '0',
-								margin: '.5rem',
+								margin: '.5rem 0',
 								borderBottom: '.5px solid grey',
 							}}
 						></div>
@@ -127,7 +127,7 @@ const Nav = ({ coinsLoading, coins }) => {
 							style={{
 								height: '0px',
 								padding: '0',
-								margin: '.5rem',
+								margin: '.5rem 0',
 								borderBottom: '.5px solid grey',
 							}}
 						></div>
