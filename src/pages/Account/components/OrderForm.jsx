@@ -16,6 +16,7 @@ const OrderForm = ({
 	userId,
 	setUser,
 	onFaucet,
+	pnl,
 }) => {
 	return (
 		<div className='form-div'>
@@ -101,6 +102,7 @@ const OrderForm = ({
 				<div>
 					<div>USD</div>
 					<div>${cleanInt(user.testBalance)}</div>
+					{console.log('pnl on form', pnl)}
 				</div>
 			</div>
 			<GateButton onClick={() => onFaucet(userId, user, setUser)}>

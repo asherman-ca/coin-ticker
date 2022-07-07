@@ -53,7 +53,6 @@ const Account = () => {
 			let orders = [];
 
 			snap.forEach((doc) => {
-				console.log('order doc', doc);
 				return orders.push({ data: doc.data(), id: doc.id });
 			});
 			setOrders(orders);
@@ -175,6 +174,7 @@ const Account = () => {
 						userId={auth.currentUser.uid}
 						setUser={setUser}
 						onFaucet={onFaucet}
+						pnl={pnl}
 					/>
 				</div>
 			</div>

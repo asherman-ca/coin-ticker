@@ -106,7 +106,7 @@ const Nav = ({ coinsLoading, coins }) => {
 						<div onClick={() => navigate('/account')}>
 							<i className='fa-solid fa-flask'></i>Testnet
 						</div>
-						<div onClick={() => navigate('/account')}>
+						<div onClick={() => navigate('/portfolio')}>
 							<i className='fa-solid fa-dice'></i>Portfolio
 						</div>
 						<div onClick={() => navigate('/')}>
