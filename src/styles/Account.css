@@ -54,7 +54,8 @@
 	margin-bottom: 0.5rem;
 }
 
-.orders .header .order-item-header {
+.orders .header .order-item-header,
+.accounting .header .pnl-item-header {
 	display: flex;
 	gap: 1rem;
 
@@ -121,12 +122,12 @@
 	border-top: none;
 }
 
-.pnl-item-header {
+/* .pnl-item-header {
 	display: flex;
 
 	border-top: 1px solid var(--grey-border);
 	border-bottom: 1px solid var(--grey-border);
-}
+} */
 
 .pnl-item-header > * {
 	font-weight: bold;
