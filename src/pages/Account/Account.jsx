@@ -110,13 +110,15 @@ const Account = () => {
 			<div className='account'>
 				<div className='primary-col'>
 					<div className='orders'>
-						<div className='header'>Order History</div>
-						<div className='order-item-header'>
-							<div>Coin</div>
-							<div>Type</div>
-							<div>Quantity</div>
-							<div>Value</div>
-							<div>Price</div>
+						<div className='header'>
+							<div>Order History</div>
+							<div className='order-item-header'>
+								<div>Coin</div>
+								<div>Type</div>
+								<div>Quantity</div>
+								<div>Value</div>
+								<div>Price</div>
+							</div>
 						</div>
 						{orders.length >= 1 ? (
 							<div className='list'>

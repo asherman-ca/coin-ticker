@@ -38,23 +38,30 @@
 	flex-direction: column;
 }
 
-.orders .header {
-	margin-bottom: 0.5rem;
+.orders > .header,
+.accounting > .header {
+	/* margin-bottom: 0.5rem; */
 	position: sticky;
 	top: 0;
 	background: white;
 	width: 100%;
 	/* padding-top: 1rem; */
-	padding: 1rem 0 0.5rem;
+	padding: 1rem 0 0;
+	font-size: 1.5rem;
 }
 
-.orders .order-item-header {
+.primary-col .header > div:first-child {
+	margin-bottom: 0.5rem;
+}
+
+.orders .header .order-item-header {
 	display: flex;
 	gap: 1rem;
 
-	font-weight: bold;
 	border-top: 1px solid var(--grey-border);
 	border-bottom: 1px solid var(--grey-border);
+	font-weight: bold;
+	font-size: 1rem;
 }
 
 /* .orders .order-item-header i {
@@ -109,10 +116,6 @@
 	margin: auto;
 }
 
-.accounting .header {
-	margin-bottom: 0.5rem;
-}
-
 .accounting .pnl-item:nth-child(1),
 .orders .order-item:nth-child(1) {
 	border-top: none;
@@ -157,10 +160,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-}
-
-.account .header {
-	font-size: 1.5rem;
 }
 
 .secondary-col .form-div {
