@@ -84,11 +84,15 @@
 }
 
 @media (max-width: 600px) {
-	.coin-list-header .daily-col {
+	/* .coin-list-header .daily-col {
+		display: none;
+	} */
+
+	.coin-list-header .link-col .icon-holder {
 		display: none;
 	}
 
-	.coin-list-header .link-col .icon-holder {
+	.coin-list-header :is(.vol-col, .mcap-col, .hr-col) {
 		display: none;
 	}
 }

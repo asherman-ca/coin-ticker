@@ -58,11 +58,11 @@ const Home = ({ coins, loading }) => {
 								Coin
 							</div>
 							<div className='col'>Price</div>
-							<div className='col'>1hr</div>
+							<div className='col hr-col'>1hr</div>
 							<div className='col daily-col'>24hr</div>
 							<div className='col weekly-col'>7d</div>
-							<div className='col'>Vol</div>
-							<div className='col'>M Cap</div>
+							<div className='col vol-col'>Vol</div>
+							<div className='col mcap-col'>M Cap</div>
 						</div>
 						{coins
 							.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)

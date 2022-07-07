@@ -57,15 +57,7 @@
 		display: none;
 	}
 
-	/* .coin-list-item .link-col {
-		width: 5% !important;
-	} */
-
-	/* .coin-list-item .col {
-		width: 22%;
-	} */
-
-	.coin-list-item .daily-col {
+	.coin-list-item :is(.vol-col, .mcap-col, .hr-col) {
 		display: none;
 	}
 }

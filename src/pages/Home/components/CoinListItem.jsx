@@ -29,7 +29,7 @@ const CoinListItem = ({ coin }) => {
 					${cleanInt(coin.market_data.current_price.usd)}
 				</span>
 			</div>
-			<div className='col'>
+			<div className='col hr-col'>
 				<span className={changeType1h}>
 					{coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(
 						2
@@ -47,12 +47,12 @@ const CoinListItem = ({ coin }) => {
 					{coin.market_data.price_change_percentage_7d.toFixed(2)}%
 				</span>
 			</div>
-			<div className='col'>
+			<div className='col vol-col'>
 				<span>
 					${(coin.market_data.total_volume.usd / 1000000000).toFixed(2)}B
 				</span>
 			</div>
-			<div className='col'>
+			<div className='col mcap-col'>
 				<span>
 					${(coin.market_data.market_cap.usd / 1000000000).toFixed(2)}B
 				</span>
