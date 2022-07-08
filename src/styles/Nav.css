@@ -127,7 +127,7 @@
 	content: '' !important;
 	transition: all 0.25s ease-in-out !important;
 	position: absolute !important;
-	background-color: black !important;
+	background-color: var(--clr-blk-button) !important;
 	width: 4px !important;
 	height: 20px !important;
 	border-radius: 2rem;
