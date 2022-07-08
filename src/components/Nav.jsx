@@ -85,7 +85,10 @@ const Nav = ({ coinsLoading, coins }) => {
 	} else if (!loggedIn) {
 		authButton = (
 			<div className='nav-link'>
-				Login
+				{/* Login */}
+				<div className='nav-link-button-container'>
+					<div className='nav-link-button'></div>
+				</div>
 				<div className='nav-link-dropdown'>
 					<Link to={'/signin'}>
 						<i className='fa-solid fa-address-card'></i>Tickr Login
@@ -116,7 +119,10 @@ const Nav = ({ coinsLoading, coins }) => {
 			<>
 				<div className='nav-link'>
 					{/* {auth.currentUser.displayName} */}
-					Account
+					{/* Account */}
+					<div className='nav-link-button-container'>
+						<div className='nav-link-button'></div>
+					</div>
 					<div className='nav-link-dropdown'>
 						<div onClick={() => navigate('/account')}>
 							<i className='fa-solid fa-flask'></i>Testnet

@@ -114,6 +114,41 @@
 	color: var(--clr-blk-button);
 }
 
+.nav-link-button-container {
+	width: 50px;
+	position: relative;
+	transform: translateY(-7.5px);
+}
+
+.nav-link-button::before,
+.nav-link-button::after {
+	left: 45%;
+	/* transform: translateX(25%); */
+	content: '' !important;
+	transition: all 0.25s ease-in-out !important;
+	position: absolute !important;
+	background-color: black !important;
+	width: 4px !important;
+	height: 20px !important;
+	border-radius: 2rem;
+}
+
+.nav-link-button::before {
+	transform: translate(-6.25px, 0) rotate(45deg);
+}
+
+.nav-link-button::after {
+	transform: translate(6.25px, 0) rotate(-45deg);
+}
+
+.nav-link:hover .nav-link-button::before {
+	transform: translate(6.25px, 0) rotate(45deg);
+}
+
+.nav-link:hover .nav-link-button::after {
+	transform: translate(-6.25px, 0) rotate(-45deg);
+}
+
 .nav-link {
 	/* position: relative; */
 
