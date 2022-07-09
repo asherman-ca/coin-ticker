@@ -13,6 +13,8 @@ import SignUp from './pages/Auth/SignUp';
 import SignIn from './pages/Auth/SignIn';
 import PasswordReset from './pages/Auth/PasswordReset';
 import NotFound from './components/NotFound';
+import ExchangeList from './pages/ExchangeList/ExchangeList';
+import ExchangeView from './pages/ExchangeView/ExchangeView';
 
 function App() {
 	const [coins, setCoins] = useState();
@@ -47,6 +49,8 @@ function App() {
 					<Route path='/account' element={<PrivateRoute />}>
 						<Route path='/account' element={<Account />} />
 					</Route>
+					<Route path='/exchanges' element={<ExchangeList />} />
+					<Route path='/exchanges/:exchangeId' element={<ExchangeView />} />
 					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</Router>
