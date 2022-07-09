@@ -1,0 +1,33 @@
+.exchange-container {
+	height: inherit !important;
+}
+
+.exchange-list {
+	width: 90%;
+	max-width: 1200px;
+	padding: 1rem;
+	margin-top: 3rem;
+	/* margin-boottom: 1rem; */
+}
+
+.exchanges {
+	padding: 1rem;
+	border: 1px solid var(--grey-border);
+
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.exchanges .header {
+	font-size: 1.5rem;
+}
+
+.exchanges .list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.exchanges .list > * {
+	width: 50%;
+}
