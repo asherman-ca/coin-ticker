@@ -166,7 +166,7 @@
 .nav-link:hover .nav-link-dropdown,
 .nav-link-dropdown:hover {
 	visibility: visible;
-	max-height: 50vh;
+	max-height: 100vh;
 	padding: 0.5rem;
 }
 
@@ -283,6 +283,12 @@
 }
 
 @media (max-width: 600px) {
+	.search-prefill {
+		width: 100%;
+	}
+	.nav-link-dropdown {
+		width: 100%;
+	}
 }
 
 @keyframes grow {

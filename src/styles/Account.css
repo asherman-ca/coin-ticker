@@ -175,6 +175,10 @@
 	border: 1px solid var(--grey-border);
 }
 
+.form-div .header {
+	font-size: 1.5rem !important;
+}
+
 .secondary-col .buy-sell-form {
 	display: flex;
 	flex-direction: column;
