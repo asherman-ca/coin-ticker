@@ -57,7 +57,21 @@
 }
 
 .exchange-list-item img {
-	width: 60px;
-	height: 60px;
+	width: 4rem;
+	height: 4rem;
 	border-radius: 0.5rem;
+}
+
+@media (max-width: 600px) {
+	.exchange-list-item img {
+		/* width: 2rem;
+		height: 2rem; */
+	}
+	.exchange-list-item {
+		width: 100%;
+		padding: 0 0.5rem;
+	}
+	.exchange-list .exchange-list-item:nth-child(2) {
+		margin-top: 1rem;
+	}
 }
