@@ -18,6 +18,7 @@ import ExchangeView from './pages/ExchangeView/ExchangeView';
 
 function App() {
 	const [coins, setCoins] = useState();
+	const [btcPrice, setBtcPrice] = useState();
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -30,6 +31,12 @@ function App() {
 			}
 			const response = await ref.json();
 			setCoins(response);
+			console.log('res', response);
+			response.forEach((coin) => {
+				if (coin.id == 'bitcoin') {
+					setBtcPrice(coin.market_data.current_price.usd);
+				}
+			});
 			setLoading(false);
 		};
 		apiFetch();
@@ -49,7 +56,12 @@ function App() {
 					<Route path='/account' element={<PrivateRoute />}>
 						<Route path='/account' element={<Account />} />
 					</Route>
-					<Route path='/exchanges' element={<ExchangeList />} />
+					<Route
+						path='/exchanges'
+						element={
+							<ExchangeList btcPrice={btcPrice} coinsLoading={loading} />
+						}
+					/>
 					<Route path='/exchanges/:exchangeId' element={<ExchangeView />} />
 					<Route path='*' element={<NotFound />} />
 				</Routes>

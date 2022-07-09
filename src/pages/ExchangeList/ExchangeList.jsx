@@ -3,7 +3,7 @@ import Spinner from '../../components/Spinner';
 
 import ExchangeListItem from './components/ExchangeListItem';
 
-const ExchangeList = () => {
+const ExchangeList = ({ coinsLoading, btcPrice }) => {
 	const [exchanges, setExchanges] = useState();
 	const [loading, setLoading] = useState(true);
 
@@ -17,12 +17,13 @@ const ExchangeList = () => {
 			}
 			const response = await ref.json();
 			setExchanges(response);
+
 			setLoading(false);
 		};
 		apiFetch();
 	}, []);
 
-	if (loading) {
+	if (loading || coinsLoading) {
 		return (
 			<div className='container'>
 				<div className='exchange-list'>
@@ -34,12 +35,19 @@ const ExchangeList = () => {
 
 	return (
 		<div className='container exchange-container'>
+			{console.log(exchanges)}
 			<div className='exchange-list'>
 				<div className='exchanges'>
 					<div className='header'>Exchanges</div>
 					<div className='list'>
 						{exchanges.map((exchange) => {
-							return <ExchangeListItem key={exchange.id} exchange={exchange} />;
+							return (
+								<ExchangeListItem
+									key={exchange.id}
+									exchange={exchange}
+									btcPrice={btcPrice}
+								/>
+							);
 						})}
 					</div>
 				</div>
