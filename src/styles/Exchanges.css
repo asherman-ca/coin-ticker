@@ -3,31 +3,61 @@
 }
 
 .exchange-list {
-	width: 90%;
+	/* width: 100%; */
 	max-width: 1200px;
 	padding: 1rem;
 	margin-top: 3rem;
-	/* margin-boottom: 1rem; */
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .exchanges {
-	padding: 1rem;
-	border: 1px solid var(--grey-border);
-
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+
+	border: 1px solid var(--grey-border);
+	border-radius: 0.5rem;
 }
 
 .exchanges .header {
+	padding: 1rem 1rem 0;
 	font-size: 1.5rem;
 }
 
 .exchanges .list {
+	padding: 0 0.5rem 1rem;
+
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.exchanges .list > * {
+/* Exchange List Item */
+
+.exchange-list .exchange-list-item:nth-child(n + 3) {
+	margin-top: 1rem;
+}
+
+.exchange-list-item {
 	width: 50%;
+	padding: 0 0.5rem;
+}
+
+.list-item-content {
+	padding: 1rem;
+
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
+	border: 1px solid var(--grey-border);
+	border-radius: 0.5rem;
+}
+
+.exchange-list-item img {
+	width: 60px;
+	height: 60px;
+	border-radius: 0.5rem;
 }

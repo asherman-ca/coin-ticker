@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Spinner from '../../components/Spinner';
 
 import ExchangeListItem from './components/ExchangeListItem';
 
@@ -22,7 +23,13 @@ const ExchangeList = () => {
 	}, []);
 
 	if (loading) {
-		return <div>Loading</div>;
+		return (
+			<div className='container'>
+				<div className='exchange-list'>
+					<Spinner />
+				</div>
+			</div>
+		);
 	}
 
 	return (
