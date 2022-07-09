@@ -19,7 +19,7 @@ const ExchangeView = () => {
 			setLoading(false);
 		};
 		apiFetch();
-	}, []);
+	}, [params.exchangeId]);
 
 	if (loading) {
 		return <div>Loading</div>;

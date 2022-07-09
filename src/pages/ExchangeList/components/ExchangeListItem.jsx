@@ -10,12 +10,13 @@ const ExchangeListItem = ({ exchange, btcPrice }) => {
 			href={`${exchange.url}`}
 		>
 			{/* {console.log('ex', exchange.trust_score_rank)} */}
-			{/* {console.log('namef', exchange.name)} */}
+			{console.log('namef', exchange)}
 			<div className='list-item-content'>
 				<img src={exchange.image} alt='' />
 				<div className='list-item-meta'>
 					<div>{exchange.name}</div>
-					<div>{cleanInt(exchange.trade_volume_24h_btc)}</div>
+					{/* <div>{cleanInt(exchange.trade_volume_24h_btc)}</div> */}
+					<div>${cleanInt(exchange.btcThing)}</div>
 				</div>
 			</div>
 		</a>

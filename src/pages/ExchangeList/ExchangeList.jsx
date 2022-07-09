@@ -7,6 +7,8 @@ const ExchangeList = ({ coinsLoading, btcPrice }) => {
 	const [exchanges, setExchanges] = useState();
 	const [loading, setLoading] = useState(true);
 
+	const [calcsLoading, setCalcsLoading] = useState(true);
+
 	useEffect(() => {
 		const apiFetch = async () => {
 			const ref = await fetch(
@@ -23,7 +25,23 @@ const ExchangeList = ({ coinsLoading, btcPrice }) => {
 		apiFetch();
 	}, []);
 
-	if (loading || coinsLoading) {
+	useEffect(() => {
+		if (!coinsLoading && !loading) {
+			setExchanges((prev) => {
+				return [
+					...prev.map((exchange) => {
+						return {
+							...exchange,
+							btcThing: exchange.trade_volume_24h_btc * btcPrice,
+						};
+					}),
+				];
+			});
+			setCalcsLoading(false);
+		}
+	}, [coinsLoading, loading]);
+
+	if (loading || calcsLoading) {
 		return (
 			<div className='container'>
 				<div className='exchange-list'>
@@ -45,7 +63,7 @@ const ExchangeList = ({ coinsLoading, btcPrice }) => {
 								<ExchangeListItem
 									key={exchange.id}
 									exchange={exchange}
-									btcPrice={btcPrice}
+									// btcPrice={btcPrice}
 								/>
 							);
 						})}
