@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanInt } from '../../../utils/stringUtils';
 
-const ExchangeListItem = ({ exchange, btcPrice }) => {
+const ExchangeListItem = ({ exchange }) => {
 	return (
 		<a
 			className='exchange-list-item'
@@ -9,16 +9,12 @@ const ExchangeListItem = ({ exchange, btcPrice }) => {
 			rel='noopener noreferrer'
 			href={`${exchange.url}`}
 		>
-			{/* {console.log('ex', exchange.trust_score_rank)} */}
-			{console.log('namef', exchange)}
-			{console.log('btcprice', btcPrice)}
+			{/* {console.log('namef', exchange)} */}
 			<div className='list-item-content'>
 				<img src={exchange.image} alt='' />
 				<div className='list-item-meta'>
 					<div>{exchange.name}</div>
-					{/* <div>{cleanInt(exchange.trade_volume_24h_btc)}</div> */}
-					{/* <div>${cleanInt(exchange.btcThing)}</div> */}
-					<div>{cleanInt(exchange.trade_volume_24h_btc * btcPrice)}</div>
+					<div>{cleanInt(exchange.btcVolUsd, 1000000000)} B</div>
 				</div>
 			</div>
 		</a>

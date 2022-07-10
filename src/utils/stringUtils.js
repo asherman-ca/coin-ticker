@@ -25,14 +25,21 @@ const nameReducer = (string) => {
 	}
 };
 
-const cleanInt = (num) => {
+const cleanInt = (num, mod) => {
 	if (num < 1 && num > 0) {
 		return num.toFixed(6);
 	} else {
-		return num
-			.toFixed(2)
-			.toString()
-			.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,');
+		if (mod) {
+			return (num / mod)
+				.toFixed(2)
+				.toString()
+				.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,');
+		} else {
+			return num
+				.toFixed(2)
+				.toString()
+				.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,');
+		}
 	}
 };
 

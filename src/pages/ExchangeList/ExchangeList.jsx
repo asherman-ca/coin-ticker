@@ -10,32 +10,40 @@ const ExchangeList = ({ coinsLoading, btcPrice }) => {
 	const [calcsLoading, setCalcsLoading] = useState(true);
 
 	useEffect(() => {
-		const apiFetch = async () => {
-			const ref = await fetch(
-				`https://api.coingecko.com/api/v3/exchanges?per_page=50`
-			);
-			if (!ref.ok) {
-				throw new Error('Thrown Error Thrown');
-			}
-			const response = await ref.json();
-			setExchanges(response);
+		if (!coinsLoading) {
+			const apiFetch = async () => {
+				const ref = await fetch(
+					`https://api.coingecko.com/api/v3/exchanges?per_page=50`
+				);
+				if (!ref.ok) {
+					throw new Error('Thrown Error Thrown');
+				}
+				const response = await ref.json();
 
-			setLoading(false);
-		};
-		apiFetch();
-	}, []);
+				setExchanges([
+					...response.map((exchange) => ({
+						...exchange,
+						btcVolUsd: exchange.trade_volume_24h_btc * btcPrice,
+					})),
+				]);
+
+				setLoading(false);
+			};
+			apiFetch();
+		}
+	}, [coinsLoading]);
 
 	// useEffect(() => {
 	// 	if (!coinsLoading && !loading) {
-	// 		setExchanges((prev) => {
-	// 			return [
-	// 				...prev.map((exchange) => {
-	// 					return {
-	// 						...exchange,
-	// 						btcThing: exchange.trade_volume_24h_btc * btcPrice,
-	// 					};
-	// 				}),
-	// 			];
+	// setExchanges((prev) => {
+	// 	return [
+	// 		...prev.map((exchange) => {
+	// 			return {
+	// 				...exchange,
+	// 				btcThing: exchange.trade_volume_24h_btc * btcPrice,
+	// 			};
+	// 		}),
+	// 	];
 	// 		});
 	// 		setCalcsLoading(false);
 	// 	}
@@ -59,13 +67,7 @@ const ExchangeList = ({ coinsLoading, btcPrice }) => {
 					<div className='header'>Exchanges</div>
 					<div className='list'>
 						{exchanges.map((exchange) => {
-							return (
-								<ExchangeListItem
-									key={exchange.id}
-									exchange={exchange}
-									btcPrice={btcPrice}
-								/>
-							);
+							return <ExchangeListItem key={exchange.id} exchange={exchange} />;
 						})}
 					</div>
 				</div>
