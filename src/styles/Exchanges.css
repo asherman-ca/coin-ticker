@@ -6,11 +6,28 @@
 	/* width: 100%; */
 	max-width: 1200px;
 	padding: 1rem;
-	margin-top: 3rem;
+	margin-top: 2rem;
 
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 3rem;
+}
+
+.exchange-list-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+
+	font-size: 2rem;
+	font-weight: 500;
+}
+
+.exchange-list-header > span:last-child {
+	font-size: 1.25rem;
+	color: var(--clr-grey);
 }
 
 .exchanges {
@@ -82,8 +99,7 @@
 }
 
 .list-item-meta .meta-header {
-	font-size: 1.25rem;
-	font-weight: 500;
+	font-size: 1.5rem;
 }
 
 .list-item-meta .meta-content {

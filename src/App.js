@@ -31,9 +31,9 @@ function App() {
 			}
 			const response = await ref.json();
 			setCoins(response);
-			console.log('res', response);
+			// console.log('res', response);
 			response.forEach((coin) => {
-				if (coin.id == 'bitcoin') {
+				if (coin.id === 'bitcoin') {
 					setBtcPrice(coin.market_data.current_price.usd);
 				}
 			});

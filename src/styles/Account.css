@@ -78,11 +78,29 @@
 }
 
 .orders .order-item {
+	padding: 0.25rem 0;
+
 	display: flex;
 	align-items: center;
 	/* gap: 1rem; */
 
 	border-top: 1px solid var(--grey-border);
+}
+
+.order-item img {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+}
+
+.order-item a {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.order-item a:hover {
+	color: var(--clr-blk-button);
 }
 
 .orders .order-item > * {
@@ -104,10 +122,10 @@
 	color: var(--clr-grey);
 }
 
-.order-item .order-item-link:hover {
+/* .order-item .order-item-link:hover {
 	cursor: pointer;
 	color: var(--clr-blue);
-}
+} */
 
 .list .fa-circle-minus:nth-child(n + 1):hover {
 	color: var(--clr-sell) !important;

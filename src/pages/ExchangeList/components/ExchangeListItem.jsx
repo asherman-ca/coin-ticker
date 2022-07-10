@@ -12,7 +12,7 @@ const ExchangeListItem = ({ exchange }) => {
 			{/* {console.log('namef', exchange)} */}
 			<div className='list-item-content'>
 				<div className='image-container'>
-					<img src={exchange.image} alt='' />
+					<img src={exchange.image} alt='exchange' />
 				</div>
 				<div className='list-item-meta'>
 					<div className='meta-header'>{exchange.name}</div>

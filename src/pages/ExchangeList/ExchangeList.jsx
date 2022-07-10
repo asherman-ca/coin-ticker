@@ -7,8 +7,6 @@ const ExchangeList = ({ coinsLoading, btcPrice }) => {
 	const [exchanges, setExchanges] = useState();
 	const [loading, setLoading] = useState(true);
 
-	const [calcsLoading, setCalcsLoading] = useState(true);
-
 	useEffect(() => {
 		if (!coinsLoading) {
 			const apiFetch = async () => {
@@ -31,23 +29,7 @@ const ExchangeList = ({ coinsLoading, btcPrice }) => {
 			};
 			apiFetch();
 		}
-	}, [coinsLoading]);
-
-	// useEffect(() => {
-	// 	if (!coinsLoading && !loading) {
-	// setExchanges((prev) => {
-	// 	return [
-	// 		...prev.map((exchange) => {
-	// 			return {
-	// 				...exchange,
-	// 				btcThing: exchange.trade_volume_24h_btc * btcPrice,
-	// 			};
-	// 		}),
-	// 	];
-	// 		});
-	// 		setCalcsLoading(false);
-	// 	}
-	// }, [coinsLoading, loading]);
+	}, [coinsLoading, btcPrice]);
 
 	if (loading || coinsLoading) {
 		return (
@@ -63,6 +45,10 @@ const ExchangeList = ({ coinsLoading, btcPrice }) => {
 		<div className='container exchange-container'>
 			{console.log(exchanges)}
 			<div className='exchange-list'>
+				<div className='exchange-list-header'>
+					<span>Top Crypto Exchanges</span>
+					<span>Sorted by Trust Rank</span>
+				</div>
 				<div className='exchanges'>
 					<div className='header'>Exchanges</div>
 					<div className='list'>
@@ -77,3 +63,21 @@ const ExchangeList = ({ coinsLoading, btcPrice }) => {
 };
 
 export default ExchangeList;
+
+// const [calcsLoading, setCalcsLoading] = useState(true);
+
+// useEffect(() => {
+// 	if (!coinsLoading && !loading) {
+// setExchanges((prev) => {
+// 	return [
+// 		...prev.map((exchange) => {
+// 			return {
+// 				...exchange,
+// 				btcThing: exchange.trade_volume_24h_btc * btcPrice,
+// 			};
+// 		}),
+// 	];
+// 		});
+// 		setCalcsLoading(false);
+// 	}
+// }, [coinsLoading, loading]);
