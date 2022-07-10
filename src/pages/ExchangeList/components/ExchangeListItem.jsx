@@ -11,10 +11,25 @@ const ExchangeListItem = ({ exchange }) => {
 		>
 			{/* {console.log('namef', exchange)} */}
 			<div className='list-item-content'>
-				<img src={exchange.image} alt='' />
+				<div className='image-container'>
+					<img src={exchange.image} alt='' />
+				</div>
 				<div className='list-item-meta'>
-					<div>{exchange.name}</div>
-					<div>{cleanInt(exchange.btcVolUsd, 1000000000)} B</div>
+					<div className='meta-header'>{exchange.name}</div>
+					<div className='meta-content'>
+						<div>
+							<div>BTC Volume</div>
+							<div>${cleanInt(exchange.btcVolUsd, 1000000000)} B</div>
+						</div>
+						<div>
+							<div>Trust Rank</div>
+							<div>{exchange.trust_score_rank}</div>
+						</div>
+						<div>
+							<div>Trust Score</div>
+							<div>{exchange.trust_score}</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</a>
