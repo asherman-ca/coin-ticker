@@ -113,6 +113,7 @@ const calcPNL = (orders, coins) => {
 				(currentPrice / account.averagePrice - 1),
 			totalCoins: account.total,
 			averagePrice: account.averagePrice,
+			totalValue: currentPrice * account.total,
 			rpnl: account.earn - account.totalSold * account.averagePrice,
 			coinId: account.coinId,
 			image: account.image,

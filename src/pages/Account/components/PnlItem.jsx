@@ -8,13 +8,9 @@ const PnlItem = ({ account }) => {
 				<img src={account.image} alt='coin' />
 				{account.coin}
 			</Link>
+			<div>${cleanInt(account.totalValue)}</div>
 			<div>${cleanInt(account.pnl)}</div>
 			<div>${cleanInt(account.rpnl)}</div>
-			<div>
-				{account.totalCoins >= 0.01
-					? cleanInt(account.totalCoins)
-					: account.totalCoins.toFixed(4)}
-			</div>
 			<div>${cleanInt(account.averagePrice)}</div>
 		</div>
 	);
