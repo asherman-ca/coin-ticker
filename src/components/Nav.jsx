@@ -87,12 +87,11 @@ const Nav = ({ coinsLoading, coins }) => {
 			<div className='nav-link'>
 				<i className='fa-solid fa-bars'></i>
 				<div className='nav-link-dropdown'>
-					<Link to={'/signin'}>
-						<i className='fa-solid fa-address-card'></i>Tickr Login
-					</Link>
-					<OAuth />
-					<div onClick={onDemo}>
-						<i className='fa-solid fa-flask'></i>Guest
+					<div onClick={() => navigate('/')}>
+						<i className='fa-solid fa-coins'></i>Tickrs
+					</div>
+					<div onClick={() => navigate('/exchanges')}>
+						<i className='fa-solid fa-store'></i>Exchanges
 					</div>
 					<div
 						style={{
@@ -102,11 +101,12 @@ const Nav = ({ coinsLoading, coins }) => {
 							borderBottom: '.5px solid grey',
 						}}
 					></div>
-					<div onClick={() => navigate('/')}>
-						<i className='fa-solid fa-coins'></i>Tickrs
-					</div>
-					<div onClick={() => navigate('/exchanges')}>
-						<i className='fa-solid fa-store'></i>Exchanges
+					<Link to={'/signin'}>
+						<i className='fa-solid fa-address-card'></i>Tickr Login
+					</Link>
+					<OAuth />
+					<div onClick={onDemo}>
+						<i className='fa-solid fa-flask'></i>Guest
 					</div>
 				</div>
 			</div>
@@ -117,14 +117,11 @@ const Nav = ({ coinsLoading, coins }) => {
 				<div className='nav-link'>
 					<i className='fa-solid fa-bars' />
 					<div className='nav-link-dropdown'>
-						<div onClick={() => navigate('/account')}>
-							<i className='fa-solid fa-flask'></i>Testnet
+						<div onClick={() => navigate('/')}>
+							<i className='fa-solid fa-coins'></i>Tickrs
 						</div>
-						<div onClick={() => navigate('/portfolio')}>
-							<i className='fa-solid fa-dice'></i>Portfolio
-						</div>
-						<div onClick={() => navigate('/profile')}>
-							<i className='fa-solid fa-user-astronaut'></i>Profile
+						<div onClick={() => navigate('/exchanges')}>
+							<i className='fa-solid fa-store'></i>Exchanges
 						</div>
 						<div
 							style={{
@@ -134,11 +131,14 @@ const Nav = ({ coinsLoading, coins }) => {
 								borderBottom: '.5px solid grey',
 							}}
 						></div>
-						<div onClick={() => navigate('/')}>
-							<i className='fa-solid fa-coins'></i>Tickrs
+						<div onClick={() => navigate('/account')}>
+							<i className='fa-solid fa-flask'></i>Testnet
 						</div>
-						<div onClick={() => navigate('/exchanges')}>
-							<i className='fa-solid fa-store'></i>Exchanges
+						{/* <div onClick={() => navigate('/portfolio')}>
+							<i className='fa-solid fa-dice'></i>Portfolio
+						</div> */}
+						<div onClick={() => navigate('/profile')}>
+							<i className='fa-solid fa-user-astronaut'></i>Profile
 						</div>
 						<div
 							style={{
