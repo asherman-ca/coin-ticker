@@ -27,6 +27,7 @@
 
 .exchange-list-header > span:last-child {
 	font-size: 1.25rem;
+	font-weight: normal;
 	color: var(--clr-grey);
 }
 
@@ -84,6 +85,16 @@
 	border-radius: 0.5rem;
 }
 
+.list-item-content .social-container {
+	display: flex;
+	gap: 0.5rem;
+	padding: 0.5rem 0.5rem;
+}
+
+.list-item-content .social-container i {
+	font-size: 1.25rem;
+}
+
 .exchange-list-item img {
 	width: 6rem;
 	height: 6rem;
@@ -99,28 +110,46 @@
 }
 
 .list-item-meta .meta-header {
+	display: flex;
+	/* flex-direction: column; */
+	justify-content: space-between;
+
 	font-size: 1.5rem;
+}
+
+.list-item-meta .meta-header span:last-child {
+	/* color: var(--clr-grey); */
+	font-size: 1rem;
 }
 
 .list-item-meta .meta-content {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.meta-content > div {
+	display: flex;
 	justify-content: space-between;
 }
 
-.list-item-meta .meta-content > div:nth-child(2) {
-	text-align: center;
-}
-
-.list-item-meta .meta-content > div:last-child {
-	text-align: right;
+.meta-content > div > div {
+	line-height: 1.5rem;
 }
 
 .meta-content > div > div:nth-child(2) {
+	text-align: center;
+}
+
+.meta-content > div > div:last-child {
+	text-align: right;
+}
+
+.meta-content > div > div > div:nth-child(2) {
 	font-weight: 500;
 }
 
-.meta-content > div > div:first-child {
+.meta-content > div > div > div:first-child {
 	color: var(--clr-grey);
 }
 

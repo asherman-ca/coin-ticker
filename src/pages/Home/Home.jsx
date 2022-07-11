@@ -6,7 +6,7 @@ import Spinner from '../../components/Spinner';
 
 const rowsPerPageOptions = [10, 25, 50, 100];
 
-const Home = ({ coins, loading }) => {
+const Home = ({ coins, coinsLoading }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[1]);
 
@@ -31,7 +31,7 @@ const Home = ({ coins, loading }) => {
 		});
 	};
 
-	if (loading) {
+	if (coinsLoading) {
 		return (
 			<div className='container'>
 				<div className='home'>

@@ -3,35 +3,28 @@ import Spinner from '../../components/Spinner';
 
 import ExchangeListItem from './components/ExchangeListItem';
 
-const ExchangeList = ({ coinsLoading, btcPrice }) => {
+const ExchangeList = () => {
 	const [exchanges, setExchanges] = useState();
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		if (!coinsLoading) {
-			const apiFetch = async () => {
-				const ref = await fetch(
-					`https://api.coingecko.com/api/v3/exchanges?per_page=50`
-				);
-				if (!ref.ok) {
-					throw new Error('Thrown Error Thrown');
-				}
-				const response = await ref.json();
+		const apiFetch = async () => {
+			const ref = await fetch(
+				`https://api.coingecko.com/api/v3/exchanges?per_page=25`
+			);
+			if (!ref.ok) {
+				throw new Error('Thrown Error Thrown');
+			}
+			const response = await ref.json();
 
-				setExchanges([
-					...response.map((exchange) => ({
-						...exchange,
-						btcVolUsd: exchange.trade_volume_24h_btc * btcPrice,
-					})),
-				]);
+			setExchanges(response);
 
-				setLoading(false);
-			};
-			apiFetch();
-		}
-	}, [coinsLoading, btcPrice]);
+			setLoading(false);
+		};
+		apiFetch();
+	}, []);
 
-	if (loading || coinsLoading) {
+	if (loading) {
 		return (
 			<div className='container'>
 				<div className='exchange-list'>
@@ -81,3 +74,10 @@ export default ExchangeList;
 // 		setCalcsLoading(false);
 // 	}
 // }, [coinsLoading, loading]);
+
+// setExchanges([
+// 	...response.map((exchange) => ({
+// 		...exchange,
+// 		btcVolUsd: exchange.trade_volume_24h_btc * btcPrice,
+// 	})),
+// ]);
