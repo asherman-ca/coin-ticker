@@ -7,7 +7,7 @@ const OrderItem = ({ order, onDelete }) => {
 		<div className='order-item'>
 			{console.log('item', order)}
 			<Link to={`/coins/${order.data.coinId}`}>
-				<img src={order.data.image} alt='' />
+				<img src={order.data.image} alt='coin' />
 				<div className='order-item-link'>{order.data.coin}</div>
 			</Link>
 			<div className={order.data.type === 'buy' ? 'pos-change' : 'neg-change'}>

@@ -32,19 +32,20 @@ const ExchangeListItem = ({ exchange }) => {
 		);
 	}
 
-	const btcTickers = exchangeDeets.tickers?.filter(
+	const btcTickers = exchangeDeets.tickers.filter(
 		(ticker) => ticker.base === 'BTC'
 	);
 
-	const ethTickers = exchangeDeets.tickers?.filter(
+	const ethTickers = exchangeDeets.tickers.filter(
 		(ticker) => ticker.base === 'ETH'
 	);
 
-	console.log('btctickers', btcTickers);
-
 	const displayTickers = [btcTickers[0], ethTickers[0]];
 
-	console.log('deets', exchangeDeets);
+	// if (exchange.name === 'BitMEX') {
+	console.log('name', exchange.name);
+	console.log('displays', displayTickers);
+	// }
 
 	return (
 		<a

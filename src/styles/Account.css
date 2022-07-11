@@ -56,6 +56,8 @@
 
 .orders .header .order-item-header,
 .accounting .header .pnl-item-header {
+	padding: 0.25rem 0;
+
 	display: flex;
 	/* gap: 1rem; */
 
@@ -88,8 +90,8 @@
 }
 
 .order-item img {
-	width: 25px;
-	height: 25px;
+	width: 20px;
+	height: 20px;
 	border-radius: 50%;
 }
 
@@ -157,6 +159,8 @@
 }
 
 .pnl-item {
+	padding: 0.25rem 0;
+
 	display: flex;
 	border-top: 1px solid var(--grey-border);
 }
