@@ -32,17 +32,16 @@ const ExchangeListItem = ({ exchange }) => {
 		);
 	}
 
-	const btcTickers = exchangeDeets.tickers.filter(
+	const btcTickers = exchangeDeets.tickers?.filter(
 		(ticker) => ticker.base === 'BTC'
 	);
 
-	const ethTickers = exchangeDeets.tickers.filter(
+	const ethTickers = exchangeDeets.tickers?.filter(
 		(ticker) => ticker.base === 'ETH'
 	);
 
 	const displayTickers = [btcTickers[0], ethTickers[0]];
 
-	console.log('deets', btcTickers);
 	return (
 		<a
 			className='exchange-list-item'
@@ -73,7 +72,9 @@ const ExchangeListItem = ({ exchange }) => {
 					<div className='meta-content'>
 						{displayTickers.map((tickr) => {
 							return (
-								<div>
+								<div
+									key={`${tickr.base} - ${tickr.target} - ${tickr.market.name}`}
+								>
 									<div>
 										<div>
 											{tickr.base} / {tickr.target}
