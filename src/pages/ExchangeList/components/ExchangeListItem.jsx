@@ -40,7 +40,11 @@ const ExchangeListItem = ({ exchange }) => {
 		(ticker) => ticker.base === 'ETH'
 	);
 
+	console.log('btctickers', btcTickers);
+
 	const displayTickers = [btcTickers[0], ethTickers[0]];
+
+	console.log('deets', exchangeDeets);
 
 	return (
 		<a
@@ -71,22 +75,28 @@ const ExchangeListItem = ({ exchange }) => {
 					</div>
 					<div className='meta-content'>
 						{displayTickers.map((tickr) => {
-							return (
-								<div
-									key={`${tickr.base} - ${tickr.target} - ${tickr.market.name}`}
-								>
-									<div>
+							// console.log('name', exchange.name);
+							// console.log('tickr', tickr);
+							if (tickr) {
+								return (
+									<div
+										key={`${tickr.base} - ${tickr.target} - ${tickr.market.name}`}
+									>
 										<div>
-											{tickr.base} / {tickr.target}
+											<div>
+												{tickr.base} / {tickr.target}
+											</div>
+											<div>${cleanInt(tickr.last)}</div>
 										</div>
-										<div>${cleanInt(tickr.last)}</div>
+										<div>
+											<div>Volume</div>
+											<div>
+												${cleanInt(tickr.converted_volume.usd, 1000000)}M
+											</div>
+										</div>
 									</div>
-									<div>
-										<div>Volume</div>
-										<div>${cleanInt(tickr.converted_volume.usd, 1000000)}M</div>
-									</div>
-								</div>
-							);
+								);
+							}
 						})}
 					</div>
 				</div>

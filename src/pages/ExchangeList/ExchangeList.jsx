@@ -36,7 +36,6 @@ const ExchangeList = () => {
 
 	return (
 		<div className='container exchange-container'>
-			{console.log(exchanges)}
 			<div className='exchange-list'>
 				<div className='exchange-list-header'>
 					<span>Top Crypto Exchanges</span>
