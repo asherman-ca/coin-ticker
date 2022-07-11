@@ -89,9 +89,10 @@
 	border-top: 1px solid var(--grey-border);
 }
 
-.order-item img {
-	width: 20px;
-	height: 20px;
+.order-item img,
+.pnl-item img {
+	width: 1rem;
+	height: 1rem;
 	border-radius: 50%;
 }
 
@@ -167,6 +168,12 @@
 
 .pnl-item > * {
 	flex-basis: 100%;
+}
+
+.pnl-item a {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 .pnl-item > *:nth-child(n + 2) {
