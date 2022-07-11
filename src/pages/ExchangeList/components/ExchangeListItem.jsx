@@ -32,19 +32,21 @@ const ExchangeListItem = ({ exchange }) => {
 		);
 	}
 
-	const btcTickers = exchangeDeets.tickers.filter(
-		(ticker) => ticker.base === 'BTC'
-	);
+	// const btcTickers = exchangeDeets.tickers.filter(
+	// 	(ticker) => ticker.base === 'BTCasdas'
+	// );
 
-	const ethTickers = exchangeDeets.tickers.filter(
-		(ticker) => ticker.base === 'ETH'
-	);
+	// const ethTickers = exchangeDeets.tickers.filter(
+	// 	(ticker) => ticker.base === 'ETH'
+	// );
 
-	const displayTickers = [btcTickers[0], ethTickers[0]];
+	// console.log('btc tick', btcTickers);
+
+	// const displayTickers = [btcTickers[0], ethTickers[0]];
 
 	// if (exchange.name === 'BitMEX') {
-	console.log('name', exchange.name);
-	console.log('displays', displayTickers);
+	console.log('name', exchangeDeets.tickers);
+	// console.log('displays', displayTickers);
 	// }
 
 	return (
@@ -75,7 +77,20 @@ const ExchangeListItem = ({ exchange }) => {
 						<span>{exchangeDeets.country}</span>
 					</div>
 					<div className='meta-content'>
-						{displayTickers.map((tickr) => {
+						{exchangeDeets.tickers.slice(0, 6).map((tickr) => {
+							return (
+								<div>
+									<div
+										key={`${tickr.base} - ${tickr.target} - ${tickr.market.name}`}
+									>
+										{tickr.base} / {tickr.target}
+									</div>
+									<div>${cleanInt(tickr.converted_volume.usd, 1000000)}M</div>
+								</div>
+							);
+						})}
+
+						{/* {displayTickers.map((tickr) => {
 							// console.log('name', exchange.name);
 							// console.log('tickr', tickr);
 							if (tickr) {
@@ -98,7 +113,7 @@ const ExchangeListItem = ({ exchange }) => {
 									</div>
 								);
 							}
-						})}
+						})} */}
 					</div>
 				</div>
 			</div>
