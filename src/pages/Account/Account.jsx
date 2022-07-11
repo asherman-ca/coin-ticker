@@ -140,7 +140,7 @@ const Account = () => {
 					</div>
 					<div className='accounting'>
 						<div className='header'>
-							<div>Unregistered Securities</div>
+							<div>Assets</div>
 							<div className='pnl-item-header'>
 								<div>Coin</div>
 								<div>Value</div>
