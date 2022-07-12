@@ -33,9 +33,6 @@ const ExchangeListItem = ({ exchange }) => {
 		);
 	}
 
-	console.log('name', exchange.name);
-	console.log('deets', exchangeDeets);
-
 	return (
 		<a
 			className='exchange-list-item'
@@ -43,7 +40,6 @@ const ExchangeListItem = ({ exchange }) => {
 			rel='noopener noreferrer'
 			href={`${exchange.name !== 'Kraken' ? exchange.url : ''}`}
 		>
-			{console.log('name', exchange.name)}
 			<div className='list-item-content'>
 				<div>
 					<div className='image-container'>

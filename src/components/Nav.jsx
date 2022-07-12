@@ -15,6 +15,7 @@ const Nav = ({ coinsLoading, coins }) => {
 	const navigate = useNavigate();
 	const [param, setParam] = useState();
 	const [loggedIn, setLoggedIn] = useState(false);
+	const [showDrop, setShowDrop] = useState(false);
 	const isMounted = useRef(true);
 
 	const [searchFilter, setSearchFilter] = useState([]);
@@ -79,6 +80,20 @@ const Nav = ({ coinsLoading, coins }) => {
 		}
 	};
 
+	const handleClick = (e) => {
+		console.log(showDrop);
+		if (showDrop) {
+			console.log('hits');
+			setShowDrop(false);
+		} else {
+			setShowDrop(true);
+		}
+	};
+
+	const handleFocus = (e) => {
+		console.log('focus');
+	};
+
 	let authButton;
 	if (loading) {
 		authButton = <div></div>;
@@ -87,8 +102,18 @@ const Nav = ({ coinsLoading, coins }) => {
 			<div className='nav-link'>
 				{/* <i className='fa-solid fa-bars'></i> */}
 				{/* <input type='checkbox' defaultChecked /> */}
-				<button>File</button>
-				<div className='nav-link-dropdown'>
+				<button
+					type='button'
+					onClick={handleClick}
+					onBlur={() => setShowDrop(false)}
+				>
+					File
+				</button>
+				<div
+					className={
+						showDrop ? 'nav-link-dropdown show-drop' : 'nav-link-dropdown'
+					}
+				>
 					<div onClick={() => navigate('/')}>
 						<i className='fa-solid fa-coins'></i>Tickrs
 					</div>
@@ -163,7 +188,7 @@ const Nav = ({ coinsLoading, coins }) => {
 		<div className='nav-container'>
 			<div className='navbar'>
 				<div className='nav-item'>
-					<Link className='logo-div' to={`/`}>
+					<Link className='logo-div' to={`/`} id='logo'>
 						<i className='fa-solid fa-coins'></i>Tickr
 					</Link>
 				</div>
