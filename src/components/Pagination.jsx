@@ -1,4 +1,4 @@
-import { paginationRange } from '../../../components/PaginationRange';
+import { paginationRange } from './PaginationRange';
 
 const Pagination = ({
 	totalCount,

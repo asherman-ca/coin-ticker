@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import Spinner from '../../../components/Spinner';
 import { cleanInt } from '../../../utils/stringUtils';
 
@@ -32,38 +33,21 @@ const ExchangeListItem = ({ exchange }) => {
 		);
 	}
 
-	// const btcTickers = exchangeDeets.tickers.filter(
-	// 	(ticker) => ticker.base === 'BTCasdas'
-	// );
-
-	// const ethTickers = exchangeDeets.tickers.filter(
-	// 	(ticker) => ticker.base === 'ETH'
-	// );
-
-	// console.log('btc tick', btcTickers);
-
-	// const displayTickers = [btcTickers[0], ethTickers[0]];
-
-	// if (exchange.name === 'BitMEX') {
-	console.log('name', exchangeDeets.tickers);
-	// console.log('displays', displayTickers);
-	// }
+	console.log('name', exchange.name);
+	console.log('deets', exchangeDeets);
 
 	return (
 		<a
 			className='exchange-list-item'
 			target='_blank'
 			rel='noopener noreferrer'
-			href={`${exchange.url}`}
+			href={`${exchange.name !== 'Kraken' ? exchange.url : ''}`}
 		>
+			{console.log('name', exchange.name)}
 			<div className='list-item-content'>
 				<div>
 					<div className='image-container'>
 						<img src={exchange.image} alt='exchange' />
-					</div>
-					<div className='social-container'>
-						<i className='fa-brands fa-facebook'></i>
-						<i className='fa-brands fa-reddit'></i>
 					</div>
 				</div>
 				<div className='list-item-meta'>
@@ -89,31 +73,6 @@ const ExchangeListItem = ({ exchange }) => {
 								</div>
 							);
 						})}
-
-						{/* {displayTickers.map((tickr) => {
-							// console.log('name', exchange.name);
-							// console.log('tickr', tickr);
-							if (tickr) {
-								return (
-									<div
-										key={`${tickr.base} - ${tickr.target} - ${tickr.market.name}`}
-									>
-										<div>
-											<div>
-												{tickr.base} / {tickr.target}
-											</div>
-											<div>${cleanInt(tickr.last)}</div>
-										</div>
-										<div>
-											<div>Volume</div>
-											<div>
-												${cleanInt(tickr.converted_volume.usd, 1000000)}M
-											</div>
-										</div>
-									</div>
-								);
-							}
-						})} */}
 					</div>
 				</div>
 			</div>

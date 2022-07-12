@@ -45,8 +45,16 @@
 	font-size: 1.5rem;
 }
 
+.exchanges .footer {
+	padding: 0 1rem 1rem;
+}
+
+.exchanges .footer .pagination {
+	margin-top: 0 !important;
+}
+
 .exchanges .list {
-	padding: 0 0.5rem 1rem;
+	padding: 0 0.5rem;
 
 	display: flex;
 	flex-wrap: wrap;
