@@ -4,7 +4,7 @@ import Pagination from '../../components/Pagination';
 
 import ExchangeListItem from './components/ExchangeListItem';
 
-const rowsPerPageOptions = [10, 20, 50];
+const rowsPerPageOptions = [10, 20];
 
 const ExchangeList = () => {
 	const [exchanges, setExchanges] = useState();
@@ -37,7 +37,7 @@ const ExchangeList = () => {
 	useEffect(() => {
 		const apiFetch = async () => {
 			const ref = await fetch(
-				`https://api.coingecko.com/api/v3/exchanges?per_page=50`
+				`https://api.coingecko.com/api/v3/exchanges?per_page=20`
 			);
 			if (!ref.ok) {
 				throw new Error('Thrown Error Thrown');

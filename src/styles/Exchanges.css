@@ -3,10 +3,10 @@
 }
 
 .exchange-list {
-	/* width: 100%; */
+	width: 100%;
 	max-width: 1200px;
-	padding: 1rem;
-	margin-top: 2rem;
+
+	padding: 3rem 0 1rem;
 
 	display: flex;
 	flex-direction: column;
@@ -41,12 +41,12 @@
 }
 
 .exchanges .header {
-	padding: 1rem 1rem 0;
+	/* padding: 1rem 1rem 0; */
 	font-size: 1.5rem;
 }
 
 .exchanges .footer {
-	padding: 0 1rem 1rem;
+	/* padding: 0 1rem 1rem; */
 }
 
 .exchanges .footer .pagination {
@@ -54,7 +54,7 @@
 }
 
 .exchanges .list {
-	padding: 0 0.5rem;
+	/* padding: 0 0.5rem; */
 
 	display: flex;
 	flex-wrap: wrap;
@@ -67,7 +67,9 @@
 }
 
 .exchange-list-item {
-	width: 50%;
+	/* width: 50%; */
+	flex: 1;
+	flex-basis: 34%;
 	padding: 0 0.5rem;
 }
 
@@ -158,8 +160,10 @@
 
 @media (max-width: 1000px) {
 	.exchange-list-item {
-		width: 100%;
-		padding: 0 0.5rem;
+		/* width: 100%; */
+		flex: 1;
+		flex-basis: 51%;
+		/* padding: 0 0.5rem; */
 	}
 	.exchange-list .exchange-list-item:nth-child(2) {
 		margin-top: 1rem;
@@ -180,5 +184,25 @@
 	.exchange-list-item .meta-content > div {
 		flex: 1;
 		flex-basis: 34%;
+	}
+
+	.exchange-list {
+		padding: 0 1rem;
+	}
+
+	.exchange-list-item img {
+		height: 3rem;
+		width: 3rem;
+	}
+
+	.exchange-list-item {
+		padding: 0;
+	}
+
+	.list-item-content {
+		padding: 0.5rem;
+		border-left: none;
+		border-right: none;
+		border-radius: 0;
 	}
 }
