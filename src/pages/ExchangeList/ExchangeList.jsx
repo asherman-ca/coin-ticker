@@ -11,7 +11,7 @@ const ExchangeList = () => {
 	const [loading, setLoading] = useState(true);
 
 	const [currentPage, setCurrentPage] = useState(1);
-	const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[1]);
+	const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
 
 	const updateRowsPerPage = (rowsNumber) => {
 		setRowsPerPage(rowsNumber);
