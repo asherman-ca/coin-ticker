@@ -70,8 +70,6 @@ const ExchangeList = () => {
 				</div>
 				<div className='exchanges'>
 					<div className='header'>
-						<div>Exchanges</div>
-
 						<Pagination
 							totalCount={exchanges.length}
 							setCurrentPage={setCurrentPage}
