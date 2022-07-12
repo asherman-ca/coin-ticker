@@ -85,7 +85,9 @@ const Nav = ({ coinsLoading, coins }) => {
 	} else if (!loggedIn) {
 		authButton = (
 			<div className='nav-link'>
-				<i className='fa-solid fa-bars'></i>
+				{/* <i className='fa-solid fa-bars'></i> */}
+				{/* <input type='checkbox' defaultChecked /> */}
+				<button>File</button>
 				<div className='nav-link-dropdown'>
 					<div onClick={() => navigate('/')}>
 						<i className='fa-solid fa-coins'></i>Tickrs
@@ -115,7 +117,7 @@ const Nav = ({ coinsLoading, coins }) => {
 		authButton = (
 			<>
 				<div className='nav-link'>
-					<i className='fa-solid fa-bars' />
+					{/* <i className='fa-solid fa-bars' /> */}
 					<div className='nav-link-dropdown'>
 						<div onClick={() => navigate('/')}>
 							<i className='fa-solid fa-coins'></i>Tickrs

@@ -163,12 +163,25 @@
 	/* transform: translateX(-50%); */
 }
 
-.nav-link:hover .nav-link-dropdown,
-.nav-link-dropdown:hover {
+.nav-link input[type='checkbox']:checked ~ .nav-link-dropdown {
+	/* outline: 1px solid red; */
 	visibility: visible;
 	max-height: 100vh;
 	padding: 0.5rem;
 }
+
+.nav-link button:focus ~ .nav-link-dropdown {
+	visibility: visible;
+	max-height: 100vh;
+	padding: 0.5rem;
+}
+
+/* .nav-link:hover .nav-link-dropdown,
+.nav-link-dropdown:hover {
+	visibility: visible;
+	max-height: 100vh;
+	padding: 0.5rem;
+} */
 
 .nav-link-dropdown > * {
 	padding: 0.25rem 1rem;
