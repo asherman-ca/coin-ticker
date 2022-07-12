@@ -13,11 +13,10 @@ import OAuth from '../components/OAuth';
 const Nav = ({ coinsLoading, coins }) => {
 	const auth = getAuth();
 	const navigate = useNavigate();
-	const [param, setParam] = useState();
+	const [param, setParam] = useState('');
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [showDrop, setShowDrop] = useState(false);
 	const isMounted = useRef(true);
-
 	const [searchFilter, setSearchFilter] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -80,34 +79,21 @@ const Nav = ({ coinsLoading, coins }) => {
 		}
 	};
 
-	const handleClick = (e) => {
-		console.log(showDrop);
-		if (showDrop) {
-			console.log('hits');
-			setShowDrop(false);
-		} else {
-			setShowDrop(true);
-		}
-	};
-
-	const handleFocus = (e) => {
-		console.log('focus');
-	};
-
 	let authButton;
 	if (loading) {
 		authButton = <div></div>;
 	} else if (!loggedIn) {
 		authButton = (
 			<div className='nav-link'>
-				{/* <i className='fa-solid fa-bars'></i> */}
-				{/* <input type='checkbox' defaultChecked /> */}
 				<button
+					className={
+						showDrop ? 'nav-link-button show-drop-button' : 'nav-link-button'
+					}
 					type='button'
-					onClick={handleClick}
+					onClick={() => setShowDrop((prev) => !prev)}
 					onBlur={() => setShowDrop(false)}
 				>
-					File
+					<i className='fa-solid fa-bars'></i>
 				</button>
 				<div
 					className={
@@ -142,8 +128,21 @@ const Nav = ({ coinsLoading, coins }) => {
 		authButton = (
 			<>
 				<div className='nav-link'>
-					{/* <i className='fa-solid fa-bars' /> */}
-					<div className='nav-link-dropdown'>
+					<button
+						className={
+							showDrop ? 'nav-link-button show-drop-button' : 'nav-link-button'
+						}
+						type='button'
+						onClick={() => setShowDrop((prev) => !prev)}
+						onBlur={() => setShowDrop(false)}
+					>
+						<i className='fa-solid fa-bars'></i>
+					</button>
+					<div
+						className={
+							showDrop ? 'nav-link-dropdown show-drop' : 'nav-link-dropdown'
+						}
+					>
 						<div onClick={() => navigate('/')}>
 							<i className='fa-solid fa-coins'></i>Tickrs
 						</div>

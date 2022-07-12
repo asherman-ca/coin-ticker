@@ -128,14 +128,38 @@
 	border: 2px solid transparent;
 }
 
-.nav-link i {
-	/* font-size: 1.75rem; */
-	/* transition: all 0.4s ease; */
+.nav-link button {
+	border: none;
+	background: none;
+	animation: unShowDrop 0.4s ease;
 }
 
-/* .nav-link:hover i {
-	transform: scale(1.1);
-} */
+.nav-link button i {
+	font-size: 1.75rem;
+	transition: all 0.4s ease;
+}
+
+.show-drop-button {
+	animation: showDrop 0.4s forwards !important;
+}
+
+@keyframes showDrop {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1.2);
+	}
+}
+
+@keyframes unShowDrop {
+	0% {
+		transform: scale(1.2);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
 
 /* Dropdown */
 
