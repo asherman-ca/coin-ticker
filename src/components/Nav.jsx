@@ -115,9 +115,17 @@ const Nav = ({ coinsLoading, coins }) => {
 						}}
 					></div>
 					<Link to={'/signin'}>
-						<i className='fa-solid fa-address-card'></i>Tickr Login
+						<i className='fa-solid fa-address-card'></i>Login
 					</Link>
 					<OAuth />
+					<div
+						style={{
+							height: '0px',
+							padding: '0',
+							margin: '.5rem 0',
+							borderBottom: '.5px solid grey',
+						}}
+					></div>
 					<div onClick={onDemo}>
 						<i className='fa-solid fa-flask'></i>Guest
 					</div>
@@ -160,11 +168,8 @@ const Nav = ({ coinsLoading, coins }) => {
 						<div onClick={() => navigate('/account')}>
 							<i className='fa-solid fa-flask'></i>Testnet
 						</div>
-						{/* <div onClick={() => navigate('/portfolio')}>
+						<div onClick={() => navigate('/portfolio')}>
 							<i className='fa-solid fa-dice'></i>Portfolio
-						</div> */}
-						<div onClick={() => navigate('/profile')}>
-							<i className='fa-solid fa-user-astronaut'></i>Profile
 						</div>
 						<div
 							style={{
@@ -174,6 +179,9 @@ const Nav = ({ coinsLoading, coins }) => {
 								borderBottom: '.5px solid grey',
 							}}
 						></div>
+						<div onClick={() => navigate('/profile')}>
+							<i className='fa-solid fa-user-astronaut'></i>Profile
+						</div>
 						<div onClick={onLogout}>
 							<i className='fa-solid fa-arrow-right-from-bracket'></i>Logout
 						</div>
