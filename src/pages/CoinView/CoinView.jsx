@@ -29,6 +29,7 @@ const CoinView = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [userLoading, setUserLoading] = useState(true);
 	const [userLike, setUserLike] = useState();
+	const [likes, setLikes] = useState([]);
 
 	const auth = getAuth();
 	const params = useParams();
@@ -49,7 +50,12 @@ const CoinView = () => {
 			setCoin(response);
 
 			// get likes
-
+			const likesRef = collection(db, 'likes');
+			const q = query(likesRef, where('coinId', '==', params.coinId));
+			const querySnap = await getDocs(q);
+			let likes = [];
+			querySnap.forEach((el) => likes.push({ id: el.id, data: el.data() }));
+			setLikes(likes);
 			setLoading(false);
 		};
 		let interId = setInterval(apiFetch, 10000);
@@ -67,22 +73,27 @@ const CoinView = () => {
 			onAuthStateChanged(auth, async (user) => {
 				if (user) {
 					setLoggedIn(true);
-					const likesRef = collection(db, 'likes');
-					console.log('coindid', params.coinId);
-					console.log('userId', auth.currentUser.uid);
-					const q = query(
-						likesRef,
-						where('coinId', '==', params.coinId),
-						where('userRef', '==', auth.currentUser.uid),
-						limit(20)
-					);
-					const querySnap = await getDocs(q);
-					// console.log('snap', querySnap);
-					querySnap.forEach((doc) => {
-						setUserLike({
-							data: doc.data(),
-							id: doc.id,
-						});
+					// const likesRef = collection(db, 'likes');
+					// console.log('coindid', params.coinId);
+					// console.log('userId', auth.currentUser.uid);
+					// const q = query(
+					// 	likesRef,
+					// 	where('coinId', '==', params.coinId),
+					// 	where('userRef', '==', auth.currentUser.uid),
+					// 	limit(20)
+					// );
+					// const querySnap = await getDocs(q);
+					// // console.log('snap', querySnap);
+					// querySnap.forEach((doc) => {
+					// 	setUserLike({
+					// 		data: doc.data(),
+					// 		id: doc.id,
+					// 	});
+					// });
+					likes.forEach((el) => {
+						if (el.data.userRef === auth.currentUser.uid) {
+							setUserLike(el);
+						}
 					});
 				} else {
 					setLoggedIn(false);
@@ -90,7 +101,7 @@ const CoinView = () => {
 				setUserLoading(false);
 			});
 		}
-	}, [isMounted]);
+	}, [isMounted, likes]);
 
 	if (loading || userLoading) {
 		return (
@@ -130,6 +141,7 @@ const CoinView = () => {
 					coin={coin}
 					user={auth.currentUser}
 					userLike={userLike}
+					totalLikes={likes.length}
 				/>
 				<div className='tickr-row'>
 					<div className='tickrs'>

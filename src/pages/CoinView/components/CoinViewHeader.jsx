@@ -7,7 +7,7 @@ import {
 	cleanInt,
 } from '../../../utils/stringUtils';
 
-const CoinViewHeader = ({ coin, user, userLike }) => {
+const CoinViewHeader = ({ coin, user, userLike, totalLikes }) => {
 	console.log('userLike', userLike);
 	const onLike = () => {
 		if (!user) {
@@ -98,7 +98,7 @@ const CoinViewHeader = ({ coin, user, userLike }) => {
 						}
 						onClick={onLike}
 					></i>{' '}
-					1562
+					{totalLikes}
 				</div>
 				<div className='col social-col'>
 					<i className='fa-solid fa-file'></i>
