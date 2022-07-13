@@ -202,17 +202,18 @@
 	}
 
 	.exchange-list-item {
-		padding: 0;
+		padding: 0 0.5rem;
 	}
 
 	.list-item-content {
-		padding: 1rem 0;
+		padding: 1rem 0rem;
 		border-left: none;
 		border-right: none;
 		border-radius: 0;
 	}
 
-	.exchanges .header {
-		padding: 0.5rem 0 0;
+	.exchanges .header,
+	.exchanges .footer {
+		padding: 0.5rem 0.5rem 0;
 	}
 }
