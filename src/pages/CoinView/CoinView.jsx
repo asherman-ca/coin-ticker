@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import Embed from './components/Embed';
 import Spinner from '../../components/Spinner';
-import {
-	capitalize,
-	changeDirection,
-	decimalReducer,
-	cleanInt,
-} from '../../utils/stringUtils';
+import { capitalize } from '../../utils/stringUtils';
 import TickerItem from './components/TickerItem';
+import CoinViewHeader from './components/CoinViewHeader';
 
 const CoinView = () => {
+	const auth = getAuth();
 	const [coin, setCoin] = useState();
 	const [loading, setLoading] = useState(true);
+	const [loggedIn, setLoggedIn] = useState(false);
+	const [userLoading, setUserLoading] = useState(true);
+	const isMounted = useRef(true);
 	const params = useParams();
 
 	useEffect(() => {
@@ -39,7 +40,22 @@ const CoinView = () => {
 		};
 	}, [params.coinId]);
 
-	if (loading) {
+	useEffect(() => {
+		setUserLoading(true);
+		if (isMounted) {
+			const auth = getAuth();
+			onAuthStateChanged(auth, (user) => {
+				if (user) {
+					setLoggedIn(true);
+				} else {
+					setLoggedIn(false);
+				}
+				setUserLoading(false);
+			});
+		}
+	}, [isMounted]);
+
+	if (loading || userLoading) {
 		return (
 			<div className='container'>
 				<div className='coin-view'>
@@ -73,70 +89,7 @@ const CoinView = () => {
 					<div>{capitalize(coin.id)} Price</div>
 					<div>All About {capitalize(coin.id)}</div>
 				</div>
-				<div className='detail-row'>
-					<div className='header-col'>
-						<img src={coin.image.large} alt='' />
-						<div>
-							<div className='title'>{capitalize(coin.id)}</div>
-							<div className='subtitle'>{coin.symbol.toUpperCase()}</div>
-						</div>
-					</div>
-					<div className='col'>
-						<div className='title'>Price</div>
-						<div className='meta'>
-							${cleanInt(coin.market_data.current_price.usd)}
-						</div>
-					</div>
-					<div className='col'>
-						<div className='title'>24hr</div>
-						<div
-							className={
-								changeDirection(coin.market_data.price_change_percentage_24h) +
-								' meta'
-							}
-						>
-							{decimalReducer(coin.market_data.price_change_percentage_24h)}%
-						</div>
-					</div>
-					<div className='col'>
-						<div className='title'>7d</div>
-						<div
-							className={
-								changeDirection(coin.market_data.price_change_percentage_7d) +
-								' meta'
-							}
-						>
-							{decimalReducer(coin.market_data.price_change_percentage_7d)}%
-						</div>
-					</div>
-
-					<div className='col'>
-						<div className='title'>ATH</div>
-						<div
-							className={
-								changeDirection(coin.market_data.ath_change_percentage.usd) +
-								' meta'
-							}
-						>
-							{decimalReducer(coin.market_data.ath_change_percentage.usd)}%
-						</div>
-					</div>
-
-					<div className='col'>
-						<div className='title'>Volume</div>
-						<div className='meta'>
-							${(coin.market_data.total_volume.usd / 1000000000).toFixed(2)}B
-						</div>
-					</div>
-
-					<div className='col'>
-						<div className='title'>Market Cap</div>
-						<div className='meta'>
-							${(coin.market_data.market_cap.usd / 1000000000).toFixed(2)}B
-						</div>
-					</div>
-				</div>
-
+				<CoinViewHeader coin={coin} user={auth.currentUser} />
 				<div className='tickr-row'>
 					<div className='tickrs'>
 						<div className='header'>{coin.symbol.toUpperCase()} markets</div>
@@ -145,9 +98,7 @@ const CoinView = () => {
 						))}
 					</div>
 				</div>
-
 				<Embed symbol={coin.symbol} />
-
 				{coin.description.en && (
 					<div className='description-row'>
 						<span>About {coin.symbol.toUpperCase()}</span>

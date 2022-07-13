@@ -1,6 +1,6 @@
 # Tickr
 
-Live coin tickers and PNL tracker
+Live coin tickers and PNL tracker (https://coin-ticker.vercel.app/)
 
 ## Setup
 
@@ -14,24 +14,37 @@ Live coin tickers and PNL tracker
 
 ## Schema
 
-Order
+Users
 
 {
-userRef: String
-coin: String
-price: Int
-quantity: Int
+balance: Int
+email: String
+lastFaucet: Time
+name: String
+testBalance: Int
+timestamp: Time
 }
 
-Holding
+Orders
 
 {
 userRef: String
 coin: String
-totalHeld: Int
-totalSpent: Int
-averageBuy: Int
-averageSell: Int
+coinId: String
+image: String
+spent: Int
+price: Int
+timestamp: Time
+type: String
+userRef: String
+}
+
+Likes
+
+{
+coinId: String
+userRef: String
+timestamp: Time
 }
 
 ## Maths
