@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import {
 	capitalize,
 	changeDirection,
@@ -6,10 +7,17 @@ import {
 	cleanInt,
 } from '../../../utils/stringUtils';
 
-const CoinViewHeader = ({ coin, user }) => {
+const CoinViewHeader = ({ coin, user, userLike }) => {
+	console.log('userLike', userLike);
 	const onLike = () => {
-		if (user) {
-			console.log('hits');
+		if (!user) {
+			toast.error('Must be logged in');
+		} else {
+			if (userLike) {
+				console.log('already liked');
+			} else {
+				console.log('not liked');
+			}
 		}
 	};
 
@@ -84,7 +92,13 @@ const CoinViewHeader = ({ coin, user }) => {
 
 			<div className='social-row'>
 				<div className='col like-col'>
-					<i className='fa-regular fa-heart' onClick={onLike}></i> 1562
+					<i
+						className={
+							userLike ? 'fa-regular fa-heart filled' : 'fa-regular fa-heart'
+						}
+						onClick={onLike}
+					></i>{' '}
+					1562
 				</div>
 				<div className='col social-col'>
 					<i className='fa-solid fa-file'></i>
