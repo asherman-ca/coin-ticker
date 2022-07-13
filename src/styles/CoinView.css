@@ -95,7 +95,7 @@
 
 .social-row {
 	display: flex;
-	justify-content: flex-start;
+	justify-content: space-between;
 
 	background: var(--bg-grey);
 	border-top: 1px solid var(--grey-border);
@@ -107,12 +107,21 @@
 	padding: 0.5rem 1rem;
 }
 
-.social-row i {
-	cursor: pointer;
+.social-row .like-col {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
-.social-row i:hover {
-	color: red;
+.social-row .social-col {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.social-row i {
+	font-size: 1.5rem;
+	cursor: pointer;
 }
 
 /* embed */

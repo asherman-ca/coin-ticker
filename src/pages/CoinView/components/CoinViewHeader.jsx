@@ -83,8 +83,13 @@ const CoinViewHeader = ({ coin, user }) => {
 			</div>
 
 			<div className='social-row'>
-				<div className='col'>
+				<div className='col like-col'>
 					<i className='fa-regular fa-heart' onClick={onLike}></i> 1562
+				</div>
+				<div className='col social-col'>
+					<i className='fa-solid fa-file'></i>
+					<i className='fa-brands fa-reddit'></i>
+					<i className='fa-brands fa-github'></i>
 				</div>
 			</div>
 		</div>
