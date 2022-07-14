@@ -56,6 +56,15 @@ const CoinView = () => {
 			let likes = [];
 			querySnap.forEach((el) => likes.push({ id: el.id, data: el.data() }));
 			setLikes(likes);
+
+			if (auth.currentUser) {
+				likes.forEach((el) => {
+					if (el.data.userRef === auth.currentUser.uid) {
+						setUserLike(el);
+					}
+				});
+			}
+
 			setLoading(false);
 		};
 		// let interId = setInterval(apiFetch, 10000);
@@ -73,11 +82,11 @@ const CoinView = () => {
 			onAuthStateChanged(auth, async (user) => {
 				if (user) {
 					setLoggedIn(true);
-					// likes.forEach((el) => {
-					// 	if (el.data.userRef === auth.currentUser.uid) {
-					// 		setUserLike(el);
-					// 	}
-					// });
+					likes.forEach((el) => {
+						if (el.data.userRef === auth.currentUser.uid) {
+							setUserLike(el);
+						}
+					});
 				} else {
 					setLoggedIn(false);
 				}
@@ -85,16 +94,6 @@ const CoinView = () => {
 			});
 		}
 	}, [isMounted]);
-
-	useEffect(() => {
-		if (loggedIn) {
-			likes.forEach((el) => {
-				if (el.data.userRef === auth.currentUser.uid) {
-					setUserLike(el);
-				}
-			});
-		}
-	}, [loggedIn]);
 
 	const onLike = async () => {
 		if (!loggedIn) {
