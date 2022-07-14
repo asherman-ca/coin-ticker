@@ -185,7 +185,7 @@ const Nav = ({ coinsLoading, coins }) => {
 							}}
 						></div>
 						<div onClick={() => navigate('/profile')}>
-							<i className='fa-solid fa-user-astronaut'></i>Profile
+							<i className='fa-solid fa-user-astronaut'></i>Account
 						</div>
 						<div onClick={onLogout}>
 							<i className='fa-solid fa-arrow-right-from-bracket'></i>Logout

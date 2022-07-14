@@ -8,6 +8,7 @@
 @import './Auth.css';
 @import './OrderForm.css';
 @import './Exchanges.css';
+@import '../pages/Profile/Profile.css';
 
 /* Resets */
 
