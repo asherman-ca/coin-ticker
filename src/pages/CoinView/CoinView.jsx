@@ -73,23 +73,6 @@ const CoinView = () => {
 			onAuthStateChanged(auth, async (user) => {
 				if (user) {
 					setLoggedIn(true);
-					// const likesRef = collection(db, 'likes');
-					// console.log('coindid', params.coinId);
-					// console.log('userId', auth.currentUser.uid);
-					// const q = query(
-					// 	likesRef,
-					// 	where('coinId', '==', params.coinId),
-					// 	where('userRef', '==', auth.currentUser.uid),
-					// 	limit(20)
-					// );
-					// const querySnap = await getDocs(q);
-					// // console.log('snap', querySnap);
-					// querySnap.forEach((doc) => {
-					// 	setUserLike({
-					// 		data: doc.data(),
-					// 		id: doc.id,
-					// 	});
-					// });
 					likes.forEach((el) => {
 						if (el.data.userRef === auth.currentUser.uid) {
 							setUserLike(el);
@@ -102,6 +85,46 @@ const CoinView = () => {
 			});
 		}
 	}, [isMounted, likes]);
+
+	const onLike = async () => {
+		if (!loggedIn) {
+			toast.error('Must be logged in');
+		} else {
+			if (userLike) {
+				console.log('already liked');
+				await deleteDoc(doc(db, 'likes', userLike.id));
+				setLikes((prev) => {
+					return prev.filter((like) => like.id !== userLike.id);
+				});
+				setUserLike(null);
+			} else {
+				console.log('not liked');
+				const newDoc = await addDoc(collection(db, 'likes'), {
+					userRef: auth.currentUser.uid,
+					coinId: coin.id,
+				});
+				setUserLike({
+					id: newDoc.id,
+					data: {
+						userRef: auth.currentUser.uid,
+						coinId: coin.id,
+					},
+				});
+				setLikes((prev) => {
+					return [
+						...prev,
+						{
+							id: newDoc.id,
+							data: {
+								userRef: auth.currentUser.uid,
+								coinId: coin.id,
+							},
+						},
+					];
+				});
+			}
+		}
+	};
 
 	if (loading || userLoading) {
 		return (
@@ -142,6 +165,7 @@ const CoinView = () => {
 					user={auth.currentUser}
 					userLike={userLike}
 					totalLikes={likes.length}
+					onLike={onLike}
 				/>
 				<div className='tickr-row'>
 					<div className='tickrs'>

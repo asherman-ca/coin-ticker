@@ -1,6 +1,6 @@
+import { addDoc } from 'firebase/firestore';
 import React from 'react';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
 
 import {
 	capitalize,
@@ -9,20 +9,24 @@ import {
 	cleanInt,
 } from '../../../utils/stringUtils';
 
-const CoinViewHeader = ({ coin, user, userLike, totalLikes }) => {
+const CoinViewHeader = ({ coin, user, userLike, totalLikes, onLike }) => {
 	console.log('userLike', userLike);
-	console.log('coin', coin);
-	const onLike = () => {
-		if (!user) {
-			toast.error('Must be logged in');
-		} else {
-			if (userLike) {
-				console.log('already liked');
-			} else {
-				console.log('not liked');
-			}
-		}
-	};
+	// console.log('coin', coin);
+	// const onLike = async () => {
+	// 	if (!user) {
+	// 		toast.error('Must be logged in');
+	// 	} else {
+	// 		if (userLike) {
+	// 			console.log('already liked');
+	// 		} else {
+	// 			console.log('not liked');
+	// 			const newDoc = await addDoc(collection(db, 'likes'), {
+	// 				userRef: user.uid,
+	// 				coinId: coin.id,
+	// 			});
+	// 		}
+	// 	}
+	// };
 
 	return (
 		<div className='sub-header-col'>
