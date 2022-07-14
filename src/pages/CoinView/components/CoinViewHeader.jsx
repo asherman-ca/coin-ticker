@@ -1,5 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+
 import {
 	capitalize,
 	changeDirection,
@@ -9,6 +11,7 @@ import {
 
 const CoinViewHeader = ({ coin, user, userLike, totalLikes }) => {
 	console.log('userLike', userLike);
+	console.log('coin', coin);
 	const onLike = () => {
 		if (!user) {
 			toast.error('Must be logged in');
@@ -39,7 +42,7 @@ const CoinViewHeader = ({ coin, user, userLike, totalLikes }) => {
 					</div>
 				</div>
 
-				<div className='col'>
+				<div className='col third-col'>
 					<div className='title'>24hr</div>
 					<div
 						className={
@@ -101,9 +104,34 @@ const CoinViewHeader = ({ coin, user, userLike, totalLikes }) => {
 					{totalLikes}
 				</div>
 				<div className='col social-col'>
-					<i className='fa-solid fa-file'></i>
-					<i className='fa-brands fa-reddit'></i>
-					<i className='fa-brands fa-github'></i>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href={coin.links.homepage[0]}
+					>
+						<img src={coin.image.thumb} alt='' />
+					</a>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href={coin.links.blockchain_site[0]}
+					>
+						<i className='fa-solid fa-database'></i>
+					</a>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href={coin.links.subreddit_url}
+					>
+						<i className='fa-brands fa-reddit'></i>
+					</a>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href={coin.links.repos_url.github[0]}
+					>
+						<i className='fa-brands fa-github'></i>
+					</a>
 				</div>
 			</div>
 		</div>

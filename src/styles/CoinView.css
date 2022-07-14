@@ -46,10 +46,10 @@
 }
 
 .detail-row .header-col {
-	padding: 1rem 2rem;
+	padding: 1rem 1rem;
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 
 	gap: 1rem;
@@ -69,7 +69,7 @@
 }
 
 .detail-row .col {
-	padding: 1rem 2rem;
+	padding: 1rem 1rem;
 
 	display: flex;
 	flex-direction: column;
@@ -117,6 +117,11 @@
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+}
+
+.social-col a {
+	display: flex;
+	align-items: center;
 }
 
 .social-row i {
@@ -211,6 +216,10 @@
 		display: none;
 	}
 
+	.detail-row .col:nth-child(4) > div {
+		text-align: right !important;
+	}
+
 	.tickrs .tickr-item {
 		width: 48%;
 	}
@@ -233,6 +242,10 @@
 		padding: 1rem !important;
 		flex-basis: 100% !important;
 		/* width: 33.33%; */
+	}
+
+	.detail-row .col:nth-child(3) > div {
+		text-align: right !important;
 	}
 
 	.header-col {

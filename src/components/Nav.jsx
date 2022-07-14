@@ -38,6 +38,7 @@ const Nav = ({ coinsLoading, coins }) => {
 	const onChange = (e) => {
 		e.preventDefault();
 		setParam(e.target.value);
+		if (showDrop) setShowDrop(false);
 		setSearchFilter(filterSearchParam(coins, e.target.value));
 	};
 
@@ -81,7 +82,11 @@ const Nav = ({ coinsLoading, coins }) => {
 
 	let authButton;
 	if (loading) {
-		authButton = <div></div>;
+		authButton = (
+			<div className='nav-link'>
+				<button className='nav-link-button' type='button' />
+			</div>
+		);
 	} else if (!loggedIn) {
 		authButton = (
 			<div className='nav-link'>
