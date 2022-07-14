@@ -127,6 +127,28 @@
 .social-row i {
 	font-size: 1.5rem;
 	cursor: pointer;
+	transform: scale(1);
+
+	/* transition: all 0.4s ease; */
+	transition: color 0.4s ease;
+}
+
+.social-row .filled {
+	color: red;
+	/* transform: scale(1.1); */
+	animation: liker 0.4s ease;
+}
+
+@keyframes liker {
+	0% {
+		transform: scale(1);
+	}
+	25% {
+		transform: scale(1.2);
+	}
+	100% {
+		transform: scale(1);
+	}
 }
 
 /* embed */

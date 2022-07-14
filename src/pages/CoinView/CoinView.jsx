@@ -171,7 +171,6 @@ const CoinView = () => {
 				</div>
 				<CoinViewHeader
 					coin={coin}
-					user={auth.currentUser}
 					userLike={userLike}
 					totalLikes={likes.length}
 					onLike={onLike}
