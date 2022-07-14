@@ -73,18 +73,28 @@ const CoinView = () => {
 			onAuthStateChanged(auth, async (user) => {
 				if (user) {
 					setLoggedIn(true);
-					likes.forEach((el) => {
-						if (el.data.userRef === auth.currentUser.uid) {
-							setUserLike(el);
-						}
-					});
+					// likes.forEach((el) => {
+					// 	if (el.data.userRef === auth.currentUser.uid) {
+					// 		setUserLike(el);
+					// 	}
+					// });
 				} else {
 					setLoggedIn(false);
 				}
 				setUserLoading(false);
 			});
 		}
-	}, [isMounted, likes]);
+	}, [isMounted]);
+
+	useEffect(() => {
+		if (loggedIn) {
+			likes.forEach((el) => {
+				if (el.data.userRef === auth.currentUser.uid) {
+					setUserLike(el);
+				}
+			});
+		}
+	}, [loggedIn]);
 
 	const onLike = async () => {
 		if (!loggedIn) {
