@@ -55,7 +55,10 @@ function App() {
 						<Route path='/account' element={<Account />} />
 					</Route>
 					<Route path='/profile' element={<PrivateRoute />}>
-						<Route path='/profile' element={<Profile />} />
+						<Route
+							path='/profile'
+							element={<Profile coins={coins} coinsLoading={loading} />}
+						/>
 					</Route>
 					<Route path='/exchanges' element={<ExchangeList />} />
 					<Route path='/exchanges/:exchangeId' element={<ExchangeView />} />
