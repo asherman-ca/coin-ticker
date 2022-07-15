@@ -10,8 +10,6 @@ import {
 } from '../../../utils/stringUtils';
 
 const CoinViewHeader = ({ coin, userLike, totalLikes, onLike }) => {
-	console.log('userLike', userLike);
-
 	return (
 		<div className='sub-header-col'>
 			<div className='detail-row'>

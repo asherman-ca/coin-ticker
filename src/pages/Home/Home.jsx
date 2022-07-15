@@ -7,9 +7,6 @@ import Spinner from '../../components/Spinner';
 const rowsPerPageOptions = [10, 25, 50, 100];
 
 const Home = ({ coins, coinsLoading }) => {
-	console.log('coins', coins);
-	console.log('coinsloading', coinsLoading);
-
 	const [currentPage, setCurrentPage] = useState(1);
 	const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
 
