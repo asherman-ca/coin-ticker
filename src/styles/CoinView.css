@@ -176,7 +176,7 @@
 
 .tickrs > .header {
 	width: 100%;
-	padding: 2rem 1rem;
+	padding: 1.5rem 0rem;
 
 	font-size: 1.5rem;
 	border-bottom: 1px solid var(--grey-border);
@@ -189,7 +189,7 @@
 	align-items: center;
 	justify-content: space-between;
 
-	padding: 1rem;
+	padding: 1rem 0;
 	border-top: 1px solid var(--grey-border);
 	cursor: pointer;
 }
