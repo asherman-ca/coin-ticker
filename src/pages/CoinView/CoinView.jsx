@@ -3,15 +3,12 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import {
-	getDoc,
 	doc,
-	updateDoc,
 	deleteDoc,
 	query,
 	where,
 	collection,
 	getDocs,
-	limit,
 	addDoc,
 } from 'firebase/firestore';
 import { db } from '../../firebase.config';
@@ -100,14 +97,12 @@ const CoinView = () => {
 			toast.error('Must be logged in');
 		} else {
 			if (userLike) {
-				console.log('already liked');
 				await deleteDoc(doc(db, 'likes', userLike.id));
 				setLikes((prev) => {
 					return prev.filter((like) => like.id !== userLike.id);
 				});
 				setUserLike(null);
 			} else {
-				console.log('not liked');
 				const newDoc = await addDoc(collection(db, 'likes'), {
 					userRef: auth.currentUser.uid,
 					coinId: coin.id,

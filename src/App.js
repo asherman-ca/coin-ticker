@@ -35,7 +35,7 @@ function App() {
 			setLoading(false);
 		};
 		apiFetch();
-		setInterval(apiFetch, 15000);
+		// setInterval(apiFetch, 15000);
 	}, []);
 
 	return (
