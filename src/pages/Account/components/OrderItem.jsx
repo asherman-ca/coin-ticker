@@ -5,7 +5,6 @@ import { cleanInt } from '../../../utils/stringUtils';
 const OrderItem = ({ order, onDelete }) => {
 	return (
 		<div className='order-item'>
-			{console.log('item', order)}
 			<Link to={`/coins/${order.data.coinId}`}>
 				<img src={order.data.image} alt='coin' />
 				<div className='order-item-link'>{order.data.coin}</div>

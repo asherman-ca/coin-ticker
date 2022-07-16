@@ -20,11 +20,23 @@ const OrderForm = ({
 }) => {
 	const [displayBalance, setDisplayBalance] = useState(user.testBalance);
 
+	// TODO split the tickr div and its useEffect into a component
+
 	useEffect(() => {
 		if (user.testBalance < displayBalance) {
-			setDisplayBalance((prev) => prev - 1);
+			if (displayBalance - user.testBalance < 1) {
+				setDisplayBalance((prev) => prev - (displayBalance - user.testBalance));
+			} else {
+				setDisplayBalance((prev) => prev - 1);
+			}
 		} else if (user.testBalance > displayBalance) {
-			setDisplayBalance((prev) => prev + 1);
+			if (Math.abs(displayBalance - user.testBalance) < 1) {
+				setDisplayBalance(
+					(prev) => prev - Math.abs(displayBalance - user.testBalance)
+				);
+			} else {
+				setDisplayBalance((prev) => prev + 1);
+			}
 		}
 	}, [user.testBalance, displayBalance]);
 
@@ -111,12 +123,7 @@ const OrderForm = ({
 				</div>
 				<div>
 					<div>USD</div>
-					<div>
-						${cleanInt(displayBalance)}
-						{console.log('rerender')}
-						{console.log('displayBal', displayBalance)}
-					</div>
-					{console.log('pnl on form', pnl)}
+					<div>${cleanInt(displayBalance)}</div>
 				</div>
 			</div>
 			<GateButton onClick={() => onFaucet(userId, user, setUser)}>
