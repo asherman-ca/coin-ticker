@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import GateButton from '../../../components/GateButton';
 import { cleanInt } from '../../../utils/stringUtils';
 
@@ -18,6 +18,16 @@ const OrderForm = ({
 	onFaucet,
 	pnl,
 }) => {
+	const [displayBalance, setDisplayBalance] = useState(user.testBalance);
+
+	useEffect(() => {
+		if (user.testBalance < displayBalance) {
+			setDisplayBalance((prev) => prev - 1);
+		} else if (user.testBalance > displayBalance) {
+			setDisplayBalance((prev) => prev + 1);
+		}
+	}, [user.testBalance, displayBalance]);
+
 	return (
 		<div className='form-div'>
 			<div className='header'>Market Order</div>
@@ -101,7 +111,11 @@ const OrderForm = ({
 				</div>
 				<div>
 					<div>USD</div>
-					<div>${cleanInt(user.testBalance)}</div>
+					<div>
+						${cleanInt(displayBalance)}
+						{console.log('rerender')}
+						{console.log('displayBal', displayBalance)}
+					</div>
 					{console.log('pnl on form', pnl)}
 				</div>
 			</div>
