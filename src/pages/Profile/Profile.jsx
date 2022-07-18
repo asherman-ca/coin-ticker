@@ -92,8 +92,9 @@ const Profile = ({ coins, coinsLoading }) => {
 			<div className='profile'>
 				<div className='header-row'>
 					{console.log('user', user)}
-
-					<img src='../Gekko2.jpeg' alt='Gekko' className='profile-image' />
+					<div className='image-container'>
+						<img src='../Gekko2.jpeg' alt='Gekko' className='profile-image' />
+					</div>
 					<div className='title'>
 						<div>{user.name}</div>
 						<div>

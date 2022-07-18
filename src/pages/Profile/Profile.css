@@ -7,7 +7,7 @@
 	width: 100%;
 	max-width: 1200px;
 
-	padding: 3rem 1rem 1rem;
+	padding: 0rem 1rem 1rem;
 
 	display: flex;
 	flex-direction: column;
@@ -21,9 +21,18 @@
 	gap: 1rem;
 }
 
+.profile .image-container {
+	padding: 3rem 1rem 0rem;
+
+	background-image: url('../../../public/unnamed.png');
+}
+
 .profile .profile-image {
+	margin-bottom: -1.5rem;
+
 	height: 15rem;
 	width: 15rem;
+	border: 0.5rem solid white;
 	border-radius: 50%;
 }
 
