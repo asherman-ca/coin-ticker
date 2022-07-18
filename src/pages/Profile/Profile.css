@@ -54,12 +54,14 @@
 	font-size: 1.25rem;
 }
 
-.profile .tabs > div {
-	cursor: pointer;
-}
-
 .profile .tabs span {
 	font-weight: normal;
+}
+
+.profile .tabs > div {
+	cursor: pointer;
+	border-bottom: 1px solid transparent;
+	transition: all 0.4s ease;
 }
 
 .profile .tabs .underlined {
