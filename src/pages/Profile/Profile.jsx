@@ -13,6 +13,7 @@ import {
 
 import { calcPNL } from '../../utils/accounting';
 import Spinner from '../../components/Spinner';
+import AccountItem from './components/AccountItem';
 
 const Profile = ({ coins, coinsLoading }) => {
 	const auth = getAuth();
@@ -59,7 +60,6 @@ const Profile = ({ coins, coinsLoading }) => {
 						likesCopy[coin.id] = { ...coin };
 					}
 				});
-				console.log('likescopy', likesCopy);
 				setUserLikes(likesCopy);
 
 				setLoading(false);
@@ -91,7 +91,6 @@ const Profile = ({ coins, coinsLoading }) => {
 		<div className='profile-container'>
 			<div className='profile'>
 				<div className='header-row'>
-					{console.log('user', user)}
 					<div className='image-container'>
 						<div className='image-container-container'>
 							<img src='../Gekko2.jpeg' alt='Gekko' className='profile-image' />
@@ -124,7 +123,6 @@ const Profile = ({ coins, coinsLoading }) => {
 				{showLikes ? (
 					<div className='likes-row'>
 						{Object.values(userLikes).map((like) => {
-							// console.log('like', like);
 							return <div key={like.id}>{like.id}</div>;
 						})}
 					</div>
@@ -132,7 +130,7 @@ const Profile = ({ coins, coinsLoading }) => {
 					<div className='accounts-row'>
 						{console.log('pnl', pnl)}
 						{pnl.map((account) => {
-							return <div>account</div>;
+							return <AccountItem key={account.id} account={account} />;
 						})}
 					</div>
 				)}

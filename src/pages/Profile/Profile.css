@@ -23,7 +23,7 @@
 
 .profile .image-container {
 	width: 100%;
-	padding: 3rem 2rem 0rem;
+	padding: 3rem 0rem 0rem;
 
 	display: flex;
 	justify-content: center;
@@ -35,6 +35,7 @@
 .image-container-container {
 	width: 100%;
 	max-width: 1200px;
+	padding: 0 1rem;
 
 	display: flex;
 	justify-content: flex-start;
@@ -53,8 +54,8 @@
 	width: 100%;
 	max-width: 1200px;
 
-	margin-top: 1rem;
-	/* padding: 0 1rem; */
+	margin-top: 2rem;
+	padding: 0 1rem;
 
 	display: flex;
 	flex-direction: column;
@@ -79,7 +80,7 @@
 	width: 100%;
 	max-width: 1200px;
 
-	/* padding: 0 1rem; */
+	padding: 0 1rem;
 
 	display: flex;
 	gap: 3rem;
@@ -95,18 +96,23 @@
 
 .profile .tabs > div {
 	cursor: pointer;
-	border-bottom: 1px solid transparent;
+	border-bottom: 2px solid transparent;
 	transition: all 0.4s ease;
 }
 
 .profile .tabs .underlined {
 	color: black;
-	border-bottom: 1px solid black;
+	border-bottom: 2px solid black;
+}
+
+.profile .tabs > div:hover {
+	color: black;
+	border-bottom: 2px solid black;
 }
 
 .profile :is(.likes-row, .accounts-row) {
 	width: 100%;
 	max-width: 1200px;
 
-	/* padding: 0 2rem; */
+	padding: 0 1rem;
 }
