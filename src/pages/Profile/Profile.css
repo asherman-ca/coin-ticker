@@ -28,7 +28,7 @@
 }
 
 .profile .profile-image {
-	margin-bottom: -1.5rem;
+	margin-bottom: -2rem;
 
 	height: 15rem;
 	width: 15rem;
@@ -37,7 +37,7 @@
 }
 
 .profile .title {
-	margin-top: 0.5rem;
+	margin-top: 1rem;
 
 	display: flex;
 	flex-direction: column;
