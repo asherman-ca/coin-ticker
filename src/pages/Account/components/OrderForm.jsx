@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+
+import NumberTickr from '../../../components/NumberTickr';
 import GateButton from '../../../components/GateButton';
 import { cleanInt } from '../../../utils/stringUtils';
 
@@ -18,27 +20,27 @@ const OrderForm = ({
 	onFaucet,
 	pnl,
 }) => {
-	const [displayBalance, setDisplayBalance] = useState(user.testBalance);
+	// const [displayBalance, setDisplayBalance] = useState(user.testBalance);
 
 	// TODO split the tickr div and its useEffect into a component
 
-	useEffect(() => {
-		if (user.testBalance < displayBalance) {
-			if (displayBalance - user.testBalance < 1) {
-				setDisplayBalance((prev) => prev - (displayBalance - user.testBalance));
-			} else {
-				setDisplayBalance((prev) => prev - 1);
-			}
-		} else if (user.testBalance > displayBalance) {
-			if (Math.abs(displayBalance - user.testBalance) < 1) {
-				setDisplayBalance(
-					(prev) => prev - Math.abs(displayBalance - user.testBalance)
-				);
-			} else {
-				setDisplayBalance((prev) => prev + 1);
-			}
-		}
-	}, [user.testBalance, displayBalance]);
+	// useEffect(() => {
+	// 	if (user.testBalance < displayBalance) {
+	// 		if (displayBalance - user.testBalance < 1) {
+	// 			setDisplayBalance((prev) => prev - (displayBalance - user.testBalance));
+	// 		} else {
+	// 			setDisplayBalance((prev) => prev - 1);
+	// 		}
+	// 	} else if (user.testBalance > displayBalance) {
+	// 		if (Math.abs(displayBalance - user.testBalance) < 1) {
+	// 			setDisplayBalance(
+	// 				(prev) => prev - Math.abs(displayBalance - user.testBalance)
+	// 			);
+	// 		} else {
+	// 			setDisplayBalance((prev) => prev + 1);
+	// 		}
+	// 	}
+	// }, [user.testBalance, displayBalance]);
 
 	return (
 		<div className='form-div'>
@@ -123,7 +125,8 @@ const OrderForm = ({
 				</div>
 				<div>
 					<div>USD</div>
-					<div>${cleanInt(displayBalance)}</div>
+					{console.log('renders')}
+					<NumberTickr newVal={user.testBalance} />
 				</div>
 			</div>
 			<GateButton onClick={() => onFaucet(userId, user, setUser)}>
