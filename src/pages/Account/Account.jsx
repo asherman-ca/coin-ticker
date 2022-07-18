@@ -106,7 +106,7 @@ const Account = () => {
 	}
 
 	return (
-		<div className='container'>
+		<div className='container account-container'>
 			<div className='account'>
 				<div className='primary-col'>
 					<div className='orders'>
