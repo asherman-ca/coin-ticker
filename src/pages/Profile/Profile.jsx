@@ -23,7 +23,7 @@ const Profile = ({ coins, coinsLoading }) => {
 	const [pnl, setPnl] = useState();
 	const [userLikes, setUserLikes] = useState({});
 	const [user, setUser] = useState();
-	const [showLikes, setShowLikes] = useState(false);
+	const [showLikes, setShowLikes] = useState(true);
 
 	useEffect(() => {
 		if (!coinsLoading) {

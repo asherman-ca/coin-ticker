@@ -138,10 +138,39 @@
 }
 
 .likes-row .content {
-	padding: 0.5rem;
+	/* padding: 0 1rem; */
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
 	border: 1px solid var(--grey-border);
 	border-radius: 0.5rem;
+}
+
+.liked-coin-item .name {
+	width: 100%;
+	padding: 0 0.5rem;
+
+	border-bottom: 1px solid var(--grey-border);
+	font-weight: bold;
+}
+
+.liked-coin-item img {
+	height: 7.5rem;
+	width: 7.5rem;
+
+	margin: 1rem 0;
+}
+
+.liked-coin-item .price {
+	width: 100%;
+	padding: 0 0.5rem;
+
+	display: flex;
+	justify-content: space-between;
+
+	border-top: 1px solid var(--grey-border);
 }
 
 @media (max-width: 900px) {
@@ -154,7 +183,7 @@
 	}
 }
 
-@media (min-width: 900px) {
+@media (min-width: 901px) {
 	.likes-row > div {
 		width: 20%;
 	}
