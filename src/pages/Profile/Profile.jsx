@@ -93,12 +93,15 @@ const Profile = ({ coins, coinsLoading }) => {
 				<div className='header-row'>
 					{console.log('user', user)}
 					<div className='image-container'>
-						<img src='../Gekko2.jpeg' alt='Gekko' className='profile-image' />
+						<div className='image-container-container'>
+							<img src='../Gekko2.jpeg' alt='Gekko' className='profile-image' />
+						</div>
 					</div>
+
 					<div className='title'>
 						<div>{user.name}</div>
 						<div>
-							<div>{user.email}</div>
+							<div className='title-email'>{user.email}</div>
 							<div className='subheader'>Joined {newDate}</div>
 						</div>
 					</div>
@@ -127,7 +130,7 @@ const Profile = ({ coins, coinsLoading }) => {
 					</div>
 				) : (
 					<div className='accounts-row'>
-						{/* {console.log('pnl', pnl)} */}
+						{console.log('pnl', pnl)}
 						{pnl.map((account) => {
 							return <div>account</div>;
 						})}

@@ -5,26 +5,39 @@
 
 .profile {
 	width: 100%;
-	max-width: 1200px;
-
-	padding: 0rem 1rem 1rem;
 
 	display: flex;
 	flex-direction: column;
-	/* align-items: flex-start; */
+	align-items: center;
 	gap: 1rem;
 }
 
 .profile .header-row {
+	width: 100%;
+
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 1rem;
 }
 
 .profile .image-container {
-	padding: 3rem 1rem 0rem;
+	width: 100%;
+	padding: 3rem 2rem 0rem;
 
-	background-image: url('../../../public/unnamed.png');
+	display: flex;
+	justify-content: center;
+
+	background-image: url('../../../public/cryptocurrency-coding-digital-blue-background-open-source-blockchain-concept_53876-124644.webp');
+	background-size: cover;
+}
+
+.image-container-container {
+	width: 100%;
+	max-width: 1200px;
+
+	display: flex;
+	justify-content: flex-start;
 }
 
 .profile .profile-image {
@@ -37,14 +50,18 @@
 }
 
 .profile .title {
+	width: 100%;
+	max-width: 1200px;
+
 	margin-top: 1rem;
+	/* padding: 0 1rem; */
 
 	display: flex;
 	flex-direction: column;
 }
 
 .profile .title > div:first-child {
-	font-size: 1.5rem;
+	font-size: 1.75rem;
 	/* font-weight: 500; */
 	font-weight: bold;
 }
@@ -54,13 +71,22 @@
 	gap: 1rem;
 }
 
+.profile .title-email {
+	color: var(--clr-blk-button);
+}
+
 .profile .tabs {
+	width: 100%;
+	max-width: 1200px;
+
+	/* padding: 0 1rem; */
+
 	display: flex;
 	gap: 3rem;
 
 	color: var(--clr-grey);
-	font-weight: 500;
-	font-size: 1.25rem;
+	font-weight: bold;
+	/* font-size: 1.25rem; */
 }
 
 .profile .tabs span {
@@ -76,4 +102,11 @@
 .profile .tabs .underlined {
 	color: black;
 	border-bottom: 1px solid black;
+}
+
+.profile :is(.likes-row, .accounts-row) {
+	width: 100%;
+	max-width: 1200px;
+
+	/* padding: 0 2rem; */
 }

@@ -68,12 +68,16 @@ const Account = () => {
 			}
 			const response = await ref.json();
 			setCoins(response);
+
+			console.log(response);
+
 			setFormData((prev) => ({
 				...prev,
 				coin: response[0].name,
 				price: response[0].market_data.current_price.usd,
 				coinId: response[0].id,
 				image: response[0].image.small,
+				imageLarge: response[0].image.large,
 			}));
 
 			// task 3
