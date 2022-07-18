@@ -80,7 +80,12 @@ const Profile = ({ coins, coinsLoading }) => {
 		);
 	}
 
-	const newDate = user.timestamp.toDate().toDateString();
+	const newDate = user.timestamp
+		.toDate()
+		.toDateString()
+		.split(' ')
+		.slice(1, 4)
+		.join(' ');
 
 	return (
 		<div className='profile-container'>
@@ -90,17 +95,23 @@ const Profile = ({ coins, coinsLoading }) => {
 
 					<img src='../Gekko2.jpeg' alt='Gekko' className='profile-image' />
 					<div className='title'>
-						<div className='header'>{user.name}</div>
+						<div>{user.name}</div>
 						<div>
 							<div>{user.email}</div>
 							<div className='subheader'>Joined {newDate}</div>
 						</div>
 					</div>
 					<div className='tabs'>
-						<div onClick={() => handleClick(false)}>
+						<div
+							onClick={() => handleClick(false)}
+							className={!showLikes && 'underlined'}
+						>
 							Assets <span>{pnl.length}</span>
 						</div>
-						<div onClick={() => handleClick(true)}>
+						<div
+							onClick={() => handleClick(true)}
+							className={showLikes && 'underlined'}
+						>
 							Favorited {Object.values(userLikes).length}
 						</div>
 					</div>
