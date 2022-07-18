@@ -13,7 +13,6 @@ import {
 
 import { calcPNL } from '../../utils/accounting';
 import Spinner from '../../components/Spinner';
-import PnlItem from '../Account/components/PnlItem';
 
 const Profile = ({ coins, coinsLoading }) => {
 	const auth = getAuth();
@@ -22,9 +21,7 @@ const Profile = ({ coins, coinsLoading }) => {
 	const [pnl, setPnl] = useState();
 	const [userLikes, setUserLikes] = useState({});
 	const [user, setUser] = useState();
-
-	// console.log('coins', coins);
-	// console.log('coinsloading', coinsLoading);
+	const [showLikes, setShowLikes] = useState(false);
 
 	useEffect(() => {
 		if (!coinsLoading) {
@@ -71,6 +68,10 @@ const Profile = ({ coins, coinsLoading }) => {
 		}
 	}, [coinsLoading]);
 
+	const handleClick = (val) => {
+		setShowLikes(val);
+	};
+
 	if (loading) {
 		return (
 			<div className='container'>
@@ -79,24 +80,47 @@ const Profile = ({ coins, coinsLoading }) => {
 		);
 	}
 
+	const newDate = user.timestamp.toDate().toDateString();
+
 	return (
-		<div className='container'>
+		<div className='profile-container'>
 			<div className='profile'>
-				<div className='header-row'>Header</div>
+				<div className='header-row'>
+					{console.log('user', user)}
 
-				<div className='accounts-row'>
-					{console.log('pnl', pnl)}
-					{pnl.map((account) => {
-						return <div>account</div>;
-					})}
+					<img src='../Gekko2.jpeg' alt='Gekko' className='profile-image' />
+					<div className='title'>
+						<div className='header'>{user.name}</div>
+						<div>
+							<div>{user.email}</div>
+							<div className='subheader'>Joined {newDate}</div>
+						</div>
+					</div>
+					<div className='tabs'>
+						<div onClick={() => handleClick(false)}>
+							Assets <span>{pnl.length}</span>
+						</div>
+						<div onClick={() => handleClick(true)}>
+							Favorited {Object.values(userLikes).length}
+						</div>
+					</div>
 				</div>
 
-				<div className='likes-row'>
-					{Object.values(userLikes).map((like) => {
-						console.log('like', like);
-						return <div>{like.id}</div>;
-					})}
-				</div>
+				{showLikes ? (
+					<div className='likes-row'>
+						{Object.values(userLikes).map((like) => {
+							// console.log('like', like);
+							return <div key={like.id}>{like.id}</div>;
+						})}
+					</div>
+				) : (
+					<div className='accounts-row'>
+						{/* {console.log('pnl', pnl)} */}
+						{pnl.map((account) => {
+							return <div>account</div>;
+						})}
+					</div>
+				)}
 			</div>
 		</div>
 	);

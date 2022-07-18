@@ -1,12 +1,54 @@
+.profile-container {
+	display: flex;
+	justify-content: center;
+}
+
 .profile {
 	width: 100%;
 	max-width: 1200px;
 
-	padding: 3rem 0 1rem;
+	padding: 3rem 1rem 1rem;
 
 	display: flex;
 	flex-direction: column;
-	/* justify-content: center; */
-	align-items: center;
+	/* align-items: flex-start; */
+	gap: 1rem;
+}
+
+.profile .header-row {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.profile .profile-image {
+	height: 15rem;
+	width: 15rem;
+	border-radius: 50%;
+}
+
+.profile .title {
+	margin-top: 0.5rem;
+
+	display: flex;
+	flex-direction: column;
+	/* gap: 1rem; */
+}
+
+.profile .title > div:last-child {
+	display: flex;
+	gap: 1rem;
+}
+
+.profile .tabs {
+	display: flex;
 	gap: 3rem;
+
+	color: var(--clr-grey);
+	font-weight: 500;
+	font-size: 1.25rem;
+}
+
+.profile .tabs span {
+	font-weight: normal;
 }
