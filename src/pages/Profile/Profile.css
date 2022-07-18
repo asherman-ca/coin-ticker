@@ -139,6 +139,7 @@
 
 .likes-row .content {
 	/* padding: 0 1rem; */
+	box-shadow: rgb(0 0 0 / 8%) 0px 4px 15px;
 
 	display: flex;
 	flex-direction: column;
@@ -160,7 +161,7 @@
 	height: 7.5rem;
 	width: 7.5rem;
 
-	margin: 1rem 0;
+	margin: 2rem 0;
 }
 
 .liked-coin-item .price {
