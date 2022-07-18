@@ -14,6 +14,7 @@ import {
 import { calcPNL } from '../../utils/accounting';
 import Spinner from '../../components/Spinner';
 import AccountItem from './components/AccountItem';
+import LikedCoinItem from './components/LikedCoinItem';
 
 const Profile = ({ coins, coinsLoading }) => {
 	const auth = getAuth();
@@ -107,13 +108,13 @@ const Profile = ({ coins, coinsLoading }) => {
 					<div className='tabs'>
 						<div
 							onClick={() => handleClick(false)}
-							className={!showLikes && 'underlined'}
+							className={!showLikes ? 'underlined' : ''}
 						>
 							Assets <span>{pnl.length}</span>
 						</div>
 						<div
 							onClick={() => handleClick(true)}
-							className={showLikes && 'underlined'}
+							className={showLikes ? 'underlined' : ''}
 						>
 							Favorited {Object.values(userLikes).length}
 						</div>
@@ -122,15 +123,15 @@ const Profile = ({ coins, coinsLoading }) => {
 
 				{showLikes ? (
 					<div className='likes-row'>
-						{Object.values(userLikes).map((like) => {
-							return <div key={like.id}>{like.id}</div>;
+						{Object.values(userLikes).map((coin) => {
+							return <LikedCoinItem key={coin.id} coin={coin} />;
 						})}
 					</div>
 				) : (
 					<div className='accounts-row'>
 						{console.log('pnl', pnl)}
 						{pnl.map((account) => {
-							return <AccountItem key={account.id} account={account} />;
+							return <AccountItem key={account.coinId} account={account} />;
 						})}
 					</div>
 				)}

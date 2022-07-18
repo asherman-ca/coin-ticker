@@ -113,6 +113,47 @@
 .profile :is(.likes-row, .accounts-row) {
 	width: 100%;
 	max-width: 1200px;
-
 	padding: 0 1rem;
+
+	display: flex;
+	flex-wrap: wrap;
+	/* gap: 1rem; */
+}
+
+.likes-row > div {
+	width: 50%;
+	padding: 0 1rem;
+	/* margin: 0 1rem; */
+
+	/* background: grey; */
+	/* flex: 1;
+	flex-basis: 16%; */
+	/* max-width: calc(20% - 1rem); */
+	/* max-width: 20%; */
+
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+}
+
+.likes-row > div:nth-child(2n + 1) {
+	padding-left: 0;
+}
+
+.likes-row > div:nth-child(2n + 2) {
+	padding-right: 0;
+}
+
+@media (min-width: 900px) {
+	.likes-row > div {
+		width: 20%;
+	}
+
+	.likes-row > div:nth-child(5n + 1) {
+		padding-left: 0;
+	}
+
+	.likes-row > div:nth-child(5n + 5) {
+		padding-right: 0;
+	}
 }
