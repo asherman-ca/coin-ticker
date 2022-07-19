@@ -45,7 +45,7 @@ const Home = ({ coins, coinsLoading }) => {
 		<div className='home-container'>
 			<div className='home'>
 				<div className='header'>
-					<span>Live Cryptocurrency Prices</span>
+					<div style={{ lineHeight: '3rem' }}>Live Cryptocurrency Prices</div>
 
 					<span>Top Coins by Market Cap</span>
 				</div>
@@ -62,7 +62,9 @@ const Home = ({ coins, coinsLoading }) => {
 							<div className='col daily-col'>24hr</div>
 							<div className='col weekly-col'>7d</div>
 							<div className='col vol-col'>Vol</div>
-							<div className='col mcap-col'>M Cap</div>
+							<div className='col mcap-col'>
+								M Cap<i className='fa-solid fa-chevron-down'></i>
+							</div>
 						</div>
 						{coins
 							.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)

@@ -72,11 +72,17 @@
 
 	display: flex;
 	justify-content: right;
+	align-items: center;
+	gap: 0.5rem;
+
+	cursor: pointer;
 }
 
 .coin-list-header .link-col {
 	justify-content: left !important;
 	gap: 1rem;
+
+	cursor: default;
 }
 
 .coin-list-header .icon-holder {
@@ -103,10 +109,10 @@
 	}
 }
 
-.coin-list .coin-list-item:last-child {
+/* .coin-list .coin-list-item:last-child {
 	border-bottom-left-radius: 0.5rem;
 	border-bottom-right-radius: 0.5rem;
-}
+} */
 
 .pagination-container {
 	display: flex;
