@@ -10,7 +10,10 @@ const Home = ({ coins, coinsLoading }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[1]);
 	const [displayCoins, setDisplayCoins] = useState();
-	const [sortParam, setSortParam] = useState('mcap');
+	const [sortParam, setSortParam] = useState({
+		type: 'mcap',
+		direction: 'desc',
+	});
 
 	useEffect(() => {
 		setDisplayCoins(coins);
@@ -18,12 +21,25 @@ const Home = ({ coins, coinsLoading }) => {
 
 	const handleSort = (type) => {
 		if (type === 'mcap') {
-			setSortParam('mcap');
-			setDisplayCoins((prev) =>
-				prev.sort(
-					(a, b) => b.market_data.market_cap.usd - a.market_data.market_cap.usd
-				)
-			);
+			if (sortParam.type === 'mcap' && sortParam.direction === 'desc') {
+				// already mcap sorted, so flip it
+				setSortParam({ type: 'mcap', direction: 'asc' });
+				setDisplayCoins((prev) =>
+					prev.sort(
+						(a, b) =>
+							a.market_data.market_cap.usd - b.market_data.market_cap.usd
+					)
+				);
+			} else {
+				// set to descending
+				setSortParam({ type: 'mcap', direction: 'desc' });
+				setDisplayCoins((prev) =>
+					prev.sort(
+						(a, b) =>
+							b.market_data.market_cap.usd - a.market_data.market_cap.usd
+					)
+				);
+			}
 		} else if (type === '24hr') {
 			setSortParam('24hr');
 			setDisplayCoins((prev) =>
@@ -113,7 +129,7 @@ const Home = ({ coins, coinsLoading }) => {
 							<div className='col hr-col' onClick={() => handleSort('1hr')}>
 								<i
 									className={
-										sortParam === '1hr'
+										sortParam.type === '1hr'
 											? 'fa-solid fa-chevron-down'
 											: 'fa-solid fa-chevron-down hidden'
 									}
@@ -123,7 +139,7 @@ const Home = ({ coins, coinsLoading }) => {
 							<div className='col daily-col' onClick={() => handleSort('24hr')}>
 								<i
 									className={
-										sortParam === '24hr'
+										sortParam.type === '24hr'
 											? 'fa-solid fa-chevron-down'
 											: 'fa-solid fa-chevron-down hidden'
 									}
@@ -133,7 +149,7 @@ const Home = ({ coins, coinsLoading }) => {
 							<div className='col weekly-col' onClick={() => handleSort('7d')}>
 								<i
 									className={
-										sortParam === '7d'
+										sortParam.type === '7d'
 											? 'fa-solid fa-chevron-down'
 											: 'fa-solid fa-chevron-down hidden'
 									}
@@ -143,7 +159,7 @@ const Home = ({ coins, coinsLoading }) => {
 							<div className='col vol-col' onClick={() => handleSort('vol')}>
 								<i
 									className={
-										sortParam === 'vol'
+										sortParam.type === 'vol'
 											? 'fa-solid fa-chevron-down'
 											: 'fa-solid fa-chevron-down hidden'
 									}
@@ -153,9 +169,11 @@ const Home = ({ coins, coinsLoading }) => {
 							<div className='col mcap-col' onClick={() => handleSort('mcap')}>
 								<i
 									className={
-										sortParam === 'mcap'
-											? 'fa-solid fa-chevron-down'
-											: 'fa-solid fa-chevron-down hidden'
+										sortParam.type === 'mcap'
+											? sortParam.direction === 'desc'
+												? 'fa-solid fa-chevron-down'
+												: 'fa-solid fa-chevron-up'
+											: 'hidden'
 									}
 								></i>
 								M Cap
