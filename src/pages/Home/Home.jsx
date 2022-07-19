@@ -41,7 +41,7 @@ const Home = ({ coins, coinsLoading }) => {
 				);
 			}
 		} else if (type === '24hr') {
-			setSortParam('24hr');
+			setSortParam({ type: '24hr', direction: 'desc' });
 			setDisplayCoins((prev) =>
 				prev.sort(
 					(a, b) =>
@@ -50,7 +50,7 @@ const Home = ({ coins, coinsLoading }) => {
 				)
 			);
 		} else if (type === '1hr') {
-			setSortParam('1hr');
+			setSortParam({ type: '1hr', direction: 'desc' });
 			setDisplayCoins((prev) =>
 				prev.sort(
 					(a, b) =>
@@ -59,7 +59,7 @@ const Home = ({ coins, coinsLoading }) => {
 				)
 			);
 		} else if (type === '7d') {
-			setSortParam('7d');
+			setSortParam({ type: '7d', direction: 'desc' });
 			setDisplayCoins((prev) =>
 				prev.sort(
 					(a, b) =>
@@ -68,7 +68,7 @@ const Home = ({ coins, coinsLoading }) => {
 				)
 			);
 		} else if (type === 'vol') {
-			setSortParam('vol');
+			setSortParam({ type: 'vol', direction: 'desc' });
 			setDisplayCoins((prev) =>
 				prev.sort(
 					(a, b) =>

@@ -12,7 +12,7 @@ const Pagination = ({
 	topPosition,
 }) => {
 	const lastPage =
-		totalCount % rowsPerPage == 0
+		totalCount % rowsPerPage === 0
 			? totalCount / rowsPerPage
 			: Math.floor(totalCount / rowsPerPage) + 1;
 
@@ -44,10 +44,6 @@ const Pagination = ({
 				<div
 					className='top-button'
 					onClick={() => {
-						// window.scrollTo({
-						// 	bottom: 0,
-						// 	behavior: 'smooth',
-						// });
 						window.scrollTo(
 							0,
 							document.body.scrollHeight ||
@@ -59,7 +55,7 @@ const Pagination = ({
 				</div>
 			)}
 			<div className='page-buttons'>
-				{currentPage != 1 && (
+				{currentPage !== 1 && (
 					<button
 						className='page-scroll-button'
 						onClick={() => {
@@ -71,9 +67,9 @@ const Pagination = ({
 				)}
 
 				{paginationPages.map((pageNumber, ind) => {
-					if (pageNumber == '...') {
+					if (pageNumber === '...') {
 						return <div key={ind}>...</div>;
-					} else if (pageNumber == currentPage) {
+					} else if (pageNumber === currentPage) {
 						return (
 							<div key={ind} className='page-button active'>
 								{pageNumber}
@@ -98,7 +94,7 @@ const Pagination = ({
 					}
 				})}
 
-				{currentPage != lastPage && (
+				{currentPage !== lastPage && (
 					<button className='page-scroll-button' onClick={() => nextPage()}>
 						<i className='fa-solid fa-chevron-right'></i>
 					</button>

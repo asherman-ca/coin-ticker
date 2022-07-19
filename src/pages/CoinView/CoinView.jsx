@@ -40,7 +40,7 @@ const CoinView = () => {
 			);
 			if (!ref.ok) {
 				toast.error(`No results: "${params.coinId}"`);
-				clearInterval(interId);
+				// clearInterval(interId);
 				throw new Error('Thrown Error Thrown');
 			}
 			const response = await ref.json();
@@ -50,12 +50,12 @@ const CoinView = () => {
 			const likesRef = collection(db, 'likes');
 			const q = query(likesRef, where('coinId', '==', params.coinId));
 			const querySnap = await getDocs(q);
-			let likes = [];
-			querySnap.forEach((el) => likes.push({ id: el.id, data: el.data() }));
-			setLikes(likes);
+			let likesCopy = [];
+			querySnap.forEach((el) => likesCopy.push({ id: el.id, data: el.data() }));
+			setLikes(likesCopy);
 
 			if (auth.currentUser) {
-				likes.forEach((el) => {
+				likesCopy.forEach((el) => {
 					if (el.data.userRef === auth.currentUser.uid) {
 						setUserLike(el);
 					}
@@ -64,13 +64,13 @@ const CoinView = () => {
 
 			setLoading(false);
 		};
-		let interId = setInterval(apiFetch, 10000);
+		// let interId = setInterval(apiFetch, 10000);
 		apiFetch();
 
-		return () => {
-			clearInterval(interId);
-		};
-	}, [params.coinId]);
+		// return () => {
+		// 	clearInterval(interId);
+		// };
+	}, [params.coinId, auth.currentUser]);
 
 	useEffect(() => {
 		setUserLoading(true);
@@ -79,11 +79,11 @@ const CoinView = () => {
 			onAuthStateChanged(auth, async (user) => {
 				if (user) {
 					setLoggedIn(true);
-					likes.forEach((el) => {
-						if (el.data.userRef === auth.currentUser.uid) {
-							setUserLike(el);
-						}
-					});
+					// likes.forEach((el) => {
+					// 	if (el.data.userRef === auth.currentUser.uid) {
+					// 		setUserLike(el);
+					// 	}
+					// });
 				} else {
 					setLoggedIn(false);
 				}

@@ -52,10 +52,6 @@
 	align-items: center;
 }
 
-.hidden {
-	display: none;
-}
-
 @media (max-width: 600px) {
 	.coin-list-item :is(.vol-col, .mcap-col, .hr-col) {
 		display: none;

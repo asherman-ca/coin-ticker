@@ -93,6 +93,11 @@
 	cursor: default !important;
 }
 
+.coin-list-header .hidden {
+	/* opacity: 0; */
+	display: none;
+}
+
 @media (max-width: 600px) {
 	/* .coin-list-header .daily-col {
 		display: none;
