@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { cleanInt, changeDirection } from '../../../utils/stringUtils';
 
 const LikedCoinItem = ({ coin }) => {
@@ -9,7 +11,7 @@ const LikedCoinItem = ({ coin }) => {
 	);
 
 	return (
-		<div className='liked-coin-item'>
+		<Link to={`/coins/${coin.id}`} className='liked-coin-item'>
 			<div className='content'>
 				<div className='name'>{coin.name}</div>
 				<img src={coin.image.large} alt='' />
@@ -23,7 +25,7 @@ const LikedCoinItem = ({ coin }) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

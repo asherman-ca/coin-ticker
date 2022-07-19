@@ -67,7 +67,7 @@ const Profile = ({ coins, coinsLoading }) => {
 			};
 			fetchTask();
 		}
-	}, [coinsLoading]);
+	}, [coinsLoading, auth.currentUser.uid, coins]);
 
 	const handleClick = (val) => {
 		setShowLikes(val);

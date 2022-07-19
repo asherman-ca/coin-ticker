@@ -53,7 +53,6 @@
 .profile .title {
 	width: 100%;
 	max-width: 1200px;
-
 	margin-top: 2rem;
 	padding: 0 1rem;
 
@@ -120,31 +119,21 @@
 	/* gap: 1rem; */
 }
 
-.likes-row > div {
+.likes-row > a {
 	width: 50%;
-	padding: 0 0.5rem;
-	margin-bottom: 1rem;
-	/* margin: 0 1rem; */
-
-	/* background: grey; */
-	/* flex: 1;
-	flex-basis: 16%; */
-	/* max-width: calc(20% - 1rem); */
-	/* max-width: 20%; */
+	padding: 0 0.25rem;
+	margin-bottom: 0.5rem;
 
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
 }
 
 .likes-row .content {
-	/* padding: 0 1rem; */
-	box-shadow: rgb(0 0 0 / 8%) 0px 4px 15px;
-
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
+	/* box-shadow: rgb(0 0 0 / 8%) 0px 4px 15px; */
 	border: 1px solid var(--grey-border);
 	border-radius: 0.5rem;
 }
@@ -153,8 +142,11 @@
 	width: 100%;
 	padding: 0 0.5rem;
 
-	border-bottom: 1px solid var(--grey-border);
 	font-weight: bold;
+	background: var(--bg-grey);
+	border-bottom: 1px solid var(--grey-border);
+	border-top-right-radius: 0.5rem;
+	border-top-left-radius: 0.5rem;
 }
 
 .liked-coin-item img {
@@ -175,25 +167,25 @@
 }
 
 @media (max-width: 900px) {
-	.likes-row > div:nth-child(2n + 1) {
+	.likes-row > a:nth-child(2n + 1) {
 		padding-left: 0;
 	}
 
-	.likes-row > div:nth-child(2n + 2) {
+	.likes-row > a:nth-child(2n + 2) {
 		padding-right: 0;
 	}
 }
 
 @media (min-width: 901px) {
-	.likes-row > div {
+	.likes-row > a {
 		width: 20%;
 	}
 
-	.likes-row > div:nth-child(5n + 1) {
+	.likes-row > a:nth-child(5n + 1) {
 		padding-left: 0;
 	}
 
-	.likes-row > div:nth-child(5n + 5) {
+	.likes-row > a:nth-child(5n + 5) {
 		padding-right: 0;
 	}
 }
