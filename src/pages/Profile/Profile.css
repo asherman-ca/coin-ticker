@@ -128,6 +128,10 @@
 	flex-direction: column;
 }
 
+.likes-row > a:hover img {
+	transform: scale(1.2);
+}
+
 .likes-row .content {
 	display: flex;
 	flex-direction: column;
@@ -138,7 +142,7 @@
 	border-radius: 0.5rem;
 }
 
-.liked-coin-item .name {
+:is(.liked-coin-item, .account-item) .name {
 	width: 100%;
 	padding: 0 0.5rem;
 
@@ -154,9 +158,52 @@
 	width: 7.5rem;
 
 	margin: 2rem 0;
+
+	transition: all 0.4s ease;
 }
 
 .liked-coin-item .price {
+	width: 100%;
+	padding: 0 0.5rem;
+
+	display: flex;
+	justify-content: space-between;
+
+	border-top: 1px solid var(--grey-border);
+}
+
+.accounts-row > a {
+	width: 50%;
+	padding: 0 0.25rem;
+	margin-bottom: 0.5rem;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.accounts-row .content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	border: 1px solid var(--grey-border);
+	border-radius: 0.5rem;
+}
+
+.accounts-row img {
+	height: 7.5rem;
+	width: 7.5rem;
+
+	margin: 2rem 0;
+
+	transition: all 0.4s ease;
+}
+
+.accounts-row > a:hover img {
+	transform: scale(1.2);
+}
+
+.account-item .value {
 	width: 100%;
 	padding: 0 0.5rem;
 
@@ -174,6 +221,14 @@
 	.likes-row > a:nth-child(2n + 2) {
 		padding-right: 0;
 	}
+
+	.accounts-row > a:nth-child(2n + 1) {
+		padding-left: 0;
+	}
+
+	.accounts-row > a:nth-child(2n + 2) {
+		padding-right: 0;
+	}
 }
 
 @media (min-width: 901px) {
@@ -186,6 +241,18 @@
 	}
 
 	.likes-row > a:nth-child(5n + 5) {
+		padding-right: 0;
+	}
+
+	.accounts-row > a {
+		width: 20%;
+	}
+
+	.accounts-row > a:nth-child(5n + 1) {
+		padding-left: 0;
+	}
+
+	.accounts-row > a:nth-child(5n + 5) {
 		padding-right: 0;
 	}
 }

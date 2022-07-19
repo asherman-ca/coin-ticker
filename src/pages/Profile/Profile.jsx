@@ -88,6 +88,14 @@ const Profile = ({ coins, coinsLoading }) => {
 		.slice(1, 4)
 		.join(' ');
 
+	const sortedLikes = Object.values(userLikes).sort(
+		(a, b) =>
+			b.market_data.price_change_percentage_24h_in_currency.usd -
+			a.market_data.price_change_percentage_24h_in_currency.usd
+	);
+
+	const sortedAccounts = pnl.sort((a, b) => b.totalValue - a.totalValue);
+
 	return (
 		<div className='profile-container'>
 			<div className='profile'>
@@ -123,14 +131,13 @@ const Profile = ({ coins, coinsLoading }) => {
 
 				{showLikes ? (
 					<div className='likes-row'>
-						{Object.values(userLikes).map((coin) => {
+						{sortedLikes.map((coin) => {
 							return <LikedCoinItem key={coin.id} coin={coin} />;
 						})}
 					</div>
 				) : (
 					<div className='accounts-row'>
-						{console.log('pnl', pnl)}
-						{pnl.map((account) => {
+						{sortedAccounts.map((account) => {
 							return <AccountItem key={account.coinId} account={account} />;
 						})}
 					</div>
