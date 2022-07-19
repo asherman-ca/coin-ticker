@@ -89,6 +89,10 @@
 	width: 25px;
 }
 
+.coin-list .price-col {
+	cursor: default !important;
+}
+
 @media (max-width: 600px) {
 	/* .coin-list-header .daily-col {
 		display: none;
