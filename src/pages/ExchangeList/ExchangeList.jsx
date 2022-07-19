@@ -79,6 +79,7 @@ const ExchangeList = () => {
 							rowsPerPageOptions={rowsPerPageOptions}
 							nextPage={nextPage}
 							prevPage={prevPage}
+							topPosition={true}
 						/>
 					</div>
 					<div className='list'>
