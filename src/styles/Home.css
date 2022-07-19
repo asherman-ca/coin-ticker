@@ -89,7 +89,7 @@
 	} */
 
 	.coin-list-header .link-col .icon-holder {
-		display: none;
+		/* display: none; */
 	}
 
 	.coin-list-header :is(.vol-col, .mcap-col, .hr-col) {

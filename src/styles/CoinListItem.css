@@ -53,12 +53,16 @@
 }
 
 @media (max-width: 600px) {
-	.coin-list-item .link-col span {
+	.coin-list-item :is(.vol-col, .mcap-col, .hr-col) {
 		display: none;
 	}
 
-	.coin-list-item :is(.vol-col, .mcap-col, .hr-col) {
-		display: none;
+	.coin-list-header {
+		padding: 1rem 0 !important;
+	}
+
+	.coin-list-item {
+		padding: 1rem 0 !important;
 	}
 }
 
