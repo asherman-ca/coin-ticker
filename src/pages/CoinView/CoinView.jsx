@@ -181,13 +181,14 @@ const CoinView = () => {
 						))}
 					</div>
 				</div>
-				<Embed symbol={coin.symbol} />
+
 				{coin.description.en && (
 					<div className='description-row'>
 						<span>About {coin.symbol.toUpperCase()}</span>
 						{coin.description.en.replace(/<\/?a[^>]*>/g, '')}
 					</div>
 				)}
+				<Embed symbol={coin.symbol} />
 			</div>
 		</div>
 	);

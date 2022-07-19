@@ -33,9 +33,9 @@
 .coin-list {
 	display: flex;
 	flex-direction: column;
-	padding: 1rem;
+	/* padding: 1rem; */
 
-	border: 1px solid var(--grey-border);
+	/* border: 1px solid var(--grey-border); */
 	border-radius: 0.5rem;
 	background-color: white;
 }
