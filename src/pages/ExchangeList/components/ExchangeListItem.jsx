@@ -21,7 +21,7 @@ const ExchangeListItem = ({ exchange }) => {
 			setLoading(false);
 		};
 		apiFetch();
-	}, []);
+	}, [exchange.id]);
 
 	if (loading) {
 		return (
