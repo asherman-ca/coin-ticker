@@ -238,6 +238,10 @@
 		border-top: none;
 	}
 
+	.likes-row > a {
+		padding: 0;
+	}
+
 	/* .likes-row > a:nth-child(2n + 1) {
 		padding-left: 0;
 	}
