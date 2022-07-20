@@ -65,7 +65,7 @@ const ExchangeList = () => {
 		<div className='container exchange-container'>
 			<div className='exchange-list'>
 				<div className='exchange-list-header'>
-					<span>Top Crypto Exchanges</span>
+					<div style={{ lineHeight: '3rem' }}>Top Crypto Exchanges</div>
 					<span>Sorted by Trust Rank</span>
 				</div>
 				<div className='exchanges'>
