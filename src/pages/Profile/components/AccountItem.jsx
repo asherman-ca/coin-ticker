@@ -9,9 +9,12 @@ const AccountItem = ({ account }) => {
 	return (
 		<Link to='/account' className='account-item'>
 			<div className='content'>
-				<div className='name'>{account.coin}</div>
-				<img src={account.imageLarge} alt='' />
-				<div className='value'>
+				<div className='title-col'>
+					<img src={account.imageLarge} alt='' />
+					<div>{account.coin}</div>
+				</div>
+
+				<div className='meta-col'>
 					<div>${cleanInt(account.totalValue)}</div>
 					<div className={changeType}>
 						${cleanInt(account.pnl + account.rpnl)}

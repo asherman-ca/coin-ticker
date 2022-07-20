@@ -139,7 +139,7 @@
 
 	display: flex;
 	justify-content: space-between;
-	border-top: 1px solid var(--grey-border);
+	border-bottom: 1px solid var(--grey-border);
 }
 
 .liked-coin-item .title-col {
@@ -164,17 +164,6 @@
 	color: var(--clr-grey);
 }
 
-:is(.liked-coin-item, .account-item) .name {
-	width: 100%;
-	padding: 0 0.5rem;
-
-	font-weight: bold;
-	background: var(--bg-grey);
-	border-bottom: 1px solid var(--grey-border);
-	border-top-right-radius: 0.5rem;
-	border-top-left-radius: 0.5rem;
-}
-
 .liked-coin-item img {
 	height: 50px;
 	width: 50px;
@@ -182,39 +171,31 @@
 	transition: all 0.4s ease;
 }
 
-.liked-coin-item .price {
+.accounts-row > a {
 	width: 100%;
-	padding: 0 0.5rem;
+	padding: 0 1rem;
+}
+
+.accounts-row .content {
+	padding: 1rem 0;
 
 	display: flex;
 	justify-content: space-between;
 
-	border-top: 1px solid var(--grey-border);
+	border-bottom: 1px solid var(--grey-border);
 }
 
-.accounts-row > a {
-	width: 50%;
-	padding: 0 0.25rem;
-	margin-bottom: 0.5rem;
-
-	display: flex;
-	flex-direction: column;
+.account-item .meta-col {
+	text-align: right;
 }
 
-.accounts-row .content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	border: 1px solid var(--grey-border);
-	border-radius: 0.5rem;
+.account-item .meta-col > div:first-child {
+	font-weight: 500;
 }
 
 .accounts-row img {
-	height: 7.5rem;
-	width: 7.5rem;
-
-	margin: 2rem 0;
+	height: 50px;
+	width: 50px;
 
 	transition: all 0.4s ease;
 }
@@ -223,14 +204,12 @@
 	transform: scale(1.1);
 }
 
-.account-item .value {
-	width: 100%;
-	padding: 0 0.5rem;
-
+.account-item .title-col {
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
 
-	border-top: 1px solid var(--grey-border);
+	font-weight: 500;
 }
 
 @media (max-width: 900px) {
@@ -242,21 +221,13 @@
 		padding: 0;
 	}
 
-	/* .likes-row > a:nth-child(2n + 1) {
-		padding-left: 0;
+	.accounts-row > a:first-child .content {
+		border-top: none;
 	}
 
-	.likes-row > a:nth-child(2n + 2) {
-		padding-right: 0;
+	.accounts-row > a {
+		padding: 0;
 	}
-
-	.accounts-row > a:nth-child(2n + 1) {
-		padding-left: 0;
-	}
-
-	.accounts-row > a:nth-child(2n + 2) {
-		padding-right: 0;
-	} */
 }
 
 @media (min-width: 901px) {
@@ -264,9 +235,9 @@
 		width: 33.333%;
 	}
 
-	.likes-row > :is(a:nth-child(1), a:nth-child(2), a:nth-child(3)) .content {
+	/* .likes-row > :is(a:nth-child(1), a:nth-child(2), a:nth-child(3)) .content {
 		border-top: none;
-	}
+	} */
 
 	.likes-row > a:nth-child(3n + 1) {
 		padding-left: 0;
@@ -277,14 +248,18 @@
 	}
 
 	.accounts-row > a {
-		width: 20%;
+		width: 33.333%;
 	}
 
-	.accounts-row > a:nth-child(5n + 1) {
+	/* .accounts-row > :is(a:nth-child(1), a:nth-child(2), a:nth-child(3)) .content {
+		border-top: none;
+	} */
+
+	.accounts-row > a:nth-child(3n + 1) {
 		padding-left: 0;
 	}
 
-	.accounts-row > a:nth-child(5n + 5) {
+	.accounts-row > a:nth-child(3n + 3) {
 		padding-right: 0;
 	}
 }
