@@ -77,8 +77,10 @@ const Home = ({ coins, coinsLoading }) => {
 								<i
 									className={
 										sortParam.type === '1hr'
-											? 'fa-solid fa-chevron-down'
-											: 'fa-solid fa-chevron-down hidden'
+											? sortParam.direction === 'desc'
+												? 'fa-solid fa-chevron-down'
+												: 'fa-solid fa-chevron-up'
+											: 'hidden'
 									}
 								></i>
 								1hr
@@ -92,8 +94,10 @@ const Home = ({ coins, coinsLoading }) => {
 								<i
 									className={
 										sortParam.type === '24hr'
-											? 'fa-solid fa-chevron-down'
-											: 'fa-solid fa-chevron-down hidden'
+											? sortParam.direction === 'desc'
+												? 'fa-solid fa-chevron-down'
+												: 'fa-solid fa-chevron-up'
+											: 'hidden'
 									}
 								></i>
 								24hr
@@ -107,8 +111,10 @@ const Home = ({ coins, coinsLoading }) => {
 								<i
 									className={
 										sortParam.type === '7d'
-											? 'fa-solid fa-chevron-down'
-											: 'fa-solid fa-chevron-down hidden'
+											? sortParam.direction === 'desc'
+												? 'fa-solid fa-chevron-down'
+												: 'fa-solid fa-chevron-up'
+											: 'hidden'
 									}
 								></i>
 								7d
@@ -122,8 +128,10 @@ const Home = ({ coins, coinsLoading }) => {
 								<i
 									className={
 										sortParam.type === 'vol'
-											? 'fa-solid fa-chevron-down'
-											: 'fa-solid fa-chevron-down hidden'
+											? sortParam.direction === 'desc'
+												? 'fa-solid fa-chevron-down'
+												: 'fa-solid fa-chevron-up'
+											: 'hidden'
 									}
 								></i>
 								Vol
