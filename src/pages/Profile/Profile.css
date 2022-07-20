@@ -123,8 +123,8 @@
 
 .likes-row > a {
 	width: 100%;
-	padding: 0 0.5rem;
-	margin-bottom: 0.5rem;
+	padding: 0 1rem;
+	/* margin-bottom: 0.5rem; */
 
 	display: flex;
 	flex-direction: column;
@@ -135,6 +135,8 @@
 }
 
 .likes-row .content {
+	padding: 1rem 0;
+
 	display: flex;
 	justify-content: space-between;
 	border-top: 1px solid var(--grey-border);
@@ -143,7 +145,7 @@
 .liked-coin-item .title-col {
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 1rem;
 }
 
 .liked-coin-item .meta-col {
