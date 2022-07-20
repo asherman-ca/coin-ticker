@@ -59,10 +59,10 @@ const ExchangeListItem = ({ exchange }) => {
 					<div className='meta-content'>
 						{exchangeDeets.tickers.slice(0, 6).map((tickr) => {
 							return (
-								<div>
-									<div
-										key={`${tickr.base} - ${tickr.target} - ${tickr.market.name}`}
-									>
+								<div
+									key={`${tickr.base} - ${tickr.target} - ${tickr.market.name}`}
+								>
+									<div>
 										{tickr.base} / {tickr.target}
 									</div>
 									<div>${cleanInt(tickr.converted_volume.usd, 1000000)}M</div>

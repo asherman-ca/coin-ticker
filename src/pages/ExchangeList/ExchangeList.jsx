@@ -87,7 +87,10 @@ const ExchangeList = () => {
 							.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)
 							.map((exchange, idx) => {
 								return (
-									<ExchangeListItem key={exchange.id} exchange={exchange} />
+									<ExchangeListItem
+										key={`${exchange.id} - ${idx}`}
+										exchange={exchange}
+									/>
 								);
 							})}
 					</div>
