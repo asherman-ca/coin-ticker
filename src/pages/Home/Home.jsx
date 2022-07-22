@@ -154,8 +154,6 @@ const Home = ({ coins, coinsLoading }) => {
 								M Cap
 							</div>
 						</div>
-						{console.log('display', displayCoins)}
-						{console.log('coins', coins)}
 						{displayCoins
 							.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)
 							.map((coin) => (
