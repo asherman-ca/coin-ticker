@@ -73,7 +73,7 @@ const Nav = ({ coinsLoading, coins }) => {
 			);
 
 			if (userCredential.user) {
-				navigate('/account');
+				navigate('/profile');
 			}
 		} catch (error) {
 			toast.error('Invalid credentials');

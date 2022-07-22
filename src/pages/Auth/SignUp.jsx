@@ -49,7 +49,7 @@ const SignUp = () => {
 			message: 'Minimum 6 characters',
 		},
 		confirmPassword: {
-			action: (string) => string == formData.password,
+			action: (string) => string === formData.password,
 			message: 'Must match password',
 		},
 	};
@@ -102,7 +102,7 @@ const SignUp = () => {
 
 					await setDoc(doc(db, 'users', user.uid), formDataCopy);
 					toast.success('User created');
-					navigate('/account');
+					navigate('/profile');
 				} catch (error) {
 					console.log(error);
 					toast.error('Server error');

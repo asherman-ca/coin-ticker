@@ -28,7 +28,7 @@ const SignIn = () => {
 				);
 
 				if (userCredential.user) {
-					navigate('/account');
+					navigate('/profile');
 				}
 			} catch (error) {
 				toast.error('Invalid credentials');

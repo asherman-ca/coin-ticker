@@ -25,13 +25,13 @@
 
 .profile .image-container {
 	width: 100%;
-	padding: 3rem 0rem 0rem;
+	padding: 1rem 0rem 0rem;
 
 	display: flex;
 	justify-content: center;
 
-	background-image: url('../../../public/cryptocurrency-coding-digital-blue-background-open-source-blockchain-concept_53876-124644.webp');
-	background-size: cover;
+	/* background-image: url('../../../public/cryptocurrency-coding-digital-blue-background-open-source-blockchain-concept_53876-124644.webp');
+	background-size: cover; */
 }
 
 .image-container-container {
