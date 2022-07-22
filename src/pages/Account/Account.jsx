@@ -179,7 +179,6 @@ const Account = () => {
 						userId={auth.currentUser.uid}
 						setUser={setUser}
 						onFaucet={onFaucet}
-						pnl={pnl}
 					/>
 				</div>
 			</div>

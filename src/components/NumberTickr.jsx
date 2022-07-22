@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { cleanInt } from '../utils/stringUtils';
 
 const NumberTickr = ({ newVal }) => {
 	const [displayVal, setDisplayVal] = useState(newVal);
@@ -22,7 +23,7 @@ const NumberTickr = ({ newVal }) => {
 		return () => clearTimeout(timer);
 	}, [newVal, displayVal]);
 
-	return <div>{displayVal}</div>;
+	return <div>${cleanInt(displayVal)}</div>;
 };
 
 export default NumberTickr;
