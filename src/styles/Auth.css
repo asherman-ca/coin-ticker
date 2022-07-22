@@ -1,28 +1,26 @@
 .auth {
 	width: 100%;
 	max-width: 1200px;
+	padding: 0 1rem;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 1rem;
 }
 
 .auth-form-container {
-	padding: 2rem;
+	/* padding: 2rem; */
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 1rem;
-
-	background: white;
-	border: 1px solid var(--grey-border);
-	border-radius: 0.5rem;
 }
 
 .auth-form {
-	min-width: 400px;
+	min-width: 500px;
 	margin-top: 0.5rem;
 
 	display: flex;
@@ -35,7 +33,7 @@
 }
 
 .auth-form input {
-	padding: 1rem;
+	padding: 0.75rem;
 
 	border: 1px solid var(--grey-border);
 	border-radius: 0.5rem;
@@ -78,4 +76,10 @@
 	font-weight: 500;
 	line-height: 1rem;
 	font-size: 0.75rem;
+}
+
+@media (max-width: 600px) {
+	.auth-form {
+		min-width: 100%;
+	}
 }

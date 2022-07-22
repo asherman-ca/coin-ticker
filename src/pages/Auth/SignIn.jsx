@@ -48,36 +48,34 @@ const SignIn = () => {
 	return (
 		<div className='container'>
 			<div className='auth'>
-				<div className='auth-form-container'>
-					<div className='header'>Sign In</div>
-					<div>to continue to Tickr</div>
-					<form onSubmit={onSubmit} className='auth-form'>
-						<input
-							onChange={onChange}
-							id='email'
-							type='email'
-							placeholder='Email'
-						/>
+				<div className='header'>Sign In</div>
+				<div>to continue to Tickr</div>
+				<form onSubmit={onSubmit} className='auth-form'>
+					<input
+						onChange={onChange}
+						id='email'
+						type='email'
+						placeholder='Email'
+					/>
 
-						<input
-							id='password'
-							type='password'
-							placeholder='Password'
-							onChange={onChange}
-						/>
+					<input
+						id='password'
+						type='password'
+						placeholder='Password'
+						onChange={onChange}
+					/>
 
-						<Link to={'/password-reset'} className='pw-reset-link'>
-							Forgot password?
-						</Link>
+					<Link to={'/password-reset'} className='pw-reset-link'>
+						Forgot password?
+					</Link>
 
-						<div className='button-row'>
-							<Link to={'/signup'}>Create account</Link>
-							<GateButton onClick={onSubmit} type={true}>
-								Submit
-							</GateButton>
-						</div>
-					</form>
-				</div>
+					<div className='button-row'>
+						<Link to={'/signup'}>Create account</Link>
+						<GateButton onClick={onSubmit} type={true}>
+							Submit
+						</GateButton>
+					</div>
+				</form>
 			</div>
 		</div>
 	);

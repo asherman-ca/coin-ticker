@@ -125,58 +125,56 @@ const SignUp = () => {
 	return (
 		<div className='container'>
 			<div className='auth'>
-				<div className='auth-form-container'>
-					<div className='header'>Sign Up</div>
-					<div>to continue to Tickr</div>
-					<form className='auth-form'>
-						<div className='input-container'>
-							<input
-								onChange={onChange}
-								id='email'
-								type='email'
-								placeholder='Email'
-							/>
-							{errors.email && <div className='form-error'>{errors.email}</div>}
-						</div>
-						<div className='input-container'>
-							<input
-								id='name'
-								type='text'
-								placeholder='Name'
-								onChange={onChange}
-							/>
-							{errors.name && <div className='form-error'>{errors.name}</div>}
-						</div>
-						<div className='input-container'>
-							<input
-								id='password'
-								type='password'
-								placeholder='Password'
-								onChange={onChange}
-							/>
-							{errors.password && (
-								<div className='form-error'>{errors.password}</div>
-							)}
-						</div>
-						<div className='input-container'>
-							<input
-								id='confirmPassword'
-								type='password'
-								placeholder='Confirm Password'
-								onChange={onChange}
-							/>
-							{errors.confirmPassword && (
-								<div className='form-error'>{errors.confirmPassword}</div>
-							)}
-						</div>
-						<div className='button-row'>
-							<Link to={'/signin'}>Already registered?</Link>
-							<GateButton onClick={onSubmit} type={true}>
-								Submit
-							</GateButton>
-						</div>
-					</form>
-				</div>
+				<div className='header'>Sign Up</div>
+				<div>to continue to Tickr</div>
+				<form className='auth-form'>
+					<div className='input-container'>
+						<input
+							onChange={onChange}
+							id='email'
+							type='email'
+							placeholder='Email'
+						/>
+						{errors.email && <div className='form-error'>{errors.email}</div>}
+					</div>
+					<div className='input-container'>
+						<input
+							id='name'
+							type='text'
+							placeholder='Name'
+							onChange={onChange}
+						/>
+						{errors.name && <div className='form-error'>{errors.name}</div>}
+					</div>
+					<div className='input-container'>
+						<input
+							id='password'
+							type='password'
+							placeholder='Password'
+							onChange={onChange}
+						/>
+						{errors.password && (
+							<div className='form-error'>{errors.password}</div>
+						)}
+					</div>
+					<div className='input-container'>
+						<input
+							id='confirmPassword'
+							type='password'
+							placeholder='Confirm Password'
+							onChange={onChange}
+						/>
+						{errors.confirmPassword && (
+							<div className='form-error'>{errors.confirmPassword}</div>
+						)}
+					</div>
+					<div className='button-row'>
+						<Link to={'/signin'}>Already registered?</Link>
+						<GateButton onClick={onSubmit} type={true}>
+							Submit
+						</GateButton>
+					</div>
+				</form>
 			</div>
 		</div>
 	);
