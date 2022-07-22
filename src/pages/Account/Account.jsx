@@ -69,8 +69,6 @@ const Account = () => {
 			const response = await ref.json();
 			setCoins(response);
 
-			console.log(response);
-
 			setFormData((prev) => ({
 				...prev,
 				coin: response[0].name,

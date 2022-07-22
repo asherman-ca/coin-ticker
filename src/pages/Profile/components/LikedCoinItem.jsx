@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { cleanInt, changeDirection } from '../../../utils/stringUtils';
 
 const LikedCoinItem = ({ coin }) => {
-	console.log('like', coin);
-
 	const changeType = changeDirection(
 		coin.market_data.price_change_percentage_24h_in_currency.usd
 	);

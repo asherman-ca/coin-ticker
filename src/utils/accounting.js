@@ -72,8 +72,6 @@ const calcPNL = (orders, coins) => {
 
 	let sells = orders.filter((order) => order.data.type === 'sell');
 
-	console.log('buys', buys);
-
 	buys?.forEach((order) => {
 		console.log('ord', order);
 		if (!accounts[order.data.coin]) {
@@ -92,8 +90,6 @@ const calcPNL = (orders, coins) => {
 			accounts[order.data.coin].total += order.data.spent / order.data.price;
 		}
 	});
-
-	console.log('accounts', accounts);
 
 	Object.values(accounts).forEach((account) => {
 		accounts[account.coin].averagePrice = account.spent / account.total;
@@ -126,6 +122,8 @@ const calcPNL = (orders, coins) => {
 			imageLarge: account.imageLarge,
 		});
 	});
+
+	PNL.sort((a, b) => b.totalValue - a.totalValue);
 
 	return PNL;
 };
