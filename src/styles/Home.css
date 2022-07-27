@@ -86,11 +86,8 @@
 .coin-list {
 	display: flex;
 	flex-direction: column;
-	/* padding: 1rem; */
 
-	/* border: 1px solid var(--grey-border); */
-	border-radius: 0.5rem;
-	background-color: white;
+	border-top: 1px solid var(--grey-border);
 }
 
 .coin-list-header {
@@ -162,7 +159,11 @@
 		display: none;
 	}
 
-	.trending-row {
+	.home {
+		gap: 1rem;
+	}
+
+	.home .trending-row {
 		flex-wrap: wrap;
 		gap: 1rem;
 	}
