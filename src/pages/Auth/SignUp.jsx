@@ -134,6 +134,7 @@ const SignUp = () => {
 							id='email'
 							type='email'
 							placeholder='Email'
+							className={errors.email ? 'invalid' : ''}
 						/>
 						{errors.email && <div className='form-error'>{errors.email}</div>}
 					</div>
@@ -143,6 +144,7 @@ const SignUp = () => {
 							type='text'
 							placeholder='Name'
 							onChange={onChange}
+							className={errors.name ? 'invalid' : ''}
 						/>
 						{errors.name && <div className='form-error'>{errors.name}</div>}
 					</div>
@@ -152,6 +154,7 @@ const SignUp = () => {
 							type='password'
 							placeholder='Password'
 							onChange={onChange}
+							className={errors.password ? 'invalid' : ''}
 						/>
 						{errors.password && (
 							<div className='form-error'>{errors.password}</div>
@@ -163,6 +166,7 @@ const SignUp = () => {
 							type='password'
 							placeholder='Confirm Password'
 							onChange={onChange}
+							className={errors.confirmPassword ? 'invalid' : ''}
 						/>
 						{errors.confirmPassword && (
 							<div className='form-error'>{errors.confirmPassword}</div>

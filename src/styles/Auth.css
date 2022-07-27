@@ -41,6 +41,7 @@
 
 .auth-form input:focus-visible {
 	outline: none;
+	border-color: black;
 }
 
 .auth-form .button-row {
@@ -76,10 +77,15 @@
 	font-weight: 500;
 	line-height: 1rem;
 	font-size: 0.75rem;
+	color: var(--clr-sell);
 }
 
 @media (max-width: 600px) {
 	.auth-form {
 		min-width: 100%;
 	}
+}
+
+.auth-form .invalid {
+	border-color: var(--clr-sell);
 }
