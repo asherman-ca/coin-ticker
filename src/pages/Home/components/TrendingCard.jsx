@@ -3,9 +3,6 @@ import React from 'react';
 import { cleanInt, changeDirection } from '../../../utils/stringUtils';
 
 const TrendingCard = ({ coins, title }) => {
-	console.log('coins', coins);
-	console.log('title', title);
-
 	return (
 		<div className='trending-card'>
 			<div className='title'>
