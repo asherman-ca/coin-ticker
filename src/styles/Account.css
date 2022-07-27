@@ -5,7 +5,7 @@
 
 	display: flex;
 	flex-direction: row;
-	gap: 2rem;
+	gap: 3rem;
 }
 
 .primary-col {
@@ -251,6 +251,7 @@
 	.account {
 		flex-direction: column-reverse;
 		justify-content: start;
+		gap: 2rem;
 	}
 	.primary-col {
 		width: 100%;
@@ -260,7 +261,7 @@
 	}
 	.primary-col > * {
 		flex-basis: auto !important;
-		max-height: 500px;
+		max-height: 300px;
 	}
 	.order-item-header > *:nth-child(3),
 	.order-item-header > *:nth-child(5) {
@@ -278,7 +279,4 @@
 	.pnl-item > *:nth-child(5) {
 		display: none;
 	}
-	/* .form-div {
-		padding-left: 0rem !important;
-	} */
 }

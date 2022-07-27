@@ -4,6 +4,7 @@ import { handleSort } from './HomeActions';
 import Pagination from '../../components/Pagination';
 import CoinListItem from './components/CoinListItem';
 import Spinner from '../../components/Spinner';
+import TrendingCard from './components/TrendingCard';
 
 const rowsPerPageOptions = [10, 25, 50, 100];
 
@@ -51,6 +52,8 @@ const Home = ({ coins, coinsLoading }) => {
 		);
 	}
 
+	const displayCoinsCopy = [...displayCoins];
+
 	return (
 		<div className='home-container'>
 			<div className='home'>
@@ -58,6 +61,29 @@ const Home = ({ coins, coinsLoading }) => {
 					<div style={{ lineHeight: '3rem' }}>Live Cryptocurrency Prices</div>
 
 					<span>Top Coins by Market Cap</span>
+				</div>
+
+				<div className='trending-row'>
+					<TrendingCard
+						title='Daily Trends'
+						coins={displayCoinsCopy
+							.sort(
+								(a, b) =>
+									Math.abs(b.market_data.price_change_percentage_24h) -
+									Math.abs(a.market_data.price_change_percentage_24h)
+							)
+							.slice(0, 5)}
+					/>
+					<TrendingCard
+						title='7d Trends'
+						coins={displayCoinsCopy
+							.sort(
+								(a, b) =>
+									Math.abs(b.market_data.price_change_percentage_7d) -
+									Math.abs(a.market_data.price_change_percentage_7d)
+							)
+							.slice(0, 5)}
+					/>
 				</div>
 
 				<div>
