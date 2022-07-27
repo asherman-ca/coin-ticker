@@ -9,17 +9,20 @@ const PasswordReset = () => {
 	const [errors, setErrors] = useState({ email: '' });
 
 	const validators = {
-		email: (string) => !string?.includes('@'),
+		email: (string) => string?.includes('@'),
 	};
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		if (validators['email'](email)) {
+		if (!validators['email'](email)) {
 			setErrors((prev) => {
 				return { ...prev, email: 'Email format required' };
 			});
 			toast.error('Invalid form');
 		} else {
+			setErrors((prev) => {
+				return { ...prev, email: '' };
+			});
 			try {
 				const auth = getAuth();
 				await sendPasswordResetEmail(auth, email);
@@ -42,7 +45,12 @@ const PasswordReset = () => {
 					<div>Enter your email to recover password</div>
 					<form onSubmit={onSubmit} className='auth-form'>
 						<div className='input-container'>
-							<input onChange={onChange} type='email' placeholder='Email' />
+							<input
+								onChange={onChange}
+								type='email'
+								placeholder='Email'
+								className={errors.email ? 'invalid' : ''}
+							/>
 							{errors.email && <div className='form-error'>{errors.email}</div>}
 						</div>
 						<div className='button-row'>
