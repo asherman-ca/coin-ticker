@@ -164,11 +164,6 @@
 	.coin-list-header .weekly-col {
 		display: none;
 	}
-
-	/* .home .trending-row {
-		flex-wrap: wrap;
-		gap: 1rem;
-	} */
 }
 
 .pagination-container {
@@ -249,9 +244,17 @@
 
 @media (max-width: 600px) {
 	.pagination {
-		padding: 0 0.5rem;
+		padding: 0;
 	}
 	.pagination .page-scroll-button {
+		/* display: none; */
+	}
+
+	.home .pagination .dots {
+		display: none;
+	}
+
+	.home .pagination .page-button {
 		display: none;
 	}
 }

@@ -68,7 +68,11 @@ const Pagination = ({
 
 				{paginationPages.map((pageNumber, ind) => {
 					if (pageNumber === '...') {
-						return <div key={ind}>...</div>;
+						return (
+							<div key={ind} className='dots'>
+								...
+							</div>
+						);
 					} else if (pageNumber === currentPage) {
 						return (
 							<div key={ind} className='page-button active'>
