@@ -55,16 +55,19 @@ const Pagination = ({
 				</div>
 			)}
 			<div className='page-buttons'>
-				{currentPage !== 1 && (
-					<button
-						className='page-scroll-button'
-						onClick={() => {
-							prevPage();
-						}}
-					>
-						<i className='fa-solid fa-chevron-left'></i>
-					</button>
-				)}
+				<button
+					disabled={currentPage === 1}
+					className={
+						currentPage !== 1
+							? 'page-scroll-button'
+							: 'page-scroll-button inactive'
+					}
+					onClick={() => {
+						prevPage();
+					}}
+				>
+					<i className='fa-solid fa-chevron-left'></i>
+				</button>
 
 				{paginationPages.map((pageNumber, ind) => {
 					if (pageNumber === '...') {
@@ -98,11 +101,17 @@ const Pagination = ({
 					}
 				})}
 
-				{currentPage !== lastPage && (
-					<button className='page-scroll-button' onClick={() => nextPage()}>
-						<i className='fa-solid fa-chevron-right'></i>
-					</button>
-				)}
+				<button
+					disabled={currentPage === lastPage}
+					className={
+						currentPage !== lastPage
+							? 'page-scroll-button'
+							: 'page-scroll-button inactive'
+					}
+					onClick={() => nextPage()}
+				>
+					<i className='fa-solid fa-chevron-right'></i>
+				</button>
 			</div>
 			<select
 				name=''

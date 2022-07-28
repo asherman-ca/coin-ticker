@@ -242,6 +242,14 @@
 	border-color: black;
 }
 
+.pagination .inactive {
+	cursor: default !important;
+}
+
+.pagination .inactive:hover {
+	color: red !important;
+}
+
 @media (max-width: 600px) {
 	.pagination {
 		padding: 0;
