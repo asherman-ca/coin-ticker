@@ -31,6 +31,8 @@
 }
 
 .home .trending-row {
+	/* padding: 0 0.5rem; */
+
 	display: flex;
 	justify-content: space-between;
 	gap: 3rem;
@@ -93,7 +95,7 @@
 .coin-list-header {
 	position: relative;
 
-	padding: 1rem;
+	padding: 0.5rem;
 
 	display: flex;
 	flex-direction: row;
@@ -152,6 +154,10 @@
 	.coin-list-header :is(.vol-col, .mcap-col, .hr-col) {
 		display: none;
 	}
+
+	.home .trending-row {
+		display: none;
+	}
 }
 
 @media (max-width: 900px) {
@@ -159,14 +165,10 @@
 		display: none;
 	}
 
-	.home {
-		gap: 1rem;
-	}
-
-	.home .trending-row {
+	/* .home .trending-row {
 		flex-wrap: wrap;
 		gap: 1rem;
-	}
+	} */
 }
 
 .pagination-container {

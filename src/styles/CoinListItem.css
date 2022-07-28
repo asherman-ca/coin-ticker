@@ -1,6 +1,6 @@
 .coin-list-item {
 	display: flex;
-	padding: 1rem;
+	padding: 0.5rem;
 	border-top: 0.5px solid var(--clr-grey);
 
 	/* transition: padding 0.2s ease; */
