@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { cleanInt, changeDirection } from '../../../utils/stringUtils';
 
@@ -12,7 +12,11 @@ const TrendingCard = ({ coins, title }) => {
 			</div>
 			<div className='list'>
 				{coins.map((coin, idx) => (
-					<div className='item' key={`${coin.symbol} - ${idx}`}>
+					<Link
+						to={`/coins/${coin.id}`}
+						key={`${coin.symbol} - ${idx}`}
+						className='item'
+					>
 						<div className='coin-title'>
 							<span>{idx + 1}</span> <img src={coin.image.thumb} alt='' />{' '}
 							{coin.name} <span>{coin.symbol}</span>
@@ -31,7 +35,7 @@ const TrendingCard = ({ coins, title }) => {
 								: cleanInt(coin.market_data.price_change_percentage_7d)}
 							%
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>

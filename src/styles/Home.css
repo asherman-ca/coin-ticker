@@ -77,6 +77,10 @@
 	gap: 0.5rem;
 }
 
+.trending-card .item:hover {
+	background: var(--bg-blue) !important;
+}
+
 .trending-card img {
 	border-radius: 50%;
 }
