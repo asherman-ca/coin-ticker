@@ -72,6 +72,10 @@
 	/* padding: 0 0.5rem; */
 }
 
+.exchange-list-item:hover img {
+	transform: scale(1.1);
+}
+
 .list-item-content {
 	padding: 0.5rem 0;
 
@@ -106,6 +110,7 @@
 	width: 6rem;
 	height: 6rem;
 	border-radius: 0.5rem;
+	transition: 0.4s all ease;
 }
 
 .list-item-meta {
