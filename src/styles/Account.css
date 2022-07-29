@@ -1,20 +1,24 @@
 .account {
 	width: 100%;
 	max-width: 1200px;
-	padding: 3rem 1rem 1rem;
+	padding: 0 1rem 1rem;
 
 	display: flex;
 	flex-direction: row;
-	gap: 3rem;
+	/* gap: 1rem; */
 }
 
 .primary-col {
 	width: 70%;
+	padding-right: 1rem;
+	padding-top: 1rem;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	gap: 2rem;
+
+	border-right: 1px solid var(--grey-border);
 }
 
 .primary-col > * {
@@ -165,6 +169,8 @@
 
 .secondary-col {
 	width: 30%;
+	padding-left: 1rem;
+	padding-top: 1rem;
 
 	display: flex;
 	flex-direction: column;
@@ -246,18 +252,25 @@
 @media (max-width: 700px) {
 	.account-container {
 		height: inherit !important;
-		min-height: calc(100vh - 72px);
+		/* min-height: calc(100vh - 72px); */
 	}
 	.account {
 		flex-direction: column-reverse;
 		justify-content: start;
-		gap: 2rem;
+		gap: 1rem;
 	}
 	.primary-col {
 		width: 100%;
+		padding-right: 0;
+
+		gap: 1rem;
+
+		border-right: none;
+		border-top: 1px solid var(--grey-border);
 	}
 	.secondary-col {
 		width: 100%;
+		padding-left: 0;
 	}
 	.primary-col > * {
 		flex-basis: auto !important;
