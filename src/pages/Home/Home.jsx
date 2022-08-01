@@ -57,11 +57,11 @@ const Home = ({ coins, coinsLoading }) => {
 	return (
 		<div className='home-container'>
 			<div className='home'>
-				<div className='header'>
+				{/* <div className='header'>
 					<div style={{ lineHeight: '3rem' }}>Live Cryptocurrency Prices</div>
 
 					<span>Top Coins by Market Cap</span>
-				</div>
+				</div> */}
 
 				<div className='trending-row'>
 					<TrendingCard
@@ -91,7 +91,7 @@ const Home = ({ coins, coinsLoading }) => {
 						<div className='coin-list-header'>
 							<div className='col link-col'>
 								<div className='icon-holder' />
-								Coin
+								Name
 							</div>
 							<div className='col price-col'>Price</div>
 							<div

@@ -46,15 +46,15 @@
 .accounting > .header {
 	position: sticky;
 	top: 0;
-	background: white;
 	width: 100%;
-	/* padding: 1rem 0 0; */
-	font-size: 1.5rem;
+
+	background: white;
+	font-size: 1.25rem;
 	font-weight: 500;
 }
 
 .primary-col .header > div:first-child {
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
 }
 
 .orders .header .order-item-header,
@@ -62,6 +62,7 @@
 	display: flex;
 
 	border-bottom: 1px solid var(--grey-border);
+	border-top: 1px solid var(--grey-border);
 	font-weight: bold;
 	font-size: 1rem;
 }
@@ -189,10 +190,8 @@
 }
 
 .form-div .header {
-	font-size: 1.5rem !important;
+	font-size: 1.25rem !important;
 	font-weight: 500;
-
-	margin-bottom: 0.5rem;
 }
 
 .secondary-col .buy-sell-form {

@@ -73,7 +73,6 @@ const calcPNL = (orders, coins) => {
 	let sells = orders.filter((order) => order.data.type === 'sell');
 
 	buys?.forEach((order) => {
-		console.log('ord', order);
 		if (!accounts[order.data.coin]) {
 			accounts[order.data.coin] = {
 				coin: order.data.coin,

@@ -118,7 +118,7 @@ const onDelete = async (id, orders, setOrders, setPnl, coins) => {
 const onFaucet = async (uid, user, setUser) => {
 	const currentSeconds = new Date().getTime() / 1000;
 	if (new Date().getTime() / 1000 < user.lastFaucet?.seconds + 86400) {
-		toast.error('Only 1 faucet per day');
+		toast.error('1 faucet per day');
 	} else {
 		const userRef = doc(db, 'users', uid);
 		await updateDoc(userRef, {
