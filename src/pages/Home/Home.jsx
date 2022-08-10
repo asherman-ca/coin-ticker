@@ -57,11 +57,11 @@ const Home = ({ coins, coinsLoading }) => {
 	return (
 		<div className='home-container'>
 			<div className='home'>
-				{/* <div className='header'>
+				<div className='header'>
 					<div style={{ lineHeight: '3rem' }}>Live Cryptocurrency Prices</div>
 
 					<span>Top Coins by Market Cap</span>
-				</div> */}
+				</div>
 
 				<div className='trending-row'>
 					<TrendingCard
