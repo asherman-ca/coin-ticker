@@ -37,7 +37,7 @@
 
 .image-container-container {
 	width: 100%;
-	max-width: 1200px;
+	/* max-width: 1200px; */
 	padding: 0 1rem;
 
 	display: flex;
@@ -55,7 +55,7 @@
 
 .profile .title {
 	width: 100%;
-	max-width: 1200px;
+	/* max-width: 1200px; */
 	margin-top: 2rem;
 	padding: 0 1rem;
 
@@ -80,7 +80,7 @@
 
 .profile .tabs {
 	width: 100%;
-	max-width: 1200px;
+	/* max-width: 1200px; */
 
 	padding: 0 1rem;
 
@@ -114,7 +114,7 @@
 
 .profile :is(.likes-row, .accounts-row) {
 	width: 100%;
-	max-width: 1200px;
+	/* max-width: 1200px; */
 	padding: 0 1rem;
 
 	display: flex;

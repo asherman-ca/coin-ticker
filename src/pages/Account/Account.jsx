@@ -140,6 +140,7 @@ const Account = () => {
 							</div>
 						)}
 					</div>
+
 					<div className='accounting'>
 						<div className='header'>
 							<div>Assets</div>
