@@ -100,31 +100,29 @@ const Profile = ({ coins, coinsLoading }) => {
 		<div className='profile-container'>
 			<div className='profile'>
 				<div className='header-row'>
-					<div className='image-container'>
-						<div className='image-container-container'>
-							<img src='../Gekko2.jpeg' alt='Gekko' className='profile-image' />
-						</div>
-					</div>
+					<img src='../Gekko2.jpeg' alt='Gekko' className='profile-image' />
 
-					<div className='title'>
-						<div>{user.name}</div>
-						<div>
-							<div className='title-email'>{user.email}</div>
-							<div className='subheader'>Joined {newDate}</div>
+					<div className='header-meta'>
+						<div className='title'>
+							<div>{user.name}</div>
+							<div>
+								<div className='title-email'>{user.email}</div>
+								<div className='subheader'>Joined {newDate}</div>
+							</div>
 						</div>
-					</div>
-					<div className='tabs'>
-						<div
-							onClick={() => handleClick(false)}
-							className={!showLikes ? 'underlined' : ''}
-						>
-							Assets <span>{pnl.length}</span>
-						</div>
-						<div
-							onClick={() => handleClick(true)}
-							className={showLikes ? 'underlined' : ''}
-						>
-							Favorited {Object.values(userLikes).length}
+						<div className='tabs'>
+							<div
+								onClick={() => handleClick(false)}
+								className={!showLikes ? 'underlined' : ''}
+							>
+								Assets <span>{pnl.length}</span>
+							</div>
+							<div
+								onClick={() => handleClick(true)}
+								className={showLikes ? 'underlined' : ''}
+							>
+								Favorited {Object.values(userLikes).length}
+							</div>
 						</div>
 					</div>
 				</div>

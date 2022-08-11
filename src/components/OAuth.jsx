@@ -29,7 +29,7 @@ function OAuth() {
 					lastFaucet: '',
 				});
 			}
-			navigate('/profile');
+			navigate('/account');
 		} catch (error) {
 			toast.error('Could not authorize with Google');
 		}

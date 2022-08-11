@@ -102,7 +102,7 @@ const SignUp = () => {
 
 					await setDoc(doc(db, 'users', user.uid), formDataCopy);
 					toast.success('User created');
-					navigate('/profile');
+					navigate('/account');
 				} catch (error) {
 					console.log(error);
 					toast.error('Server error');
