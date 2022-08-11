@@ -1,9 +1,5 @@
-import {
-	getAuth,
-	onAuthStateChanged,
-	signInWithEmailAndPassword,
-} from 'firebase/auth';
-import { useState, useEffect, useRef } from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -12,33 +8,13 @@ import OAuth from '../components/OAuth';
 import { UserAuth } from '../context/AuthContext';
 
 const Nav = ({ coinsLoading, coins }) => {
-	const auth = getAuth();
 	const navigate = useNavigate();
 	const [param, setParam] = useState('');
-	const [loggedIn, setLoggedIn] = useState(false);
 	const [showDrop, setShowDrop] = useState(false);
-	const isMounted = useRef(true);
 	const [searchFilter, setSearchFilter] = useState([]);
-	const [loading, setLoading] = useState(true);
-
 	const { user, logout } = UserAuth();
 
 	console.log('user at nav', user);
-
-	useEffect(() => {
-		setLoading(true);
-		if (isMounted) {
-			const auth = getAuth();
-			onAuthStateChanged(auth, (user) => {
-				if (user) {
-					setLoggedIn(true);
-				} else {
-					setLoggedIn(false);
-				}
-				setLoading(false);
-			});
-		}
-	}, [isMounted]);
 
 	const onChange = (e) => {
 		e.preventDefault();
@@ -63,7 +39,6 @@ const Nav = ({ coinsLoading, coins }) => {
 	const onLogout = async () => {
 		// auth.signOut();
 		await logout();
-		setLoggedIn(false);
 		navigate('/');
 		toast.info('Logged Out');
 	};
@@ -87,13 +62,7 @@ const Nav = ({ coinsLoading, coins }) => {
 	};
 
 	let authButton;
-	if (loading) {
-		authButton = (
-			<div className='nav-link'>
-				<button className='nav-link-button' type='button' />
-			</div>
-		);
-	} else if (!loggedIn) {
+	if (!user) {
 		authButton = (
 			<div className='nav-link'>
 				<button
