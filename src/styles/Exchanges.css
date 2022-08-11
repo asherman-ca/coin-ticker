@@ -188,13 +188,13 @@
 		flex-basis: 34%;
 	}
 
-	/* .exchange-list {
-		padding: 3rem 1rem 1rem;
-	} */
-
 	.exchange-list-item img {
 		height: 3rem;
 		width: 3rem;
+	}
+
+	.exchanges .list {
+		gap: 0.5rem;
 	}
 
 	.exchange-list-item {
