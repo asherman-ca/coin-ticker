@@ -41,9 +41,9 @@
 }
 
 .profile .title > div:first-child {
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 	/* font-weight: 500; */
-	font-weight: bold;
+	font-weight: 500;
 }
 
 .profile .title > div:last-child {
@@ -62,11 +62,10 @@
 	padding: 0 1rem;
 
 	display: flex;
-	gap: 3rem;
+	gap: 2rem;
 
 	color: var(--clr-grey);
-	font-weight: bold;
-	/* font-size: 1.25rem; */
+	font-weight: 500;
 }
 
 .profile .tabs span {
