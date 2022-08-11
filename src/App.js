@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './styles/App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,6 +16,7 @@ import NotFound from './components/NotFound';
 import ExchangeList from './pages/ExchangeList/ExchangeList';
 import ExchangeView from './pages/ExchangeView/ExchangeView';
 import Profile from './pages/Profile/Profile';
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
 	const [coins, setCoins] = useState();
@@ -40,7 +41,7 @@ function App() {
 
 	return (
 		<>
-			<Router>
+			<AuthContextProvider>
 				<Nav coinsLoading={loading} coins={coins} />
 				<Routes>
 					<Route
@@ -65,7 +66,7 @@ function App() {
 
 					<Route path='*' element={<NotFound />} />
 				</Routes>
-			</Router>
+			</AuthContextProvider>
 			<ToastContainer />
 		</>
 	);

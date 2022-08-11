@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 
 import { filterSearchParam } from '../actions/NavActions';
 import OAuth from '../components/OAuth';
+import { UserAuth } from '../context/AuthContext';
 
 const Nav = ({ coinsLoading, coins }) => {
 	const auth = getAuth();
@@ -19,6 +20,10 @@ const Nav = ({ coinsLoading, coins }) => {
 	const isMounted = useRef(true);
 	const [searchFilter, setSearchFilter] = useState([]);
 	const [loading, setLoading] = useState(true);
+
+	const { user, logout } = UserAuth();
+
+	console.log('user at nav', user);
 
 	useEffect(() => {
 		setLoading(true);
@@ -55,8 +60,9 @@ const Nav = ({ coinsLoading, coins }) => {
 		setSearchFilter([]);
 	};
 
-	const onLogout = () => {
-		auth.signOut();
+	const onLogout = async () => {
+		// auth.signOut();
+		await logout();
 		setLoggedIn(false);
 		navigate('/');
 		toast.info('Logged Out');
