@@ -199,6 +199,7 @@ const Nav = ({ coinsLoading, coins }) => {
 						</div>
 					)}
 				</form>
+				{/* TODO: Split this into its own component, move as many dependencies as possible */}
 				<div className='nav-item nav-links'>{authButton}</div>
 			</div>
 		</div>
