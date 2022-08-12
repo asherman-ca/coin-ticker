@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import {
 	doc,
 	deleteDoc,
@@ -18,19 +17,16 @@ import Spinner from '../../components/Spinner';
 import { capitalize } from '../../utils/stringUtils';
 import TickerItem from './components/TickerItem';
 import CoinViewHeader from './components/CoinViewHeader';
+import { UserAuth } from '../../context/AuthContext';
 
 const CoinView = () => {
 	const [coin, setCoin] = useState();
 	const [loading, setLoading] = useState(true);
-
-	const [loggedIn, setLoggedIn] = useState(false);
-	const [userLoading, setUserLoading] = useState(true);
 	const [userLike, setUserLike] = useState();
 	const [likes, setLikes] = useState([]);
 
-	const auth = getAuth();
+	const { user } = UserAuth();
 	const params = useParams();
-	const isMounted = useRef(true);
 
 	useEffect(() => {
 		const apiFetch = async () => {
@@ -54,9 +50,11 @@ const CoinView = () => {
 			querySnap.forEach((el) => likesCopy.push({ id: el.id, data: el.data() }));
 			setLikes(likesCopy);
 
-			if (auth.currentUser) {
+			console.log('coinview user', user);
+
+			if (user) {
 				likesCopy.forEach((el) => {
-					if (el.data.userRef === auth.currentUser.uid) {
+					if (el.data.userRef === user.uid) {
 						setUserLike(el);
 					}
 				});
@@ -70,30 +68,10 @@ const CoinView = () => {
 		// return () => {
 		// 	clearInterval(interId);
 		// };
-	}, [params.coinId, auth.currentUser]);
-
-	useEffect(() => {
-		setUserLoading(true);
-		if (isMounted) {
-			const auth = getAuth();
-			onAuthStateChanged(auth, async (user) => {
-				if (user) {
-					setLoggedIn(true);
-					// likes.forEach((el) => {
-					// 	if (el.data.userRef === auth.currentUser.uid) {
-					// 		setUserLike(el);
-					// 	}
-					// });
-				} else {
-					setLoggedIn(false);
-				}
-				setUserLoading(false);
-			});
-		}
-	}, [isMounted]);
+	}, [params.coinId, user]);
 
 	const onLike = async () => {
-		if (!loggedIn) {
+		if (!user) {
 			toast.error('Must be logged in');
 		} else {
 			if (userLike) {
@@ -104,13 +82,13 @@ const CoinView = () => {
 				setUserLike(null);
 			} else {
 				const newDoc = await addDoc(collection(db, 'likes'), {
-					userRef: auth.currentUser.uid,
+					userRef: user.uid,
 					coinId: coin.id,
 				});
 				setUserLike({
 					id: newDoc.id,
 					data: {
-						userRef: auth.currentUser.uid,
+						userRef: user.uid,
 						coinId: coin.id,
 					},
 				});
@@ -120,7 +98,7 @@ const CoinView = () => {
 						{
 							id: newDoc.id,
 							data: {
-								userRef: auth.currentUser.uid,
+								userRef: user.uid,
 								coinId: coin.id,
 							},
 						},
@@ -130,7 +108,7 @@ const CoinView = () => {
 		}
 	};
 
-	if (loading || userLoading) {
+	if (loading) {
 		return (
 			<div className='container'>
 				<div className='coin-view'>
