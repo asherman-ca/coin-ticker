@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase.config';
 import {
 	query,
@@ -15,15 +14,15 @@ import { calcPNL } from '../../utils/accounting';
 import Spinner from '../../components/Spinner';
 import AccountItem from './components/AccountItem';
 import LikedCoinItem from './components/LikedCoinItem';
+import { UserAuth } from '../../context/AuthContext';
 
 const Profile = ({ coins, coinsLoading }) => {
-	const auth = getAuth();
-
 	const [loading, setLoading] = useState(true);
 	const [pnl, setPnl] = useState();
 	const [userLikes, setUserLikes] = useState({});
-	const [user, setUser] = useState();
+	const [userData, setUserData] = useState();
 	const [showLikes, setShowLikes] = useState(true);
+	const { user } = UserAuth();
 
 	useEffect(() => {
 		if (!coinsLoading) {
@@ -32,7 +31,7 @@ const Profile = ({ coins, coinsLoading }) => {
 				const ordersRef = collection(db, 'orders');
 				const q = query(
 					ordersRef,
-					where('userRef', '==', auth.currentUser.uid),
+					where('userRef', '==', user.uid),
 					orderBy('timestamp', 'desc')
 				);
 				const snap = await getDocs(q);
@@ -43,16 +42,13 @@ const Profile = ({ coins, coinsLoading }) => {
 				setPnl(calcPNL(orders, coins));
 
 				// fetch user
-				const usersRef = doc(db, 'users', auth.currentUser.uid);
+				const usersRef = doc(db, 'users', user.uid);
 				const docSnap = await getDoc(usersRef);
-				setUser(docSnap.data());
+				setUserData(docSnap.data());
 
 				// fetch likes and match coin data into an object
 				const likesRef = collection(db, 'likes');
-				const q2 = query(
-					likesRef,
-					where('userRef', '==', auth.currentUser.uid)
-				);
+				const q2 = query(likesRef, where('userRef', '==', user.uid));
 				const querySnap = await getDocs(q2);
 				let likesCopy = {};
 				querySnap.forEach((el) => (likesCopy[el.data().coinId] = el.data()));
@@ -67,7 +63,7 @@ const Profile = ({ coins, coinsLoading }) => {
 			};
 			fetchTask();
 		}
-	}, [coinsLoading, auth.currentUser.uid, coins]);
+	}, [coinsLoading, user.uid, coins]);
 
 	const handleClick = (val) => {
 		setShowLikes(val);
@@ -81,7 +77,7 @@ const Profile = ({ coins, coinsLoading }) => {
 		);
 	}
 
-	const newDate = user.timestamp
+	const newDate = userData.timestamp
 		.toDate()
 		.toDateString()
 		.split(' ')
@@ -104,7 +100,7 @@ const Profile = ({ coins, coinsLoading }) => {
 
 					<div className='header-meta'>
 						<div className='title'>
-							<div>{user.name}</div>
+							<div>{userData.name}</div>
 							<div>
 								<div className='title-email'>{user.email}</div>
 								<div className='subheader'>Joined {newDate}</div>
