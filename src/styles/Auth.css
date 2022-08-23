@@ -80,6 +80,16 @@
 	color: var(--clr-sell);
 }
 
+.oauth {
+	margin-bottom: 2rem;
+}
+
+.oauth-logo {
+	height: 6rem;
+	width: 6rem;
+	cursor: pointer;
+}
+
 @media (max-width: 600px) {
 	.auth-form {
 		min-width: 100%;

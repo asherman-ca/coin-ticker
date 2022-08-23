@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { filterSearchParam } from '../actions/NavActions';
-import OAuth from '../components/OAuth';
 import { UserAuth } from '../context/AuthContext';
 
 const Nav = ({ coinsLoading, coins }) => {
@@ -13,8 +12,6 @@ const Nav = ({ coinsLoading, coins }) => {
 	const [showDrop, setShowDrop] = useState(false);
 	const [searchFilter, setSearchFilter] = useState([]);
 	const { user, logout } = UserAuth();
-
-	console.log('user at nav', user);
 
 	const onChange = (e) => {
 		e.preventDefault();
@@ -97,7 +94,9 @@ const Nav = ({ coinsLoading, coins }) => {
 					<Link to={'/signin'}>
 						<i className='fa-solid fa-address-card'></i>Login
 					</Link>
-					<OAuth />
+					<Link to={'/signup'}>
+						<i className='fa-solid fa-user-plus'></i>Register
+					</Link>
 					<div
 						style={{
 							height: '0px',

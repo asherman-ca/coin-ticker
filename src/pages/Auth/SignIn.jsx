@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import GateButton from '../../components/GateButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-
 import { toast } from 'react-toastify';
+
+import OAuth from '../../components/OAuth';
 
 const SignIn = () => {
 	const navigate = useNavigate();
@@ -75,6 +76,7 @@ const SignIn = () => {
 	return (
 		<div className='container'>
 			<div className='auth'>
+				<OAuth />
 				<div className='header'>Sign In</div>
 				<div>to continue to Tickr</div>
 				<form onSubmit={onSubmit} className='auth-form'>

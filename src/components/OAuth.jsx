@@ -37,7 +37,8 @@ function OAuth() {
 
 	return (
 		<div onClick={onGoogleClick} className='oauth'>
-			<i className='fa-brands fa-google'></i>Gmail Access
+			<img className='oauth-logo' src='../google.png' alt='' />
+			{/* <i className='fa-brands fa-google'></i>Gmail Access */}
 		</div>
 	);
 }
