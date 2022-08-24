@@ -69,19 +69,6 @@ const ExchangeList = () => {
 					<span>Sorted by Trust Rank</span>
 				</div>
 				<div className='exchanges'>
-					{/* <div className='header'>
-						<Pagination
-							totalCount={exchanges.length}
-							setCurrentPage={setCurrentPage}
-							currentPage={currentPage}
-							setRowsPerPage={updateRowsPerPage}
-							rowsPerPage={rowsPerPage}
-							rowsPerPageOptions={rowsPerPageOptions}
-							nextPage={nextPage}
-							prevPage={prevPage}
-							topPosition={true}
-						/>
-					</div> */}
 					<div className='list'>
 						{exchanges
 							.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)
