@@ -20,6 +20,7 @@ import {
 
 import OAuth from '../../components/OAuth';
 import { db } from '../../firebase.config';
+import { UserAuth } from '../../context/AuthContext';
 
 const SignUp = () => {
 	const [formData, setFormData] = useState({
@@ -57,6 +58,8 @@ const SignUp = () => {
 	};
 
 	const navigate = useNavigate();
+	const auth = getAuth();
+	const { createUser } = UserAuth();
 
 	const onSubmit = async (e) => {
 		let errorFound = false;
@@ -85,9 +88,11 @@ const SignUp = () => {
 			const existingUserSnap = await getDocs(q);
 			if (existingUserSnap.empty) {
 				try {
-					const auth = getAuth();
-					const userCredential = await createUserWithEmailAndPassword(
-						auth,
+					// const userCredential = await createUserWithEmailAndPassword(
+					// 	formData.email,
+					// 	formData.password
+					// );
+					const userCredential = await createUser(
 						formData.email,
 						formData.password
 					);
