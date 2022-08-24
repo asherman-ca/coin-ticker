@@ -2,24 +2,8 @@ import React, { useState } from 'react';
 import GateButton from '../../components/GateButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import {
-	getAuth,
-	createUserWithEmailAndPassword,
-	updateProfile,
-} from 'firebase/auth';
-import {
-	setDoc,
-	doc,
-	serverTimestamp,
-	collection,
-	query,
-	where,
-	limit,
-	getDocs,
-} from 'firebase/firestore';
 
 import OAuth from '../../components/OAuth';
-import { db } from '../../firebase.config';
 import { UserAuth } from '../../context/AuthContext';
 
 const SignUp = () => {
@@ -58,7 +42,6 @@ const SignUp = () => {
 	};
 
 	const navigate = useNavigate();
-	const auth = getAuth();
 	const { createUser } = UserAuth();
 
 	const onSubmit = async (e) => {
@@ -79,44 +62,7 @@ const SignUp = () => {
 		if (errorFound) {
 			toast.error('Invalid form');
 		} else {
-			const existingUserRef = collection(db, 'users');
-			const q = query(
-				existingUserRef,
-				where('email', '==', formData.email),
-				limit(10)
-			);
-			const existingUserSnap = await getDocs(q);
-			if (existingUserSnap.empty) {
-				try {
-					// const userCredential = await createUserWithEmailAndPassword(
-					// 	formData.email,
-					// 	formData.password
-					// );
-					const userCredential = await createUser(
-						formData.email,
-						formData.password
-					);
-					const user = userCredential.user;
-
-					updateProfile(auth.currentUser, {
-						displayName: formData.name,
-					});
-
-					const formDataCopy = { ...formData };
-					delete formDataCopy.password;
-					delete formDataCopy.confirmPassword;
-					formDataCopy.timestamp = serverTimestamp();
-
-					await setDoc(doc(db, 'users', user.uid), formDataCopy);
-					toast.success('User created');
-					navigate('/account');
-				} catch (error) {
-					console.log(error);
-					toast.error('Server error');
-				}
-			} else {
-				toast.error('Email address already in use');
-			}
+			createUser(navigate, formData);
 		}
 	};
 
