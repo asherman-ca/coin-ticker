@@ -17,6 +17,8 @@ import {
 	limit,
 	getDocs,
 } from 'firebase/firestore';
+
+import OAuth from '../../components/OAuth';
 import { db } from '../../firebase.config';
 
 const SignUp = () => {
@@ -125,6 +127,7 @@ const SignUp = () => {
 	return (
 		<div className='container'>
 			<div className='auth'>
+				<OAuth />
 				<div className='header'>Sign Up</div>
 				<div>to continue to Tickr</div>
 				<form className='auth-form'>
