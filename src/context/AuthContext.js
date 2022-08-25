@@ -5,6 +5,8 @@ import {
 	signOut,
 	onAuthStateChanged,
 	updateProfile,
+	signInWithPopup,
+	GoogleAuthProvider,
 } from 'firebase/auth';
 import { db } from '../firebase.config';
 import { auth } from '../firebase.config';
@@ -18,6 +20,7 @@ import {
 	where,
 	limit,
 	getDocs,
+	getDoc,
 } from 'firebase/firestore';
 
 const UserContext = createContext();
@@ -80,6 +83,34 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 
+	const oAuth = async (navigate) => {
+		try {
+			// const auth = getAuth();
+			const provider = new GoogleAuthProvider();
+			const result = await signInWithPopup(auth, provider);
+			const user = result.user;
+
+			// Check for user
+			const docRef = doc(db, 'users', user.uid);
+			const docSnap = await getDoc(docRef);
+
+			// If user, doesn't exist, create user
+			if (!docSnap.exists()) {
+				await setDoc(doc(db, 'users', user.uid), {
+					name: user.displayName,
+					email: user.email,
+					timestamp: serverTimestamp(),
+					balance: 0,
+					testBalance: 100000,
+					lastFaucet: '',
+				});
+			}
+			navigate('/account');
+		} catch (error) {
+			toast.error('Could not authorize with Google');
+		}
+	};
+
 	const logout = () => {
 		signOut(auth);
 	};
@@ -95,7 +126,7 @@ export const AuthContextProvider = ({ children }) => {
 	}, []);
 
 	return (
-		<UserContext.Provider value={{ createUser, user, logout, signIn }}>
+		<UserContext.Provider value={{ createUser, user, logout, signIn, oAuth }}>
 			{children}
 		</UserContext.Provider>
 	);
