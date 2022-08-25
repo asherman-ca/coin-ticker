@@ -5,11 +5,11 @@ import { toast } from 'react-toastify';
 
 import OAuth from '../../components/OAuth';
 import { UserAuth } from '../../context/AuthContext';
+import { SignInValidators as validators } from '../../utils/validation';
 
 const SignIn = () => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
-
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -18,16 +18,6 @@ const SignIn = () => {
 		email: '',
 		password: '',
 	});
-	const validators = {
-		email: {
-			action: (string) => string?.includes('@'),
-			message: 'Email format required',
-		},
-		password: {
-			action: (string) => string?.length > 5,
-			message: 'Minimum 6 characters',
-		},
-	};
 
 	const onSubmit = async (e) => {
 		e.preventDefault();

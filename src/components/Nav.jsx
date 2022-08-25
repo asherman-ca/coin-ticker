@@ -34,8 +34,7 @@ const Nav = ({ coinsLoading, coins }) => {
 	};
 
 	const onLogout = async () => {
-		// auth.signOut();
-		await logout();
+		logout();
 		navigate('/');
 		toast.info('Logged Out');
 	};

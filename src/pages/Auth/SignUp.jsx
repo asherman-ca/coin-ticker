@@ -5,8 +5,13 @@ import { toast } from 'react-toastify';
 
 import OAuth from '../../components/OAuth';
 import { UserAuth } from '../../context/AuthContext';
+import { SignUpValidators } from '../../utils/validation';
 
 const SignUp = () => {
+	const navigate = useNavigate();
+	const validators = SignUpValidators(formData);
+	const { createUser } = UserAuth();
+
 	const [formData, setFormData] = useState({
 		email: '',
 		name: '',
@@ -22,27 +27,6 @@ const SignUp = () => {
 		password: '',
 		confirmPassword: '',
 	});
-	const validators = {
-		email: {
-			action: (string) => string?.includes('@'),
-			message: 'Email format required',
-		},
-		name: {
-			action: (string) => string?.length > 2,
-			message: 'Minimum 3 characters',
-		},
-		password: {
-			action: (string) => string?.length > 5,
-			message: 'Minimum 6 characters',
-		},
-		confirmPassword: {
-			action: (string) => string === formData.password,
-			message: 'Must match password',
-		},
-	};
-
-	const navigate = useNavigate();
-	const { createUser } = UserAuth();
 
 	const onSubmit = async (e) => {
 		let errorFound = false;
