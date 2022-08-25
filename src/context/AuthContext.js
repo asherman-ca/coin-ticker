@@ -25,10 +25,6 @@ const UserContext = createContext();
 export const AuthContextProvider = ({ children }) => {
 	const [user, setUser] = useState({});
 
-	// const createUser = async (email, password) => {
-	// 	return createUserWithEmailAndPassword(auth, email, password);
-	// };
-
 	const createUser = async (navigate, formData) => {
 		console.log('formData', formData);
 		const existingUserRef = collection(db, 'users');
@@ -68,12 +64,24 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 
-	const signIn = (email, password) => {
-		return signInWithEmailAndPassword(auth, email, password);
+	const signIn = async (navigate, formData) => {
+		try {
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				formData.email,
+				formData.password
+			);
+
+			if (userCredential.user) {
+				navigate('/account');
+			}
+		} catch (error) {
+			toast.error('Invalid credentials');
+		}
 	};
 
 	const logout = () => {
-		return signOut(auth);
+		signOut(auth);
 	};
 
 	useEffect(() => {

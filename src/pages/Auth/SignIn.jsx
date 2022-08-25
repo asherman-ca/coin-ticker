@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import GateButton from '../../components/GateButton';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'react-toastify';
 
 import OAuth from '../../components/OAuth';
+import { UserAuth } from '../../context/AuthContext';
 
 const SignIn = () => {
 	const navigate = useNavigate();
+	const { signIn } = UserAuth();
+
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -46,21 +48,7 @@ const SignIn = () => {
 		if (errorFound) {
 			toast.error('Invalid form');
 		} else {
-			try {
-				const auth = getAuth();
-
-				const userCredential = await signInWithEmailAndPassword(
-					auth,
-					formData.email,
-					formData.password
-				);
-
-				if (userCredential.user) {
-					navigate('/account');
-				}
-			} catch (error) {
-				toast.error('Invalid credentials');
-			}
+			signIn(navigate, formData);
 		}
 	};
 
