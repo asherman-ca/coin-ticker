@@ -137,6 +137,7 @@ const CoinView = () => {
 
 	return (
 		<div className='home-container'>
+			{console.log('coinview', coin)}
 			<div className='coin-view'>
 				<div className='header-row'>
 					<div>{capitalize(coin.id)} Price</div>
