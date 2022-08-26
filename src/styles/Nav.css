@@ -137,7 +137,7 @@
 	font-size: 1.75rem;
 }
 
-.nav-link-button {
+/* .nav-link-button {
 	transform: scale(1);
 	transition: transform 0.4s ease;
 	padding: 0;
@@ -145,6 +145,63 @@
 
 .show-drop-button {
 	transform: scale(1.2);
+} */
+
+.nav-link-button {
+	/* display: inline-block; */
+	/* width: 18px;
+	height: 18px; */
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.nav-link-button i {
+	position: relative;
+	display: inline-block;
+	width: 24px;
+	height: 3px;
+	color: #252525;
+	font: bold 14px/0.4 Helvetica;
+	text-transform: uppercase;
+	text-indent: -55px;
+	background: #252525;
+	transition: all 0.2s ease-out;
+}
+
+.nav-link-button i::before,
+.nav-link-button i::after {
+	content: '';
+	width: 24px;
+	height: 3px;
+	background: #252525;
+	position: absolute;
+	left: 0;
+	transition: all 0.2s ease-out;
+}
+.nav-link-button i::before {
+	top: -7px;
+}
+.nav-link-button i::after {
+	bottom: -7px;
+}
+.nav-link-button.active i {
+	background: #fff;
+}
+.nav-link-button.active i::before {
+	top: 0;
+	-webkit-transform: rotateZ(45deg);
+	-moz-transform: rotateZ(45deg);
+	-ms-transform: rotateZ(45deg);
+	-o-transform: rotateZ(45deg);
+	transform: rotateZ(45deg);
+}
+.nav-link-button.active i::after {
+	bottom: 0;
+	-webkit-transform: rotateZ(-45deg);
+	-moz-transform: rotateZ(-45deg);
+	-ms-transform: rotateZ(-45deg);
+	-o-transform: rotateZ(-45deg);
+	transform: rotateZ(-45deg);
 }
 
 /* Dropdown */

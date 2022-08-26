@@ -40,13 +40,15 @@ const NavMenu = () => {
 			<div className='nav-link'>
 				<button
 					className={
-						showDrop ? 'nav-link-button show-drop-button' : 'nav-link-button'
+						showDrop
+							? 'nav-link-button show-drop-button active'
+							: 'nav-link-button'
 					}
 					type='button'
 					onClick={() => setShowDrop((prev) => !prev)}
 					onBlur={() => setShowDrop(false)}
 				>
-					<i className='fa-solid fa-bars'></i>
+					<i></i>
 				</button>
 				<div
 					className={
@@ -93,13 +95,16 @@ const NavMenu = () => {
 				<div className='nav-link'>
 					<button
 						className={
-							showDrop ? 'nav-link-button show-drop-button' : 'nav-link-button'
+							showDrop
+								? 'nav-link-button show-drop-button active'
+								: 'nav-link-button'
 						}
 						type='button'
 						onClick={() => setShowDrop((prev) => !prev)}
 						onBlur={() => setShowDrop(false)}
 					>
-						<i className='fa-solid fa-bars'></i>
+						{/* <i className='fa-solid fa-bars'></i> */}
+						<i></i>
 					</button>
 					<div
 						className={
