@@ -165,7 +165,7 @@
 	text-transform: uppercase;
 	text-indent: -55px;
 	background: #252525;
-	transition: all 0.2s ease-out;
+	/* transition: all 0.2s ease-out; */
 }
 
 .nav-link-button i::before,
