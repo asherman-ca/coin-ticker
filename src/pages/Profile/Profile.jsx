@@ -77,7 +77,7 @@ const Profile = ({ coins, coinsLoading }) => {
 		);
 	}
 
-	const newDate = userData.timestamp
+	const cleanDate = userData.timestamp
 		.toDate()
 		.toDateString()
 		.split(' ')
@@ -103,7 +103,7 @@ const Profile = ({ coins, coinsLoading }) => {
 							<div>{userData.name}</div>
 							<div>
 								<div className='title-email'>{user.email}</div>
-								<div className='subheader'>Joined {newDate}</div>
+								<div className='subheader'>Joined {cleanDate}</div>
 							</div>
 						</div>
 						<div className='tabs'>

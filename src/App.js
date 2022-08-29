@@ -13,7 +13,6 @@ import SignIn from './pages/Auth/SignIn';
 import PasswordReset from './pages/Auth/PasswordReset';
 import NotFound from './components/NotFound';
 import ExchangeList from './pages/ExchangeList/ExchangeList';
-import ExchangeView from './pages/ExchangeView/ExchangeView';
 import Profile from './pages/Profile/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthContextProvider } from './context/AuthContext';
@@ -69,8 +68,6 @@ function App() {
 						}
 					/>
 					<Route path='/exchanges' element={<ExchangeList />} />
-					<Route path='/exchanges/:exchangeId' element={<ExchangeView />} />
-
 					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</AuthContextProvider>

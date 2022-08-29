@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import {
-	doc,
-	deleteDoc,
-	query,
-	where,
-	collection,
-	getDocs,
-	addDoc,
-} from 'firebase/firestore';
+import { query, where, collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase.config';
 
 import Embed from './components/Embed';
@@ -18,6 +10,7 @@ import { capitalize } from '../../utils/stringUtils';
 import TickerItem from './components/TickerItem';
 import CoinViewHeader from './components/CoinViewHeader';
 import { UserAuth } from '../../context/AuthContext';
+import { onLike, tickerFilter } from './CoinViewActions';
 
 const CoinView = () => {
 	const [coin, setCoin] = useState();
@@ -68,44 +61,6 @@ const CoinView = () => {
 		// };
 	}, [params.coinId, user]);
 
-	const onLike = async () => {
-		if (!user) {
-			toast.error('Must be logged in');
-		} else {
-			if (userLike) {
-				await deleteDoc(doc(db, 'likes', userLike.id));
-				setLikes((prev) => {
-					return prev.filter((like) => like.id !== userLike.id);
-				});
-				setUserLike(null);
-			} else {
-				const newDoc = await addDoc(collection(db, 'likes'), {
-					userRef: user.uid,
-					coinId: coin.id,
-				});
-				setUserLike({
-					id: newDoc.id,
-					data: {
-						userRef: user.uid,
-						coinId: coin.id,
-					},
-				});
-				setLikes((prev) => {
-					return [
-						...prev,
-						{
-							id: newDoc.id,
-							data: {
-								userRef: user.uid,
-								coinId: coin.id,
-							},
-						},
-					];
-				});
-			}
-		}
-	};
-
 	if (loading) {
 		return (
 			<div className='container'>
@@ -116,26 +71,10 @@ const CoinView = () => {
 		);
 	}
 
-	const compare = (a, b) => {
-		if (a.last < b.last) {
-			return -1;
-		} else {
-			return 1;
-		}
-	};
-
-	const based = coin.tickers?.filter(
-		(el) => el.target === 'USDT' || el.target === 'USD'
-	);
-
-	const basedAndSymbol = based
-		.filter((el) => coin.symbol.toUpperCase() === el.base)
-		.slice(0, 24)
-		.sort((a, b) => compare(a, b));
+	const basedAndSymbol = tickerFilter(coin);
 
 	return (
 		<div className='home-container'>
-			{console.log('coinview', coin)}
 			<div className='coin-view'>
 				<div className='header-row'>
 					<div>{capitalize(coin.id)} Price</div>
@@ -145,7 +84,7 @@ const CoinView = () => {
 					coin={coin}
 					userLike={userLike}
 					totalLikes={likes.length}
-					onLike={onLike}
+					onLike={() => onLike(user, setLikes, setUserLike, userLike, coin)}
 				/>
 				<div className='tickr-row'>
 					<div className='tickrs'>

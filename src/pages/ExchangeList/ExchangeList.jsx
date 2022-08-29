@@ -9,7 +9,6 @@ const rowsPerPageOptions = [10, 20];
 const ExchangeList = () => {
 	const [exchanges, setExchanges] = useState();
 	const [loading, setLoading] = useState(true);
-
 	const [currentPage, setCurrentPage] = useState(1);
 	const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
 
@@ -100,28 +99,3 @@ const ExchangeList = () => {
 };
 
 export default ExchangeList;
-
-// const [calcsLoading, setCalcsLoading] = useState(true);
-
-// useEffect(() => {
-// 	if (!coinsLoading && !loading) {
-// setExchanges((prev) => {
-// 	return [
-// 		...prev.map((exchange) => {
-// 			return {
-// 				...exchange,
-// 				btcThing: exchange.trade_volume_24h_btc * btcPrice,
-// 			};
-// 		}),
-// 	];
-// 		});
-// 		setCalcsLoading(false);
-// 	}
-// }, [coinsLoading, loading]);
-
-// setExchanges([
-// 	...response.map((exchange) => ({
-// 		...exchange,
-// 		btcVolUsd: exchange.trade_volume_24h_btc * btcPrice,
-// 	})),
-// ]);
