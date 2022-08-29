@@ -12,7 +12,6 @@ const NavMenu = () => {
 
 	const onLogout = async () => {
 		logout();
-		navigate('/');
 		toast.info('Logged Out');
 	};
 
