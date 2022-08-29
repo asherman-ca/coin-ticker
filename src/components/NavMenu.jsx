@@ -27,7 +27,8 @@ const NavMenu = () => {
 			);
 
 			if (userCredential.user) {
-				navigate('/profile');
+				// navigate('/profile');
+				toast.success('Logged in');
 			}
 		} catch (error) {
 			toast.error('Invalid credentials');

@@ -50,8 +50,6 @@ const CoinView = () => {
 			querySnap.forEach((el) => likesCopy.push({ id: el.id, data: el.data() }));
 			setLikes(likesCopy);
 
-			console.log('coinview user', user);
-
 			if (user) {
 				likesCopy.forEach((el) => {
 					if (el.data.userRef === user.uid) {
