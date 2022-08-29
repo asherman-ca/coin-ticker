@@ -9,9 +9,7 @@ import { SignUpValidators } from '../../utils/validation';
 
 const SignUp = () => {
 	const navigate = useNavigate();
-	const validators = SignUpValidators(formData);
 	const { createUser } = UserAuth();
-
 	const [formData, setFormData] = useState({
 		email: '',
 		name: '',
@@ -27,6 +25,7 @@ const SignUp = () => {
 		password: '',
 		confirmPassword: '',
 	});
+	const validators = SignUpValidators(formData);
 
 	const onSubmit = async (e) => {
 		let errorFound = false;
