@@ -15,6 +15,7 @@ import Spinner from '../../components/Spinner';
 import AccountItem from './components/AccountItem';
 import LikedCoinItem from './components/LikedCoinItem';
 import { UserAuth } from '../../context/AuthContext';
+import { cleanDate, sortLikes, sortAccounts } from './ProfileActions';
 
 const Profile = ({ coins, coinsLoading }) => {
 	const [loading, setLoading] = useState(true);
@@ -77,20 +78,9 @@ const Profile = ({ coins, coinsLoading }) => {
 		);
 	}
 
-	const cleanDate = userData.timestamp
-		.toDate()
-		.toDateString()
-		.split(' ')
-		.slice(1, 4)
-		.join(' ');
-
-	const sortedLikes = Object.values(userLikes).sort(
-		(a, b) =>
-			b.market_data.price_change_percentage_24h_in_currency.usd -
-			a.market_data.price_change_percentage_24h_in_currency.usd
-	);
-
-	const sortedAccounts = pnl.sort((a, b) => b.totalValue - a.totalValue);
+	const joinDate = cleanDate(userData);
+	const sortedLikes = sortLikes(userLikes);
+	const sortedAccounts = sortAccounts(pnl);
 
 	return (
 		<div className='profile-container'>
@@ -103,7 +93,7 @@ const Profile = ({ coins, coinsLoading }) => {
 							<div>{userData.name}</div>
 							<div>
 								<div className='title-email'>{user.email}</div>
-								<div className='subheader'>Joined {cleanDate}</div>
+								<div className='subheader'>Joined {joinDate}</div>
 							</div>
 						</div>
 						<div className='tabs'>

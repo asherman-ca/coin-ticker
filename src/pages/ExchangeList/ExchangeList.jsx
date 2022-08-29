@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
 import Spinner from '../../components/Spinner';
 import Pagination from '../../components/Pagination';
-
 import ExchangeListItem from './components/ExchangeListItem';
 
 const rowsPerPageOptions = [10, 20];
