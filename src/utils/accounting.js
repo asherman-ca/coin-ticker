@@ -103,23 +103,26 @@ const calcPNL = (orders, coins) => {
 	let PNL = [];
 
 	Object.values(accounts).forEach((account) => {
-		const currentPrice = coins?.filter((coin) => coin.name === account.coin)[0]
-			.market_data.current_price.usd;
+		if (coins?.filter((coin) => coin.name === account.coin).length > 0) {
+			const currentPrice = coins?.filter(
+				(coin) => coin.name === account.coin
+			)[0].market_data.current_price.usd;
 
-		PNL.push({
-			coin: account.coin,
-			pnl:
-				account.total *
-				account.averagePrice *
-				(currentPrice / account.averagePrice - 1),
-			totalCoins: account.total,
-			averagePrice: account.averagePrice,
-			totalValue: currentPrice * account.total,
-			rpnl: account.earn - account.totalSold * account.averagePrice,
-			coinId: account.coinId,
-			image: account.image,
-			imageLarge: account.imageLarge,
-		});
+			PNL.push({
+				coin: account.coin,
+				pnl:
+					account.total *
+					account.averagePrice *
+					(currentPrice / account.averagePrice - 1),
+				totalCoins: account.total,
+				averagePrice: account.averagePrice,
+				totalValue: currentPrice * account.total,
+				rpnl: account.earn - account.totalSold * account.averagePrice,
+				coinId: account.coinId,
+				image: account.image,
+				imageLarge: account.imageLarge,
+			});
+		}
 	});
 
 	PNL.sort((a, b) => b.totalValue - a.totalValue);
