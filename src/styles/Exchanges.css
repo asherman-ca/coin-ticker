@@ -13,6 +13,8 @@
 }
 
 .exchange-list-header {
+	margin-bottom: -1rem;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -53,7 +55,7 @@
 /* Exchange List Item */
 
 .exchange-list .exchange-list-item:nth-child(n + 3) {
-	border-top: 1px solid var(--grey-border);
+	/* border-top: 1px solid var(--grey-border); */
 }
 
 .exchange-list .exchange-list-item:nth-child(2n + 1) {
@@ -69,6 +71,8 @@
 }
 
 .exchange-list-item {
+	margin-top: 1rem;
+
 	flex: 1;
 	flex-basis: 34%;
 }
@@ -78,13 +82,18 @@
 }
 
 .list-item-content {
-	padding: 1rem 0;
+	padding: 1rem 1rem;
 
 	display: flex;
 	gap: 1rem;
 
-	/* border: 1px solid var(--grey-border); */
+	box-shadow: rgb(0 0 0 / 4%) 0px 4px 8px;
 	border-radius: 0.5rem;
+	transition: box-shadow 0.25s ease-in-out 0s;
+}
+
+.list-item-content:hover {
+	box-shadow: rgb(0 0 0 / 10%) 0px 2px 8px;
 }
 
 .list-item-content .image-container {
@@ -93,7 +102,7 @@
 	display: flex;
 	align-items: center;
 
-	border: 1px solid var(--grey-border);
+	/* border: 1px solid var(--grey-border); */
 	border-radius: 0.5rem;
 }
 
